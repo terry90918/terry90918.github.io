@@ -12,6 +12,7 @@ export interface Config {
   }
   collections: {
     articles: Article
+    posts: Post
     tags: Tag
     media: Media
     users: User
@@ -19,6 +20,7 @@ export interface Config {
   collectionsJoins: {}
   collectionsSelect: {
     articles: ArticlesSelect<false> | ArticlesSelect<true>
+    posts: PostsSelect<false> | PostsSelect<true>
     tags: TagsSelect<false> | TagsSelect<true>
     media: MediaSelect<false> | MediaSelect<true>
     users: UsersSelect<false> | UsersSelect<true>
@@ -65,6 +67,37 @@ export interface Article {
   metaDescription?: string | null
   updatedAt: string
   createdAt: string
+}
+
+export interface Post {
+  id: number
+  title: string
+  slug: string
+  content: unknown
+  excerpt?: string | null
+  featureImage?: (number | null) | Media
+  tags?: (number | Tag)[] | null
+  status?: ('draft' | 'published') | null
+  publishedAt?: string | null
+  readingTime?: number | null
+  metaDescription?: string | null
+  updatedAt: string
+  createdAt: string
+}
+
+export interface PostsSelect<T extends boolean = true> {
+  title?: T
+  slug?: T
+  content?: T
+  excerpt?: T
+  featureImage?: T
+  tags?: T
+  status?: T
+  publishedAt?: T
+  readingTime?: T
+  metaDescription?: T
+  updatedAt?: T
+  createdAt?: T
 }
 
 export interface Media {

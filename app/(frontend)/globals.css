@@ -1,145 +1,57 @@
 @import 'tailwindcss';
-@plugin '@tailwindcss/typography';
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-/* ===== Tailwind v4 Theme Configuration ===== */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+:root,
+html[data-theme='light'] {
+  --background: #fdfdfd;
+  --foreground: #282728;
+  --accent: #006cac;
+  --muted: #e6e6e6;
+  --border: #ece9e9;
+}
+
+html[data-theme='dark'] {
+  --background: #212737;
+  --foreground: #eaedf3;
+  --accent: #ff6b01;
+  --muted: #343f60bf;
+  --border: #ab4b08;
+}
+
 @theme {
-  --color-primary: #6a7e72;
-  --color-primary-light: #8fa396;
-  --color-accent: #6a7e72;
-  --color-background-light: #e6e4e1;
-  --color-background-dark: #2c3530;
-  --color-background-darker: #232825;
-  --color-card-dark: #343a36;
-  --color-text-dark: #333331;
-  --color-text-light: #e8e6e3;
-  --color-text-muted: #a8a5a0;
-  --color-text-muted-dark: #b5b3b0;
-  --color-text-secondary: #555553;
-  --color-text-secondary-dark: #c5c3c0;
-
-  --font-family-display:
-    'LXGW WenKai TC', 'Microsoft JhengHei', 'PingFang TC', 'Noto Sans CJK TC', system-ui, sans-serif;
-  --font-family-body:
-    'LXGW WenKai TC', 'Microsoft JhengHei', 'PingFang TC', 'Noto Sans CJK TC', system-ui, sans-serif;
-
-  --ease-elegant: cubic-bezier(0.23, 1, 0.32, 1);
-  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
-
-  --animate-fade-up: fadeUp 1s var(--ease-elegant) forwards;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
 }
 
-@custom-variant dark (&:where(.dark, .dark *));
+@layer base {
+  html {
+    @apply overflow-y-scroll scroll-smooth;
+  }
 
-/* ===== Custom Properties ===== */
-:root {
-  --color-gold: #c9a962;
-  --color-ink: #1a1a18;
-}
+  body {
+    @apply bg-background text-foreground flex min-h-svh flex-col font-mono;
+    font-family: 'Atkinson Hyperlegible', ui-monospace, monospace;
+  }
 
-/* ===== Base Styles ===== */
-body {
-  min-height: max(884px, 100dvh);
-  font-family: var(--font-family-body);
-}
-
-/* ===== Typography Base Styles ===== */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-family-display);
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-}
-
-h1 {
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  line-height: 1;
-}
-
-h2 {
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  line-height: 1.1;
-}
-
-p,
-li,
-span {
-  font-weight: 400;
-  text-rendering: optimizeLegibility;
-}
-
-blockquote {
-  font-weight: 300;
-  font-style: normal;
-  letter-spacing: 0.06em;
-  line-height: 2;
-}
-
-/* ===== Selection & Focus ===== */
-::selection {
-  background: var(--color-accent);
-  color: white;
-}
-
-a:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 4px;
-}
-
-/* ===== Smooth Scroll ===== */
-html {
-  scroll-behavior: smooth;
+  section,
+  footer {
+    @apply mx-auto max-w-3xl px-4;
+  }
 }
 
 /* ===== Keyframes ===== */
-@keyframes fadeUp {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* ===== Utilities ===== */
-@utility vertical-text {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  letter-spacing: 0.1em;
-}
-
-@utility paper-texture {
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    opacity: 0.03;
-    pointer-events: none;
-    mix-blend-mode: multiply;
-  }
-}
-
-@utility animate-fade-up {
-  animation: var(--animate-fade-up);
-  opacity: 0;
-}
-
-/* ===== Print Styles ===== */
-@media print {
-  .no-print {
-    display: none !important;
   }
 }

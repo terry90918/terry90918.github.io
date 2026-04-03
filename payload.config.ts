@@ -1,13 +1,11 @@
 import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { s3Storage } from '@payloadcms/storage-s3'
-import { zhTw } from '@payloadcms/translations/languages/zhTw'
 import sharp from 'sharp'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
-import { Articles } from './collections/Articles'
+import { Posts } from './collections/Posts'
 import { Tags } from './collections/Tags'
 import { Media } from './collections/Media'
 import { Users } from './collections/Users'
@@ -16,7 +14,6 @@ import { migrations } from './migrations'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-// Validate required environment variables
 function requireEnv(name: string): string {
   const value = process.env[name]
   if (!value) {
@@ -32,16 +29,15 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
     meta: {
-      titleSuffix: ' | 劉尹惠律師事務所',
+      titleSuffix: ' | Terry Chen',
     },
   },
 
   i18n: {
-    supportedLanguages: { 'zh-TW': zhTw },
-    fallbackLanguage: 'zh-TW',
+    fallbackLanguage: 'en',
   },
 
-  collections: [Articles, Tags, Media, Users],
+  collections: [Posts, Tags, Media, Users],
 
   editor: lexicalEditor({}),
 
@@ -65,25 +61,5 @@ export default buildConfig({
 
   sharp,
 
-  plugins: [
-    ...(process.env.S3_ACCESS_KEY_ID
-      ? [
-          s3Storage({
-            collections: {
-              media: true,
-            },
-            bucket: requireEnv('S3_BUCKET'),
-            config: {
-              forcePathStyle: true,
-              credentials: {
-                accessKeyId: requireEnv('S3_ACCESS_KEY_ID'),
-                secretAccessKey: requireEnv('S3_SECRET_ACCESS_KEY'),
-              },
-              region: process.env.S3_REGION || 'us-east-1',
-              endpoint: process.env.S3_ENDPOINT,
-            },
-          }),
-        ]
-      : []),
-  ],
+  plugins: [],
 })

@@ -34,6 +34,7 @@
     "postcss": "^8.5.6",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
+    "reading-time": "^1.5.0",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.1.18",
     "uuid": "^13.0.0"

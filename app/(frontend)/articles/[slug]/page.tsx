@@ -194,7 +194,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         {/* Content */}
         <main className="mx-auto max-w-4xl px-6 pb-24 md:px-12">
           <article className="prose prose-lg dark:prose-invert prose-headings:font-display prose-headings:tracking-wide prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-p:leading-relaxed prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:font-semibold prose-blockquote:border-primary/40 prose-blockquote:italic prose-code:rounded prose-code:px-2 prose-code:py-0.5 prose-code:text-sm prose-code:bg-text-dark/10 dark:prose-code:bg-text-light/10 prose-pre:p-4 prose-pre:rounded-lg prose-img:rounded-lg prose-ul:list-disc prose-ol:list-decimal max-w-none">
-            <RichText data={post.content} />
+            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+            <RichText data={post.content as any} />
           </article>
 
           {/* Tags */}
