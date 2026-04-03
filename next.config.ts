@@ -3,6 +3,9 @@ import { withPayload } from '@payloadcms/next/withPayload'
 
 const nextConfig: NextConfig = {
   output: 'standalone',
+  outputFileTracingIncludes: {
+    '/**': ['./node_modules/jose/**'],
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     qualities: [75, 90], // Next.js 16 requires explicit quality allowlist
