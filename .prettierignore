@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build output
+.next/
+out/
+
+# Cache
+.cache/
+
+# Lock files
+bun.lock
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Generated
+*.generated.*
+prisma/migrations/
+
+# Assets
+public/

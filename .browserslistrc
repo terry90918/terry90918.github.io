@@ -1,0 +1,32 @@
+# 支援現代瀏覽器，不需要舊版 polyfills
+# 這將移除不必要的 Array.prototype.at, flat, flatMap 等 polyfills
+
+# 過去 2 年內的瀏覽器版本
+last 2 years
+
+# 市場份額 > 0.2%
+> 0.2%
+
+# 不包含已停止維護的瀏覽器
+not dead
+
+# 不包含 IE 11
+not IE 11
+
+# 不包含 Opera Mini
+not op_mini all
+
+# Edge 最後 2 個版本
+last 2 Edge versions
+
+# Chrome 最後 2 個版本
+last 2 Chrome versions
+
+# Firefox 最後 2 個版本
+last 2 Firefox versions
+
+# Safari 最後 2 個版本
+last 2 Safari versions
+
+# iOS Safari 最後 2 個版本
+last 2 iOS versions
