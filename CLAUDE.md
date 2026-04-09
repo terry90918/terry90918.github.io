@@ -103,22 +103,25 @@ CSS variables in `app/(frontend)/globals.css`:
 | Resource    | Name         | UUID                       | Status                          |
 | ----------- | ------------ | -------------------------- | ------------------------------- |
 | Project     | Blog         | `tsg0gook408g4w0c04kwc884` | —                               |
-| Staging App | blog-dev-app | `k8g48c8w4wscwkw0o4080wgg` | —                               |
-| Staging DB  | blog-dev-db  | `ck0sc00o84w4sw404gckgw44` | PostgreSQL 16 Alpine, port 5450 |
+| Develop Env | develop      | `egkosgkswwcss848wwgowccs` | —                               |
+| Staging App | blog-dev-app | `mwscwg88sc8cs0ws8os44k84` | `running`                       |
+| Staging DB  | blog-dev-db  | `w8840oo0kcsg0gcocook8k8g` | PostgreSQL 16 Alpine, port 5450 |
 
 **DB Connection URLs** (passwords stored in Coolify env vars):
 
-- Internal (Docker network): `postgres://payload:<password>@ck0sc00o84w4sw404gckgw44:5432/blog_cms`
+- Internal (Docker network): `postgres://payload:<password>@w8840oo0kcsg0gcocook8k8g:5432/blog_cms`
 - External (local psql): `postgres://payload:<password>@46.225.58.202:5450/blog_cms`
 
 ### Environment Variables
 
-**Staging** (3 vars): `DATABASE_URL`, `PAYLOAD_SECRET`, `STAGING=true`
+**Staging** (5 vars): `DATABASE_URL`, `PAYLOAD_SECRET`, `STAGING=true`, `STAGING_USER`, `STAGING_PASSWORD`
 
 ```bash
 DATABASE_URL=postgres://...                        # Internal Coolify DB URL
 PAYLOAD_SECRET=<random string>
 STAGING=true                                       # Enables Basic Auth, robots Disallow, X-Robots-Tag
+STAGING_USER=admin                                 # Basic Auth username (required when STAGING=true)
+STAGING_PASSWORD=staging2026                       # Basic Auth password (required when STAGING=true)
 ```
 
 ### Gotchas

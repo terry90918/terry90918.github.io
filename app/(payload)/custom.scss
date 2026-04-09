@@ -1,9 +1,8 @@
 @import '@payloadcms/ui/scss/app.scss';
-@import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@300;400;700&display=swap');
 
 /* ============================================================
    Terry Chen Blog — Payload Admin Theme
-   "Refined Editorial" — warm pebble + sage green + legal luxury
+   Unified with frontend: Atkinson Hyperlegible + accent blue/orange
    ============================================================ */
 
 /* ===========================================
@@ -11,72 +10,40 @@
    =========================================== */
 
 :root {
-  /* --- Warm base ramp (anchored to design system values) ---
-   * Key anchors from design system:
-   *   base-100  = #E8E6E3 (text-light)
-   *   base-150  = #E6E4E1 (background-light)
-   *   base-350  = #A8A5A0 (text-muted)
-   *   base-750  = #333331 (text-dark)
-   *   base-900  = #1A1A18 (ink)
-   */
-  --color-base-0: rgb(252, 251, 249);
-  --color-base-50: rgb(244, 243, 240);
-  --color-base-100: rgb(232, 230, 227); /* #E8E6E3 — text-light */
-  --color-base-150: rgb(230, 228, 225); /* #E6E4E1 — background-light */
-  --color-base-200: rgb(212, 209, 204);
-  --color-base-250: rgb(199, 196, 191);
-  --color-base-300: rgb(185, 182, 176);
-  --color-base-350: rgb(168, 165, 160); /* #A8A5A0 — text-muted */
-  --color-base-400: rgb(154, 151, 145);
-  --color-base-450: rgb(138, 135, 129);
-  --color-base-500: rgb(121, 118, 113);
-  --color-base-550: rgb(106, 103, 98);
-  --color-base-600: rgb(91, 89, 84);
-  --color-base-650: rgb(77, 75, 71);
-  --color-base-700: rgb(65, 63, 60);
-  --color-base-750: rgb(51, 51, 49); /* #333331 — text-dark */
-  --color-base-800: rgb(44, 43, 41);
-  --color-base-850: rgb(35, 34, 33);
-  --color-base-900: rgb(26, 26, 24); /* #1A1A18 — ink */
-  --color-base-950: rgb(19, 19, 18);
-  --color-base-1000: rgb(10, 10, 9);
-
-  /* --- Sage green success ramp (brand primary #6A7E72) --- */
-  --color-success-50: rgb(243, 247, 245);
-  --color-success-100: rgb(230, 238, 234);
-  --color-success-150: rgb(214, 226, 219);
-  --color-success-200: rgb(196, 212, 203);
-  --color-success-250: rgb(178, 198, 187);
-  --color-success-300: rgb(160, 184, 171);
-  --color-success-350: rgb(142, 170, 155);
-  --color-success-400: rgb(124, 155, 139);
-  --color-success-450: rgb(115, 141, 127);
-  --color-success-500: rgb(106, 126, 114);
-  --color-success-550: rgb(95, 113, 103);
-  --color-success-600: rgb(85, 101, 92);
-  --color-success-650: rgb(74, 88, 80);
-  --color-success-700: rgb(64, 76, 69);
-  --color-success-750: rgb(54, 64, 59);
-  --color-success-800: rgb(45, 53, 49);
-  --color-success-850: rgb(36, 43, 39);
-  --color-success-900: rgb(27, 32, 30);
-  --color-success-950: rgb(19, 22, 21);
-
-  /* --- Design tokens --- */
-  --admin-sage: rgb(106, 126, 114);
-  --admin-sage-light: rgba(106, 126, 114, 0.08);
-  --admin-sage-glow: rgba(106, 126, 114, 0.15);
+  /* --- Design tokens (mirrors frontend globals.css light mode) --- */
+  --admin-accent: #006cac;
+  --admin-accent-hover: #005a91;
+  --admin-accent-light: rgba(0, 108, 172, 0.08);
+  --admin-accent-glow: rgba(0, 108, 172, 0.15);
   --admin-transition: 220ms cubic-bezier(0.25, 0.1, 0.25, 1);
   --admin-radius: 3px;
+}
+
+[data-theme='dark'] {
+  /* --- Dark mode accent (mirrors frontend globals.css dark mode) --- */
+  --admin-accent: #ff6b01;
+  --admin-accent-hover: #e05e00;
+  --admin-accent-light: rgba(255, 107, 1, 0.08);
+  --admin-accent-glow: rgba(255, 107, 1, 0.15);
 }
 
 /* ===========================================
    2. GLOBAL REFINEMENTS
    =========================================== */
 
+/* Global font — match frontend Atkinson Hyperlegible */
+body,
+.nav,
+.app-header,
+.field-type label,
+.table .table__header,
+.btn {
+  font-family: 'Atkinson Hyperlegible', ui-monospace, monospace;
+}
+
 /* Selection highlight */
 ::selection {
-  background: var(--admin-sage-glow);
+  background: var(--admin-accent-glow);
 }
 
 /* Smooth transitions on all interactive elements */
@@ -136,7 +103,9 @@ select {
   }
 }
 
-.login.template-minimal {
+/* Shared minimal template — login + create-first-user */
+.login.template-minimal,
+.template-minimal:has(.create-first-user) {
   background: var(--color-base-50);
   min-height: 100vh;
   position: relative;
@@ -183,7 +152,7 @@ select {
     font-weight: 600;
     letter-spacing: 0.14em;
     color: var(--color-base-850);
-    font-family: 'LXGW WenKai TC', 'Microsoft JhengHei', 'PingFang TC', serif;
+    font-family: 'Atkinson Hyperlegible', ui-monospace, monospace;
   }
 
   &::after {
@@ -191,10 +160,120 @@ select {
     display: block;
     width: 48px;
     height: 1px;
-    background: var(--admin-sage);
+    background: var(--admin-accent);
     margin-top: 14px;
     animation: loginLineGrow 0.8s ease-out 0.3s both;
   }
+}
+
+/* ===========================================
+   3b. CREATE FIRST USER PAGE
+   =========================================== */
+
+.create-first-user {
+  /* Branding above the Welcome heading */
+  &::before {
+    content: 'Terry Chen Blog';
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--color-base-850);
+    font-family: 'Atkinson Hyperlegible', ui-monospace, monospace;
+    margin-bottom: 6px;
+  }
+
+  /* "Welcome" heading — sits below branding, with sage line underneath */
+  h1 {
+    font-size: 1.15rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--color-base-600);
+    text-align: center;
+    margin-bottom: 8px;
+    padding-bottom: 18px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 48px;
+      height: 1px;
+      background: var(--admin-accent);
+      animation: loginLineGrow 0.8s ease-out 0.3s both;
+    }
+  }
+
+  /* "To begin, create your first user." subtitle */
+  p {
+    font-size: 0.82rem;
+    color: var(--color-base-400);
+    text-align: center;
+    margin-bottom: 32px;
+    letter-spacing: 0.02em;
+  }
+
+  /* Form field inputs — refined bottom-border style */
+  .field-type input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-base-200);
+    border-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
+    color: var(--color-base-800);
+    transition:
+      border-color var(--admin-transition),
+      box-shadow var(--admin-transition);
+
+    &:focus {
+      border-bottom-color: var(--admin-accent);
+      box-shadow: 0 1px 0 0 var(--admin-accent);
+      outline: none;
+    }
+  }
+
+  /* Field labels */
+  .field-type label {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-base-500);
+  }
+
+  /* Required asterisk color */
+  .field-type .required {
+    color: var(--admin-accent);
+  }
+
+  /* Submit button — full-width sage green with refined hover */
+  .btn--style-primary {
+    width: 100%;
+    margin-top: 8px;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    border-radius: var(--admin-radius);
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px var(--admin-accent-glow);
+    }
+  }
+}
+
+/* Watermark for create-first-user */
+.template-minimal:has(.create-first-user) .template-minimal__wrap::after {
+  content: 'Powered by Payload CMS';
+  display: block;
+  text-align: center;
+  margin-top: 48px;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: var(--color-base-300);
 }
 
 /* Login form input styling */
@@ -206,13 +285,14 @@ select {
     border-radius: 0;
     padding-left: 0;
     padding-right: 0;
+    color: var(--color-base-900);
     transition:
       border-color var(--admin-transition),
       box-shadow var(--admin-transition);
 
     &:focus {
-      border-bottom-color: var(--admin-sage);
-      box-shadow: 0 1px 0 0 var(--admin-sage);
+      border-bottom-color: var(--admin-accent);
+      box-shadow: 0 1px 0 0 var(--admin-accent);
       outline: none;
     }
   }
@@ -233,7 +313,7 @@ select {
   text-decoration: none;
 
   &:hover {
-    color: var(--admin-sage);
+    color: var(--admin-accent);
   }
 }
 
@@ -244,20 +324,20 @@ select {
 /* Override Payload's internal CSS custom properties (defined in @layer payload-default).
    Our styles are outside any @layer, so they win cascade without !important. */
 .btn--style-primary {
-  --color: var(--color-base-0);
-  --bg-color: var(--color-success-600);
-  --hover-bg: var(--color-success-650);
-  --hover-color: var(--color-base-0);
+  --color: white;
+  --bg-color: var(--admin-accent);
+  --hover-bg: var(--admin-accent-hover);
+  --hover-color: white;
   --box-shadow: none;
   border-radius: var(--admin-radius);
   transition: all var(--admin-transition);
 
   &:hover {
-    box-shadow: 0 2px 8px rgba(106, 126, 114, 0.2);
+    box-shadow: 0 2px 8px var(--admin-accent-light);
   }
 
   &:active {
-    --bg-color: var(--color-success-700);
+    --bg-color: var(--admin-accent-hover);
     box-shadow: none;
     transform: translateY(0);
   }
@@ -270,8 +350,8 @@ select {
   transition: all var(--admin-transition);
 
   &:hover {
-    border-color: var(--color-success-300);
-    color: var(--color-success-600);
+    border-color: var(--admin-accent);
+    color: var(--admin-accent);
   }
 }
 
@@ -294,8 +374,8 @@ select {
     background: linear-gradient(
       90deg,
       transparent 0%,
-      var(--admin-sage) 20%,
-      var(--admin-sage) 80%,
+      var(--admin-accent) 20%,
+      var(--admin-accent) 80%,
       transparent 100%
     );
     opacity: 0.2;
@@ -308,7 +388,7 @@ select {
   text-decoration: none;
 
   &:hover {
-    color: var(--color-success-600);
+    color: var(--admin-accent);
   }
 }
 
@@ -317,7 +397,6 @@ select {
    =========================================== */
 
 .nav {
-  background: var(--color-base-0);
   border-right: 1px solid var(--color-base-100);
 }
 
@@ -337,16 +416,16 @@ select {
   border-left: 2px solid transparent;
 
   &:hover {
-    color: var(--color-success-600);
-    background: var(--admin-sage-light);
-    border-left-color: var(--color-success-300);
+    color: var(--admin-accent);
+    background: var(--admin-accent-light);
+    border-left-color: var(--admin-accent);
   }
 
   &.active {
-    color: var(--color-success-600);
+    color: var(--admin-accent);
     font-weight: 600;
-    border-left-color: var(--admin-sage);
-    background: var(--admin-sage-light);
+    border-left-color: var(--admin-accent);
+    background: var(--admin-accent-light);
   }
 }
 
@@ -379,11 +458,10 @@ select {
   border-radius: var(--admin-radius);
   border-left: 3px solid var(--color-base-100);
   transition: all var(--admin-transition);
-  background: var(--color-base-0);
 
   &:hover {
-    border-left-color: var(--admin-sage);
-    box-shadow: 0 4px 16px rgba(106, 126, 114, 0.06);
+    border-left-color: var(--admin-accent);
+    box-shadow: 0 4px 16px var(--admin-accent-light);
     transform: translateY(-1px);
   }
 
@@ -411,7 +489,7 @@ select {
   transition: background var(--admin-transition);
 
   &:hover .cell {
-    background: var(--admin-sage-light);
+    background: var(--admin-accent-light);
   }
 
   /* Row link styling */
@@ -421,7 +499,7 @@ select {
     transition: color var(--admin-transition);
 
     &:hover {
-      color: var(--color-success-600);
+      color: var(--admin-accent);
     }
   }
 }
@@ -440,8 +518,8 @@ select {
     box-shadow var(--admin-transition);
 
   &:focus {
-    border-color: var(--color-success-400);
-    box-shadow: 0 0 0 2px var(--admin-sage-glow);
+    border-color: var(--admin-accent);
+    box-shadow: 0 0 0 2px var(--admin-accent-glow);
   }
 }
 
@@ -469,8 +547,8 @@ select {
     box-shadow var(--admin-transition);
 
   &:focus {
-    border-color: var(--color-success-400);
-    box-shadow: 0 0 0 3px var(--admin-sage-glow);
+    border-color: var(--admin-accent);
+    box-shadow: 0 0 0 3px var(--admin-accent-glow);
     outline: none;
   }
 }
@@ -482,7 +560,7 @@ select {
   transition: border-color var(--admin-transition);
 
   &:focus-within {
-    border-color: var(--color-success-300);
+    border-color: var(--admin-accent);
   }
 }
 
@@ -510,14 +588,14 @@ select {
 }
 
 .rs__control--is-focused {
-  border-color: var(--color-success-400) !important;
-  box-shadow: 0 0 0 3px var(--admin-sage-glow) !important;
+  border-color: var(--admin-accent) !important;
+  box-shadow: 0 0 0 3px var(--admin-accent-glow) !important;
 }
 
 /* Save button floating bar */
 .doc-controls {
   .btn--style-primary {
-    box-shadow: 0 2px 12px rgba(106, 126, 114, 0.15);
+    box-shadow: 0 2px 12px var(--admin-accent-glow);
   }
 }
 
@@ -530,11 +608,11 @@ select {
   border-radius: var(--admin-radius) var(--admin-radius) 0 0;
 
   &--active {
-    border-bottom-color: var(--admin-sage);
+    border-bottom-color: var(--admin-accent);
   }
 
   &:hover:not(&--active) {
-    color: var(--color-success-600);
+    color: var(--admin-accent);
   }
 }
 
