@@ -87,9 +87,22 @@ CSS variables in `app/(frontend)/globals.css`:
 | `--muted`      | `#e6e6e6` | `#343f60bf` |
 | `--border`     | `#ece9e9` | `#ab4b08`   |
 
-- Font: Atkinson Hyperlegible (Google Fonts), `font-mono` on body
+- Font: Atkinson Hyperlegible loaded via `@import url()` in `globals.css`; `fonts.ts` is `export {}` (unused)
 - Container: `max-w-3xl` centered
 - Dark mode: `data-theme="dark"` on `<html>` (next-themes `attribute="data-theme"`)
+
+### Admin Design Tokens (`app/(payload)/custom.scss`)
+
+Custom tokens that unify the admin with the frontend accent colors:
+
+| Token                  | Light                  | Dark                   |
+| ---------------------- | ---------------------- | ---------------------- |
+| `--admin-accent`       | `#006cac`              | `#ff6b01`              |
+| `--admin-accent-hover` | `#005a91`              | `#e05e00`              |
+| `--admin-accent-light` | `rgba(0,108,172,0.08)` | `rgba(255,107,1,0.08)` |
+| `--admin-accent-glow`  | `rgba(0,108,172,0.15)` | `rgba(255,107,1,0.15)` |
+
+**Critical**: Never override Payload's `--color-base-*` ramp in `:root` inside `custom.scss`. Doing so locks all values to light mode and breaks dark mode. Only use `--admin-accent*` custom tokens.
 
 ## Environments
 
