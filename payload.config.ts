@@ -1,3 +1,4 @@
+import { zhTw } from '@payloadcms/translations/languages/zhTw'
 import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
@@ -34,6 +35,7 @@ export default buildConfig({
   },
 
   i18n: {
+    supportedLanguages: { 'zh-TW': zhTw },
     fallbackLanguage: 'en',
   },
 
