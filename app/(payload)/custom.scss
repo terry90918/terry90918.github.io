@@ -11,57 +11,6 @@
    =========================================== */
 
 :root {
-  /* --- Warm base ramp (anchored to design system values) ---
-   * Key anchors from design system:
-   *   base-100  = #E8E6E3 (text-light)
-   *   base-150  = #E6E4E1 (background-light)
-   *   base-350  = #A8A5A0 (text-muted)
-   *   base-750  = #333331 (text-dark)
-   *   base-900  = #1A1A18 (ink)
-   */
-  --color-base-0: rgb(252, 251, 249);
-  --color-base-50: rgb(244, 243, 240);
-  --color-base-100: rgb(232, 230, 227); /* #E8E6E3 — text-light */
-  --color-base-150: rgb(230, 228, 225); /* #E6E4E1 — background-light */
-  --color-base-200: rgb(212, 209, 204);
-  --color-base-250: rgb(199, 196, 191);
-  --color-base-300: rgb(185, 182, 176);
-  --color-base-350: rgb(168, 165, 160); /* #A8A5A0 — text-muted */
-  --color-base-400: rgb(154, 151, 145);
-  --color-base-450: rgb(138, 135, 129);
-  --color-base-500: rgb(121, 118, 113);
-  --color-base-550: rgb(106, 103, 98);
-  --color-base-600: rgb(91, 89, 84);
-  --color-base-650: rgb(77, 75, 71);
-  --color-base-700: rgb(65, 63, 60);
-  --color-base-750: rgb(51, 51, 49); /* #333331 — text-dark */
-  --color-base-800: rgb(44, 43, 41);
-  --color-base-850: rgb(35, 34, 33);
-  --color-base-900: rgb(26, 26, 24); /* #1A1A18 — ink */
-  --color-base-950: rgb(19, 19, 18);
-  --color-base-1000: rgb(10, 10, 9);
-
-  /* --- Sage green success ramp (brand primary #6A7E72) --- */
-  --color-success-50: rgb(243, 247, 245);
-  --color-success-100: rgb(230, 238, 234);
-  --color-success-150: rgb(214, 226, 219);
-  --color-success-200: rgb(196, 212, 203);
-  --color-success-250: rgb(178, 198, 187);
-  --color-success-300: rgb(160, 184, 171);
-  --color-success-350: rgb(142, 170, 155);
-  --color-success-400: rgb(124, 155, 139);
-  --color-success-450: rgb(115, 141, 127);
-  --color-success-500: rgb(106, 126, 114);
-  --color-success-550: rgb(95, 113, 103);
-  --color-success-600: rgb(85, 101, 92);
-  --color-success-650: rgb(74, 88, 80);
-  --color-success-700: rgb(64, 76, 69);
-  --color-success-750: rgb(54, 64, 59);
-  --color-success-800: rgb(45, 53, 49);
-  --color-success-850: rgb(36, 43, 39);
-  --color-success-900: rgb(27, 32, 30);
-  --color-success-950: rgb(19, 22, 21);
-
   /* --- Design tokens --- */
   --admin-sage: rgb(106, 126, 114);
   --admin-sage-light: rgba(106, 126, 114, 0.08);
@@ -136,7 +85,9 @@ select {
   }
 }
 
-.login.template-minimal {
+/* Shared minimal template — login + create-first-user */
+.login.template-minimal,
+.template-minimal:has(.create-first-user) {
   background: var(--color-base-50);
   min-height: 100vh;
   position: relative;
@@ -195,6 +146,116 @@ select {
     margin-top: 14px;
     animation: loginLineGrow 0.8s ease-out 0.3s both;
   }
+}
+
+/* ===========================================
+   3b. CREATE FIRST USER PAGE
+   =========================================== */
+
+.create-first-user {
+  /* Branding above the Welcome heading */
+  &::before {
+    content: 'Terry Chen Blog';
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--color-base-850);
+    font-family: 'LXGW WenKai TC', 'Microsoft JhengHei', 'PingFang TC', serif;
+    margin-bottom: 6px;
+  }
+
+  /* "Welcome" heading — sits below branding, with sage line underneath */
+  h1 {
+    font-size: 1.15rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--color-base-600);
+    text-align: center;
+    margin-bottom: 8px;
+    padding-bottom: 18px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 48px;
+      height: 1px;
+      background: var(--admin-sage);
+      animation: loginLineGrow 0.8s ease-out 0.3s both;
+    }
+  }
+
+  /* "To begin, create your first user." subtitle */
+  p {
+    font-size: 0.82rem;
+    color: var(--color-base-400);
+    text-align: center;
+    margin-bottom: 32px;
+    letter-spacing: 0.02em;
+  }
+
+  /* Form field inputs — refined bottom-border style */
+  .field-type input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-base-200);
+    border-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
+    color: var(--color-base-800);
+    transition:
+      border-color var(--admin-transition),
+      box-shadow var(--admin-transition);
+
+    &:focus {
+      border-bottom-color: var(--admin-sage);
+      box-shadow: 0 1px 0 0 var(--admin-sage);
+      outline: none;
+    }
+  }
+
+  /* Field labels */
+  .field-type label {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-base-500);
+  }
+
+  /* Required asterisk color */
+  .field-type .required {
+    color: var(--color-success-500);
+  }
+
+  /* Submit button — full-width sage green with refined hover */
+  .btn--style-primary {
+    width: 100%;
+    margin-top: 8px;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    border-radius: var(--admin-radius);
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(106, 126, 114, 0.25);
+    }
+  }
+}
+
+/* Watermark for create-first-user */
+.template-minimal:has(.create-first-user) .template-minimal__wrap::after {
+  content: 'Powered by Payload CMS';
+  display: block;
+  text-align: center;
+  margin-top: 48px;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: var(--color-base-300);
 }
 
 /* Login form input styling */
@@ -317,7 +378,6 @@ select {
    =========================================== */
 
 .nav {
-  background: var(--color-base-0);
   border-right: 1px solid var(--color-base-100);
 }
 
@@ -379,7 +439,6 @@ select {
   border-radius: var(--admin-radius);
   border-left: 3px solid var(--color-base-100);
   transition: all var(--admin-transition);
-  background: var(--color-base-0);
 
   &:hover {
     border-left-color: var(--admin-sage);
