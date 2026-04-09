@@ -7,56 +7,65 @@ export async function up({ db }: MigrateUpArgs): Promise<void> {
   // 2. Rename articles table → posts
   await db.execute(sql`ALTER TABLE "articles" RENAME TO "posts";`)
 
-  // 3. Add reading_time column (new field in Posts collection)
+  // 3. Rename PK constraint (ALTER INDEX renames the index; RENAME CONSTRAINT renames the constraint)
+  await db.execute(sql`ALTER TABLE "posts" RENAME CONSTRAINT "articles_pkey" TO "posts_pkey";`)
+
+  // 4. Add reading_time column (new field in Posts collection)
   await db.execute(sql`ALTER TABLE "posts" ADD COLUMN IF NOT EXISTS "reading_time" numeric;`)
 
-  // 4. Rename articles_rels table → posts_rels
+  // 5. Rename articles_rels table → posts_rels
   await db.execute(sql`ALTER TABLE "articles_rels" RENAME TO "posts_rels";`)
 
-  // 5. Update FK constraint on posts_rels to point to posts
+  // 6. Update FK constraint on posts_rels to point to posts (rename rather than drop/add)
   await db.execute(sql`
     ALTER TABLE "posts_rels"
-      DROP CONSTRAINT IF EXISTS "articles_rels_parent_fk",
-      ADD CONSTRAINT "posts_rels_parent_fk"
-        FOREIGN KEY ("parent_id") REFERENCES "posts"("id") ON DELETE CASCADE;
+      RENAME CONSTRAINT "articles_rels_parent_fk" TO "posts_rels_parent_fk";
   `)
 
-  // 6. Rename payload_locked_documents_rels.articles_id → posts_id
+  // 7. Rename payload_locked_documents_rels.articles_id → posts_id
   await db.execute(sql`
     ALTER TABLE "payload_locked_documents_rels"
       RENAME COLUMN "articles_id" TO "posts_id";
   `)
 
-  // 7. Drop old FK constraint and add new one
+  // 8. Rename FK constraint on payload_locked_documents_rels
   await db.execute(sql`
     ALTER TABLE "payload_locked_documents_rels"
-      DROP CONSTRAINT IF EXISTS "payload_locked_documents_rels_articles_fk",
-      ADD CONSTRAINT "payload_locked_documents_rels_posts_fk"
-        FOREIGN KEY ("posts_id") REFERENCES "posts"("id") ON DELETE CASCADE;
+      RENAME CONSTRAINT "payload_locked_documents_rels_articles_fk"
+      TO "payload_locked_documents_rels_posts_fk";
   `)
 
-  // 8. Rename indexes on payload_locked_documents_rels
+  // 9. Rename index on payload_locked_documents_rels
   await db.execute(sql`
     ALTER INDEX IF EXISTS "payload_locked_documents_rels_articles_id_idx"
       RENAME TO "payload_locked_documents_rels_posts_id_idx";
   `)
 
-  // 9. Rename indexes on posts_rels
-  await db.execute(sql`
-    ALTER INDEX IF EXISTS "articles_rels_order_idx" RENAME TO "posts_rels_order_idx";
-    ALTER INDEX IF EXISTS "articles_rels_parent_idx" RENAME TO "posts_rels_parent_idx";
-    ALTER INDEX IF EXISTS "articles_rels_path_idx" RENAME TO "posts_rels_path_idx";
-    ALTER INDEX IF EXISTS "articles_rels_tags_id_idx" RENAME TO "posts_rels_tags_id_idx";
-  `)
+  // 10. Rename indexes on posts_rels
+  await db.execute(
+    sql`ALTER INDEX IF EXISTS "articles_rels_order_idx" RENAME TO "posts_rels_order_idx";`
+  )
+  await db.execute(
+    sql`ALTER INDEX IF EXISTS "articles_rels_parent_idx" RENAME TO "posts_rels_parent_idx";`
+  )
+  await db.execute(
+    sql`ALTER INDEX IF EXISTS "articles_rels_path_idx" RENAME TO "posts_rels_path_idx";`
+  )
+  await db.execute(
+    sql`ALTER INDEX IF EXISTS "articles_rels_tags_id_idx" RENAME TO "posts_rels_tags_id_idx";`
+  )
 
-  // 10. Rename indexes on posts table
-  await db.execute(sql`
-    ALTER INDEX IF EXISTS "articles_pkey" RENAME TO "posts_pkey";
-    ALTER INDEX IF EXISTS "articles_slug_idx" RENAME TO "posts_slug_idx";
-    ALTER INDEX IF EXISTS "articles_created_at_idx" RENAME TO "posts_created_at_idx";
-    ALTER INDEX IF EXISTS "articles_updated_at_idx" RENAME TO "posts_updated_at_idx";
-    ALTER INDEX IF EXISTS "articles_feature_image_idx" RENAME TO "posts_feature_image_idx";
-  `)
+  // 11. Rename indexes on posts table
+  await db.execute(sql`ALTER INDEX IF EXISTS "articles_slug_idx" RENAME TO "posts_slug_idx";`)
+  await db.execute(
+    sql`ALTER INDEX IF EXISTS "articles_created_at_idx" RENAME TO "posts_created_at_idx";`
+  )
+  await db.execute(
+    sql`ALTER INDEX IF EXISTS "articles_updated_at_idx" RENAME TO "posts_updated_at_idx";`
+  )
+  await db.execute(
+    sql`ALTER INDEX IF EXISTS "articles_feature_image_idx" RENAME TO "posts_feature_image_idx";`
+  )
 }
 
 export async function down({ db }: MigrateDownArgs): Promise<void> {
@@ -66,7 +75,7 @@ export async function down({ db }: MigrateDownArgs): Promise<void> {
       RENAME TO "payload_locked_documents_rels_articles_id_idx";
   `)
 
-  // Reverse index renames on posts_rels → articles_rels
+  // Reverse index renames on posts_rels
   await db.execute(
     sql`ALTER INDEX IF EXISTS "posts_rels_order_idx" RENAME TO "articles_rels_order_idx";`
   )
@@ -80,8 +89,7 @@ export async function down({ db }: MigrateDownArgs): Promise<void> {
     sql`ALTER INDEX IF EXISTS "posts_rels_tags_id_idx" RENAME TO "articles_rels_tags_id_idx";`
   )
 
-  // Reverse index renames on posts → articles
-  await db.execute(sql`ALTER INDEX IF EXISTS "posts_pkey" RENAME TO "articles_pkey";`)
+  // Reverse index renames on posts table
   await db.execute(sql`ALTER INDEX IF EXISTS "posts_slug_idx" RENAME TO "articles_slug_idx";`)
   await db.execute(
     sql`ALTER INDEX IF EXISTS "posts_created_at_idx" RENAME TO "articles_created_at_idx";`
@@ -93,32 +101,35 @@ export async function down({ db }: MigrateDownArgs): Promise<void> {
     sql`ALTER INDEX IF EXISTS "posts_feature_image_idx" RENAME TO "articles_feature_image_idx";`
   )
 
-  // Reverse payload_locked_documents_rels FK and column
-  await db.execute(sql`
-    ALTER TABLE "payload_locked_documents_rels"
-      DROP CONSTRAINT IF EXISTS "payload_locked_documents_rels_posts_fk",
-      ADD CONSTRAINT "payload_locked_documents_rels_articles_fk"
-        FOREIGN KEY ("articles_id") REFERENCES "articles"("id") ON DELETE CASCADE;
-  `)
-
+  // Rename column before recreating FK (articles_id must exist before FK references it)
   await db.execute(sql`
     ALTER TABLE "payload_locked_documents_rels"
       RENAME COLUMN "posts_id" TO "articles_id";
   `)
 
-  // Reverse posts_rels → articles_rels FK and table rename
+  // Rename FK constraint on payload_locked_documents_rels
   await db.execute(sql`
-    ALTER TABLE "posts_rels"
-      DROP CONSTRAINT IF EXISTS "posts_rels_parent_fk",
-      ADD CONSTRAINT "articles_rels_parent_fk"
-        FOREIGN KEY ("parent_id") REFERENCES "articles"("id") ON DELETE CASCADE;
+    ALTER TABLE "payload_locked_documents_rels"
+      RENAME CONSTRAINT "payload_locked_documents_rels_posts_fk"
+      TO "payload_locked_documents_rels_articles_fk";
   `)
-  await db.execute(sql`ALTER TABLE "posts_rels" RENAME TO "articles_rels";`)
 
   // Drop reading_time before renaming posts → articles
   await db.execute(sql`ALTER TABLE "posts" DROP COLUMN IF EXISTS "reading_time";`)
 
-  // Reverse table and enum renames
+  // Rename PK constraint before renaming table
+  await db.execute(sql`ALTER TABLE "posts" RENAME CONSTRAINT "posts_pkey" TO "articles_pkey";`)
+
+  // Rename tables (must happen before any FK that references articles)
+  await db.execute(sql`ALTER TABLE "posts_rels" RENAME TO "articles_rels";`)
   await db.execute(sql`ALTER TABLE "posts" RENAME TO "articles";`)
+
+  // Rename FK constraint on articles_rels (table already renamed)
+  await db.execute(sql`
+    ALTER TABLE "articles_rels"
+      RENAME CONSTRAINT "posts_rels_parent_fk" TO "articles_rels_parent_fk";
+  `)
+
+  // Reverse enum rename
   await db.execute(sql`ALTER TYPE "public"."enum_posts_status" RENAME TO "enum_articles_status";`)
 }
