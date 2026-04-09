@@ -21,10 +21,11 @@ Records engineering articles and personal insights.
 ## Development Commands
 
 ```bash
-bun dev            # Dev server on localhost:3000 (Turbopack)
+bun dev            # Dev server on localhost:3000
 bun build          # Production build
 bun start          # Production server
 bun lint           # ESLint
+bun format         # Prettier format
 bun run typecheck  # TypeScript check (tsc --noEmit)
 bun run test       # Vitest unit tests
 bun run test:e2e   # Playwright E2E tests (needs running server on :3001)
@@ -35,38 +36,43 @@ bun run generate:types  # Regenerate payload-types.ts
 
 ```
 app/
-  (frontend)/          # Public-facing routes
-    layout.tsx         # Root layout with Atkinson font, ThemeProvider
-    page.tsx           # Homepage: avatar + hero + latest 10 posts
-    posts/             # All posts grouped by year/month
-    posts/[year]/[slug]/  # Post detail with tags, share, prev/next
-    about/             # About page with GitHub activity chart
-    rss.xml/           # RSS 2.0 Route Handler
-  (payload)/           # Payload CMS admin routes → /admin
-    layout.tsx         # Admin layout
-    admin/
-      importMap.js     # Auto-generated — maps plugin client components
-      [[...segments]]/ # Catch-all for admin pages
-    api/               # Payload REST + GraphQL APIs
-collections/           # Payload CMS collections
-  Posts.ts             # title, slug (auto-generated), content, excerpt, heroImage, tags, readingTime, status, publishedAt
-  Tags.ts              # name, slug
-  Media.ts             # Upload collection (local storage)
-  Users.ts             # Admin users
-components/            # Shared React components
-  BlogHeader.tsx       # Sticky header with dark mode toggle (useSyncExternalStore)
-  BlogFooter.tsx       # Footer with social links + CC BY 4.0
+  (frontend)/
+    layout.tsx             # Root layout with Atkinson font, ThemeProvider
+    page.tsx               # Homepage: avatar + hero + latest 10 posts
+    posts/                 # All posts grouped by year/month
+    posts/[year]/[slug]/   # Post detail with tags, share, prev/next
+    about/                 # About page with GitHub activity chart
+    rss.xml/               # RSS 2.0 Route Handler
+    sitemap.ts             # Dynamic sitemap
+    robots.ts              # robots.txt
+    api/og/                # OG image generation (@vercel/og)
+    api/health/            # Health check endpoint
+    (payload)/               # Payload CMS admin routes → /admin
+    admin/[[...segments]]/ # Catch-all admin pages
+    api/                   # Payload REST + GraphQL APIs
+collections/               # Payload CMS collections (registered in payload.config.ts)
+  Posts.ts                 # title, slug (auto-generated), content, excerpt, heroImage, tags, readingTime, status, publishedAt
+  Tags.ts                  # name, slug
+  Media.ts                 # Upload collection (local storage)
+  Users.ts                 # Admin users
+components/
+  BlogHeader.tsx           # Sticky header with dark mode toggle (useSyncExternalStore)
+  BlogFooter.tsx           # Footer with social links + CC BY 4.0
+  ThemeProvider.tsx        # next-themes wrapper (attribute="data-theme")
 lib/
-  rss.ts               # RSS 2.0 feed builder
+  rss.ts                   # RSS 2.0 feed builder
 lib/payload/
-  queries.ts           # Server-side Payload queries (getPosts, getPostBySlug, etc.)
+  queries.ts               # getPosts, getPostBySlug, getPostsPaginated, getPostsByTag,
+                           # getLatestPosts, getRelatedPosts, getAllPostSlugs, getAllTags,
+                           # getPostsByYearMonth, getAdjacentPosts
+  index.ts                 # Re-exports from queries.ts
 tests/
-  unit/                # Vitest unit tests
-  e2e/                 # Playwright E2E tests
-proxy.ts               # Staging HTTP Basic Auth (enabled when STAGING=true)
-payload.config.ts      # Payload CMS configuration
-payload-types.ts       # Auto-generated TypeScript types
-Dockerfile             # Multi-stage Docker build (oven/bun:1-alpine)
+  unit/                    # Vitest unit tests
+  e2e/                     # Playwright E2E tests
+proxy.ts                   # Staging HTTP Basic Auth (enabled when STAGING=true)
+payload.config.ts          # Payload CMS configuration
+payload-types.ts           # Auto-generated TypeScript types
+Dockerfile                 # Multi-stage Docker build (oven/bun:1-alpine)
 ```
 
 ## Design System (steipete.me)
@@ -122,6 +128,7 @@ STAGING=true                                       # Enables Basic Auth, robots 
 - **Dark mode selector**: Uses `data-theme` attribute (not `class`) — ThemeProvider must set `attribute="data-theme"`.
 - **ThemeToggle hydration**: Uses `useSyncExternalStore` (not `useEffect+useState`) to avoid `react-hooks/set-state-in-effect` lint error.
 - **Staging protection**: `proxy.ts` enforces HTTP Basic Auth when `STAGING=true`.
+- **S3 storage**: `@payloadcms/storage-s3` is installed but not yet configured in `payload.config.ts` (uses local storage for Media).
 - **PR labels**: Always add labels when creating PRs. Available: `feat`, `fix`, `docs`, `refactor`, `test`, `ci`, `chore`, `perf`, `breaking`, `major`, `minor`, `patch`. Use `gh pr edit <num> --add-label "label1,label2"`.
 
 ## Migrations

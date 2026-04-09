@@ -7,11 +7,11 @@ test.describe('B. Payload Admin — Dashboard', () => {
       await expect(page).not.toHaveURL(/\/admin\/login/)
     })
 
-    test('顯示 Collection 卡片：Articles、Tags、Media、Users', async ({ page }) => {
+    test('顯示 Collection 卡片：Posts、Tags、Media、Users', async ({ page }) => {
       await page.goto('/admin')
       await page.waitForTimeout(2000)
       const pageContent = await page.textContent('body')
-      expect(pageContent).toContain('Articles')
+      expect(pageContent).toContain('Posts')
       expect(pageContent).toContain('Tags')
       expect(pageContent).toContain('Media')
       expect(pageContent).toContain('Users')
@@ -19,10 +19,10 @@ test.describe('B. Payload Admin — Dashboard', () => {
   })
 
   test.describe('B2. Collection 頁面可訪問', () => {
-    test('Articles 列表頁可正常載入', async ({ page }) => {
-      await page.goto('/admin/collections/articles')
-      await expect(page).toHaveURL(/\/admin\/collections\/articles/)
-      await expect(page.locator('body')).toContainText('Articles')
+    test('Posts 列表頁可正常載入', async ({ page }) => {
+      await page.goto('/admin/collections/posts')
+      await expect(page).toHaveURL(/\/admin\/collections\/posts/)
+      await expect(page.locator('body')).toContainText('Posts')
     })
 
     test('Tags 列表頁可正常載入', async ({ page }) => {
@@ -46,7 +46,7 @@ test.describe('B. Payload Admin — Dashboard', () => {
         .locator('a')
         .evaluateAll((els) => els.map((el) => el.getAttribute('href')).filter(Boolean))
       const collectionPaths = [
-        '/admin/collections/articles',
+        '/admin/collections/posts',
         '/admin/collections/tags',
         '/admin/collections/media',
         '/admin/collections/users',

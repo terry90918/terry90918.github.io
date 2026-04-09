@@ -17,6 +17,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://lawyer.jurislm.com/sitemap.xml',
+    sitemap: 'https://blog.jurislm.com/sitemap.xml',
   }
 }
