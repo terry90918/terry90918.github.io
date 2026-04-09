@@ -1,9 +1,8 @@
 @import '@payloadcms/ui/scss/app.scss';
-@import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@300;400;700&display=swap');
 
 /* ============================================================
    Terry Chen Blog — Payload Admin Theme
-   "Refined Editorial" — warm pebble + sage green + legal luxury
+   Unified with frontend: Atkinson Hyperlegible + accent blue/orange
    ============================================================ */
 
 /* ===========================================
@@ -11,21 +10,40 @@
    =========================================== */
 
 :root {
-  /* --- Design tokens --- */
-  --admin-sage: rgb(106, 126, 114);
-  --admin-sage-light: rgba(106, 126, 114, 0.08);
-  --admin-sage-glow: rgba(106, 126, 114, 0.15);
+  /* --- Design tokens (mirrors frontend globals.css light mode) --- */
+  --admin-accent: #006cac;
+  --admin-accent-hover: #005a91;
+  --admin-accent-light: rgba(0, 108, 172, 0.08);
+  --admin-accent-glow: rgba(0, 108, 172, 0.15);
   --admin-transition: 220ms cubic-bezier(0.25, 0.1, 0.25, 1);
   --admin-radius: 3px;
+}
+
+[data-theme='dark'] {
+  /* --- Dark mode accent (mirrors frontend globals.css dark mode) --- */
+  --admin-accent: #ff6b01;
+  --admin-accent-hover: #e05e00;
+  --admin-accent-light: rgba(255, 107, 1, 0.08);
+  --admin-accent-glow: rgba(255, 107, 1, 0.15);
 }
 
 /* ===========================================
    2. GLOBAL REFINEMENTS
    =========================================== */
 
+/* Global font — match frontend Atkinson Hyperlegible */
+body,
+.nav,
+.app-header,
+.field-type label,
+.table .table__header,
+.btn {
+  font-family: 'Atkinson Hyperlegible', ui-monospace, monospace;
+}
+
 /* Selection highlight */
 ::selection {
-  background: var(--admin-sage-glow);
+  background: var(--admin-accent-glow);
 }
 
 /* Smooth transitions on all interactive elements */
@@ -134,7 +152,7 @@ select {
     font-weight: 600;
     letter-spacing: 0.14em;
     color: var(--color-base-850);
-    font-family: 'LXGW WenKai TC', 'Microsoft JhengHei', 'PingFang TC', serif;
+    font-family: 'Atkinson Hyperlegible', ui-monospace, monospace;
   }
 
   &::after {
@@ -142,7 +160,7 @@ select {
     display: block;
     width: 48px;
     height: 1px;
-    background: var(--admin-sage);
+    background: var(--admin-accent);
     margin-top: 14px;
     animation: loginLineGrow 0.8s ease-out 0.3s both;
   }
@@ -162,7 +180,7 @@ select {
     font-weight: 600;
     letter-spacing: 0.14em;
     color: var(--color-base-850);
-    font-family: 'LXGW WenKai TC', 'Microsoft JhengHei', 'PingFang TC', serif;
+    font-family: 'Atkinson Hyperlegible', ui-monospace, monospace;
     margin-bottom: 6px;
   }
 
@@ -185,7 +203,7 @@ select {
       transform: translateX(-50%);
       width: 48px;
       height: 1px;
-      background: var(--admin-sage);
+      background: var(--admin-accent);
       animation: loginLineGrow 0.8s ease-out 0.3s both;
     }
   }
@@ -213,8 +231,8 @@ select {
       box-shadow var(--admin-transition);
 
     &:focus {
-      border-bottom-color: var(--admin-sage);
-      box-shadow: 0 1px 0 0 var(--admin-sage);
+      border-bottom-color: var(--admin-accent);
+      box-shadow: 0 1px 0 0 var(--admin-accent);
       outline: none;
     }
   }
@@ -229,7 +247,7 @@ select {
 
   /* Required asterisk color */
   .field-type .required {
-    color: var(--color-success-500);
+    color: var(--admin-accent);
   }
 
   /* Submit button — full-width sage green with refined hover */
@@ -242,7 +260,7 @@ select {
 
     &:hover {
       transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(106, 126, 114, 0.25);
+      box-shadow: 0 4px 16px var(--admin-accent-glow);
     }
   }
 }
@@ -272,8 +290,8 @@ select {
       box-shadow var(--admin-transition);
 
     &:focus {
-      border-bottom-color: var(--admin-sage);
-      box-shadow: 0 1px 0 0 var(--admin-sage);
+      border-bottom-color: var(--admin-accent);
+      box-shadow: 0 1px 0 0 var(--admin-accent);
       outline: none;
     }
   }
@@ -294,7 +312,7 @@ select {
   text-decoration: none;
 
   &:hover {
-    color: var(--admin-sage);
+    color: var(--admin-accent);
   }
 }
 
@@ -305,20 +323,20 @@ select {
 /* Override Payload's internal CSS custom properties (defined in @layer payload-default).
    Our styles are outside any @layer, so they win cascade without !important. */
 .btn--style-primary {
-  --color: var(--color-base-0);
-  --bg-color: var(--color-success-600);
-  --hover-bg: var(--color-success-650);
-  --hover-color: var(--color-base-0);
+  --color: white;
+  --bg-color: var(--admin-accent);
+  --hover-bg: var(--admin-accent-hover);
+  --hover-color: white;
   --box-shadow: none;
   border-radius: var(--admin-radius);
   transition: all var(--admin-transition);
 
   &:hover {
-    box-shadow: 0 2px 8px rgba(106, 126, 114, 0.2);
+    box-shadow: 0 2px 8px var(--admin-accent-light);
   }
 
   &:active {
-    --bg-color: var(--color-success-700);
+    --bg-color: var(--admin-accent-hover);
     box-shadow: none;
     transform: translateY(0);
   }
@@ -331,8 +349,8 @@ select {
   transition: all var(--admin-transition);
 
   &:hover {
-    border-color: var(--color-success-300);
-    color: var(--color-success-600);
+    border-color: var(--admin-accent);
+    color: var(--admin-accent);
   }
 }
 
@@ -355,8 +373,8 @@ select {
     background: linear-gradient(
       90deg,
       transparent 0%,
-      var(--admin-sage) 20%,
-      var(--admin-sage) 80%,
+      var(--admin-accent) 20%,
+      var(--admin-accent) 80%,
       transparent 100%
     );
     opacity: 0.2;
@@ -369,7 +387,7 @@ select {
   text-decoration: none;
 
   &:hover {
-    color: var(--color-success-600);
+    color: var(--admin-accent);
   }
 }
 
@@ -397,16 +415,16 @@ select {
   border-left: 2px solid transparent;
 
   &:hover {
-    color: var(--color-success-600);
-    background: var(--admin-sage-light);
-    border-left-color: var(--color-success-300);
+    color: var(--admin-accent);
+    background: var(--admin-accent-light);
+    border-left-color: var(--admin-accent);
   }
 
   &.active {
-    color: var(--color-success-600);
+    color: var(--admin-accent);
     font-weight: 600;
-    border-left-color: var(--admin-sage);
-    background: var(--admin-sage-light);
+    border-left-color: var(--admin-accent);
+    background: var(--admin-accent-light);
   }
 }
 
@@ -441,8 +459,8 @@ select {
   transition: all var(--admin-transition);
 
   &:hover {
-    border-left-color: var(--admin-sage);
-    box-shadow: 0 4px 16px rgba(106, 126, 114, 0.06);
+    border-left-color: var(--admin-accent);
+    box-shadow: 0 4px 16px var(--admin-accent-light);
     transform: translateY(-1px);
   }
 
@@ -470,7 +488,7 @@ select {
   transition: background var(--admin-transition);
 
   &:hover .cell {
-    background: var(--admin-sage-light);
+    background: var(--admin-accent-light);
   }
 
   /* Row link styling */
@@ -480,7 +498,7 @@ select {
     transition: color var(--admin-transition);
 
     &:hover {
-      color: var(--color-success-600);
+      color: var(--admin-accent);
     }
   }
 }
@@ -499,8 +517,8 @@ select {
     box-shadow var(--admin-transition);
 
   &:focus {
-    border-color: var(--color-success-400);
-    box-shadow: 0 0 0 2px var(--admin-sage-glow);
+    border-color: var(--admin-accent);
+    box-shadow: 0 0 0 2px var(--admin-accent-glow);
   }
 }
 
@@ -528,8 +546,8 @@ select {
     box-shadow var(--admin-transition);
 
   &:focus {
-    border-color: var(--color-success-400);
-    box-shadow: 0 0 0 3px var(--admin-sage-glow);
+    border-color: var(--admin-accent);
+    box-shadow: 0 0 0 3px var(--admin-accent-glow);
     outline: none;
   }
 }
@@ -541,7 +559,7 @@ select {
   transition: border-color var(--admin-transition);
 
   &:focus-within {
-    border-color: var(--color-success-300);
+    border-color: var(--admin-accent);
   }
 }
 
@@ -569,14 +587,14 @@ select {
 }
 
 .rs__control--is-focused {
-  border-color: var(--color-success-400) !important;
-  box-shadow: 0 0 0 3px var(--admin-sage-glow) !important;
+  border-color: var(--admin-accent) !important;
+  box-shadow: 0 0 0 3px var(--admin-accent-glow) !important;
 }
 
 /* Save button floating bar */
 .doc-controls {
   .btn--style-primary {
-    box-shadow: 0 2px 12px rgba(106, 126, 114, 0.15);
+    box-shadow: 0 2px 12px var(--admin-accent-glow);
   }
 }
 
@@ -589,11 +607,11 @@ select {
   border-radius: var(--admin-radius) var(--admin-radius) 0 0;
 
   &--active {
-    border-bottom-color: var(--admin-sage);
+    border-bottom-color: var(--admin-accent);
   }
 
   &:hover:not(&--active) {
-    color: var(--color-success-600);
+    color: var(--admin-accent);
   }
 }
 
