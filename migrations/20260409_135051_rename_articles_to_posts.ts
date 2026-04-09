@@ -22,6 +22,17 @@ export async function up({ db }: MigrateUpArgs): Promise<void> {
       RENAME CONSTRAINT "articles_rels_parent_fk" TO "posts_rels_parent_fk";
   `)
 
+  // 6a. Rename remaining constraints that still carry "articles" name
+  await db.execute(
+    sql`ALTER TABLE "posts" RENAME CONSTRAINT "articles_feature_image_id_media_id_fk" TO "posts_feature_image_id_media_id_fk";`
+  )
+  await db.execute(
+    sql`ALTER TABLE "posts_rels" RENAME CONSTRAINT "articles_rels_pkey" TO "posts_rels_pkey";`
+  )
+  await db.execute(
+    sql`ALTER TABLE "posts_rels" RENAME CONSTRAINT "articles_rels_tags_fk" TO "posts_rels_tags_fk";`
+  )
+
   // 7. Rename payload_locked_documents_rels.articles_id → posts_id
   await db.execute(sql`
     ALTER TABLE "payload_locked_documents_rels"
@@ -129,6 +140,17 @@ export async function down({ db }: MigrateDownArgs): Promise<void> {
     ALTER TABLE "articles_rels"
       RENAME CONSTRAINT "posts_rels_parent_fk" TO "articles_rels_parent_fk";
   `)
+
+  // Reverse additional constraint renames (6a)
+  await db.execute(
+    sql`ALTER TABLE "articles_rels" RENAME CONSTRAINT "posts_rels_pkey" TO "articles_rels_pkey";`
+  )
+  await db.execute(
+    sql`ALTER TABLE "articles_rels" RENAME CONSTRAINT "posts_rels_tags_fk" TO "articles_rels_tags_fk";`
+  )
+  await db.execute(
+    sql`ALTER TABLE "articles" RENAME CONSTRAINT "posts_feature_image_id_media_id_fk" TO "articles_feature_image_id_media_id_fk";`
+  )
 
   // Reverse enum rename
   await db.execute(sql`ALTER TYPE "public"."enum_posts_status" RENAME TO "enum_articles_status";`)
