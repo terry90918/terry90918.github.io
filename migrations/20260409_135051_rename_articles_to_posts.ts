@@ -16,7 +16,7 @@ export async function up({ db }: MigrateUpArgs): Promise<void> {
   // 5. Rename articles_rels table → posts_rels
   await db.execute(sql`ALTER TABLE "articles_rels" RENAME TO "posts_rels";`)
 
-  // 6. Update FK constraint on posts_rels to point to posts (rename rather than drop/add)
+  // 6. Rename the parent FK constraint on posts_rels for consistency (PostgreSQL auto-updates FK targets on table rename)
   await db.execute(sql`
     ALTER TABLE "posts_rels"
       RENAME CONSTRAINT "articles_rels_parent_fk" TO "posts_rels_parent_fk";
@@ -112,7 +112,7 @@ export async function down({ db }: MigrateDownArgs): Promise<void> {
     sql`ALTER INDEX IF EXISTS "posts_feature_image_idx" RENAME TO "articles_feature_image_idx";`
   )
 
-  // Rename column before recreating FK (articles_id must exist before FK references it)
+  // Rename column before renaming the FK constraint (column must exist with original name first)
   await db.execute(sql`
     ALTER TABLE "payload_locked_documents_rels"
       RENAME COLUMN "posts_id" TO "articles_id";
