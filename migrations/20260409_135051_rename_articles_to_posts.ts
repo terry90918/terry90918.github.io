@@ -60,16 +60,45 @@ export async function up({ db }: MigrateUpArgs): Promise<void> {
 }
 
 export async function down({ db }: MigrateDownArgs): Promise<void> {
-  // Reverse: posts → articles
-  await db.execute(sql`ALTER TYPE "public"."enum_posts_status" RENAME TO "enum_articles_status";`)
-  await db.execute(sql`ALTER TABLE "posts" RENAME TO "articles";`)
-  await db.execute(sql`ALTER TABLE "posts_rels" RENAME TO "articles_rels";`)
-
+  // Reverse index renames on payload_locked_documents_rels
   await db.execute(sql`
-    ALTER TABLE "articles_rels"
-      DROP CONSTRAINT IF EXISTS "posts_rels_parent_fk",
-      ADD CONSTRAINT "articles_rels_parent_fk"
-        FOREIGN KEY ("parent_id") REFERENCES "articles"("id") ON DELETE CASCADE;
+    ALTER INDEX IF EXISTS "payload_locked_documents_rels_posts_id_idx"
+      RENAME TO "payload_locked_documents_rels_articles_id_idx";
+  `)
+
+  // Reverse index renames on posts_rels → articles_rels
+  await db.execute(
+    sql`ALTER INDEX IF EXISTS "posts_rels_order_idx" RENAME TO "articles_rels_order_idx";`
+  )
+  await db.execute(
+    sql`ALTER INDEX IF EXISTS "posts_rels_parent_idx" RENAME TO "articles_rels_parent_idx";`
+  )
+  await db.execute(
+    sql`ALTER INDEX IF EXISTS "posts_rels_path_idx" RENAME TO "articles_rels_path_idx";`
+  )
+  await db.execute(
+    sql`ALTER INDEX IF EXISTS "posts_rels_tags_id_idx" RENAME TO "articles_rels_tags_id_idx";`
+  )
+
+  // Reverse index renames on posts → articles
+  await db.execute(sql`ALTER INDEX IF EXISTS "posts_pkey" RENAME TO "articles_pkey";`)
+  await db.execute(sql`ALTER INDEX IF EXISTS "posts_slug_idx" RENAME TO "articles_slug_idx";`)
+  await db.execute(
+    sql`ALTER INDEX IF EXISTS "posts_created_at_idx" RENAME TO "articles_created_at_idx";`
+  )
+  await db.execute(
+    sql`ALTER INDEX IF EXISTS "posts_updated_at_idx" RENAME TO "articles_updated_at_idx";`
+  )
+  await db.execute(
+    sql`ALTER INDEX IF EXISTS "posts_feature_image_idx" RENAME TO "articles_feature_image_idx";`
+  )
+
+  // Reverse payload_locked_documents_rels FK and column
+  await db.execute(sql`
+    ALTER TABLE "payload_locked_documents_rels"
+      DROP CONSTRAINT IF EXISTS "payload_locked_documents_rels_posts_fk",
+      ADD CONSTRAINT "payload_locked_documents_rels_articles_fk"
+        FOREIGN KEY ("articles_id") REFERENCES "articles"("id") ON DELETE CASCADE;
   `)
 
   await db.execute(sql`
@@ -77,10 +106,19 @@ export async function down({ db }: MigrateDownArgs): Promise<void> {
       RENAME COLUMN "posts_id" TO "articles_id";
   `)
 
+  // Reverse posts_rels → articles_rels FK and table rename
   await db.execute(sql`
-    ALTER TABLE "payload_locked_documents_rels"
-      DROP CONSTRAINT IF EXISTS "payload_locked_documents_rels_posts_fk",
-      ADD CONSTRAINT "payload_locked_documents_rels_articles_fk"
-        FOREIGN KEY ("articles_id") REFERENCES "articles"("id") ON DELETE CASCADE;
+    ALTER TABLE "posts_rels"
+      DROP CONSTRAINT IF EXISTS "posts_rels_parent_fk",
+      ADD CONSTRAINT "articles_rels_parent_fk"
+        FOREIGN KEY ("parent_id") REFERENCES "articles"("id") ON DELETE CASCADE;
   `)
+  await db.execute(sql`ALTER TABLE "posts_rels" RENAME TO "articles_rels";`)
+
+  // Drop reading_time before renaming posts → articles
+  await db.execute(sql`ALTER TABLE "posts" DROP COLUMN IF EXISTS "reading_time";`)
+
+  // Reverse table and enum renames
+  await db.execute(sql`ALTER TABLE "posts" RENAME TO "articles";`)
+  await db.execute(sql`ALTER TYPE "public"."enum_posts_status" RENAME TO "enum_articles_status";`)
 }
