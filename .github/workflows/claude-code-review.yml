@@ -20,10 +20,10 @@ jobs:
           fetch-depth: 0
 
       - name: Run Claude Code Review
-        uses: anthropics/claude-code-action@v1.0.70
+        uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          claude_args: '--allowedTools "Bash(gh:*),Write"'
+          allowed_tools: "Bash(gh:*),Write"
           prompt: |
             You are a code reviewer. Review the changes in PR #${{ github.event.pull_request.number }}.
 
