@@ -1,6 +1,6 @@
 # Terry Chen Blog
 
-Terry Chen 的個人技術部落格。steipete.me 風格，基於 Payload CMS + Next.js。
+Terry Chen 的個人技術部落格。基於 Payload CMS + Next.js。
 
 ## 環境
 
