@@ -11,6 +11,7 @@ interface Post {
   id: number
   title: string
   slug: string
+  year: string
   excerpt?: string | null
   publishedAt?: string | null
 }
@@ -22,6 +23,7 @@ describe('buildRssFeed()', () => {
       id: 1,
       title: 'Hello World',
       slug: 'hello-world',
+      year: '2026',
       excerpt: 'A test post',
       publishedAt: '2026-04-01T00:00:00.000Z',
     },
@@ -29,6 +31,7 @@ describe('buildRssFeed()', () => {
       id: 2,
       title: 'Second Post',
       slug: 'second-post',
+      year: '2026',
       excerpt: null,
       publishedAt: '2026-03-15T00:00:00.000Z',
     },
@@ -76,10 +79,10 @@ describe('buildRssFeed()', () => {
     expect(xml).toContain('<title>Second Post</title>')
   })
 
-  it('each item contains a link with slug', () => {
+  it('each item contains a link with year and slug', () => {
     const xml = buildRssFeed(posts, siteUrl)
-    expect(xml).toContain(`${siteUrl}/posts/`)
-    expect(xml).toContain('hello-world')
+    expect(xml).toContain(`${siteUrl}/posts/2026/hello-world`)
+    expect(xml).toContain(`${siteUrl}/posts/2026/second-post`)
   })
 
   it('includes pubDate for posts with publishedAt', () => {
