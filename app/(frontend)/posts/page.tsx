@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { getPostsByYearMonth } from '@/lib/payload/queries'
-import type { Post } from '@/payload-types'
+import { getPostsByYearMonth } from '@/lib/posts/queries'
+import type { Post } from '@/lib/posts/types'
 
 export const metadata: Metadata = {
   title: 'All Posts',
@@ -79,7 +79,7 @@ export default async function PostsPage() {
                       </h3>
                       <div>
                         {posts.map((post) => (
-                          <PostCard key={post.id} post={post} />
+                          <PostCard key={post.slug} post={post} />
                         ))}
                       </div>
                     </div>

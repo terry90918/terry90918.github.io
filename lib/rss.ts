@@ -1,7 +1,8 @@
 interface RssPost {
-  id: number | string
+  id?: number | string
   title: string
   slug: string
+  year: string
   excerpt?: string | null
   publishedAt?: string | null
 }
@@ -12,7 +13,7 @@ interface RssPost {
 export function buildRssFeed(posts: RssPost[], siteUrl: string): string {
   const items = posts
     .map((post) => {
-      const link = `${siteUrl}/posts/${post.slug}`
+      const link = `${siteUrl}/posts/${post.year}/${post.slug}`
       const pubDate = post.publishedAt
         ? `<pubDate>${new Date(post.publishedAt).toUTCString()}</pubDate>`
         : ''

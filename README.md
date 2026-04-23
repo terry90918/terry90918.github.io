@@ -1,6 +1,6 @@
 # Terry Chen Blog
 
-Terry Chen 的個人技術部落格。steipete.me 風格，基於 Payload CMS + Next.js。
+Terry Chen 的個人技術部落格。以 Markdown 檔案為內容來源，Next.js 靜態生成。
 
 ## 環境
 
@@ -12,52 +12,44 @@ Terry Chen 的個人技術部落格。steipete.me 風格，基於 Payload CMS + 
 ## 開發
 
 ```bash
-bun install    # 安裝依賴
-bun dev        # 開發伺服器 http://localhost:3000
-bun build      # 建置
-bun lint       # ESLint 檢查
-bun format     # Prettier 格式化
+bun install         # 安裝依賴
+bun dev             # 開發伺服器 http://localhost:3000
+bun build           # 建置（無需 DB）
+bun lint            # ESLint 檢查
+bun format          # Prettier 格式化
+bun run typecheck   # TypeScript 檢查
+bun run test        # Vitest 單元測試
+bun run test:e2e    # Playwright E2E（需要伺服器在 :3001）
 ```
 
 ## 技術棧
 
-- Next.js 16 (App Router)
-- TypeScript
-- Tailwind CSS 4
-- Payload CMS 3.x（嵌入式）
-- PostgreSQL
-- next-themes（深色模式）
+- Next.js 16 (App Router) + TypeScript
+- Tailwind CSS 4 + @tailwindcss/typography
+- Markdown（unified + remark + rehype + rehype-pretty-code）
+- next-themes（深色模式，`data-theme` 屬性）
 
-## Payload CMS
+## 寫文章
 
-| 項目       | 值                             |
-| ---------- | ------------------------------ |
-| Admin 後台 | https://blog.jurislm.com/admin |
-| REST API   | https://blog.jurislm.com/api   |
-| 資料庫     | PostgreSQL（Coolify managed）  |
+文章存放於 `content/posts/<year>/<slug>.md`，frontmatter 必填欄位：
 
-### Collections
-
-- **Posts** — 文章（標題、內容、標籤、封面圖、發布狀態）
-- **Tags** — 標籤分類
-- **Media** — 媒體上傳（本地儲存）
-- **Users** — 管理員帳號
-
-## 資料庫遷移
-
-本地開發 `push: true`（自動同步 schema），部署環境 `push: false`（強制使用 migration）。
-
-建立新的 migration：
-
-```bash
-bun -e "
-import { getPayload } from 'payload';
-import config from './payload.config.ts';
-const payload = await getPayload({ config });
-await payload.db.createMigration({ payload, migrationName: 'describe_change' });
-process.exit(0);
-"
+```yaml
+---
+title: '文章標題'
+publishedAt: '2026-04-23T00:00:00.000Z'
+status: 'published' # or "draft"
+---
 ```
+
+選填：`slug`（預設從檔名推導）、`excerpt`、`tags`（字串陣列）、`metaDescription`。
+
+詳細規範見 `content/README.md`。
+
+## 設計系統
+
+| Token      | Light     | Dark      |
+| ---------- | --------- | --------- |
+| `--accent` | `#006cac` | `#ff6b01` |
 
 ## 部署
 
@@ -68,8 +60,8 @@ process.exit(0);
 
 ### 環境變數
 
-| 變數             | 說明                                 |
-| ---------------- | ------------------------------------ |
-| `DATABASE_URL`   | PostgreSQL 連線字串                  |
-| `PAYLOAD_SECRET` | Payload CMS 加密密鑰（至少 32 字元） |
-| `STAGING`        | `true` 啟用 Basic Auth + SEO 保護    |
+| 變數               | 說明                                   |
+| ------------------ | -------------------------------------- |
+| `STAGING`          | `true` 啟用 Basic Auth + SEO 保護      |
+| `STAGING_USER`     | Basic Auth 帳號（STAGING=true 時必填） |
+| `STAGING_PASSWORD` | Basic Auth 密碼（STAGING=true 時必填） |

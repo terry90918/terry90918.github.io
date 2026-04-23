@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { getPosts } from '@/lib/payload/queries'
+import { getPosts } from '@/lib/posts/queries'
 import { buildRssFeed } from '@/lib/rss'
 
 export const revalidate = 3600
