@@ -6,10 +6,7 @@ COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
-# Use inline env override so Coolify-injected ARGs don't reach the build
-RUN DATABASE_URL=postgresql://localhost/placeholder \
-    PAYLOAD_SECRET=build-placeholder-must-be-at-least-32-chars-long \
-    bun run build
+RUN bun run build
 
 FROM base AS runner
 WORKDIR /app
