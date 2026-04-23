@@ -52,4 +52,4 @@
 - [x] 6.2 更新 `README.md`：移除 Payload CMS 後台連結；新增文章寫作流程說明
 - [x] 6.3 在 Coolify staging 環境移除 `DATABASE_URL`、`PAYLOAD_SECRET` env vars
 - [x] 6.4 確認 staging (`blog-dev.jurislm.com`) 部署成功並驗證所有頁面
-- [ ] 6.5 production 驗證一週後，刪除 Coolify `blog-dev-db` PostgreSQL resource
+- [x] 6.5 production 驗證一週後，刪除 Coolify `blog-dev-db` PostgreSQL resource
