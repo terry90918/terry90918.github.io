@@ -1,13 +1,13 @@
 import { MetadataRoute } from 'next'
-import { getAllPostSlugs } from '@/lib/payload/queries'
+import { getAllPostSlugs } from '@/lib/posts/queries'
 
 const baseUrl = 'https://blog.jurislm.com'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const slugs = await getAllPostSlugs()
 
-  const postEntries: MetadataRoute.Sitemap = slugs.map((slug) => ({
-    url: `${baseUrl}/posts/${new Date().getFullYear()}/${slug}`,
+  const postEntries: MetadataRoute.Sitemap = slugs.map(({ year, slug }) => ({
+    url: `${baseUrl}/posts/${year}/${slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly',
     priority: 0.8,

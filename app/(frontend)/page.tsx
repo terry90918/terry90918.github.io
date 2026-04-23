@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { getLatestPosts } from '@/lib/payload/queries'
-import type { Post } from '@/payload-types'
+import { getLatestPosts } from '@/lib/posts/queries'
+import type { Post } from '@/lib/posts/types'
 
 export const revalidate = 3600
 
@@ -104,7 +104,7 @@ export default async function HomePage() {
         ) : (
           <div>
             {posts.map((post) => (
-              <PostCard key={post.id} post={post} />
+              <PostCard key={post.slug} post={post} />
             ))}
           </div>
         )}

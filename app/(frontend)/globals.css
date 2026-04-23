@@ -44,6 +44,19 @@ html[data-theme='dark'] {
   }
 }
 
+/* ===== Code block dual theme (rehype-pretty-code) ===== */
+[data-rehype-pretty-code-figure] code[data-theme*=' '],
+[data-rehype-pretty-code-figure] code[data-theme*=' '] span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+html[data-theme='dark'] [data-rehype-pretty-code-figure] code[data-theme*=' '],
+html[data-theme='dark'] [data-rehype-pretty-code-figure] code[data-theme*=' '] span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+}
+
 /* ===== Keyframes ===== */
 @keyframes fadeIn {
   from {

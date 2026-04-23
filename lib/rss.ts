@@ -1,5 +1,5 @@
 interface RssPost {
-  id: number | string
+  id?: number | string
   title: string
   slug: string
   excerpt?: string | null
