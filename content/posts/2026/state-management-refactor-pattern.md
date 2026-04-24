@@ -1,7 +1,7 @@
 ---
 title: '檔案狀態重構為 DB 的設計模式'
 publishedAt: '2026-03-21T15:20:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'state-management-refactor-pattern'
 tags:
   - testing-quality

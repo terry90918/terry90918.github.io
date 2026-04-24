@@ -1,7 +1,7 @@
 ---
 title: 'GPT-5 Max Completion Tokens 的設定陷阱'
 publishedAt: '2026-03-30T10:16:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'openai-gpt5-max-completion-tokens'
 tags:
   - business-logic-algorithms

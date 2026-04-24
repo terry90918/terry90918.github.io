@@ -1,7 +1,7 @@
 ---
 title: 'Vitest 與 Playwright 測試模式彙整'
 publishedAt: '2026-03-29T20:37:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'testing-patterns'
 tags:
   - testing-quality

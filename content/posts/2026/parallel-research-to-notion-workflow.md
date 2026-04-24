@@ -1,7 +1,7 @@
 ---
 title: '並行子代理研究後同步 Notion 的工作流'
 publishedAt: '2026-04-03T22:39:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'parallel-research-to-notion-workflow'
 tags:
   - tooling-workflow

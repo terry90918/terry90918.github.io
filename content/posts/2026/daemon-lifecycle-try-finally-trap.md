@@ -1,7 +1,7 @@
 ---
 title: 'Daemon try/finally 清理與 setInterval 生命週期衝突'
 publishedAt: '2026-04-06T11:27:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'daemon-lifecycle-try-finally-trap'
 tags:
   - security-error-handling

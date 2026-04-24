@@ -1,7 +1,7 @@
 ---
 title: 'Claude Code 擴充套件選擇指南'
 publishedAt: '2026-03-28T14:18:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'claude-code-extension-selection'
 tags:
   - claude-code-tools

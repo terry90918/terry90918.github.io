@@ -1,7 +1,7 @@
 ---
 title: 'Next.js Client Bundle 常數隔離技巧'
 publishedAt: '2026-04-17T20:56:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'nextjs-client-bundle-constant-isolation'
 tags:
   - business-logic-algorithms

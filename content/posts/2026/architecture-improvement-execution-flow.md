@@ -1,7 +1,7 @@
 ---
 title: '架構改善的品質閘門執行流程'
 publishedAt: '2026-03-31T12:13:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'architecture-improvement-execution-flow'
 tags:
   - debugging-diagnostics

@@ -1,7 +1,7 @@
 ---
 title: 'MCP SDK _meta 欄位傳遞 Per-Request Context'
 publishedAt: '2026-03-28T14:19:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'mcp-sdk-meta-per-call-context'
 tags:
   - business-logic-algorithms

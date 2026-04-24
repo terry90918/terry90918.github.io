@@ -1,7 +1,7 @@
 ---
 title: 'Claude Code Plugin MCP 格式規範'
 publishedAt: '2026-03-25T14:43:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'claude-code-plugin-mcp-format'
 tags:
   - claude-code-tools

@@ -1,7 +1,7 @@
 ---
 title: 'Claude Code Hook 輸出迴圈陷阱'
 publishedAt: '2026-03-22T18:49:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'claude-code-hook-output-loop'
 tags:
   - claude-code-tools

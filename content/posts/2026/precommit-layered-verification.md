@@ -1,7 +1,7 @@
 ---
 title: 'Pre-commit 分層驗證策略'
 publishedAt: '2026-03-28T14:33:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'precommit-layered-verification'
 tags:
   - testing-quality

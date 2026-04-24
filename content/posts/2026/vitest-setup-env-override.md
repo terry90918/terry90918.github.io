@@ -1,7 +1,7 @@
 ---
 title: 'Vitest Setup 中環境變數覆寫的陷阱'
 publishedAt: '2026-03-22T16:57:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'vitest-setup-env-override'
 tags:
   - testing-quality

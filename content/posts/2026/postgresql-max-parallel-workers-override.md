@@ -1,7 +1,7 @@
 ---
 title: 'PostgreSQL 並行 Worker 的 Server 層級覆寫'
 publishedAt: '2026-04-19T14:36:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'postgresql-max-parallel-workers-override'
 tags:
   - data-migration

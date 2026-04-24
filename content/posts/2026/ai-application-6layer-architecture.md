@@ -1,7 +1,7 @@
 ---
 title: 'AI 應用程式六層架構設計'
 publishedAt: '2026-04-02T11:52:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'ai-application-6layer-architecture'
 tags:
   - business-logic-algorithms

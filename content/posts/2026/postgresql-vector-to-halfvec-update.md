@@ -1,7 +1,7 @@
 ---
 title: 'PostgreSQL vector 升級 halfvec 的遷移步驟'
 publishedAt: '2026-04-19T18:45:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'postgresql-vector-to-halfvec-update'
 tags:
   - data-migration

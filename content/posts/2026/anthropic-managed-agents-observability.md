@@ -1,7 +1,7 @@
 ---
 title: 'Anthropic Managed Agents 可觀測性實作'
 publishedAt: '2026-04-15T10:18:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'anthropic-managed-agents-observability'
 tags:
   - business-logic-algorithms

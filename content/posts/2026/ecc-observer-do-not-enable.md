@@ -1,7 +1,7 @@
 ---
 title: '不要啟用 ECC Observer：效能與副作用'
 publishedAt: '2026-04-10T22:33:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'ecc-observer-do-not-enable'
 tags:
   - claude-code-tools

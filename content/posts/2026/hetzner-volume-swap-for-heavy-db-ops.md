@@ -1,7 +1,7 @@
 ---
 title: 'Hetzner Volume Swap 加速大型 DB 操作'
 publishedAt: '2026-04-19T14:35:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'hetzner-volume-swap-for-heavy-db-ops'
 tags:
   - infrastructure-deployment

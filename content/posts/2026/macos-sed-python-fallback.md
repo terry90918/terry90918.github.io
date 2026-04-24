@@ -1,7 +1,7 @@
 ---
 title: 'macOS sed 與跨平台 Shell 腳本 Fallback'
 publishedAt: '2026-04-05T14:45:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'macos-sed-python-fallback'
 tags:
   - debugging-diagnostics

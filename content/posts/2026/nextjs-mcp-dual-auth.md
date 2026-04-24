@@ -1,7 +1,7 @@
 ---
 title: 'Next.js MCP 雙重認證架構'
 publishedAt: '2026-03-25T12:24:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'nextjs-mcp-dual-auth'
 tags:
   - security-error-handling

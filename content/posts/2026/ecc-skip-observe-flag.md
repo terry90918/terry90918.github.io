@@ -1,7 +1,7 @@
 ---
 title: 'ECC_SKIP_OBSERVE 旗標的使用時機'
 publishedAt: '2026-04-09T17:13:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'ecc-skip-observe-flag'
 tags:
   - claude-code-tools

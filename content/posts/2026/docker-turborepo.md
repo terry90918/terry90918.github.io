@@ -1,7 +1,7 @@
 ---
 title: 'Docker + Turborepo Monorepo 建置設定'
 publishedAt: '2026-03-30T12:33:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'docker-turborepo'
 tags:
   - infrastructure-deployment

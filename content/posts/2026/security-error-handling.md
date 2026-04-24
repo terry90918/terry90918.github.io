@@ -1,7 +1,7 @@
 ---
 title: '安全的錯誤處理：不洩漏內部資訊'
 publishedAt: '2026-03-20T11:02:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'security-error-handling'
 tags:
   - security-error-handling

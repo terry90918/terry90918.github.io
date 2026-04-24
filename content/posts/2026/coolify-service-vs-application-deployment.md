@@ -1,7 +1,7 @@
 ---
 title: 'Coolify 服務 vs 應用程式部署差異'
 publishedAt: '2026-04-07T22:00:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'coolify-service-vs-application-deployment'
 tags:
   - infrastructure-deployment

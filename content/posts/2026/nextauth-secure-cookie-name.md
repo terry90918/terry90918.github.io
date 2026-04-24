@@ -1,7 +1,7 @@
 ---
 title: 'NextAuth 安全 Cookie 名稱設定'
 publishedAt: '2026-03-28T14:33:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'nextauth-secure-cookie-name'
 tags:
   - security-error-handling

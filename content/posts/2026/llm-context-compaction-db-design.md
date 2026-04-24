@@ -1,7 +1,7 @@
 ---
 title: 'LLM Context Compaction 的資料庫設計'
 publishedAt: '2026-04-01T13:42:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'llm-context-compaction-db-design'
 tags:
   - data-migration

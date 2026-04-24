@@ -1,7 +1,7 @@
 ---
 title: 'Notion MCP 更新 Mermaid 與 Code Block 的陷阱'
 publishedAt: '2026-04-05T14:50:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'notion-mcp-mermaid-code-block-traps'
 tags:
   - tooling-workflow

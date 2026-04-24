@@ -1,7 +1,7 @@
 ---
 title: 'LLM Inline Citations 架構實作'
 publishedAt: '2026-04-21T13:48:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'llm-inline-citations-architecture'
 tags:
   - business-logic-algorithms

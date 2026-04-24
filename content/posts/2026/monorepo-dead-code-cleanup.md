@@ -1,7 +1,7 @@
 ---
 title: 'Monorepo 死代碼系統化清理流程'
 publishedAt: '2026-03-29T14:10:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'monorepo-dead-code-cleanup'
 tags:
   - testing-quality

@@ -1,7 +1,7 @@
 ---
 title: 'MCP Server OAuth 安全設計'
 publishedAt: '2026-03-25T10:08:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'mcp-oauth-security'
 tags:
   - security-error-handling

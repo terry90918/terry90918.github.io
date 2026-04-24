@@ -1,7 +1,7 @@
 ---
 title: '多組件功能的使用者流程完整性稽核'
 publishedAt: '2026-04-07T12:05:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'product-usability-audit'
 tags:
   - tooling-workflow

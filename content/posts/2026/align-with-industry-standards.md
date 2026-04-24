@@ -1,7 +1,7 @@
 ---
 title: '架構決策前先評估業界標準'
 publishedAt: '2026-04-07T12:05:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'align-with-industry-standards'
 tags:
   - debugging-diagnostics

@@ -1,7 +1,7 @@
 ---
 title: '先更新提案文件，後執行代碼修改'
 publishedAt: '2026-04-07T12:06:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'proposal-first-code-later'
 tags:
   - debugging-diagnostics

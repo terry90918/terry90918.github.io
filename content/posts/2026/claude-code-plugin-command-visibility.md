@@ -1,7 +1,7 @@
 ---
 title: 'Claude Code Plugin 指令可見性控制'
 publishedAt: '2026-04-10T21:40:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'claude-code-plugin-command-visibility'
 tags:
   - claude-code-tools

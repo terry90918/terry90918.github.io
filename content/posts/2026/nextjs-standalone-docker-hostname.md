@@ -1,7 +1,7 @@
 ---
 title: 'Next.js Standalone Docker Hostname 設定'
 publishedAt: '2026-04-02T16:08:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'nextjs-standalone-docker-hostname'
 tags:
   - infrastructure-deployment

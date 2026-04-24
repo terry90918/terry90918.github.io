@@ -1,7 +1,7 @@
 ---
 title: 'PostgreSQL Alpine 升級 Debian 的 Collation 陷阱'
 publishedAt: '2026-03-31T17:01:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'postgres-alpine-to-debian-collation-trap'
 tags:
   - data-migration

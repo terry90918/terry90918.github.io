@@ -1,7 +1,7 @@
 ---
 title: '長時間 CLI 任務的生命週期管理'
 publishedAt: '2026-04-05T14:45:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'long-running-cli-task-lifecycle'
 tags:
   - tooling-workflow

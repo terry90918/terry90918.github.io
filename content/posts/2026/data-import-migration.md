@@ -1,7 +1,7 @@
 ---
 title: '資料匯入的 CSV 清理與 Migration Checksum'
 publishedAt: '2026-03-21T11:23:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'data-import-migration'
 tags:
   - data-migration

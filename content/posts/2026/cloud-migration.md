@@ -1,7 +1,7 @@
 ---
 title: '雲端遷移的環境變數與 OAuth 一致性'
 publishedAt: '2026-03-20T11:02:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'cloud-migration'
 tags:
   - infrastructure-deployment

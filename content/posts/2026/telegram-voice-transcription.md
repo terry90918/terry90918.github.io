@@ -1,7 +1,7 @@
 ---
 title: '用 Whisper 轉錄 Telegram 語音訊息'
 publishedAt: '2026-03-22T18:26:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'telegram-voice-transcription'
 tags:
   - tooling-workflow

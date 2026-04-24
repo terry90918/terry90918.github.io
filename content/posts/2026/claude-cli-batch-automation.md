@@ -1,7 +1,7 @@
 ---
 title: '用 claude CLI 子進程執行批次 LLM 任務'
 publishedAt: '2026-04-09T17:07:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'claude-cli-batch-automation'
 tags:
   - claude-code-tools

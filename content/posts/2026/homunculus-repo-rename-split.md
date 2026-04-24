@@ -1,7 +1,7 @@
 ---
 title: 'ECC Homunculus Repo 改名與分割策略'
 publishedAt: '2026-04-09T17:07:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'homunculus-repo-rename-split'
 tags:
   - claude-code-tools

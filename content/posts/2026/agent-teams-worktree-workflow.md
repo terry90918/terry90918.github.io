@@ -1,7 +1,7 @@
 ---
 title: 'Git Worktree 多代理協作工作流'
 publishedAt: '2026-03-22T17:10:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'agent-teams-worktree-workflow'
 tags:
   - infrastructure-deployment

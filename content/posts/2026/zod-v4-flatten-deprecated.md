@@ -1,7 +1,7 @@
 ---
 title: 'Zod v4 flatten() 棄用的遷移方式'
 publishedAt: '2026-03-18T18:25:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'zod-v4-flatten-deprecated'
 tags:
   - business-logic-algorithms

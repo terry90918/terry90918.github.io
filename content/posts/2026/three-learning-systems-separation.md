@@ -1,7 +1,7 @@
 ---
 title: '三套學習系統的分工：Instinct、Skill、Memory'
 publishedAt: '2026-04-10T22:01:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'three-learning-systems-separation'
 tags:
   - claude-code-tools

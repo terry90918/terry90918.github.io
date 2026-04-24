@@ -1,7 +1,7 @@
 ---
 title: 'OpenAI Batch API 檔案大小限制與分批策略'
 publishedAt: '2026-04-01T21:21:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'openai-batch-api-file-size-limit'
 tags:
   - business-logic-algorithms

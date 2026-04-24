@@ -1,7 +1,7 @@
 ---
 title: '工具誤判導致錯誤連鎖的診斷模式'
 publishedAt: '2026-03-21T20:09:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'tool-false-negative-cascade'
 tags:
   - debugging-diagnostics

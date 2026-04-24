@@ -1,7 +1,7 @@
 ---
 title: 'Skill 輸出位置的覆寫設定'
 publishedAt: '2026-04-10T21:59:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'skill-output-location-override'
 tags:
   - claude-code-tools

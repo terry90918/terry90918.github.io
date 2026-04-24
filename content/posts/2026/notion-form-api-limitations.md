@@ -1,7 +1,7 @@
 ---
 title: 'Notion API 無法建立表單檢視的限制'
 publishedAt: '2026-03-25T14:46:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'notion-form-api-limitations'
 tags:
   - tooling-workflow

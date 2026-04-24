@@ -1,7 +1,7 @@
 ---
 title: 'Claude Plugin 版本與路徑同步問題'
 publishedAt: '2026-03-26T13:31:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'claude-plugin-version-path-sync'
 tags:
   - claude-code-tools

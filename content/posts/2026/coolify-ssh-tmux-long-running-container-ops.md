@@ -1,7 +1,7 @@
 ---
 title: 'Coolify SSH + tmux 長時間容器操作'
 publishedAt: '2026-04-16T12:01:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'coolify-ssh-tmux-long-running-container-ops'
 tags:
   - infrastructure-deployment

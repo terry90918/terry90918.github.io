@@ -1,7 +1,7 @@
 ---
 title: 'LLM 應用程式資料持久化架構設計'
 publishedAt: '2026-04-05T22:06:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'llm-app-data-persistence-architecture'
 tags:
   - business-logic-algorithms

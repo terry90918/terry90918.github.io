@@ -1,7 +1,7 @@
 ---
 title: 'PostgreSQL 查詢取消後的清理反模式'
 publishedAt: '2026-04-19T18:45:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'postgresql-cancellation-cleanup-anti-pattern'
 tags:
   - data-migration

@@ -1,7 +1,7 @@
 ---
 title: 'Repo 改名後 Git Worktree 損壞的修復'
 publishedAt: '2026-04-04T11:44:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'git-worktree-broken-after-repo-rename'
 tags:
   - infrastructure-deployment

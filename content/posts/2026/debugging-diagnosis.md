@@ -1,7 +1,7 @@
 ---
 title: '系統性除錯診斷流程'
 publishedAt: '2026-03-20T11:01:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'debugging-diagnosis'
 tags:
   - debugging-diagnostics

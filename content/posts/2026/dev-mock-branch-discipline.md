@@ -1,7 +1,7 @@
 ---
 title: 'Dev Mock 分支紀律：測試環境隔離'
 publishedAt: '2026-04-22T16:43:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'dev-mock-branch-discipline'
 tags:
   - testing-quality

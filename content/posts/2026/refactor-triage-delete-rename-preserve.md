@@ -1,7 +1,7 @@
 ---
 title: '大型重構的三分法：刪除、改名、保留'
 publishedAt: '2026-04-21T10:24:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'refactor-triage-delete-rename-preserve'
 tags:
   - testing-quality

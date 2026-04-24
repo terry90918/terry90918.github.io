@@ -1,7 +1,7 @@
 ---
 title: 'Claude Code 官方 Plugin 無法停用的限制'
 publishedAt: '2026-04-02T12:44:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'claude-code-official-plugins-cannot-disable'
 tags:
   - claude-code-tools

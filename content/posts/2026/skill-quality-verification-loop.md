@@ -1,7 +1,7 @@
 ---
 title: 'Skill 品質驗證迴圈'
 publishedAt: '2026-03-21T22:55:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'skill-quality-verification-loop'
 tags:
   - claude-code-tools

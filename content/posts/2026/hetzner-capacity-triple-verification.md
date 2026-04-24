@@ -1,7 +1,7 @@
 ---
 title: 'Hetzner 伺服器容量的三重驗證流程'
 publishedAt: '2026-04-19T14:35:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'hetzner-capacity-triple-verification'
 tags:
   - infrastructure-deployment

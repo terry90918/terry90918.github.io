@@ -1,7 +1,7 @@
 ---
 title: '數字必須附來源：df -h 輸出的斷言紀律'
 publishedAt: '2026-04-24T10:52:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'numbers-must-have-source'
 tags:
   - debugging-diagnostics

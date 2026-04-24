@@ -1,7 +1,7 @@
 ---
 title: '先讀原始碼再下判斷'
 publishedAt: '2026-04-10T22:32:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'read-source-before-judging'
 tags:
   - debugging-diagnostics

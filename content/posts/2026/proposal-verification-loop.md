@@ -1,7 +1,7 @@
 ---
 title: '提案品質保證的五輪迭代驗證'
 publishedAt: '2026-03-21T16:33:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'proposal-verification-loop'
 tags:
   - debugging-diagnostics

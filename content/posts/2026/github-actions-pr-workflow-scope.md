@@ -1,7 +1,7 @@
 ---
 title: 'GitHub Actions PR 工作流程的權限範圍'
 publishedAt: '2026-03-25T12:28:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'github-actions-pr-workflow-scope'
 tags:
   - infrastructure-deployment

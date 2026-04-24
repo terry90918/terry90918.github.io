@@ -1,7 +1,7 @@
 ---
 title: 'PostgreSQL Docker shm 與 maintenance_work_mem 設定'
 publishedAt: '2026-04-16T11:50:00+08:00'
-status: 'published'
+status: 'draft'
 slug: 'postgresql-docker-shm-maintenance-work-mem'
 tags:
   - data-migration
