@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.0.0 (2026-04-24)
+
+
+### Features
+
+* add 67 skill posts as drafts for review ([#10](https://github.com/terry90918/terry90918.me/issues/10)) ([0c9d5f6](https://github.com/terry90918/terry90918.me/commit/0c9d5f665e673f2fe43e1090cb288fb5622034f1))
+* implement steipete-style blog frontend with Payload CMS Posts collection ([a7219ae](https://github.com/terry90918/terry90918.me/commit/a7219aef7810e70b7f5b8256e8051988b85005d1))
+* init blog from lawyer template (Payload CMS v3 + Next.js) ([8c26c2e](https://github.com/terry90918/terry90918.me/commit/8c26c2e588cd76756cc8a89539ca37e480900828))
+* migrate from Payload CMS + PostgreSQL to Markdown files ([#9](https://github.com/terry90918/terry90918.me/issues/9)) ([e1a655e](https://github.com/terry90918/terry90918.me/commit/e1a655e0f4119e7ed166b0dc134c8888f9a33373))
+
+
+### Bug Fixes
+
+* include jose in standalone output to fix /admin 500 ([fbbcb67](https://github.com/terry90918/terry90918.me/commit/fbbcb6701187386c4726b89acc6faacf3626ddf0))
+* override build-time env to prevent Coolify ARG injection connecting to real DB ([f3eff9d](https://github.com/terry90918/terry90918.me/commit/f3eff9d457285773f020e45122640dfcce756f1a))
+
 ## 1.0.0 (2026-04-22)
 
 ### Features
