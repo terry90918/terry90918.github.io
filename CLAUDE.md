@@ -36,7 +36,7 @@ bun run test:e2e   # Playwright E2E tests (needs running server on :3001)
 ```
 app/
   (frontend)/
-    layout.tsx             # Root layout with Atkinson font, ThemeProvider
+    layout.tsx             # Root layout with ThemeProvider, BlogHeader, BlogFooter
     page.tsx               # Homepage: avatar + hero + latest 10 posts
     posts/                 # All posts grouped by year/month
     posts/[year]/[slug]/   # Post detail with tags, share, prev/next
@@ -44,8 +44,11 @@ app/
     rss.xml/               # RSS 2.0 Route Handler
     sitemap.ts             # Dynamic sitemap
     robots.ts              # robots.txt
-    api/og/                # OG image generation (@vercel/og)
+    api/og/                # OG image generation (@vercel/og, edge runtime)
     api/health/            # Health check endpoint
+    icon.svg               # Favicon
+    globals.css            # Tailwind base + CSS variables + syntax highlighting
+    fonts.ts               # Stub (font loaded via CSS @import)
 content/
   posts/<year>/<slug>.md   # Markdown blog posts (frontmatter + content)
   README.md                # Frontmatter schema and authoring guide
@@ -60,13 +63,14 @@ lib/posts/
   slugify.ts               # CJK-aware slug helper
   markdown.ts              # renderMarkdown() — unified pipeline
   loader.ts                # loadAllPosts(), parsePost(), module-level cache
-  queries.ts               # getLatestPosts, getPostBySlug, getAllPostSlugs,
-                           # getAdjacentPosts, getPostsByYearMonth, getAllTags,
-                           # getPostsByTag, getPostsPaginated
+  queries.ts               # getPosts, getLatestPosts, getPostBySlug, getAllPostSlugs,
+                           # getAdjacentPosts, getRelatedPosts, getPostsByYearMonth,
+                           # getAllTags, getPostsByTag, getPostsPaginated
   index.ts                 # Re-exports from queries.ts
 tests/
   unit/                    # Vitest unit tests (markdown-renderer, markdown-loader, post-queries, rss-feed)
   e2e/                     # Playwright E2E tests (frontend-blog.spec.ts)
+next.config.ts             # standalone output, image optimization, caching headers
 proxy.ts                   # Staging HTTP Basic Auth (enabled when STAGING=true)
 Dockerfile                 # Multi-stage Docker build (oven/bun:1-alpine)
 ```
@@ -83,7 +87,7 @@ status: 'published' # or "draft"
 ---
 ```
 
-Optional fields: `slug` (auto-derived from filename if omitted), `excerpt`, `tags` (string array), `metaDescription`.
+Optional fields: `slug` (auto-derived from filename if omitted), `excerpt`, `tags` (string array), `metaDescription`, `featureImage` (path string, reserved for future use — not rendered by frontend yet).
 
 Draft posts (`status: "draft"`) are excluded in `NODE_ENV=production` but visible in development.
 
@@ -117,6 +121,16 @@ html[data-theme='dark'] [data-rehype-pretty-code-figure] code[data-theme*=' '] s
   color: var(--shiki-dark);
 }
 ```
+
+## next.config.ts
+
+Key settings:
+
+- `output: 'standalone'` — Docker-friendly build (copies only required files)
+- `outputFileTracingIncludes` — ensures `jose` is bundled for edge routes
+- `images.remotePatterns` — allows `lh3.googleusercontent.com` and `s3.jurislm.com`
+- `images.formats` — avif + webp with 1-year cache TTL
+- Headers: fonts and images are cached immutably for 1 year; staging adds `X-Robots-Tag: noindex`
 
 ## Environments
 
