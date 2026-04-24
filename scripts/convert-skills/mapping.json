@@ -1,0 +1,605 @@
+{
+  "agent-teams-worktree-workflow": {
+    "sourcePath": "~/.claude/skills/learned/agent-teams-worktree-workflow.md",
+    "publishedAt": "2026-03-22T17:10:00+08:00",
+    "category": "infrastructure-deployment",
+    "categoryName": "基礎設施與部署",
+    "title": "Git Worktree 多代理協作工作流",
+    "slug": "agent-teams-worktree-workflow",
+    "tags": ["git", "worktree", "workflow"]
+  },
+  "ai-application-6layer-architecture": {
+    "sourcePath": "~/.claude/skills/learned/ai-application-6layer-architecture.md",
+    "publishedAt": "2026-04-02T11:52:00+08:00",
+    "category": "business-logic-algorithms",
+    "categoryName": "業務邏輯與演算法",
+    "title": "AI 應用程式六層架構設計",
+    "slug": "ai-application-6layer-architecture",
+    "tags": ["ai", "architecture", "llm"]
+  },
+  "align-with-industry-standards": {
+    "sourcePath": "~/.claude/skills/learned/align-with-industry-standards.md",
+    "publishedAt": "2026-04-07T12:05:00+08:00",
+    "category": "debugging-diagnostics",
+    "categoryName": "除錯與診斷",
+    "title": "架構決策前先評估業界標準",
+    "slug": "align-with-industry-standards",
+    "tags": ["architecture", "decision-making", "best-practices"]
+  },
+  "anthropic-managed-agents-observability": {
+    "sourcePath": "~/.claude/skills/learned/anthropic-managed-agents-observability.md",
+    "publishedAt": "2026-04-15T10:18:00+08:00",
+    "category": "business-logic-algorithms",
+    "categoryName": "業務邏輯與演算法",
+    "title": "Anthropic Managed Agents 可觀測性實作",
+    "slug": "anthropic-managed-agents-observability",
+    "tags": ["anthropic", "agents", "observability"]
+  },
+  "architecture-improvement-execution-flow": {
+    "sourcePath": "~/.claude/skills/learned/architecture-improvement-execution-flow.md",
+    "publishedAt": "2026-03-31T12:13:00+08:00",
+    "category": "debugging-diagnostics",
+    "categoryName": "除錯與診斷",
+    "title": "架構改善的品質閘門執行流程",
+    "slug": "architecture-improvement-execution-flow",
+    "tags": ["architecture", "refactoring", "workflow"]
+  },
+  "cjk-scraping-patterns": {
+    "sourcePath": "~/.claude/skills/learned/cjk-scraping-patterns.md",
+    "publishedAt": "2026-03-21T11:23:00+08:00",
+    "category": "business-logic-algorithms",
+    "categoryName": "業務邏輯與演算法",
+    "title": "中文網頁爬蟲的 CJK 比對模式",
+    "slug": "cjk-scraping-patterns",
+    "tags": ["cjk", "scraping", "chinese"]
+  },
+  "claude-cli-batch-automation": {
+    "sourcePath": "~/.claude/skills/learned/claude-cli-batch-automation.md",
+    "publishedAt": "2026-04-09T17:07:00+08:00",
+    "category": "claude-code-tools",
+    "categoryName": "Claude Code 工具",
+    "title": "用 claude CLI 子進程執行批次 LLM 任務",
+    "slug": "claude-cli-batch-automation",
+    "tags": ["claude-code", "cli", "batch", "automation"]
+  },
+  "claude-code-extension-selection": {
+    "sourcePath": "~/.claude/skills/learned/claude-code-extension-selection.md",
+    "publishedAt": "2026-03-28T14:18:00+08:00",
+    "category": "claude-code-tools",
+    "categoryName": "Claude Code 工具",
+    "title": "Claude Code 擴充套件選擇指南",
+    "slug": "claude-code-extension-selection",
+    "tags": ["claude-code", "extensions", "setup"]
+  },
+  "claude-code-hook-output-loop": {
+    "sourcePath": "~/.claude/skills/learned/claude-code-hook-output-loop.md",
+    "publishedAt": "2026-03-22T18:49:00+08:00",
+    "category": "claude-code-tools",
+    "categoryName": "Claude Code 工具",
+    "title": "Claude Code Hook 輸出迴圈陷阱",
+    "slug": "claude-code-hook-output-loop",
+    "tags": ["claude-code", "hooks", "debugging"]
+  },
+  "claude-code-official-plugins-cannot-disable": {
+    "sourcePath": "~/.claude/skills/learned/claude-code-official-plugins-cannot-disable.md",
+    "publishedAt": "2026-04-02T12:44:00+08:00",
+    "category": "claude-code-tools",
+    "categoryName": "Claude Code 工具",
+    "title": "Claude Code 官方 Plugin 無法停用的限制",
+    "slug": "claude-code-official-plugins-cannot-disable",
+    "tags": ["claude-code", "plugins", "limitations"]
+  },
+  "claude-code-plugin-command-visibility": {
+    "sourcePath": "~/.claude/skills/learned/claude-code-plugin-command-visibility.md",
+    "publishedAt": "2026-04-10T21:40:00+08:00",
+    "category": "claude-code-tools",
+    "categoryName": "Claude Code 工具",
+    "title": "Claude Code Plugin 指令可見性控制",
+    "slug": "claude-code-plugin-command-visibility",
+    "tags": ["claude-code", "plugins", "commands"]
+  },
+  "claude-code-plugin-mcp-format": {
+    "sourcePath": "~/.claude/skills/learned/claude-code-plugin-mcp-format.md",
+    "publishedAt": "2026-03-25T14:43:00+08:00",
+    "category": "claude-code-tools",
+    "categoryName": "Claude Code 工具",
+    "title": "Claude Code Plugin MCP 格式規範",
+    "slug": "claude-code-plugin-mcp-format",
+    "tags": ["claude-code", "mcp", "plugins"]
+  },
+  "claude-plugin-version-path-sync": {
+    "sourcePath": "~/.claude/skills/learned/claude-plugin-version-path-sync.md",
+    "publishedAt": "2026-03-26T13:31:00+08:00",
+    "category": "claude-code-tools",
+    "categoryName": "Claude Code 工具",
+    "title": "Claude Plugin 版本與路徑同步問題",
+    "slug": "claude-plugin-version-path-sync",
+    "tags": ["claude-code", "plugins", "versioning"]
+  },
+  "cloud-migration": {
+    "sourcePath": "~/.claude/skills/learned/cloud-migration.md",
+    "publishedAt": "2026-03-20T11:02:00+08:00",
+    "category": "infrastructure-deployment",
+    "categoryName": "基礎設施與部署",
+    "title": "雲端遷移的環境變數與 OAuth 一致性",
+    "slug": "cloud-migration",
+    "tags": ["deployment", "oauth", "environment", "migration"]
+  },
+  "coolify-ssh-tmux-long-running-container-ops": {
+    "sourcePath": "~/.claude/skills/learned/coolify-ssh-tmux-long-running-container-ops.md",
+    "publishedAt": "2026-04-16T12:01:00+08:00",
+    "category": "infrastructure-deployment",
+    "categoryName": "基礎設施與部署",
+    "title": "Coolify SSH + tmux 長時間容器操作",
+    "slug": "coolify-ssh-tmux-long-running-container-ops",
+    "tags": ["coolify", "ssh", "tmux", "docker"]
+  },
+  "daemon-lifecycle-try-finally-trap": {
+    "sourcePath": "~/.claude/skills/learned/daemon-lifecycle-try-finally-trap.md",
+    "publishedAt": "2026-04-06T11:27:00+08:00",
+    "category": "security-error-handling",
+    "categoryName": "安全與錯誤處理",
+    "title": "Daemon try/finally 清理與 setInterval 生命週期衝突",
+    "slug": "daemon-lifecycle-try-finally-trap",
+    "tags": ["daemon", "lifecycle", "error-handling", "javascript"]
+  },
+  "data-import-migration": {
+    "sourcePath": "~/.claude/skills/learned/data-import-migration.md",
+    "publishedAt": "2026-03-21T11:23:00+08:00",
+    "category": "data-migration",
+    "categoryName": "資料庫與 Migration",
+    "title": "資料匯入的 CSV 清理與 Migration Checksum",
+    "slug": "data-import-migration",
+    "tags": ["csv", "migration", "postgresql", "data-import"]
+  },
+  "debugging-diagnosis": {
+    "sourcePath": "~/.claude/skills/learned/debugging-diagnosis.md",
+    "publishedAt": "2026-03-20T11:01:00+08:00",
+    "category": "debugging-diagnostics",
+    "categoryName": "除錯與診斷",
+    "title": "系統性除錯診斷流程",
+    "slug": "debugging-diagnosis",
+    "tags": ["debugging", "diagnostics", "workflow"]
+  },
+  "docker-turborepo": {
+    "sourcePath": "~/.claude/skills/learned/docker-turborepo.md",
+    "publishedAt": "2026-03-30T12:33:00+08:00",
+    "category": "infrastructure-deployment",
+    "categoryName": "基礎設施與部署",
+    "title": "Docker + Turborepo Monorepo 建置設定",
+    "slug": "docker-turborepo",
+    "tags": ["docker", "turborepo", "monorepo", "build"]
+  },
+  "ecc-observer-do-not-enable": {
+    "sourcePath": "~/.claude/skills/learned/ecc-observer-do-not-enable.md",
+    "publishedAt": "2026-04-10T22:33:00+08:00",
+    "category": "claude-code-tools",
+    "categoryName": "Claude Code 工具",
+    "title": "不要啟用 ECC Observer：效能與副作用",
+    "slug": "ecc-observer-do-not-enable",
+    "tags": ["claude-code", "ecc", "observer"]
+  },
+  "ecc-skip-observe-flag": {
+    "sourcePath": "~/.claude/skills/learned/ecc-skip-observe-flag.md",
+    "publishedAt": "2026-04-09T17:13:00+08:00",
+    "category": "claude-code-tools",
+    "categoryName": "Claude Code 工具",
+    "title": "ECC_SKIP_OBSERVE 旗標的使用時機",
+    "slug": "ecc-skip-observe-flag",
+    "tags": ["claude-code", "ecc", "flags"]
+  },
+  "git-worktree-broken-after-repo-rename": {
+    "sourcePath": "~/.claude/skills/learned/git-worktree-broken-after-repo-rename.md",
+    "publishedAt": "2026-04-04T11:44:00+08:00",
+    "category": "infrastructure-deployment",
+    "categoryName": "基礎設施與部署",
+    "title": "Repo 改名後 Git Worktree 損壞的修復",
+    "slug": "git-worktree-broken-after-repo-rename",
+    "tags": ["git", "worktree", "debugging"]
+  },
+  "github-actions-pr-workflow-scope": {
+    "sourcePath": "~/.claude/skills/learned/github-actions-pr-workflow-scope.md",
+    "publishedAt": "2026-03-25T12:28:00+08:00",
+    "category": "infrastructure-deployment",
+    "categoryName": "基礎設施與部署",
+    "title": "GitHub Actions PR 工作流程的權限範圍",
+    "slug": "github-actions-pr-workflow-scope",
+    "tags": ["github-actions", "ci-cd", "permissions"]
+  },
+  "hetzner-capacity-triple-verification": {
+    "sourcePath": "~/.claude/skills/learned/hetzner-capacity-triple-verification.md",
+    "publishedAt": "2026-04-19T14:35:00+08:00",
+    "category": "infrastructure-deployment",
+    "categoryName": "基礎設施與部署",
+    "title": "Hetzner 伺服器容量的三重驗證流程",
+    "slug": "hetzner-capacity-triple-verification",
+    "tags": ["hetzner", "infrastructure", "verification"]
+  },
+  "hetzner-volume-swap-for-heavy-db-ops": {
+    "sourcePath": "~/.claude/skills/learned/hetzner-volume-swap-for-heavy-db-ops.md",
+    "publishedAt": "2026-04-19T14:35:00+08:00",
+    "category": "infrastructure-deployment",
+    "categoryName": "基礎設施與部署",
+    "title": "Hetzner Volume Swap 加速大型 DB 操作",
+    "slug": "hetzner-volume-swap-for-heavy-db-ops",
+    "tags": ["hetzner", "postgresql", "performance", "volume"]
+  },
+  "homunculus-repo-rename-split": {
+    "sourcePath": "~/.claude/skills/learned/homunculus-repo-rename-split.md",
+    "publishedAt": "2026-04-09T17:07:00+08:00",
+    "category": "claude-code-tools",
+    "categoryName": "Claude Code 工具",
+    "title": "ECC Homunculus Repo 改名與分割策略",
+    "slug": "homunculus-repo-rename-split",
+    "tags": ["claude-code", "ecc", "homunculus"]
+  },
+  "infrastructure-deployment": {
+    "sourcePath": "~/.claude/skills/learned/infrastructure-deployment.md",
+    "publishedAt": "2026-04-07T22:00:00+08:00",
+    "category": "infrastructure-deployment",
+    "categoryName": "基礎設施與部署",
+    "title": "Coolify 服務 vs 應用程式部署差異",
+    "slug": "coolify-service-vs-application-deployment",
+    "tags": ["coolify", "deployment", "docker"]
+  },
+  "jurislm-dev-mock-branch-discipline": {
+    "sourcePath": "~/.claude/skills/learned/jurislm-dev-mock-branch-discipline.md",
+    "publishedAt": "2026-04-22T16:43:00+08:00",
+    "category": "testing-quality",
+    "categoryName": "測試與品質",
+    "title": "Dev Mock 分支紀律：測試環境隔離",
+    "slug": "dev-mock-branch-discipline",
+    "tags": ["testing", "mocking", "git", "branch"]
+  },
+  "llm-app-data-persistence-architecture": {
+    "sourcePath": "~/.claude/skills/learned/llm-app-data-persistence-architecture.md",
+    "publishedAt": "2026-04-05T22:06:00+08:00",
+    "category": "business-logic-algorithms",
+    "categoryName": "業務邏輯與演算法",
+    "title": "LLM 應用程式資料持久化架構設計",
+    "slug": "llm-app-data-persistence-architecture",
+    "tags": ["llm", "architecture", "database", "persistence"]
+  },
+  "llm-context-compaction-db-design": {
+    "sourcePath": "~/.claude/skills/learned/llm-context-compaction-db-design.md",
+    "publishedAt": "2026-04-01T13:42:00+08:00",
+    "category": "data-migration",
+    "categoryName": "資料庫與 Migration",
+    "title": "LLM Context Compaction 的資料庫設計",
+    "slug": "llm-context-compaction-db-design",
+    "tags": ["llm", "postgresql", "schema", "context"]
+  },
+  "llm-inline-citations-architecture": {
+    "sourcePath": "~/.claude/skills/learned/llm-inline-citations-architecture.md",
+    "publishedAt": "2026-04-21T13:48:00+08:00",
+    "category": "business-logic-algorithms",
+    "categoryName": "業務邏輯與演算法",
+    "title": "LLM Inline Citations 架構實作",
+    "slug": "llm-inline-citations-architecture",
+    "tags": ["llm", "citations", "architecture"]
+  },
+  "long-running-cli-task-lifecycle": {
+    "sourcePath": "~/.claude/skills/learned/long-running-cli-task-lifecycle.md",
+    "publishedAt": "2026-04-05T14:45:00+08:00",
+    "category": "tooling-workflow",
+    "categoryName": "工具與工作流",
+    "title": "長時間 CLI 任務的生命週期管理",
+    "slug": "long-running-cli-task-lifecycle",
+    "tags": ["cli", "background-tasks", "lifecycle"]
+  },
+  "macos-sed-python-fallback": {
+    "sourcePath": "~/.claude/skills/learned/macos-sed-python-fallback.md",
+    "publishedAt": "2026-04-05T14:45:00+08:00",
+    "category": "debugging-diagnostics",
+    "categoryName": "除錯與診斷",
+    "title": "macOS sed 與跨平台 Shell 腳本 Fallback",
+    "slug": "macos-sed-python-fallback",
+    "tags": ["macos", "shell", "cross-platform", "sed"]
+  },
+  "mcp-oauth-security": {
+    "sourcePath": "~/.claude/skills/learned/mcp-oauth-security.md",
+    "publishedAt": "2026-03-25T10:08:00+08:00",
+    "category": "security-error-handling",
+    "categoryName": "安全與錯誤處理",
+    "title": "MCP Server OAuth 安全設計",
+    "slug": "mcp-oauth-security",
+    "tags": ["mcp", "oauth", "security"]
+  },
+  "mcp-sdk-meta-per-call-context": {
+    "sourcePath": "~/.claude/skills/learned/mcp-sdk-meta-per-call-context.md",
+    "publishedAt": "2026-03-28T14:19:00+08:00",
+    "category": "business-logic-algorithms",
+    "categoryName": "業務邏輯與演算法",
+    "title": "MCP SDK _meta 欄位傳遞 Per-Request Context",
+    "slug": "mcp-sdk-meta-per-call-context",
+    "tags": ["mcp", "sdk", "context"]
+  },
+  "monorepo-dead-code-cleanup": {
+    "sourcePath": "~/.claude/skills/learned/monorepo-dead-code-cleanup.md",
+    "publishedAt": "2026-03-29T14:10:00+08:00",
+    "category": "testing-quality",
+    "categoryName": "測試與品質",
+    "title": "Monorepo 死代碼系統化清理流程",
+    "slug": "monorepo-dead-code-cleanup",
+    "tags": ["monorepo", "refactoring", "dead-code"]
+  },
+  "nextauth-secure-cookie-name": {
+    "sourcePath": "~/.claude/skills/learned/nextauth-secure-cookie-name.md",
+    "publishedAt": "2026-03-28T14:33:00+08:00",
+    "category": "security-error-handling",
+    "categoryName": "安全與錯誤處理",
+    "title": "NextAuth 安全 Cookie 名稱設定",
+    "slug": "nextauth-secure-cookie-name",
+    "tags": ["nextauth", "security", "cookies"]
+  },
+  "nextjs-client-bundle-constant-isolation": {
+    "sourcePath": "~/.claude/skills/learned/nextjs-client-bundle-constant-isolation.md",
+    "publishedAt": "2026-04-17T20:56:00+08:00",
+    "category": "business-logic-algorithms",
+    "categoryName": "業務邏輯與演算法",
+    "title": "Next.js Client Bundle 常數隔離技巧",
+    "slug": "nextjs-client-bundle-constant-isolation",
+    "tags": ["nextjs", "bundle", "optimization"]
+  },
+  "nextjs-mcp-dual-auth": {
+    "sourcePath": "~/.claude/skills/learned/nextjs-mcp-dual-auth.md",
+    "publishedAt": "2026-03-25T12:24:00+08:00",
+    "category": "security-error-handling",
+    "categoryName": "安全與錯誤處理",
+    "title": "Next.js MCP 雙重認證架構",
+    "slug": "nextjs-mcp-dual-auth",
+    "tags": ["nextjs", "mcp", "authentication"]
+  },
+  "nextjs-standalone-docker-hostname": {
+    "sourcePath": "~/.claude/skills/learned/nextjs-standalone-docker-hostname.md",
+    "publishedAt": "2026-04-02T16:08:00+08:00",
+    "category": "infrastructure-deployment",
+    "categoryName": "基礎設施與部署",
+    "title": "Next.js Standalone Docker Hostname 設定",
+    "slug": "nextjs-standalone-docker-hostname",
+    "tags": ["nextjs", "docker", "deployment"]
+  },
+  "notion-form-api-limitations": {
+    "sourcePath": "~/.claude/skills/learned/notion-form-api-limitations.md",
+    "publishedAt": "2026-03-25T14:46:00+08:00",
+    "category": "tooling-workflow",
+    "categoryName": "工具與工作流",
+    "title": "Notion API 無法建立表單檢視的限制",
+    "slug": "notion-form-api-limitations",
+    "tags": ["notion", "api", "limitations"]
+  },
+  "notion-mcp-mermaid-code-block-traps": {
+    "sourcePath": "~/.claude/skills/learned/notion-mcp-mermaid-code-block-traps.md",
+    "publishedAt": "2026-04-05T14:50:00+08:00",
+    "category": "tooling-workflow",
+    "categoryName": "工具與工作流",
+    "title": "Notion MCP 更新 Mermaid 與 Code Block 的陷阱",
+    "slug": "notion-mcp-mermaid-code-block-traps",
+    "tags": ["notion", "mcp", "mermaid"]
+  },
+  "numbers-must-have-df-h-source": {
+    "sourcePath": "~/.claude/skills/learned/numbers-must-have-df-h-source.md",
+    "publishedAt": "2026-04-24T10:52:00+08:00",
+    "category": "debugging-diagnostics",
+    "categoryName": "除錯與診斷",
+    "title": "數字必須附來源：df -h 輸出的斷言紀律",
+    "slug": "numbers-must-have-source",
+    "tags": ["debugging", "discipline", "verification"]
+  },
+  "openai-batch-api-file-size-limit": {
+    "sourcePath": "~/.claude/skills/learned/openai-batch-api-file-size-limit.md",
+    "publishedAt": "2026-04-01T21:21:00+08:00",
+    "category": "business-logic-algorithms",
+    "categoryName": "業務邏輯與演算法",
+    "title": "OpenAI Batch API 檔案大小限制與分批策略",
+    "slug": "openai-batch-api-file-size-limit",
+    "tags": ["openai", "batch-api", "optimization"]
+  },
+  "openai-gpt5-max-completion-tokens": {
+    "sourcePath": "~/.claude/skills/learned/openai-gpt5-max-completion-tokens.md",
+    "publishedAt": "2026-03-30T10:16:00+08:00",
+    "category": "business-logic-algorithms",
+    "categoryName": "業務邏輯與演算法",
+    "title": "GPT-5 Max Completion Tokens 的設定陷阱",
+    "slug": "openai-gpt5-max-completion-tokens",
+    "tags": ["openai", "gpt", "tokens"]
+  },
+  "parallel-research-to-notion-workflow": {
+    "sourcePath": "~/.claude/skills/learned/parallel-research-to-notion-workflow.md",
+    "publishedAt": "2026-04-03T22:39:00+08:00",
+    "category": "tooling-workflow",
+    "categoryName": "工具與工作流",
+    "title": "並行子代理研究後同步 Notion 的工作流",
+    "slug": "parallel-research-to-notion-workflow",
+    "tags": ["agents", "notion", "workflow", "research"]
+  },
+  "postgres-alpine-to-debian-collation-trap": {
+    "sourcePath": "~/.claude/skills/learned/postgres-alpine-to-debian-collation-trap.md",
+    "publishedAt": "2026-03-31T17:01:00+08:00",
+    "category": "data-migration",
+    "categoryName": "資料庫與 Migration",
+    "title": "PostgreSQL Alpine 升級 Debian 的 Collation 陷阱",
+    "slug": "postgres-alpine-to-debian-collation-trap",
+    "tags": ["postgresql", "docker", "migration", "collation"]
+  },
+  "postgresql-cancellation-cleanup-anti-pattern": {
+    "sourcePath": "~/.claude/skills/learned/postgresql-cancellation-cleanup-anti-pattern.md",
+    "publishedAt": "2026-04-19T18:45:00+08:00",
+    "category": "data-migration",
+    "categoryName": "資料庫與 Migration",
+    "title": "PostgreSQL 查詢取消後的清理反模式",
+    "slug": "postgresql-cancellation-cleanup-anti-pattern",
+    "tags": ["postgresql", "error-handling", "transactions"]
+  },
+  "postgresql-docker-shm-maintenance-work-mem": {
+    "sourcePath": "~/.claude/skills/learned/postgresql-docker-shm-maintenance-work-mem.md",
+    "publishedAt": "2026-04-16T11:50:00+08:00",
+    "category": "data-migration",
+    "categoryName": "資料庫與 Migration",
+    "title": "PostgreSQL Docker shm 與 maintenance_work_mem 設定",
+    "slug": "postgresql-docker-shm-maintenance-work-mem",
+    "tags": ["postgresql", "docker", "performance", "configuration"]
+  },
+  "postgresql-max-parallel-workers-server-level-override": {
+    "sourcePath": "~/.claude/skills/learned/postgresql-max-parallel-workers-server-level-override.md",
+    "publishedAt": "2026-04-19T14:36:00+08:00",
+    "category": "data-migration",
+    "categoryName": "資料庫與 Migration",
+    "title": "PostgreSQL 並行 Worker 的 Server 層級覆寫",
+    "slug": "postgresql-max-parallel-workers-override",
+    "tags": ["postgresql", "performance", "parallel", "configuration"]
+  },
+  "postgresql-vector-to-halfvec-update": {
+    "sourcePath": "~/.claude/skills/learned/postgresql-vector-to-halfvec-update.md",
+    "publishedAt": "2026-04-19T18:45:00+08:00",
+    "category": "data-migration",
+    "categoryName": "資料庫與 Migration",
+    "title": "PostgreSQL vector 升級 halfvec 的遷移步驟",
+    "slug": "postgresql-vector-to-halfvec-update",
+    "tags": ["postgresql", "pgvector", "migration", "embeddings"]
+  },
+  "precommit-layered-verification": {
+    "sourcePath": "~/.claude/skills/learned/precommit-layered-verification.md",
+    "publishedAt": "2026-03-28T14:33:00+08:00",
+    "category": "testing-quality",
+    "categoryName": "測試與品質",
+    "title": "Pre-commit 分層驗證策略",
+    "slug": "precommit-layered-verification",
+    "tags": ["git", "pre-commit", "testing", "ci"]
+  },
+  "product-usability-audit": {
+    "sourcePath": "~/.claude/skills/learned/product-usability-audit.md",
+    "publishedAt": "2026-04-07T12:05:00+08:00",
+    "category": "tooling-workflow",
+    "categoryName": "工具與工作流",
+    "title": "多組件功能的使用者流程完整性稽核",
+    "slug": "product-usability-audit",
+    "tags": ["ux", "audit", "workflow"]
+  },
+  "proposal-first-code-later": {
+    "sourcePath": "~/.claude/skills/learned/proposal-first-code-later.md",
+    "publishedAt": "2026-04-07T12:06:00+08:00",
+    "category": "debugging-diagnostics",
+    "categoryName": "除錯與診斷",
+    "title": "先更新提案文件，後執行代碼修改",
+    "slug": "proposal-first-code-later",
+    "tags": ["workflow", "documentation", "architecture"]
+  },
+  "proposal-verification-loop": {
+    "sourcePath": "~/.claude/skills/learned/proposal-verification-loop.md",
+    "publishedAt": "2026-03-21T16:33:00+08:00",
+    "category": "debugging-diagnostics",
+    "categoryName": "除錯與診斷",
+    "title": "提案品質保證的五輪迭代驗證",
+    "slug": "proposal-verification-loop",
+    "tags": ["architecture", "proposal", "verification"]
+  },
+  "read-source-before-judging": {
+    "sourcePath": "~/.claude/skills/learned/read-source-before-judging.md",
+    "publishedAt": "2026-04-10T22:32:00+08:00",
+    "category": "debugging-diagnostics",
+    "categoryName": "除錯與診斷",
+    "title": "先讀原始碼再下判斷",
+    "slug": "read-source-before-judging",
+    "tags": ["debugging", "discipline", "source-code"]
+  },
+  "refactor-triage-delete-rename-preserve": {
+    "sourcePath": "~/.claude/skills/learned/refactor-triage-delete-rename-preserve.md",
+    "publishedAt": "2026-04-21T10:24:00+08:00",
+    "category": "testing-quality",
+    "categoryName": "測試與品質",
+    "title": "大型重構的三分法：刪除、改名、保留",
+    "slug": "refactor-triage-delete-rename-preserve",
+    "tags": ["refactoring", "typescript", "monorepo"]
+  },
+  "security-error-handling": {
+    "sourcePath": "~/.claude/skills/learned/security-error-handling.md",
+    "publishedAt": "2026-03-20T11:02:00+08:00",
+    "category": "security-error-handling",
+    "categoryName": "安全與錯誤處理",
+    "title": "安全的錯誤處理：不洩漏內部資訊",
+    "slug": "security-error-handling",
+    "tags": ["security", "error-handling", "api"]
+  },
+  "skill-output-location-override": {
+    "sourcePath": "~/.claude/skills/learned/skill-output-location-override.md",
+    "publishedAt": "2026-04-10T21:59:00+08:00",
+    "category": "claude-code-tools",
+    "categoryName": "Claude Code 工具",
+    "title": "Skill 輸出位置的覆寫設定",
+    "slug": "skill-output-location-override",
+    "tags": ["claude-code", "skills", "configuration"]
+  },
+  "skill-quality-verification-loop": {
+    "sourcePath": "~/.claude/skills/learned/skill-quality-verification-loop.md",
+    "publishedAt": "2026-03-21T22:55:00+08:00",
+    "category": "claude-code-tools",
+    "categoryName": "Claude Code 工具",
+    "title": "Skill 品質驗證迴圈",
+    "slug": "skill-quality-verification-loop",
+    "tags": ["claude-code", "skills", "quality"]
+  },
+  "state-management-refactor-pattern": {
+    "sourcePath": "~/.claude/skills/learned/state-management-refactor-pattern.md",
+    "publishedAt": "2026-03-21T15:20:00+08:00",
+    "category": "testing-quality",
+    "categoryName": "測試與品質",
+    "title": "檔案狀態重構為 DB 的設計模式",
+    "slug": "state-management-refactor-pattern",
+    "tags": ["refactoring", "database", "architecture"]
+  },
+  "telegram-voice-transcription": {
+    "sourcePath": "~/.claude/skills/learned/telegram-voice-transcription.md",
+    "publishedAt": "2026-03-22T18:26:00+08:00",
+    "category": "tooling-workflow",
+    "categoryName": "工具與工作流",
+    "title": "用 Whisper 轉錄 Telegram 語音訊息",
+    "slug": "telegram-voice-transcription",
+    "tags": ["telegram", "whisper", "transcription", "automation"]
+  },
+  "testing-patterns": {
+    "sourcePath": "~/.claude/skills/learned/testing-patterns.md",
+    "publishedAt": "2026-03-29T20:37:00+08:00",
+    "category": "testing-quality",
+    "categoryName": "測試與品質",
+    "title": "Vitest 與 Playwright 測試模式彙整",
+    "slug": "testing-patterns",
+    "tags": ["vitest", "playwright", "testing"]
+  },
+  "three-learning-systems-separation": {
+    "sourcePath": "~/.claude/skills/learned/three-learning-systems-separation.md",
+    "publishedAt": "2026-04-10T22:01:00+08:00",
+    "category": "claude-code-tools",
+    "categoryName": "Claude Code 工具",
+    "title": "三套學習系統的分工：Instinct、Skill、Memory",
+    "slug": "three-learning-systems-separation",
+    "tags": ["claude-code", "ecc", "learning"]
+  },
+  "tool-false-negative-cascade": {
+    "sourcePath": "~/.claude/skills/learned/tool-false-negative-cascade.md",
+    "publishedAt": "2026-03-21T20:09:00+08:00",
+    "category": "debugging-diagnostics",
+    "categoryName": "除錯與診斷",
+    "title": "工具誤判導致錯誤連鎖的診斷模式",
+    "slug": "tool-false-negative-cascade",
+    "tags": ["debugging", "diagnostics", "tools"]
+  },
+  "vitest-setup-env-override": {
+    "sourcePath": "~/.claude/skills/learned/vitest-setup-env-override.md",
+    "publishedAt": "2026-03-22T16:57:00+08:00",
+    "category": "testing-quality",
+    "categoryName": "測試與品質",
+    "title": "Vitest Setup 中環境變數覆寫的陷阱",
+    "slug": "vitest-setup-env-override",
+    "tags": ["vitest", "testing", "environment"]
+  },
+  "zod-v4-flatten-deprecated": {
+    "sourcePath": "~/.claude/skills/learned/zod-v4-flatten-deprecated.md",
+    "publishedAt": "2026-03-18T18:25:00+08:00",
+    "category": "business-logic-algorithms",
+    "categoryName": "業務邏輯與演算法",
+    "title": "Zod v4 flatten() 棄用的遷移方式",
+    "slug": "zod-v4-flatten-deprecated",
+    "tags": ["zod", "typescript", "migration"]
+  }
+}
