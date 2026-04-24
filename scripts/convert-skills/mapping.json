@@ -181,7 +181,7 @@
     "slug": "homunculus-repo-rename-split",
     "tags": ["claude-code-tools", "claude-code", "ecc", "homunculus"]
   },
-  "infrastructure-deployment": {
+  "coolify-service-vs-application-deployment": {
     "sourcePath": "~/.claude/skills/learned/infrastructure-deployment.md",
     "publishedAt": "2026-04-07T22:00:00+08:00",
     "title": "Coolify 服務 vs 應用程式部署差異",
