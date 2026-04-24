@@ -32,7 +32,7 @@ function buildFrontmatter(entry: MappingEntry): string {
   return `---
 title: '${entry.title.replace(/'/g, "''")}'
 publishedAt: '${entry.publishedAt}'
-status: 'published'
+status: 'draft'
 slug: '${entry.slug}'
 tags:
 ${tagsYaml}
