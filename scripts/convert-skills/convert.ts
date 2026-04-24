@@ -1,12 +1,11 @@
 #!/usr/bin/env bun
 import { spawnSync } from 'child_process'
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs'
-import { join, dirname } from 'path'
+import { join, dirname, resolve, relative } from 'path'
 import { homedir } from 'os'
 
 const MAPPING_PATH = join(import.meta.dir, 'mapping.json')
 const CONTENT_BASE = join(import.meta.dir, '../../content/posts/2026')
-const ALLOWED_OUTPUT_PREFIX = join(import.meta.dir, '../../content/posts/2026/')
 
 interface MappingEntry {
   sourcePath: string
@@ -17,14 +16,18 @@ interface MappingEntry {
 }
 
 function assertOutputPath(outPath: string): void {
-  const resolved = outPath.startsWith(ALLOWED_OUTPUT_PREFIX)
-  if (!resolved) {
+  const resolvedOut = resolve(outPath)
+  const resolvedBase = resolve(CONTENT_BASE)
+  const rel = relative(resolvedBase, resolvedOut)
+  if (rel.startsWith('..') || rel.includes('/')) {
     throw new Error(`Output path escapes allowed directory: ${outPath}`)
   }
 }
 
 function resolveSourcePath(p: string): string {
-  return p.startsWith('~') ? join(homedir(), p.slice(1)) : p
+  if (p === '~') return homedir()
+  if (p.startsWith('~/')) return join(homedir(), p.slice(2))
+  return p
 }
 
 function buildFrontmatter(entry: MappingEntry): string {
@@ -78,7 +81,12 @@ async function main() {
   const dryRun = args.includes('--dry-run')
   const force = args.includes('--force')
   const onlyIdx = args.indexOf('--only')
-  const onlySlug = onlyIdx !== -1 ? args[onlyIdx + 1] : null
+  const onlySlugRaw = onlyIdx !== -1 ? args[onlyIdx + 1] : null
+  if (onlyIdx !== -1 && (!onlySlugRaw || onlySlugRaw.startsWith('--'))) {
+    console.error('Usage: --only <slug>')
+    process.exit(1)
+  }
+  const onlySlug = onlySlugRaw ?? null
 
   const mapping = JSON.parse(readFileSync(MAPPING_PATH, 'utf8')) as Record<string, MappingEntry>
   const entries = Object.values(mapping)
