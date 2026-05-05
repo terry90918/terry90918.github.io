@@ -100,7 +100,3 @@ export async function loadAllPosts(opts: LoadOptions = {}): Promise<Post[]> {
   if (isProd && !opts.dir) cache = sorted
   return sorted
 }
-
-export function clearCache(): void {
-  cache = null
-}

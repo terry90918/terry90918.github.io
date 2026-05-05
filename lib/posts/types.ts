@@ -4,17 +4,6 @@ export interface Tag {
   count?: number
 }
 
-export interface PostFrontmatter {
-  title: string
-  slug?: string
-  excerpt?: string
-  publishedAt: string
-  status: 'draft' | 'published'
-  tags?: string[]
-  metaDescription?: string
-  featureImage?: string
-}
-
 export interface Post {
   title: string
   slug: string
@@ -28,18 +17,6 @@ export interface Post {
   year: string
   metaDescription?: string
   featureImage?: string
-}
-
-export interface PaginatedResult<T> {
-  data: T[]
-  pagination: {
-    page: number
-    limit: number
-    pages: number
-    total: number
-    next: number | null
-    prev: number | null
-  }
 }
 
 export interface PostsByYearMonth {
