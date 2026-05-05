@@ -1,5 +1,5 @@
 import { loadAllPosts } from './loader'
-import type { Post, Tag, PaginatedResult, PostsByYearMonth } from './types'
+import type { Post, Tag, PostsByYearMonth } from './types'
 
 const MONTHS = [
   'January',
@@ -42,58 +42,10 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   }
 }
 
-export async function getPostsPaginated({
-  page = 1,
-  limit = 10,
-}: {
-  page?: number
-  limit?: number
-} = {}): Promise<PaginatedResult<Post>> {
-  try {
-    const posts = await loadAllPosts()
-    const start = (page - 1) * limit
-    const data = posts.slice(start, start + limit)
-    const total = posts.length
-    const pages = Math.ceil(total / limit)
-    return {
-      data,
-      pagination: {
-        page,
-        limit,
-        pages,
-        total,
-        next: page < pages ? page + 1 : null,
-        prev: page > 1 ? page - 1 : null,
-      },
-    }
-  } catch {
-    return {
-      data: [],
-      pagination: { page, limit, pages: 0, total: 0, next: null, prev: null },
-    }
-  }
-}
-
 export async function getPostsByTag(tagSlug: string): Promise<Post[]> {
   try {
     const posts = await loadAllPosts()
     return posts.filter((p) => p.tags.some((t) => t.slug === tagSlug))
-  } catch {
-    return []
-  }
-}
-
-export async function getRelatedPosts(
-  currentSlug: string,
-  tagSlugs: string[],
-  count = 3
-): Promise<Post[]> {
-  if (tagSlugs.length === 0) return []
-  try {
-    const posts = await loadAllPosts()
-    return posts
-      .filter((p) => p.slug !== currentSlug && p.tags.some((t) => tagSlugs.includes(t.slug)))
-      .slice(0, count)
   } catch {
     return []
   }
