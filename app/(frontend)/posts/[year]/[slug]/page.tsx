@@ -114,7 +114,7 @@ export default async function PostPage({ params }: PageParams) {
       </header>
 
       {/* Content */}
-      <div className="prose prose-sm dark:prose-invert max-w-none">
+      <div className="prose prose-sm max-w-none">
         {post.excerpt && (
           <p className="text-foreground border-accent not-prose mb-6 border-l-2 pl-4 text-base opacity-70">
             {post.excerpt}

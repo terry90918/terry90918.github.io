@@ -36,6 +36,7 @@
     "remark-rehype": "^11.1.2",
     "sharp": "^0.34.5",
     "shiki": "^4.0.2",
+    "@tailwindcss/typography": "^0.5.19",
     "tailwindcss": "^4.1.18",
     "unified": "^11.0.5"
   },

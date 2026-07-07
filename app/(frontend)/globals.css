@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
@@ -42,6 +43,39 @@ html[data-theme='dark'] {
   footer {
     @apply mx-auto max-w-3xl px-4;
   }
+}
+
+/* ===== Article typography (prose bound to site tokens; auto light/dark) ===== */
+.prose {
+  --tw-prose-body: var(--foreground);
+  --tw-prose-headings: var(--foreground);
+  --tw-prose-lead: var(--foreground);
+  --tw-prose-links: var(--accent);
+  --tw-prose-bold: var(--foreground);
+  --tw-prose-counters: var(--foreground);
+  --tw-prose-bullets: var(--accent);
+  --tw-prose-hr: var(--border);
+  --tw-prose-quotes: var(--foreground);
+  --tw-prose-quote-borders: var(--accent);
+  --tw-prose-captions: var(--foreground);
+  --tw-prose-code: var(--foreground);
+  --tw-prose-pre-code: inherit;
+  --tw-prose-pre-bg: transparent;
+  --tw-prose-th-borders: var(--border);
+  --tw-prose-td-borders: var(--border);
+}
+
+/* Headings: clear hierarchy + breathing room above each section */
+.prose :where(h2, h3):not(:where([class~='not-prose'] *)) {
+  scroll-margin-top: 5rem;
+}
+.prose :where(h2):not(:where([class~='not-prose'] *)) {
+  margin-top: 2.5em;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.3em;
+}
+.prose :where(a):not(:where([class~='not-prose'] *)) {
+  text-underline-offset: 2px;
 }
 
 /* ===== Code block dual theme (rehype-pretty-code) ===== */
