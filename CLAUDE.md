@@ -35,6 +35,10 @@ bun run test:e2e   # Playwright E2E tests (needs running server on :3001)
 
 ```
 app/
+  robots.ts                # robots.txt — MUST stay at true app/ root, not inside (frontend)/
+                           # (Next.js matches robots/favicon/manifest with an anchored regex
+                           # that requires them at the app root; route-group nesting is not
+                           # recognized, unlike sitemap/icon/opengraph-image which are unanchored)
   (frontend)/
     layout.tsx             # Root layout with ThemeProvider, BlogHeader, BlogFooter
     page.tsx               # Homepage: avatar + hero + latest 10 posts
@@ -43,7 +47,6 @@ app/
     about/                 # About page with GitHub activity chart
     rss.xml/               # RSS 2.0 Route Handler (statically exported)
     sitemap.ts             # Sitemap (statically exported)
-    robots.ts              # robots.txt
     icon.svg               # Favicon
     globals.css            # Tailwind base + CSS variables + syntax highlighting
     fonts.ts               # Stub (font loaded via CSS @import)
@@ -143,6 +146,7 @@ No database or environment variables required — content is served from Markdow
 
 ### Gotchas
 
+- **`robots.ts` placement**: must live at `app/robots.ts`, not nested in `(frontend)/` or any other route group — Next.js's route matcher anchors `robots`/`favicon.ico`/`manifest.json` to the literal app root (regex starts with `^`), so a nested one is silently never registered (404, no build/dev error). `sitemap.ts`/`icon.*`/`opengraph-image.*` use an unanchored regex and can be nested — that asymmetry is what makes this easy to miss.
 - **Dark mode selector**: Uses `data-theme` attribute (not `class`) — ThemeProvider must set `attribute="data-theme"`.
 - **ThemeToggle hydration**: Uses `useSyncExternalStore` (not `useEffect+useState`) to avoid `react-hooks/set-state-in-effect` lint error.
 - **Module-level cache**: `loadAllPosts()` caches parsed posts in memory on first call (production only). Dev always re-reads from disk for hot reload.
