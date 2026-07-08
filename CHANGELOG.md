@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/terry90918/terry90918.me/compare/v1.3.0...v1.3.1) (2026-07-08)
+
+
+### Bug Fixes
+
+* activate article typography (register missing prose plugin) ([a8e81ad](https://github.com/terry90918/terry90918.me/commit/a8e81adc9fb7c226e79685ac49133137968198fc))
+
 ## 1.0.0 (2026-04-22)
 
 ### Features
