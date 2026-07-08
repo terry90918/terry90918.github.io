@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.0](https://github.com/terry90918/terry90918.github.io/compare/v1.3.1...v1.4.0) (2026-07-08)
+
+
+### Features
+
+* migrate deployment from Coolify to GitHub Pages ([f503727](https://github.com/terry90918/terry90918.github.io/commit/f503727c5b8fafdce109c442d11f3c65e4b6c754))
+
+
+### Bug Fixes
+
+* move robots.ts to app root so /robots.txt actually resolves ([0f2ec74](https://github.com/terry90918/terry90918.github.io/commit/0f2ec7428a22c037de172914ebd95722a588559f))
+
 ## [1.3.1](https://github.com/terry90918/terry90918.me/compare/v1.3.0...v1.3.1) (2026-07-08)
 
 ### Bug Fixes
