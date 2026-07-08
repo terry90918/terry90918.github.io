@@ -4,8 +4,6 @@ import type { Metadata } from 'next'
 import { getPostBySlug, getAdjacentPosts, getAllPostSlugs } from '@/lib/posts/queries'
 import type { Post, Tag } from '@/lib/posts/types'
 
-export const revalidate = 3600
-
 interface PageParams {
   params: Promise<{ year: string; slug: string }>
 }
@@ -91,8 +89,8 @@ export default async function PostPage({ params }: PageParams) {
   }
 
   const { prev, next } = await getAdjacentPosts(slug)
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://terry90918.dev'
-  const githubEditUrl = `https://github.com/terry90918/terry90918.me/edit/main/content/posts/${post.year}/${post.slug}.md`
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://terry90918.github.io'
+  const githubEditUrl = `https://github.com/terry90918/terry90918.github.io/edit/main/content/posts/${post.year}/${post.slug}.md`
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-8">

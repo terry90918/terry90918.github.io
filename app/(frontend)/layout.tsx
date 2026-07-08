@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: 'Terry Chen',
     description:
       'Building AI agent systems and MCP tooling in Taiwan. Every commit lands on GitHub.',
-    url: 'https://terry90918.dev',
+    url: 'https://terry90918.github.io',
     type: 'website',
     locale: 'en_US',
     siteName: 'Terry Chen',

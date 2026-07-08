@@ -3,8 +3,6 @@ import Link from 'next/link'
 import { getLatestPosts } from '@/lib/posts/queries'
 import type { Post } from '@/lib/posts/types'
 
-export const revalidate = 3600
-
 function formatDate(dateStr: string): string {
   return new Date(dateStr).toLocaleDateString('en-US', {
     year: 'numeric',

@@ -2,10 +2,10 @@ import { NextResponse } from 'next/server'
 import { getPosts } from '@/lib/posts/queries'
 import { buildRssFeed } from '@/lib/rss'
 
-export const revalidate = 3600
+export const dynamic = 'force-static'
 
 export async function GET() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://terry90918.dev'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://terry90918.github.io'
   const posts = await getPosts()
   const xml = buildRssFeed(posts, siteUrl)
 

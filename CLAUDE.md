@@ -41,11 +41,9 @@ app/
     posts/                 # All posts grouped by year/month
     posts/[year]/[slug]/   # Post detail with tags, share, prev/next
     about/                 # About page with GitHub activity chart
-    rss.xml/               # RSS 2.0 Route Handler
-    sitemap.ts             # Dynamic sitemap
+    rss.xml/               # RSS 2.0 Route Handler (statically exported)
+    sitemap.ts             # Sitemap (statically exported)
     robots.ts              # robots.txt
-    api/og/                # OG image generation (@vercel/og, edge runtime)
-    api/health/            # Health check endpoint
     icon.svg               # Favicon
     globals.css            # Tailwind base + CSS variables + syntax highlighting
     fonts.ts               # Stub (font loaded via CSS @import)
@@ -70,9 +68,9 @@ lib/posts/
 tests/
   unit/                    # Vitest unit tests (markdown-renderer, markdown-loader, post-queries, rss-feed)
   e2e/                     # Playwright E2E tests (frontend-blog.spec.ts)
-next.config.ts             # standalone output, image optimization, caching headers
-proxy.ts                   # Staging HTTP Basic Auth (enabled when STAGING=true)
-Dockerfile                 # Multi-stage Docker build (oven/bun:1-alpine)
+next.config.ts             # static export (output: 'export'), unoptimized images
+.github/workflows/
+  deploy-pages.yml         # Build + deploy static export to GitHub Pages on push to main
 ```
 
 ## Content Authoring
@@ -126,44 +124,27 @@ html[data-theme='dark'] [data-rehype-pretty-code-figure] code[data-theme*=' '] s
 
 Key settings:
 
-- `output: 'standalone'` — Docker-friendly build (copies only required files)
-- `outputFileTracingIncludes` — ensures `jose` is bundled for edge routes
-- `images.remotePatterns` — allows `lh3.googleusercontent.com` and `s3.jurislm.com`
-- `images.formats` — avif + webp with 1-year cache TTL
-- Headers: fonts and images are cached immutably for 1 year; staging adds `X-Robots-Tag: noindex`
+- `output: 'export'` — static HTML export, no Node/edge server at runtime (required for GitHub Pages)
+- `images.unoptimized: true` — no image-optimization server on GitHub Pages, `next/image` skips optimization
 
 ## Environments
 
-| Environment | URL                          | Branch    |
-| ----------- | ---------------------------- | --------- |
-| Production  | https://blog.jurislm.com     | `main`    |
-| Staging     | https://blog-dev.jurislm.com | `develop` |
+| Environment | URL                          | Branch |
+| ----------- | ---------------------------- | ------ |
+| Production  | https://terry90918.github.io | `main` |
 
-## Coolify Resources
+No staging environment — GitHub Pages serves one branch to one URL. Verify changes locally (`bun run build` + serve `out/`) before merging to `main`.
 
-| Resource    | Name         | UUID                       | Status    |
-| ----------- | ------------ | -------------------------- | --------- |
-| Project     | Blog         | `tsg0gook408g4w0c04kwc884` | —         |
-| Develop Env | develop      | `egkosgkswwcss848wwgowccs` | —         |
-| Staging App | blog-dev-app | `mwscwg88sc8cs0ws8os44k84` | `running` |
+## Deployment
 
-### Environment Variables
+Push to `main` → `.github/workflows/deploy-pages.yml` builds the static export and publishes it via `actions/deploy-pages`. No manual deploy step. Repo Settings → Pages must have source set to "GitHub Actions".
 
-**Staging** (3 vars): `STAGING=true`, `STAGING_USER`, `STAGING_PASSWORD`
-
-```bash
-STAGING=true                                       # Enables Basic Auth, robots Disallow, X-Robots-Tag
-STAGING_USER=admin                                 # Basic Auth username (required when STAGING=true)
-STAGING_PASSWORD=staging2026                       # Basic Auth password (required when STAGING=true)
-```
-
-No database variables required — content is served from Markdown files.
+No database or environment variables required — content is served from Markdown files at build time.
 
 ### Gotchas
 
 - **Dark mode selector**: Uses `data-theme` attribute (not `class`) — ThemeProvider must set `attribute="data-theme"`.
 - **ThemeToggle hydration**: Uses `useSyncExternalStore` (not `useEffect+useState`) to avoid `react-hooks/set-state-in-effect` lint error.
-- **Staging protection**: `proxy.ts` enforces HTTP Basic Auth when `STAGING=true`.
 - **Module-level cache**: `loadAllPosts()` caches parsed posts in memory on first call (production only). Dev always re-reads from disk for hot reload.
 - **Draft filtering**: `status: "draft"` posts are excluded in `NODE_ENV=production`. Control in tests via `opts.env` parameter.
 - **PR labels**: Always add labels when creating PRs. Available: `feat`, `fix`, `docs`, `refactor`, `test`, `ci`, `chore`, `perf`, `breaking`, `major`, `minor`, `patch`. Use `gh pr edit <num> --add-label "label1,label2"`.

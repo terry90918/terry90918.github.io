@@ -4,10 +4,9 @@ Terry Chen 的個人技術部落格。以 Markdown 檔案為內容來源，Next.
 
 ## 環境
 
-| 環境       | 網址                         | Branch    |
-| ---------- | ---------------------------- | --------- |
-| Production | https://blog.jurislm.com     | `main`    |
-| Staging    | https://blog-dev.jurislm.com | `develop` |
+| 環境       | 網址                         | Branch |
+| ---------- | ---------------------------- | ------ |
+| Production | https://terry90918.github.io | `main` |
 
 ## 開發
 
@@ -53,15 +52,4 @@ status: 'published' # or "draft"
 
 ## 部署
 
-透過 Coolify 自動部署：
-
-- `main` branch → Production
-- `develop` branch → Staging
-
-### 環境變數
-
-| 變數               | 說明                                   |
-| ------------------ | -------------------------------------- |
-| `STAGING`          | `true` 啟用 Basic Auth + SEO 保護      |
-| `STAGING_USER`     | Basic Auth 帳號（STAGING=true 時必填） |
-| `STAGING_PASSWORD` | Basic Auth 密碼（STAGING=true 時必填） |
+透過 GitHub Actions 自動部署至 GitHub Pages：push 到 `main` → 觸發 `.github/workflows/deploy-pages.yml` → 靜態匯出（`next build`, `output: 'export'`）→ 發佈到 https://terry90918.github.io。

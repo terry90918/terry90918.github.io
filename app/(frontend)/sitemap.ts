@@ -1,7 +1,9 @@
 import { MetadataRoute } from 'next'
 import { getAllPostSlugs } from '@/lib/posts/queries'
 
-const baseUrl = 'https://blog.jurislm.com'
+export const dynamic = 'force-static'
+
+const baseUrl = 'https://terry90918.github.io'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const slugs = await getAllPostSlugs()

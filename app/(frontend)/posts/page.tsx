@@ -8,8 +8,6 @@ export const metadata: Metadata = {
   description: 'Browse all blog posts by Terry Chen.',
 }
 
-export const revalidate = 3600
-
 function formatDate(dateStr: string): string {
   return new Date(dateStr).toLocaleDateString('en-US', {
     year: 'numeric',
