@@ -38,6 +38,6 @@
 
 ## 7. Repo rename (manual, outside code)
 
-- [ ] 7.1 Rename the GitHub repo to `terry90918.github.io` (`gh repo rename terry90918.github.io` or via Settings) — confirm with the user before running, since it changes the remote/clone URL
-- [ ] 7.2 In repo Settings → Pages, set the deployment source to "GitHub Actions"
-- [ ] 7.3 After the first workflow run, confirm `https://terry90918.github.io` serves the site correctly
+- [x] 7.1 Rename the GitHub repo to `terry90918.github.io` (`gh repo rename terry90918.github.io` or via Settings) — confirm with the user before running, since it changes the remote/clone URL — done via `gh repo rename`; local `origin` remote re-pointed to the SSH URL (renaming had switched it to HTTPS)
+- [x] 7.2 In repo Settings → Pages, set the deployment source to "GitHub Actions" — the rename auto-enabled Pages with the legacy branch/Jekyll build; overrode it to `build_type: workflow` via `gh api -X PUT repos/.../pages`
+- [x] 7.3 After the first workflow run, confirm `https://terry90918.github.io` serves the site correctly — `Deploy to GitHub Pages` run succeeded, site returns 200 with the expected title
