@@ -54,7 +54,7 @@ content/
   posts/<year>/<slug>.md   # Markdown blog posts (frontmatter + content)
   README.md                # Frontmatter schema and authoring guide
 public/
-  audio/<year>/<file>.mp3  # Podcast/audio embeds referenced by posts via raw <audio> tags
+  audio/<year>/<slug>.mp3  # Podcast/audio embeds referenced by posts via raw <audio> tags
 components/
   BlogHeader.tsx           # Sticky header with dark mode toggle (useSyncExternalStore)
   BlogFooter.tsx           # Footer with social links + CC BY 4.0
