@@ -25,7 +25,7 @@ bun run test:e2e    # Playwright E2E（需要伺服器在 :3001）
 
 - Next.js 16 (App Router) + TypeScript
 - Tailwind CSS 4 + @tailwindcss/typography
-- Markdown（unified + remark + rehype + rehype-pretty-code）
+- Markdown（unified + remark + rehype + rehype-sanitize + rehype-pretty-code，支援嵌入 `<audio>` 等有限的 raw HTML）
 - next-themes（深色模式，`data-theme` 屬性）
 
 ## 寫文章
