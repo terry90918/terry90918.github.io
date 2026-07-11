@@ -11,7 +11,7 @@ Records engineering articles and personal insights.
 
 - **Framework**: Next.js 16 (App Router) + TypeScript
 - **Content**: Markdown files in `content/posts/<year>/<slug>.md`
-- **Markdown**: unified → remark-gfm → remark-rehype → rehype-slug → rehype-pretty-code → rehype-stringify
+- **Markdown**: unified → remark-gfm → remark-rehype (allowDangerousHtml) → rehype-raw → rehype-sanitize → rehype-slug → rehype-autolink-headings → rehype-pretty-code → rehype-stringify
 - **Syntax Highlighting**: rehype-pretty-code (dual theme: github-light / github-dark-dimmed)
 - **Styling**: Tailwind CSS 4 + `@tailwindcss/typography`
 - **Fonts**: Atkinson Hyperlegible (Google Fonts), `font-mono` global
@@ -53,6 +53,8 @@ app/
 content/
   posts/<year>/<slug>.md   # Markdown blog posts (frontmatter + content)
   README.md                # Frontmatter schema and authoring guide
+public/
+  audio/<year>/<slug>.mp3  # Podcast/audio embeds referenced by posts via raw <audio> tags
 components/
   BlogHeader.tsx           # Sticky header with dark mode toggle (useSyncExternalStore)
   BlogFooter.tsx           # Footer with social links + CC BY 4.0
@@ -93,6 +95,23 @@ Optional fields: `slug` (auto-derived from filename if omitted), `excerpt`, `tag
 Draft posts (`status: "draft"`) are excluded in `NODE_ENV=production` but visible in development.
 
 See `content/README.md` for full schema reference and writing workflow.
+
+### Embedding Audio (Podcasts)
+
+Post Markdown supports raw HTML — the pipeline runs `rehype-raw` then `rehype-sanitize` with a schema extended to allow `<audio>`/`<source>` (see `lib/posts/markdown.ts`). To embed a podcast:
+
+1. Downsample to mono mp3 (`ffmpeg -i in.m4a -codec:a libmp3lame -b:a 80k -ac 1 out.mp3`) to keep the file small before committing it to the repo (there's no CDN/object storage — audio ships as a static asset in `public/`)
+2. Save to `public/audio/<year>/<slug>.mp3`
+3. Embed near the top of the post:
+
+```html
+<audio controls preload="none" style="width: 100%;">
+  <source src="/audio/<year>/<slug>.mp3" type="audio/mpeg" />
+  您的瀏覽器不支援音訊播放，請<a href="/audio/<year>/<slug>.mp3">直接下載收聽</a>。
+</audio>
+```
+
+Any tag/attribute not in the sanitize schema is silently stripped — extend `sanitizeSchema` in `lib/posts/markdown.ts` if a post needs another raw HTML element.
 
 ## Design System
 
@@ -152,6 +171,7 @@ No database or environment variables required — content is served from Markdow
 - **Module-level cache**: `loadAllPosts()` caches parsed posts in memory on first call (production only). Dev always re-reads from disk for hot reload.
 - **Draft filtering**: `status: "draft"` posts are excluded in `NODE_ENV=production`. Control in tests via `opts.env` parameter.
 - **PR labels**: Always add labels when creating PRs. Available: `feat`, `fix`, `docs`, `refactor`, `test`, `ci`, `chore`, `perf`, `breaking`, `major`, `minor`, `patch`. Use `gh pr edit <num> --add-label "label1,label2"`.
+- **Markdown raw HTML is sanitized, not disabled**: `rehype-sanitize` runs right after `rehype-raw`, so `<script>` and other unlisted tags/attributes are stripped even though posts are self-authored. Adding a new embed type (video, iframe, etc.) requires updating `sanitizeSchema` in `lib/posts/markdown.ts` — it won't render silently otherwise.
 
 ## E2E Testing
 
