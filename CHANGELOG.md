@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/terry90918/terry90918.github.io/compare/v1.4.0...v1.5.0) (2026-07-11)
+
+
+### Features
+
+* **content:** embed podcast audio in ai-daily-2026-07-11 post ([#14](https://github.com/terry90918/terry90918.github.io/issues/14)) ([1d92e2d](https://github.com/terry90918/terry90918.github.io/commit/1d92e2dd375b9f1a2a737ee5b6e688a4376ea49c))
+
 ## [1.4.0](https://github.com/terry90918/terry90918.github.io/compare/v1.3.1...v1.4.0) (2026-07-08)
 
 
