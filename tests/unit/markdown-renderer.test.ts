@@ -78,4 +78,17 @@ describe('renderMarkdown()', () => {
     const result = await renderMarkdown('')
     expect(typeof result).toBe('string')
   })
+
+  it('preserves <audio>/<source> tags used for podcast embeds', async () => {
+    const markdown =
+      '<audio controls preload="none">\n  <source src="/audio/2026/example.mp3" type="audio/mpeg">\n</audio>'
+    const html = await renderMarkdown(markdown)
+    expect(html).toContain('<audio')
+    expect(html).toContain('<source src="/audio/2026/example.mp3" type="audio/mpeg">')
+  })
+
+  it('strips disallowed raw HTML such as <script>', async () => {
+    const html = await renderMarkdown('<script>alert(1)</script>\n\nHello')
+    expect(html).not.toContain('<script')
+  })
 })
