@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/terry90918/terry90918.github.io/compare/v1.5.0...v1.5.1) (2026-07-11)
+
+
+### Bug Fixes
+
+* **lint:** correct worktrees ignore path in eslint/gitignore/vitest ([#16](https://github.com/terry90918/terry90918.github.io/issues/16)) ([0627a1d](https://github.com/terry90918/terry90918.github.io/commit/0627a1d69742cc2ec855fa390b35faeb2a4c75a5))
+
 ## [1.5.0](https://github.com/terry90918/terry90918.github.io/compare/v1.4.0...v1.5.0) (2026-07-11)
 
 
