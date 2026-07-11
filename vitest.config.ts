@@ -6,7 +6,7 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     include: ['**/*.test.{ts,tsx}', '**/*.spec.{ts,tsx}'],
-    exclude: ['node_modules', '.next', '.worktrees', 'tests/e2e/**'],
+    exclude: ['node_modules', '.next', '.claude/worktrees', 'tests/e2e/**'],
     passWithNoTests: true,
   },
 })
