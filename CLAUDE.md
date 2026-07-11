@@ -28,8 +28,13 @@ bun lint           # ESLint
 bun format         # Prettier format
 bun run typecheck  # TypeScript check (tsc --noEmit)
 bun run test       # Vitest unit tests
+bun run test <file># Run a single test file, e.g. bun run test tests/unit/markdown-loader.test.ts
 bun run test:e2e   # Playwright E2E tests (needs running server on :3001)
 ```
+
+### Pre-commit Hook
+
+Husky's `pre-commit` hook runs on every commit: `bun format` (auto-fixes + re-stages) → `bun lint` → `bun run typecheck` → `bunx vitest run` → `bunx @fission-ai/openspec validate --specs`. The OpenSpec step validates specs under `openspec/specs/` against in-flight changes in `openspec/changes/` — most day-to-day edits won't touch these, but if a commit fails at that step, check whether an OpenSpec change needs to be applied or archived.
 
 ## Project Structure
 

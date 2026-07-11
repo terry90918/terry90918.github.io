@@ -21,6 +21,8 @@ bun run test        # Vitest 單元測試
 bun run test:e2e    # Playwright E2E（需要伺服器在 :3001）
 ```
 
+commit 前 Husky pre-commit hook 會自動執行 format → lint → typecheck → test → OpenSpec 規格驗證（`git commit --no-verify` 可跳過，但不建議）。
+
 ## 技術棧
 
 - Next.js 16 (App Router) + TypeScript
