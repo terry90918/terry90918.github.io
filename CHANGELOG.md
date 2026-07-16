@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/terry90918/terry90918.github.io/compare/v1.6.0...v1.7.0) (2026-07-16)
+
+
+### Features
+
+* automate podcast generation for future posts ([#23](https://github.com/terry90918/terry90918.github.io/issues/23)) ([b71f06b](https://github.com/terry90918/terry90918.github.io/commit/b71f06bc4719b698f1e6123a4dfbb262ec278bf0))
+
 ## [1.6.0](https://github.com/terry90918/terry90918.github.io/compare/v1.5.1...v1.6.0) (2026-07-16)
 
 ### Features
