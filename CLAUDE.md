@@ -103,7 +103,11 @@ See `content/README.md` for full schema reference and writing workflow.
 
 ### Embedding Audio (Podcasts)
 
-Post Markdown supports raw HTML — the pipeline runs `rehype-raw` then `rehype-sanitize` with a schema extended to allow `<audio>`/`<source>` (see `lib/posts/markdown.ts`). To embed a podcast:
+Post Markdown supports raw HTML — the pipeline runs `rehype-raw` then `rehype-sanitize` with a schema extended to allow `<audio>`/`<source>` (see `lib/posts/markdown.ts`). Any tag/attribute not in the sanitize schema is silently stripped — extend `sanitizeSchema` in `lib/posts/markdown.ts` if a post needs another raw HTML element.
+
+**Automated**: `bun run podcast <slug-or-path>` (`scripts/generate-podcast.ts`) drafts a two-host dialogue script from the post (via the `claude` CLI, unless `--script <dialogue.json>` supplies one), synthesizes each line with OpenAI's `gpt-4o-mini-tts` (`marin`/`cedar` voices), concatenates and downsamples with `ffmpeg`, writes `public/audio/<year>/<slug>.mp3`, and inserts the `<audio>` tag into the post — all in one commit instead of the two-PR pattern from #14/#21. Requires `OPENAI_API_KEY` in the environment and `ffmpeg`/`claude` on `PATH`. Use `--dry-run` to preview the dialogue script without calling the TTS API.
+
+**Manual fallback**, if you already have a narration audio file (e.g. recorded separately):
 
 1. Downsample to mono mp3 (`ffmpeg -i in.m4a -codec:a libmp3lame -b:a 80k -ac 1 out.mp3`) to keep the file small before committing it to the repo (there's no CDN/object storage — audio ships as a static asset in `public/`)
 2. Save to `public/audio/<year>/<slug>.mp3`
@@ -115,8 +119,6 @@ Post Markdown supports raw HTML — the pipeline runs `rehype-raw` then `rehype-
   您的瀏覽器不支援音訊播放，請<a href="/audio/<year>/<slug>.mp3">直接下載收聽</a>。
 </audio>
 ```
-
-Any tag/attribute not in the sanitize schema is silently stripped — extend `sanitizeSchema` in `lib/posts/markdown.ts` if a post needs another raw HTML element.
 
 ## Design System
 
