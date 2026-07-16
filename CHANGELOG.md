@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/terry90918/terry90918.github.io/compare/v1.5.1...v1.6.0) (2026-07-16)
+
+
+### Features
+
+* **content:** embed podcast audio in 2026-07-16 AI daily digest ([#21](https://github.com/terry90918/terry90918.github.io/issues/21)) ([843a86c](https://github.com/terry90918/terry90918.github.io/commit/843a86ce173a317393db47e1071c2f3b41267ccc))
+
 ## [1.5.1](https://github.com/terry90918/terry90918.github.io/compare/v1.5.0...v1.5.1) (2026-07-11)
 
 
