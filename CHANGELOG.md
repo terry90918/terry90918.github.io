@@ -2,24 +2,21 @@
 
 ## [1.6.0](https://github.com/terry90918/terry90918.github.io/compare/v1.5.1...v1.6.0) (2026-07-16)
 
-
 ### Features
 
-* **content:** embed podcast audio in 2026-07-16 AI daily digest ([#21](https://github.com/terry90918/terry90918.github.io/issues/21)) ([843a86c](https://github.com/terry90918/terry90918.github.io/commit/843a86ce173a317393db47e1071c2f3b41267ccc))
+- **content:** embed podcast audio in 2026-07-16 AI daily digest ([#21](https://github.com/terry90918/terry90918.github.io/issues/21)) ([843a86c](https://github.com/terry90918/terry90918.github.io/commit/843a86ce173a317393db47e1071c2f3b41267ccc))
 
 ## [1.5.1](https://github.com/terry90918/terry90918.github.io/compare/v1.5.0...v1.5.1) (2026-07-11)
 
-
 ### Bug Fixes
 
-* **lint:** correct worktrees ignore path in eslint/gitignore/vitest ([#16](https://github.com/terry90918/terry90918.github.io/issues/16)) ([0627a1d](https://github.com/terry90918/terry90918.github.io/commit/0627a1d69742cc2ec855fa390b35faeb2a4c75a5))
+- **lint:** correct worktrees ignore path in eslint/gitignore/vitest ([#16](https://github.com/terry90918/terry90918.github.io/issues/16)) ([0627a1d](https://github.com/terry90918/terry90918.github.io/commit/0627a1d69742cc2ec855fa390b35faeb2a4c75a5))
 
 ## [1.5.0](https://github.com/terry90918/terry90918.github.io/compare/v1.4.0...v1.5.0) (2026-07-11)
 
-
 ### Features
 
-* **content:** embed podcast audio in ai-daily-2026-07-11 post ([#14](https://github.com/terry90918/terry90918.github.io/issues/14)) ([1d92e2d](https://github.com/terry90918/terry90918.github.io/commit/1d92e2dd375b9f1a2a737ee5b6e688a4376ea49c))
+- **content:** embed podcast audio in ai-daily-2026-07-11 post ([#14](https://github.com/terry90918/terry90918.github.io/issues/14)) ([1d92e2d](https://github.com/terry90918/terry90918.github.io/commit/1d92e2dd375b9f1a2a737ee5b6e688a4376ea49c))
 
 ## [1.4.0](https://github.com/terry90918/terry90918.github.io/compare/v1.3.1...v1.4.0) (2026-07-08)
 
