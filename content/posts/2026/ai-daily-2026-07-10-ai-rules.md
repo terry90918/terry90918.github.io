@@ -1,8 +1,8 @@
 ---
 title: 'AI 巨頭要你相信規則，但沒人要你真的看懂它'
-publishedAt: '2026-07-12T05:00:00+08:00'
+publishedAt: '2026-07-10T05:00:00+08:00'
 status: 'published'
-slug: 'ai-daily-2026-07-12'
+slug: 'ai-daily-2026-07-10-ai-rules'
 excerpt: '從 Google 把 AI 廣告標籤藏進選單深處、OpenAI 收攏產品線，到 Zuckerberg 罕見現身 X 宣傳新模型、量化基金看不懂自己下注的 AI 行情，近期幾則新聞背後是同一套邏輯：讓「合規」與「使用者無感」同時成立。'
 tags:
   - ai-news
