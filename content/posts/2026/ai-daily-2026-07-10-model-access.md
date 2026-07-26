@@ -1,8 +1,8 @@
 ---
 title: '不是比模型，是比誰握著那扇門'
-publishedAt: '2026-07-11T05:00:00+08:00'
+publishedAt: '2026-07-10T05:00:00+08:00'
 status: 'published'
-slug: 'ai-daily-2026-07-11'
+slug: 'ai-daily-2026-07-10-model-access'
 excerpt: '這幾天的 AI 動態看似分散在產品、股市、廣告政策，但背後其實是同一件事：模型能力拉近之後，真正的競爭轉移到誰控制入口、誰的合規做得讓人挑不出毛病卻也感受不到。'
 tags:
   - ai-news
