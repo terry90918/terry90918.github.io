@@ -1,8 +1,8 @@
 ---
 title: '多模態模型的下一場競賽：不只堆 GPU，更要重新安排等待時間'
-publishedAt: '2026-07-26T05:00:00+08:00'
+publishedAt: '2026-07-24T05:00:00+08:00'
 status: 'published'
-slug: 'ai-daily-2026-07-26'
+slug: 'ai-daily-2026-07-24-bigmac'
 excerpt: '小紅書 dots infra 團隊開源 BigMac，嘗試用新的流水線排程同時改善多模態模型訓練的速度與記憶體壓力。'
 tags:
   - ai-news

@@ -2,7 +2,7 @@
 title: 'AI 競爭的三種關鍵能力：入口、算力與風險判斷'
 publishedAt: '2026-07-24T05:00:00+08:00'
 status: 'published'
-slug: 'ai-daily-2026-07-24'
+slug: 'ai-daily-2026-07-24-system-competition'
 excerpt: '從 Gemini 的使用規模、BigMac 的訓練效率到數學家投入 AI 風險研究，競爭正從模型能力延伸到整套系統。'
 tags:
   - ai-news
