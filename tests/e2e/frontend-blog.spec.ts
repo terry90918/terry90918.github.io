@@ -16,7 +16,9 @@ test.describe('Homepage (/)', () => {
   test('renders the site header with Terry.TY Chen link', async ({ page }) => {
     const header = page.locator('header')
     await expect(header).toBeVisible()
-    await expect(header.locator('a', { hasText: 'Terry.TY Chen' })).toBeVisible()
+    const identityLink = header.getByRole('link', { name: 'Terry.TY Chen', exact: true })
+    await expect(identityLink).toBeVisible()
+    await expect(identityLink).toHaveText('Terry.TY Chen')
   })
 
   test('header has Posts navigation link', async ({ page }) => {
@@ -45,12 +47,21 @@ test.describe('Homepage (/)', () => {
   })
 
   test('shows hero section with avatar and name', async ({ page }) => {
-    await expect(page.locator('h1', { hasText: "I'm Terry.TY Chen" })).toBeVisible()
+    const hero = page.getByRole('heading', { name: "Hi, I'm Terry.TY Chen.", exact: true })
+    await expect(hero).toBeVisible()
+    await expect(hero).toHaveText("Hi, I'm Terry.TY Chen.")
   })
 
-  test('shows GitHub social link', async ({ page }) => {
-    const githubLink = page.locator('a[href="https://github.com/terry90918"]').first()
+  test('shows unchanged social links', async ({ page }) => {
+    const main = page.locator('main')
+    const githubLink = main.locator('a[href="https://github.com/terry90918"]')
+    const xLink = main.locator('a[href="https://x.com/zxtw17985321"]')
+    const linkedInLink = main.locator(
+      'a[href="https://www.linkedin.com/in/tien-yi-chen-98812812a"]'
+    )
     await expect(githubLink).toBeVisible()
+    await expect(xLink).toBeVisible()
+    await expect(linkedInLink).toBeVisible()
   })
 
   test('shows latest posts section with "All Posts" link', async ({ page }) => {
@@ -130,7 +141,7 @@ test.describe('/rss.xml feed', () => {
 test.describe('Navigation links', () => {
   test('Terry.TY Chen logo links to homepage', async ({ page }) => {
     await page.goto('/about')
-    await page.locator('header a', { hasText: 'Terry.TY Chen' }).click()
+    await page.getByRole('link', { name: 'Terry.TY Chen', exact: true }).click()
     await expect(page).toHaveURL('/')
   })
 
