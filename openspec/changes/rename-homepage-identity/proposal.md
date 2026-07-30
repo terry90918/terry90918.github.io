@@ -11,8 +11,8 @@ Closes #26
 - Change the persistent header brand link text to `Terry.TY Chen`.
 - Change the homepage hero heading to `Hi, I'm Terry.TY Chen.`.
 - Update focused browser assertions for the two visible identity surfaces and the header link.
-- Add repository-level CodeRabbit configuration with automatic reviews disabled so the delivery
-  requests exactly one authorized review.
+- Add repository-level CodeRabbit configuration that disables automatic reviews.
+- Treat the single authorized CodeRabbit review as a separate delivery-process requirement.
 - Keep usernames, URLs, avatar alternative text, About content, metadata, RSS identity, and
   other author references unchanged.
 

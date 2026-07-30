@@ -20,4 +20,6 @@ the homepage hero while preserving account URLs and navigation behavior.
 
 - **WHEN** the homepage identity labels are renamed
 - **THEN** the GitHub profile link remains `https://github.com/terry90918`
-- **AND** no social profile URL is changed by the identity-label update
+- **AND** the X profile link remains `https://x.com/zxtw17985321`
+- **AND** the LinkedIn profile link remains
+  `https://www.linkedin.com/in/tien-yi-chen-98812812a`

@@ -4,15 +4,13 @@ Verified on 2026-07-30 before proposal approval.
 
 ## Repository and branch model
 
-- Repository root:
-  `/Users/terrychen/Documents/Github/terry90918/terry90918.me`
+- Repository root: the checkout containing this OpenSpec change
 - Current root branch: `main`
 - Remote: `origin`
 - Fetch and push target: `git@github.com:terry90918/terry90918.github.io.git`
 - GitHub repository: `terry90918/terry90918.github.io` (public)
 - Default branch: `main`
 - Current `HEAD` and `origin/main`: `a57a581fbe247db77fe982ed9b19ceba7d693015`
-- Viewer permission: `ADMIN`
 - A historical `develop` branch exists locally and remotely, but current deployment and release
   workflows trigger only from `main`; no active workflow is bound to `develop`.
 
@@ -29,8 +27,6 @@ Verified on 2026-07-30 before proposal approval.
 - Current source uses `Terry Chen` in `components/BlogHeader.tsx`.
 - Current source uses `Hi, I'm @terry90918.` in `app/(frontend)/page.tsx`.
 - Existing E2E coverage asserts both labels and header navigation.
-- A pre-proposal stash named `jt-flow-one pre-proposal homepage identity rename` preserves the
-  earlier local draft; the root checkout contains no tracked implementation changes.
 
 ## Deployment and dependencies
 
