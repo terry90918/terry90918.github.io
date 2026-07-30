@@ -32,6 +32,18 @@ The generated static homepage was served locally and read through the in-app bro
 - X URL: `https://x.com/zxtw17985321`
 - LinkedIn URL: `https://www.linkedin.com/in/tien-yi-chen-98812812a`
 
+## Local review and preflight
+
+- The read-only local review found no Critical or Important issue.
+- Two Minor findings were accepted:
+  - Visible identity assertions now use exact accessible names and exact text.
+  - Homepage E2E coverage now verifies the unchanged GitHub, X, and LinkedIn destinations.
+- The complete `origin/main..HEAD` commit, path, tree, blob, and binary diff range was listed.
+- No repository secret scanner was installed. A bounded pattern scan of the full outgoing diff
+  found only documentation words such as `credential` and `secret`; no secret-like value or
+  non-template `.env` file was present.
+- `.coderabbit.yaml` sets `reviews.auto_review.enabled: false`.
+
 ## E2E diagnostic note
 
 An initial full parallel E2E run against a long-lived development server produced navigation

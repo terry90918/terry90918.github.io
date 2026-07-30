@@ -17,7 +17,7 @@
 
 ## 4. Delivery
 
-- [ ] 4.1 Complete local review and secret/diff preflight.
+- [x] 4.1 Complete local review and secret/diff preflight.
 - [ ] 4.2 Push the feature branch, open a PR that closes #26, and complete authorized reviews.
 - [ ] 4.3 Merge after CI/review gates pass and verify the GitHub Pages deployment.
 - [ ] 4.4 Read back the canonical production homepage, archive the OpenSpec change, and confirm
