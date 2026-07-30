@@ -58,7 +58,7 @@ export default async function HomePage() {
             />
           </Link>
           <div>
-            <h1 className="text-foreground text-2xl font-bold">Hi, I&apos;m @terry90918.</h1>
+            <h1 className="text-foreground text-2xl font-bold">Hi, I&apos;m Terry.TY Chen.</h1>
             <p className="text-foreground mt-2 max-w-lg text-sm opacity-70">
               Building AI agent systems and MCP tooling in Taiwan. Every commit lands on GitHub.
             </p>

@@ -77,7 +77,7 @@ export function BlogHeader() {
           href="/"
           className="text-foreground font-bold no-underline transition-opacity hover:opacity-70"
         >
-          Terry Chen
+          Terry.TY Chen
         </Link>
         <nav className="flex items-center gap-4">
           <Link

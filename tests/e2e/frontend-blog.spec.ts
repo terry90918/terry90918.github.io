@@ -13,10 +13,10 @@ test.describe('Homepage (/)', () => {
     await page.goto('/')
   })
 
-  test('renders the site header with Terry Chen link', async ({ page }) => {
+  test('renders the site header with Terry.TY Chen link', async ({ page }) => {
     const header = page.locator('header')
     await expect(header).toBeVisible()
-    await expect(header.locator('a', { hasText: 'Terry Chen' })).toBeVisible()
+    await expect(header.locator('a', { hasText: 'Terry.TY Chen' })).toBeVisible()
   })
 
   test('header has Posts navigation link', async ({ page }) => {
@@ -45,7 +45,7 @@ test.describe('Homepage (/)', () => {
   })
 
   test('shows hero section with avatar and name', async ({ page }) => {
-    await expect(page.locator('h1', { hasText: "I'm @terry90918" })).toBeVisible()
+    await expect(page.locator('h1', { hasText: "I'm Terry.TY Chen" })).toBeVisible()
   })
 
   test('shows GitHub social link', async ({ page }) => {
@@ -128,9 +128,9 @@ test.describe('/rss.xml feed', () => {
 
 // ---- Navigation ----
 test.describe('Navigation links', () => {
-  test('Terry Chen logo links to homepage', async ({ page }) => {
+  test('Terry.TY Chen logo links to homepage', async ({ page }) => {
     await page.goto('/about')
-    await page.locator('header a', { hasText: 'Terry Chen' }).click()
+    await page.locator('header a', { hasText: 'Terry.TY Chen' }).click()
     await expect(page).toHaveURL('/')
   })
 
