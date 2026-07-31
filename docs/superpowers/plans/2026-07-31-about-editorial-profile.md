@@ -30,13 +30,14 @@
 
 - [ ] **Step 1: Write the failing desktop-profile test**
 
-  Add a test that locates `[data-testid="about-profile"]`, asserts a horizontal desktop flex direction, and confirms its avatar measures at least 144px.
+  Add a test that locates `[data-testid="about-profile"]`, asserts a horizontal desktop flex layout, and confirms its avatar measures at least 144px.
 
   ```ts
   test('uses an editorial profile composition on desktop', async ({ page }) => {
     const profile = page.getByTestId('about-profile')
     await expect(profile).toBeVisible()
-    await expect(profile.locator('img[alt="Terry Chen avatar"]')).toHaveCSS('width', '160px')
+    expect(await profile.locator('img[alt="Terry Chen avatar"]').evaluate((element) => parseFloat(getComputedStyle(element).width))).toBeGreaterThanOrEqual(144)
+    await expect(profile).toHaveCSS('display', 'flex')
     await expect(profile).toHaveCSS('flex-direction', 'row')
   })
   ```
@@ -55,6 +56,7 @@
   test('stacks the profile without horizontal overflow on mobile', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 812 })
     const profile = page.getByTestId('about-profile')
+    await expect(profile).toHaveCSS('display', 'flex')
     await expect(profile).toHaveCSS('flex-direction', 'column')
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true)
   })
@@ -112,12 +114,12 @@
 
 - [ ] **Step 3a: Replace the compact English bio with the approved Traditional-Chinese narrative**
 
-  Replace only the biography text with these three paragraphs; do not add claims beyond them:
+  Replace only the biography text with these approved three paragraphs; do not add claims beyond them:
 
   ```tsx
-  <p>我在台北打造 AI 產品，讓複雜的法律與營運工作轉化為可靠、可落地的系統。</p>
-  <p>我從產品方向一路做到正式環境：AI agents、檢索系統與產品工程，讓模型真正接上真實工作流程。</p>
-  <p>目前持續推進 JurisLM 的開源專案，包括 judicial-mcp、coolify-mcp 與 hetzner-mcp。</p>
+  <p>我在新竹地區打造能進入真實工作流程的 AI 系統。</p>
+  <p>從 AI agents、RAG 與 LLM 應用，到 agent harness 與產品工程，我專注把前沿模型能力轉化為企業可採用、可維運、可擴展的解決方案。</p>
+  <p>我持續開發對社會與產業有實際價值的 AI 應用工具，讓技術不只停在展示，而能成為推動工作方式與產業升級的基礎能力。</p>
   ```
 
 - [ ] **Step 4: Run focused About tests to verify Green**
@@ -161,6 +163,8 @@
 - [ ] **Step 2: Inspect live local behaviour in both themes**
 
   Serve the built export, inspect `/about` at desktop and 375px wide, and verify portrait sizing, chart legibility, contact links, visible focus, theme switch, and no console errors.
+
+  Also verify that the GitHub Activity heading and exact contribution-chart image source and alt text are visible.
 
 - [ ] **Step 3: Mark verified tasks and commit acceptance evidence**
 

@@ -38,7 +38,7 @@ Use the same public mailto target as the homepage, alongside the three existing 
 
 ### Use a concise Traditional-Chinese narrative
 
-The profile uses three short Traditional-Chinese paragraphs that connect Terry's AI work to legal and operational outcomes, ownership from product direction through production, and the current JurisLM open-source focus. This gives the page a concrete point of view while staying within supplied claims.
+The profile uses three short Traditional-Chinese paragraphs that establish the Hsinchu region, enterprise-ready AI systems, and a continuing focus on socially and industrially valuable AI applications. This gives the page a concrete point of view while staying within supplied claims.
 
 ## Risks / Trade-offs
 

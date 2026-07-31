@@ -36,3 +36,8 @@ The About page SHALL present GitHub, X, LinkedIn, and Email as visible public co
 
 - **WHEN** a visitor reaches the Connect section
 - **THEN** GitHub, X, LinkedIn, and Email links are available
+
+#### Scenario: Keyboard-visible contact focus
+
+- **WHEN** a keyboard visitor tabs through the Connect links
+- **THEN** GitHub, X, LinkedIn, and Email each expose a visible focus indicator

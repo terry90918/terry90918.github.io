@@ -258,12 +258,17 @@ test.describe('/about page', () => {
   })
 
   test('shows GitHub contribution chart image', async ({ page }) => {
+    await expect(page.getByRole('heading', { name: 'GitHub Activity', exact: true })).toBeVisible()
     const chartImg = page.getByRole('img', {
       name: "Terry Chen's GitHub contribution chart",
       exact: true,
     })
     await expect(chartImg).toBeVisible()
-    await expect(chartImg).toHaveAttribute('src', 'https://ghchart.rshah.org/terry90918')
+    await expect(
+      page.locator(
+        'img[src="https://ghchart.rshah.org/terry90918"][alt="Terry Chen\'s GitHub contribution chart"]'
+      )
+    ).toBeVisible()
   })
 
   test('has a GitHub profile link', async ({ page }) => {
@@ -278,12 +283,14 @@ test.describe('/about page', () => {
       .locator('img[alt="Terry Chen avatar"]')
       .evaluate((element) => parseFloat(getComputedStyle(element).width))
     expect(avatarWidth).toBeGreaterThanOrEqual(144)
+    await expect(profile).toHaveCSS('display', 'flex')
     await expect(profile).toHaveCSS('flex-direction', 'row')
   })
 
   test('stacks the profile without horizontal overflow on mobile', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 812 })
     const profile = page.getByTestId('about-profile')
+    await expect(profile).toHaveCSS('display', 'flex')
     await expect(profile).toHaveCSS('flex-direction', 'column')
     expect(
       await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
@@ -293,6 +300,7 @@ test.describe('/about page', () => {
   test('shows four public contact links', async ({ page }) => {
     const connect = page.getByTestId('about-connect')
     await expect(connect).toBeVisible()
+    await expect(connect.getByRole('link')).toHaveCount(4)
 
     for (const { name, href } of [
       { name: 'GitHub — github.com/terry90918', href: 'https://github.com/terry90918' },

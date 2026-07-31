@@ -9,7 +9,7 @@
 - [x] 2.1 Recompose the portrait and existing biography into the responsive profile block.
 - [x] 2.2 Tune About heading, section spacing, and chart treatment to the editorial hierarchy.
 - [x] 2.3 Add Email while retaining the three existing public contact links and focus styles.
-- [x] 2.4 Replace the compact English bio with the approved Traditional-Chinese professional narrative.
+- [x] 2.4 Replace the compact English bio with the approved Hsinchu and enterprise-AI Traditional-Chinese narrative.
 
 ## 3. Local acceptance
 
