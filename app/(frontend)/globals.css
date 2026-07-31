@@ -6,6 +6,7 @@
 
 :root,
 html[data-theme='light'] {
+  --editorial-width: 46rem;
   --background: #fdfdfd;
   --foreground: #282728;
   --accent: #006cac;

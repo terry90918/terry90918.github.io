@@ -24,7 +24,7 @@ function ThemeToggle() {
     <button
       aria-label="Toggle theme"
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="text-foreground flex h-8 w-8 items-center justify-center rounded opacity-70 transition-opacity hover:opacity-100"
+      className="text-foreground flex h-8 w-8 items-center justify-center rounded opacity-70 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
     >
       {theme === 'dark' ? (
         <svg
@@ -72,23 +72,30 @@ function ThemeToggle() {
 export function BlogHeader() {
   return (
     <header className="border-border bg-background/80 sticky top-0 z-50 border-b backdrop-blur-sm">
-      <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
+      <div
+        data-testid="header-inner"
+        style={{
+          width: 'calc(100% - 2rem)',
+          maxWidth: 'var(--editorial-width)',
+        }}
+        className="mx-auto flex items-center justify-between px-4 py-7"
+      >
         <Link
           href="/"
-          className="text-foreground font-bold no-underline transition-opacity hover:opacity-70"
+          className="text-foreground rounded-sm font-bold no-underline transition-opacity hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
         >
           Terry.TY Chen
         </Link>
         <nav className="flex items-center gap-4">
           <Link
             href="/posts"
-            className="text-foreground text-sm opacity-70 transition-opacity hover:opacity-100"
+            className="text-foreground rounded-sm text-sm opacity-70 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
           >
             Posts
           </Link>
           <Link
             href="/about"
-            className="text-foreground text-sm opacity-70 transition-opacity hover:opacity-100"
+            className="text-foreground rounded-sm text-sm opacity-70 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
           >
             About
           </Link>

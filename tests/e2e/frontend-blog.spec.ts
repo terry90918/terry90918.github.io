@@ -46,22 +46,152 @@ test.describe('Homepage (/)', () => {
     expect(newTheme).not.toBe(initialTheme)
   })
 
+  test('theme toggle is keyboard reachable with a visible focus ring', async ({ page }) => {
+    const html = page.locator('html')
+    const toggleBtn = page.locator('[aria-label="Toggle theme"]')
+    const initialTheme = await html.getAttribute('data-theme')
+
+    await page.keyboard.press('Tab')
+    await page.keyboard.press('Tab')
+    await page.keyboard.press('Tab')
+    await page.keyboard.press('Tab')
+
+    await expect(toggleBtn).toBeFocused()
+    const focusStyle = await toggleBtn.evaluate((element) => ({
+      outlineStyle: getComputedStyle(element).outlineStyle,
+      outlineWidth: getComputedStyle(element).outlineWidth,
+    }))
+    expect(focusStyle.outlineStyle).not.toBe('none')
+    expect(focusStyle.outlineWidth).not.toBe('0px')
+
+    await page.keyboard.press('Enter')
+    await expect(html).not.toHaveAttribute('data-theme', initialTheme ?? '')
+  })
+
   test('shows hero section with avatar and name', async ({ page }) => {
     const hero = page.getByRole('heading', { name: "Hi, I'm Terry.TY Chen.", exact: true })
     await expect(hero).toBeVisible()
     await expect(hero).toHaveText("Hi, I'm Terry.TY Chen.")
   })
 
-  test('shows unchanged social links', async ({ page }) => {
+  test('aligns the header and homepage on the same editorial width', async ({ page }) => {
+    await page.setViewportSize({ width: 1046, height: 1200 })
+
+    const headerInner = page.getByTestId('header-inner')
+    const homepageInner = page.getByTestId('homepage-inner')
+    await expect(headerInner).toBeVisible()
+    await expect(homepageInner).toBeVisible()
+    const [headerBox, homepageBox] = await Promise.all([
+      headerInner.boundingBox(),
+      homepageInner.boundingBox(),
+    ])
+
+    expect(headerBox).not.toBeNull()
+    expect(homepageBox).not.toBeNull()
+    if (!headerBox || !homepageBox) return
+
+    const centeredOffset = (box: { x: number; width: number }) =>
+      Math.abs(box.x - (1046 - box.x - box.width))
+
+    expect(Math.abs(headerBox.width - homepageBox.width)).toBeLessThanOrEqual(1)
+    expect(Math.abs(headerBox.width - 736)).toBeLessThanOrEqual(1)
+    expect(centeredOffset(headerBox)).toBeLessThanOrEqual(1)
+    expect(centeredOffset(homepageBox)).toBeLessThanOrEqual(1)
+  })
+
+  test('keeps the shared editorial width near the desktop breakpoint', async ({ page }) => {
+    await page.setViewportSize({ width: 750, height: 1000 })
+
+    const [headerBox, homepageBox] = await Promise.all([
+      page.getByTestId('header-inner').boundingBox(),
+      page.getByTestId('homepage-inner').boundingBox(),
+    ])
+
+    expect(headerBox).not.toBeNull()
+    expect(homepageBox).not.toBeNull()
+    if (!headerBox || !homepageBox) return
+
+    expect(Math.abs(headerBox.width - homepageBox.width)).toBeLessThanOrEqual(1)
+    expect(Math.abs(headerBox.x - homepageBox.x)).toBeLessThanOrEqual(1)
+  })
+
+  test('uses an identity-first desktop hero', async ({ page }) => {
+    await page.setViewportSize({ width: 1046, height: 1200 })
+
+    const hero = page.getByTestId('homepage-hero')
+    await expect(hero).toBeVisible()
+    const portrait = hero.getByRole('img', { name: 'Terry Chen avatar' })
+    const [heroStyle, portraitBox, headingStyle] = await Promise.all([
+      hero.evaluate((element) => ({
+        display: getComputedStyle(element).display,
+        flexDirection: getComputedStyle(element).flexDirection,
+        borderBottomWidth: getComputedStyle(element).borderBottomWidth,
+      })),
+      portrait.boundingBox(),
+      hero
+        .getByRole('heading', { name: "Hi, I'm Terry.TY Chen.", exact: true })
+        .evaluate((element) => ({ fontSize: getComputedStyle(element).fontSize })),
+    ])
+
+    expect(heroStyle.display).toBe('flex')
+    expect(heroStyle.flexDirection).toBe('row')
+    expect(heroStyle.borderBottomWidth).toBe('1px')
+    expect(portraitBox?.width).toBe(160)
+    expect(portraitBox?.height).toBe(160)
+    expect(headingStyle.fontSize).toBe('30px')
+  })
+
+  test('stacks the hero without horizontal overflow on mobile', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 })
+
+    const hero = page.getByTestId('homepage-hero')
+    await expect(hero).toBeVisible()
+    const heroStyle = await hero.evaluate((element) => ({
+      flexDirection: getComputedStyle(element).flexDirection,
+    }))
+    const hasHorizontalOverflow = await page.evaluate(
+      () => document.documentElement.scrollWidth > document.documentElement.clientWidth
+    )
+
+    expect(heroStyle.flexDirection).toBe('column')
+    expect(hasHorizontalOverflow).toBe(false)
+  })
+
+  test('presents recent posts as an open editorial list', async ({ page }) => {
+    const postList = page.getByTestId('homepage-post-list')
+    await expect(postList).toBeVisible()
+    const postRows = postList.locator('article')
+
+    await expect(page.getByRole('heading', { name: 'Latest Posts', exact: true })).toHaveCount(0)
+    await expect(postRows).not.toHaveCount(0)
+
+    const postBorders = await postRows.evaluateAll((elements) =>
+      elements.map((element) => {
+        const style = getComputedStyle(element)
+        return [
+          style.borderTopWidth,
+          style.borderRightWidth,
+          style.borderBottomWidth,
+          style.borderLeftWidth,
+        ]
+      })
+    )
+    expect(postBorders.flat()).toEqual(postBorders.flat().map(() => '0px'))
+  })
+
+  test('shows Terry-owned social and email links', async ({ page }) => {
     const main = page.locator('main')
     const githubLink = main.locator('a[href="https://github.com/terry90918"]')
     const xLink = main.locator('a[href="https://x.com/zxtw17985321"]')
     const linkedInLink = main.locator(
       'a[href="https://www.linkedin.com/in/tien-yi-chen-98812812a"]'
     )
+    const emailLink = main.locator('a[href="mailto:zxtw17985321@gmail.com"]')
     await expect(githubLink).toBeVisible()
     await expect(xLink).toBeVisible()
     await expect(linkedInLink).toBeVisible()
+    await expect(emailLink).toBeVisible()
+    await expect(emailLink).toHaveText('Email')
   })
 
   test('shows latest posts section with "All Posts" link', async ({ page }) => {
