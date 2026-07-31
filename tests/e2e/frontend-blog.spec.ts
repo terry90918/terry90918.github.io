@@ -239,19 +239,19 @@ test.describe('/about page', () => {
   test('shows the approved Traditional-Chinese professional narrative', async ({ page }) => {
     const profile = page.getByTestId('about-profile')
     await expect(
-      profile.getByText('我在台北打造 AI 產品，讓複雜的法律與營運工作轉化為可靠、可落地的系統。', {
+      profile.getByText('我在新竹地區打造能進入真實工作流程的 AI 系統。', {
         exact: true,
       })
     ).toBeVisible()
     await expect(
       profile.getByText(
-        '我從產品方向一路做到正式環境：AI agents、檢索系統與產品工程，讓模型真正接上真實工作流程。',
+        '從 AI agents、RAG 與 LLM 應用，到 agent harness 與產品工程，我專注把前沿模型能力轉化為企業可採用、可維運、可擴展的解決方案。',
         { exact: true }
       )
     ).toBeVisible()
     await expect(
       profile.getByText(
-        '目前持續推進 JurisLM 的開源專案，包括 judicial-mcp、coolify-mcp 與 hetzner-mcp。',
+        '我持續開發對社會與產業有實際價值的 AI 應用工具，讓技術不只停在展示，而能成為推動工作方式與產業升級的基礎能力。',
         { exact: true }
       )
     ).toBeVisible()

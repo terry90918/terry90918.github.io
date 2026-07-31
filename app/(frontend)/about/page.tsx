@@ -29,13 +29,13 @@ export default function AboutPage() {
           />
           <div className="max-w-prose space-y-2">
             <p className="text-foreground mb-2 text-sm opacity-70">
-              我在台北打造 AI 產品，讓複雜的法律與營運工作轉化為可靠、可落地的系統。
+              我在新竹地區打造能進入真實工作流程的 AI 系統。
             </p>
             <p className="text-foreground mb-2 text-sm opacity-70">
-              我從產品方向一路做到正式環境：AI agents、檢索系統與產品工程，讓模型真正接上真實工作流程。
+              從 AI agents、RAG 與 LLM 應用，到 agent harness 與產品工程，我專注把前沿模型能力轉化為企業可採用、可維運、可擴展的解決方案。
             </p>
             <p className="text-foreground text-sm opacity-70">
-              目前持續推進 JurisLM 的開源專案，包括 judicial-mcp、coolify-mcp 與 hetzner-mcp。
+              我持續開發對社會與產業有實際價值的 AI 應用工具，讓技術不只停在展示，而能成為推動工作方式與產業升級的基礎能力。
             </p>
           </div>
         </div>
