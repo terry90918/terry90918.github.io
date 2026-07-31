@@ -249,6 +249,35 @@ test.describe('/about page', () => {
     const githubLink = page.locator('a[href*="github.com/terry90918"]').first()
     await expect(githubLink).toBeVisible()
   })
+
+  test('uses an editorial profile composition on desktop', async ({ page }) => {
+    const profile = page.getByTestId('about-profile')
+    await expect(profile).toBeVisible()
+    await expect(profile.locator('img[alt="Terry Chen avatar"]')).toHaveCSS('width', '160px')
+    await expect(profile).toHaveCSS('flex-direction', 'row')
+  })
+
+  test('stacks the profile without horizontal overflow on mobile', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 })
+    const profile = page.getByTestId('about-profile')
+    await expect(profile).toHaveCSS('flex-direction', 'column')
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
+    ).toBe(true)
+  })
+
+  test('shows four public contact links', async ({ page }) => {
+    const githubLink = page.getByRole('link', { name: 'GitHub', exact: true })
+    const xLink = page.getByRole('link', { name: 'X', exact: true })
+    const linkedInLink = page.getByRole('link', { name: 'LinkedIn', exact: true })
+    const emailLink = page.getByRole('link', { name: 'Email', exact: true })
+
+    await expect(githubLink).toBeVisible()
+    await expect(xLink).toBeVisible()
+    await expect(linkedInLink).toBeVisible()
+    await expect(emailLink).toBeVisible()
+    await expect(emailLink).toHaveAttribute('href', 'mailto:zxtw17985321@gmail.com')
+  })
 })
 
 // ---- /rss.xml route ----
