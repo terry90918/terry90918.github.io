@@ -258,8 +258,12 @@ test.describe('/about page', () => {
   })
 
   test('shows GitHub contribution chart image', async ({ page }) => {
-    const chartImg = page.locator('img[src*="ghchart.rshah.org"]')
+    const chartImg = page.getByRole('img', {
+      name: "Terry Chen's GitHub contribution chart",
+      exact: true,
+    })
     await expect(chartImg).toBeVisible()
+    await expect(chartImg).toHaveAttribute('src', 'https://ghchart.rshah.org/terry90918')
   })
 
   test('has a GitHub profile link', async ({ page }) => {
@@ -309,23 +313,35 @@ test.describe('/about page', () => {
     }
   })
 
-  test('shows a 2px solid focus outline when keyboard focus reaches a Connect link', async ({
+  test('shows a visible 2px solid focus outline for every keyboard-reached Connect link', async ({
     page,
   }) => {
     const connect = page.getByTestId('about-connect')
-    const githubLink = connect.getByRole('link', {
-      name: 'GitHub — github.com/terry90918',
-      exact: true,
-    })
 
-    for (let tabCount = 0; tabCount < 16; tabCount += 1) {
-      await page.keyboard.press('Tab')
-      if (await githubLink.evaluate((element) => document.activeElement === element)) break
+    for (const { name, href } of [
+      { name: 'GitHub — github.com/terry90918', href: 'https://github.com/terry90918' },
+      { name: 'X — @zxtw17985321', href: 'https://x.com/zxtw17985321' },
+      {
+        name: 'LinkedIn — Tien-Yi Chen',
+        href: 'https://www.linkedin.com/in/tien-yi-chen-98812812a',
+      },
+      { name: 'Email — zxtw17985321@gmail.com', href: 'mailto:zxtw17985321@gmail.com' },
+    ]) {
+      const link = connect.getByRole('link', { name, exact: true })
+
+      for (let tabCount = 0; tabCount < 16; tabCount += 1) {
+        await page.keyboard.press('Tab')
+        if (await link.evaluate((element) => document.activeElement === element)) break
+      }
+
+      await expect(link).toBeFocused()
+      await expect(link).toHaveAttribute('href', href)
+      await expect(link).toHaveCSS('outline-style', 'solid')
+      await expect(link).toHaveCSS('outline-width', '2px')
+      expect(await link.evaluate((element) => getComputedStyle(element).outlineColor)).not.toBe(
+        'rgba(0, 0, 0, 0)'
+      )
     }
-
-    await expect(githubLink).toBeFocused()
-    await expect(githubLink).toHaveCSS('outline-style', 'solid')
-    await expect(githubLink).toHaveCSS('outline-width', '2px')
   })
 })
 

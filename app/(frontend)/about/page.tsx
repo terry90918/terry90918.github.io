@@ -4,7 +4,8 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Terry Chen — 在台北打造 AI 系統，讓複雜工作轉化為可靠、可落地的產品。',
+  description:
+    'Terry Chen — AI Engineer building LLM agent systems and MCP tooling in Taipei, Taiwan.',
 }
 
 export default function AboutPage() {
