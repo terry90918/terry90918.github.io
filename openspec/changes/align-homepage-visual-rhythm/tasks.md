@@ -12,6 +12,7 @@
 - [x] 2.3 Increase portrait and heading scale while preserving Terry's identity and copy.
 - [x] 2.4 Remove the decorative section eyebrow and post-row borders.
 - [x] 2.5 Tune title, metadata, excerpt, and inter-post spacing to the open-list hierarchy.
+- [x] 2.6 Retain GitHub, X, LinkedIn, and Email as hero contact links.
 
 ## 3. Local acceptance
 

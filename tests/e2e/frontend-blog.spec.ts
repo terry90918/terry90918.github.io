@@ -179,16 +179,19 @@ test.describe('Homepage (/)', () => {
     expect(postBorders.flat()).toEqual(postBorders.flat().map(() => '0px'))
   })
 
-  test('shows unchanged social links', async ({ page }) => {
+  test('shows Terry-owned social and email links', async ({ page }) => {
     const main = page.locator('main')
     const githubLink = main.locator('a[href="https://github.com/terry90918"]')
     const xLink = main.locator('a[href="https://x.com/zxtw17985321"]')
     const linkedInLink = main.locator(
       'a[href="https://www.linkedin.com/in/tien-yi-chen-98812812a"]'
     )
+    const emailLink = main.locator('a[href="mailto:zxtw17985321@gmail.com"]')
     await expect(githubLink).toBeVisible()
     await expect(xLink).toBeVisible()
     await expect(linkedInLink).toBeVisible()
+    await expect(emailLink).toBeVisible()
+    await expect(emailLink).toHaveText('Email')
   })
 
   test('shows latest posts section with "All Posts" link', async ({ page }) => {

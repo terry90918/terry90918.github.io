@@ -63,6 +63,7 @@ keyboard accessibility.
 - **AND** the X link remains `https://x.com/zxtw17985321`
 - **AND** the LinkedIn link remains
   `https://www.linkedin.com/in/tien-yi-chen-98812812a`
+- **AND** the Email link is `mailto:zxtw17985321@gmail.com`
 
 #### Scenario: Interactive controls remain accessible
 

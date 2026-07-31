@@ -104,6 +104,12 @@ export default async function HomePage() {
             >
               LinkedIn
             </Link>
+            <Link
+              href="mailto:zxtw17985321@gmail.com"
+              className="text-accent rounded-sm hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
+            >
+              Email
+            </Link>
           </div>
         </div>
       </section>

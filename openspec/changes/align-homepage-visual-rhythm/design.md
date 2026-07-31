@@ -56,7 +56,7 @@ Desktop:
 ├──────────────────────────────────────────────────────┤
 │  ( 160px portrait )  Hi, I'm Terry.TY Chen.         │
 │                      biography on two lines          │
-│                      GitHub  X  LinkedIn              │
+│                      GitHub  X  LinkedIn  Email        │
 ├──────────────────────────────────────────────────────┤
 │  Post title                                          │
 │  date • reading time                                 │
