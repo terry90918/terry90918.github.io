@@ -25,7 +25,7 @@
 ## 4. Delivery
 
 - [x] 4.1 Commit the implementation with issue and design rationale.
-- [ ] 4.2 Push the feature branch and open a PR that closes #31.
+- [x] 4.2 Push the feature branch and open a PR that closes #31.
 - [ ] 4.3 Address CI and review findings, then merge through the repository workflow.
 - [ ] 4.4 Verify the GitHub Pages deployment commit and read back the canonical production homepage.
 - [ ] 4.5 Archive the OpenSpec change and confirm issue #31 is closed.
