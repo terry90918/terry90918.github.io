@@ -9,13 +9,14 @@ export const metadata: Metadata = {
     default: 'Terry Chen',
     template: '%s | Terry Chen',
   },
-  description: 'Building AI agent systems and MCP tooling in Taiwan. Every commit lands on GitHub.',
+  description:
+    'AI-powered tools from Swift roots to web frontiers. Every commit lands on GitHub for you to fork & remix.',
   authors: [{ name: 'Terry Chen', url: 'https://github.com/terry90918' }],
   creator: 'Terry Chen',
   openGraph: {
     title: 'Terry Chen',
     description:
-      'Building AI agent systems and MCP tooling in Taiwan. Every commit lands on GitHub.',
+      'AI-powered tools from Swift roots to web frontiers. Every commit lands on GitHub for you to fork & remix.',
     url: 'https://terry90918.github.io',
     type: 'website',
     locale: 'en_US',
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     card: 'summary',
     title: 'Terry Chen',
     description:
-      'Building AI agent systems and MCP tooling in Taiwan. Every commit lands on GitHub.',
+      'AI-powered tools from Swift roots to web frontiers. Every commit lands on GitHub for you to fork & remix.',
     creator: '@zxtw17985321',
   },
   robots: {

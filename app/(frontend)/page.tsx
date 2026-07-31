@@ -60,7 +60,8 @@ export default async function HomePage() {
           <div>
             <h1 className="text-foreground text-2xl font-bold">Hi, I&apos;m Terry.TY Chen.</h1>
             <p className="text-foreground mt-2 max-w-lg text-sm opacity-70">
-              Building AI agent systems and MCP tooling in Taiwan. Every commit lands on GitHub.
+              AI-powered tools from Swift roots to web frontiers. Every commit lands on GitHub for
+              you to fork &amp; remix.
             </p>
           </div>
           <div className="flex items-center gap-4 text-sm">
