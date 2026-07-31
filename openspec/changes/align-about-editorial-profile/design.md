@@ -1,12 +1,13 @@
 ## Context
 
-The current About page has the required content but groups it as compact rows: a 96px portrait, three small bio lines, a chart, and three contacts. The homepage already establishes a 46rem editorial width, larger portrait scale, open spacing, light/dark themes, and accessible contact links.
+The current About page has the required content but groups it as compact rows: a 96px portrait, three small English bio lines, a chart, and three contacts. The homepage already establishes a 46rem editorial width, larger portrait scale, open spacing, light/dark themes, and accessible contact links.
 
 ## Goals / Non-Goals
 
 **Goals:**
 
 - Make Terry's profile and current technical focus legible as the initial visual thesis.
+- Express that profile in the approved Traditional-Chinese narrative rather than a generic English tool list.
 - Present GitHub activity as a clear proof-of-work section.
 - Provide GitHub, X, LinkedIn, and Email contact paths with keyboard-visible focus.
 - Preserve mobile readability without horizontal overflow.
@@ -34,6 +35,10 @@ The existing external chart remains, but gains dedicated section spacing and res
 ### Complete the existing contact set with Email
 
 Use the same public mailto target as the homepage, alongside the three existing social links. Contact labels remain text links for clarity and accessibility.
+
+### Use a concise Traditional-Chinese narrative
+
+The profile uses three short Traditional-Chinese paragraphs that connect Terry's AI work to legal and operational outcomes, ownership from product direction through production, and the current JurisLM open-source focus. This gives the page a concrete point of view while staying within supplied claims.
 
 ## Risks / Trade-offs
 

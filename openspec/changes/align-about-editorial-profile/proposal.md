@@ -5,6 +5,7 @@ The homepage now presents Terry's work with an editorial reading rhythm, while t
 ## What Changes
 
 - Recompose the About profile into a responsive portrait-and-bio editorial block.
+- Replace the compact English bio with an approved Traditional-Chinese professional narrative.
 - Establish clearer spacing and hierarchy around the GitHub contribution chart.
 - Retain GitHub, X, and LinkedIn, and add Email as a fourth visible contact link.
 - Preserve the existing chart provider, dark mode, navigation, and keyboard accessibility.

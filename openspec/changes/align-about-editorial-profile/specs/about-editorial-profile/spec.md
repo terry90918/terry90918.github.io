@@ -2,7 +2,7 @@
 
 ### Requirement: Responsive profile composition
 
-The About page SHALL present Terry Chen's portrait and existing biography in a responsive editorial profile block that is horizontal on wider screens and stacked on narrow screens.
+The About page SHALL present Terry Chen's portrait and approved Traditional-Chinese professional narrative in a responsive editorial profile block that is horizontal on wider screens and stacked on narrow screens.
 
 #### Scenario: Desktop profile
 
@@ -13,6 +13,11 @@ The About page SHALL present Terry Chen's portrait and existing biography in a r
 
 - **WHEN** the About page is rendered at a narrow viewport
 - **THEN** the portrait and biography stack without horizontal page overflow
+
+#### Scenario: Traditional-Chinese professional narrative
+
+- **WHEN** a visitor reads the About profile
+- **THEN** it presents the approved Traditional-Chinese narrative about reliable AI products, real workflows, and JurisLM's open-source foundations
 
 ### Requirement: Evidence-led GitHub activity
 

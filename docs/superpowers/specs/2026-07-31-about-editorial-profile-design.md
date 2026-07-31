@@ -6,7 +6,7 @@ The About page gives prospective collaborators a compact, credible snapshot of T
 
 ## Chosen direction
 
-Use the homepage's quiet editorial rhythm rather than copying another person's biography page. A responsive profile block pairs a larger circular portrait with the existing three-line bio. The portrait remains a personal identifier; the prose remains Terry's own factual copy.
+Use the homepage's quiet editorial rhythm rather than copying another person's biography page. A responsive profile block pairs a larger circular portrait with a concise Traditional-Chinese professional narrative. The portrait remains a personal identifier; the prose states Terry's own factual work and current open-source focus.
 
 The GitHub chart becomes a distinct evidence section with more vertical room and a readable full-width chart. The four contact paths sit in a final, compact Connect section: GitHub, X, LinkedIn, and Email.
 
@@ -19,7 +19,7 @@ The GitHub chart becomes a distinct evidence section with more vertical room and
 
 ## Scope
 
-Included: responsive profile composition, typographic and spacing hierarchy, a legible contribution chart, visible keyboard focus, and the fourth Email contact link.
+Included: responsive profile composition, a Traditional-Chinese professional narrative, typographic and spacing hierarchy, a legible contribution chart, visible keyboard focus, and the fourth Email contact link.
 
 Excluded: newsletter signup, analytics, new external services, altered biography claims, and reproduction of Peter Steinberger's copy, imagery, or branding.
 

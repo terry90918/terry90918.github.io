@@ -10,7 +10,7 @@
 
 ## Global Constraints
 
-- Retain existing factual biography copy and the `ghchart.rshah.org/terry90918` contribution chart.
+- Use the approved Traditional-Chinese professional narrative and retain the `ghchart.rshah.org/terry90918` contribution chart.
 - Do not add forms, analytics, subscriptions, dependencies, or external services.
 - Provide GitHub, X, LinkedIn, and `mailto:zxtw17985321@gmail.com` as visible contact links.
 - Preserve token-based light/dark theming, visible keyboard focus, and no narrow-viewport horizontal overflow.
@@ -108,6 +108,16 @@
   <Link href="mailto:zxtw17985321@gmail.com" className="text-accent rounded-sm hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
     Email — zxtw17985321@gmail.com
   </Link>
+  ```
+
+- [ ] **Step 3a: Replace the compact English bio with the approved Traditional-Chinese narrative**
+
+  Replace only the biography text with these three paragraphs; do not add claims beyond them:
+
+  ```tsx
+  <p>我在台北打造 AI 系統，讓複雜的法律與營運工作轉化為可靠、可落地的產品。</p>
+  <p>我從產品方向一路做到正式環境：LLM agents、檢索系統與 MCP 工具，讓模型真正接上真實工作流程。</p>
+  <p>目前我正建構 JurisLM 的開源基礎，包括 judicial-mcp、coolify-mcp 與 hetzner-mcp。</p>
   ```
 
 - [ ] **Step 4: Run focused About tests to verify Green**

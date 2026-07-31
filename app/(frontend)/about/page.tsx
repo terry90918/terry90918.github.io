@@ -4,8 +4,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'About',
-  description:
-    'Terry Chen — AI Engineer building LLM agent systems and MCP tooling in Taipei, Taiwan.',
+  description: 'Terry Chen — 在台北打造 AI 系統，讓複雜工作轉化為可靠、可落地的產品。',
 }
 
 export default function AboutPage() {
@@ -28,12 +27,14 @@ export default function AboutPage() {
             unoptimized
           />
           <div className="max-w-prose space-y-2">
-            <p className="text-foreground mb-2 text-sm opacity-70">Based in Taipei, Taiwan.</p>
             <p className="text-foreground mb-2 text-sm opacity-70">
-              AI Engineer building LLM agent systems and MCP tooling.
+              我在台北打造 AI 系統，讓複雜的法律與營運工作轉化為可靠、可落地的產品。
+            </p>
+            <p className="text-foreground mb-2 text-sm opacity-70">
+              我從產品方向一路做到正式環境：LLM agents、檢索系統與 MCP 工具，讓模型真正接上真實工作流程。
             </p>
             <p className="text-foreground text-sm opacity-70">
-              Building judicial-mcp, coolify-mcp, hetzner-mcp.
+              目前我正建構 JurisLM 的開源基礎，包括 judicial-mcp、coolify-mcp 與 hetzner-mcp。
             </p>
           </div>
         </div>
