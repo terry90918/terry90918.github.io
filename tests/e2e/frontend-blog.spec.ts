@@ -338,9 +338,12 @@ test.describe('/about page', () => {
       await expect(link).toHaveAttribute('href', href)
       await expect(link).toHaveCSS('outline-style', 'solid')
       await expect(link).toHaveCSS('outline-width', '2px')
-      expect(await link.evaluate((element) => getComputedStyle(element).outlineColor)).not.toBe(
-        'rgba(0, 0, 0, 0)'
-      )
+      expect(
+        await link.evaluate((element) => {
+          const channels = getComputedStyle(element).outlineColor.match(/[\d.]+/g)?.map(Number)
+          return channels !== undefined && (channels.length < 4 || channels[3] > 0)
+        })
+      ).toBe(true)
     }
   })
 })
