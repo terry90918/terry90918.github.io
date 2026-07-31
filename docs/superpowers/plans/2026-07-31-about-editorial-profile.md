@@ -115,9 +115,9 @@
   Replace only the biography text with these three paragraphs; do not add claims beyond them:
 
   ```tsx
-  <p>我在台北打造 AI 系統，讓複雜的法律與營運工作轉化為可靠、可落地的產品。</p>
-  <p>我從產品方向一路做到正式環境：LLM agents、檢索系統與 MCP 工具，讓模型真正接上真實工作流程。</p>
-  <p>目前我正建構 JurisLM 的開源基礎，包括 judicial-mcp、coolify-mcp 與 hetzner-mcp。</p>
+  <p>我在台北打造 AI 產品，讓複雜的法律與營運工作轉化為可靠、可落地的系統。</p>
+  <p>我從產品方向一路做到正式環境：AI agents、檢索系統與產品工程，讓模型真正接上真實工作流程。</p>
+  <p>目前持續推進 JurisLM 的開源專案，包括 judicial-mcp、coolify-mcp 與 hetzner-mcp。</p>
   ```
 
 - [ ] **Step 4: Run focused About tests to verify Green**

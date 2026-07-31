@@ -17,7 +17,7 @@ The About page SHALL present Terry Chen's portrait and approved Traditional-Chin
 #### Scenario: Traditional-Chinese professional narrative
 
 - **WHEN** a visitor reads the About profile
-- **THEN** it presents the approved Traditional-Chinese narrative about reliable AI products, real workflows, and JurisLM's open-source foundations
+- **THEN** it presents the approved Traditional-Chinese narrative about reliable AI products, real workflows, and JurisLM's open-source work without foregrounding MCP
 
 ### Requirement: Evidence-led GitHub activity
 
