@@ -131,7 +131,8 @@ CSS variables in `app/(frontend)/globals.css`:
 | `--border`     | `#ece9e9` | `#ab4b08`   |
 
 - Font: Atkinson Hyperlegible loaded via `@import url()` in `globals.css`; `fonts.ts` is `export {}` (unused)
-- Container: `max-w-3xl` centered
+- Container: `max-w-3xl` centered by default; the homepage header uses the
+  `--editorial-width: 46rem` token so its outer box aligns with the homepage's 736px content box
 - Dark mode: `data-theme="dark"` on `<html>` (next-themes `attribute="data-theme"`)
 
 ### Syntax Highlighting (rehype-pretty-code)
