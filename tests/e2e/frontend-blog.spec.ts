@@ -273,15 +273,19 @@ test.describe('/about page', () => {
     const connect = page.getByTestId('about-connect')
     await expect(connect).toBeVisible()
 
-    for (const href of [
-      'https://github.com/terry90918',
-      'https://x.com/zxtw17985321',
-      'https://www.linkedin.com/in/tien-yi-chen-98812812a',
-      'mailto:zxtw17985321@gmail.com',
+    for (const { name, href } of [
+      { name: 'GitHub', href: 'https://github.com/terry90918' },
+      { name: 'X', href: 'https://x.com/zxtw17985321' },
+      { name: 'LinkedIn', href: 'https://www.linkedin.com/in/tien-yi-chen-98812812a' },
+      { name: 'Email', href: 'mailto:zxtw17985321@gmail.com' },
     ]) {
-      const link = connect.locator(`a[href="${href}"]`)
-      await expect(link).toHaveCount(1)
-      await expect(link).toBeVisible()
+      const hrefLink = connect.locator(`a[href="${href}"]`)
+      const namedLink = connect.getByRole('link', { name })
+      await expect(hrefLink).toHaveCount(1)
+      await expect(hrefLink).toBeVisible()
+      await expect(namedLink).toHaveCount(1)
+      await expect(namedLink).toHaveAttribute('href', href)
+      await expect(namedLink).toBeVisible()
     }
   })
 })
