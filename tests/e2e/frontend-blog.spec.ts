@@ -308,6 +308,25 @@ test.describe('/about page', () => {
       await expect(namedLink).toBeVisible()
     }
   })
+
+  test('shows a 2px solid focus outline when keyboard focus reaches a Connect link', async ({
+    page,
+  }) => {
+    const connect = page.getByTestId('about-connect')
+    const githubLink = connect.getByRole('link', {
+      name: 'GitHub — github.com/terry90918',
+      exact: true,
+    })
+
+    for (let tabCount = 0; tabCount < 16; tabCount += 1) {
+      await page.keyboard.press('Tab')
+      if (await githubLink.evaluate((element) => document.activeElement === element)) break
+    }
+
+    await expect(githubLink).toBeFocused()
+    await expect(githubLink).toHaveCSS('outline-style', 'solid')
+    await expect(githubLink).toHaveCSS('outline-width', '2px')
+  })
 })
 
 // ---- /rss.xml route ----

@@ -1,15 +1,15 @@
 ## 1. Regression coverage
 
-- [ ] 1.1 Add focused E2E assertions for the responsive profile structure and full contact set.
-- [ ] 1.2 Add narrow-viewport overflow and contribution-chart assertions.
-- [ ] 1.3 Run the focused About tests in Red before implementation.
+- [x] 1.1 Add focused E2E assertions for the responsive profile structure and full contact set.
+- [x] 1.2 Add narrow-viewport overflow and contribution-chart assertions.
+- [x] 1.3 Run the focused About tests in Red before implementation.
 
 ## 2. About editorial profile
 
-- [ ] 2.1 Recompose the portrait and existing biography into the responsive profile block.
-- [ ] 2.2 Tune About heading, section spacing, and chart treatment to the editorial hierarchy.
-- [ ] 2.3 Add Email while retaining the three existing public contact links and focus styles.
-- [ ] 2.4 Replace the compact English bio with the approved Traditional-Chinese professional narrative.
+- [x] 2.1 Recompose the portrait and existing biography into the responsive profile block.
+- [x] 2.2 Tune About heading, section spacing, and chart treatment to the editorial hierarchy.
+- [x] 2.3 Add Email while retaining the three existing public contact links and focus styles.
+- [x] 2.4 Replace the compact English bio with the approved Traditional-Chinese professional narrative.
 
 ## 3. Local acceptance
 
