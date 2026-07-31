@@ -12,9 +12,9 @@
 
 ## 3. Local acceptance
 
-- [ ] 3.1 Run focused E2E tests in Green.
-- [ ] 3.2 Run typecheck, lint, unit tests, production build, and strict OpenSpec validation.
-- [ ] 3.3 Inspect desktop and mobile layouts in light and dark themes.
+- [x] 3.1 Run focused E2E tests in Green.
+- [x] 3.2 Run typecheck, lint, unit tests, production build, and strict OpenSpec validation.
+- [x] 3.3 Inspect desktop and mobile layouts in light and dark themes.
 
 ## 4. Delivery
 
