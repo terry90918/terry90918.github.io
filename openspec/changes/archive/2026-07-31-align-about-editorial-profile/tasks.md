@@ -19,8 +19,8 @@
 
 ## 4. Delivery
 
-- [ ] 4.1 Commit the implementation with issue and design rationale.
-- [ ] 4.2 Push the feature branch and open a PR that closes #34.
-- [ ] 4.3 Address CI and review findings, then merge through the repository workflow.
-- [ ] 4.4 Verify the GitHub Pages deployment commit and read back the canonical production About page.
-- [ ] 4.5 Archive the OpenSpec change and confirm issue #34 is closed.
+- [x] 4.1 Commit the implementation with issue and design rationale.
+- [x] 4.2 Push the feature branch and open a PR that closes #34.
+- [x] 4.3 Address CI and review findings, then merge through the repository workflow.
+- [x] 4.4 Verify the GitHub Pages deployment commit and read back the canonical production About page.
+- [x] 4.5 Archive the OpenSpec change and confirm issue #34 is closed.
