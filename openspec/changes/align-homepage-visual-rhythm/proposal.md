@@ -16,8 +16,8 @@ Closes #31
   rhythm.
 - Replace bordered post cards with a compact open list whose title, metadata, and excerpt hierarchy
   more closely matches the reference.
-- Retain `Terry.TY Chen`, Terry-owned social links, current content, dark mode, routes, and existing
-  color tokens.
+- Retain `Terry.TY Chen`, GitHub, X, LinkedIn, and Email contact links, current content, dark mode,
+  routes, and existing color tokens.
 - Add focused responsive and accessibility coverage for stable layout contracts.
 
 ## Capabilities
