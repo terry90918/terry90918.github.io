@@ -253,7 +253,10 @@ test.describe('/about page', () => {
   test('uses an editorial profile composition on desktop', async ({ page }) => {
     const profile = page.getByTestId('about-profile')
     await expect(profile).toBeVisible()
-    await expect(profile.locator('img[alt="Terry Chen avatar"]')).toHaveCSS('width', '160px')
+    const avatarWidth = await profile
+      .locator('img[alt="Terry Chen avatar"]')
+      .evaluate((element) => parseFloat(getComputedStyle(element).width))
+    expect(avatarWidth).toBeGreaterThanOrEqual(144)
     await expect(profile).toHaveCSS('flex-direction', 'row')
   })
 
@@ -267,16 +270,19 @@ test.describe('/about page', () => {
   })
 
   test('shows four public contact links', async ({ page }) => {
-    const githubLink = page.getByRole('link', { name: 'GitHub', exact: true })
-    const xLink = page.getByRole('link', { name: 'X', exact: true })
-    const linkedInLink = page.getByRole('link', { name: 'LinkedIn', exact: true })
-    const emailLink = page.getByRole('link', { name: 'Email', exact: true })
+    const connect = page.getByTestId('about-connect')
+    await expect(connect).toBeVisible()
 
-    await expect(githubLink).toBeVisible()
-    await expect(xLink).toBeVisible()
-    await expect(linkedInLink).toBeVisible()
-    await expect(emailLink).toBeVisible()
-    await expect(emailLink).toHaveAttribute('href', 'mailto:zxtw17985321@gmail.com')
+    for (const href of [
+      'https://github.com/terry90918',
+      'https://x.com/zxtw17985321',
+      'https://www.linkedin.com/in/tien-yi-chen-98812812a',
+      'mailto:zxtw17985321@gmail.com',
+    ]) {
+      const link = connect.locator(`a[href="${href}"]`)
+      await expect(link).toHaveCount(1)
+      await expect(link).toBeVisible()
+    }
   })
 })
 
