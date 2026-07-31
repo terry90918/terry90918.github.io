@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.8.0](https://github.com/terry90918/terry90918.github.io/compare/v1.7.0...v1.8.0) (2026-07-31)
+
+
+### Features
+
+* add homepage email contact ([3d476a2](https://github.com/terry90918/terry90918.github.io/commit/3d476a2e7ca471f2a079398a33bbb93300080d8d))
+* align homepage visual rhythm ([5b0e95f](https://github.com/terry90918/terry90918.github.io/commit/5b0e95fac3cdf48f2bfd5cc96a1a140c4cf71d2d))
+* align homepage visual rhythm ([5f3f1ab](https://github.com/terry90918/terry90918.github.io/commit/5f3f1ab9dee0ee34f73404f11206742ed1faf81f))
+* rename homepage identity to Terry.TY Chen ([#27](https://github.com/terry90918/terry90918.github.io/issues/27)) ([a41da80](https://github.com/terry90918/terry90918.github.io/commit/a41da804ff32226e65102caa281d188f8a3302f2))
+
+
+### Bug Fixes
+
+* **content:** remove AI daily prefix from 2026-07-31 title ([0ca9875](https://github.com/terry90918/terry90918.github.io/commit/0ca9875ecf615e0edffd5fd4beb74dd578e1fd16))
+
 ## [1.7.0](https://github.com/terry90918/terry90918.github.io/compare/v1.6.0...v1.7.0) (2026-07-16)
 
 ### Miscellaneous
