@@ -236,18 +236,123 @@ test.describe('/about page', () => {
     await expect(page.locator('h1', { hasText: 'About' })).toBeVisible()
   })
 
-  test('shows location text', async ({ page }) => {
-    await expect(page.locator('text=Taipei')).toBeVisible()
+  test('shows the approved Traditional-Chinese professional narrative', async ({ page }) => {
+    const profile = page.getByTestId('about-profile')
+    await expect(
+      profile.getByText('我在新竹地區打造能進入真實工作流程的 AI 系統。', {
+        exact: true,
+      })
+    ).toBeVisible()
+    await expect(
+      profile.getByText(
+        '從 AI agents、RAG 與 LLM 應用，到 agent harness 與產品工程，我專注把前沿模型能力轉化為企業可採用、可維運、可擴展的解決方案。',
+        { exact: true }
+      )
+    ).toBeVisible()
+    await expect(
+      profile.getByText(
+        '我持續開發對社會與產業有實際價值的 AI 應用工具，讓技術不只停在展示，而能成為推動工作方式與產業升級的基礎能力。',
+        { exact: true }
+      )
+    ).toBeVisible()
   })
 
   test('shows GitHub contribution chart image', async ({ page }) => {
-    const chartImg = page.locator('img[src*="ghchart.rshah.org"]')
+    await expect(page.getByRole('heading', { name: 'GitHub Activity', exact: true })).toBeVisible()
+    const chartImg = page.getByRole('img', {
+      name: "Terry Chen's GitHub contribution chart",
+      exact: true,
+    })
     await expect(chartImg).toBeVisible()
+    await expect(
+      page.locator(
+        'img[src="https://ghchart.rshah.org/terry90918"][alt="Terry Chen\'s GitHub contribution chart"]'
+      )
+    ).toBeVisible()
   })
 
   test('has a GitHub profile link', async ({ page }) => {
     const githubLink = page.locator('a[href*="github.com/terry90918"]').first()
     await expect(githubLink).toBeVisible()
+  })
+
+  test('uses an editorial profile composition on desktop', async ({ page }) => {
+    const profile = page.getByTestId('about-profile')
+    await expect(profile).toBeVisible()
+    const avatarWidth = await profile
+      .locator('img[alt="Terry Chen avatar"]')
+      .evaluate((element) => parseFloat(getComputedStyle(element).width))
+    expect(avatarWidth).toBeGreaterThanOrEqual(144)
+    await expect(profile).toHaveCSS('display', 'flex')
+    await expect(profile).toHaveCSS('flex-direction', 'row')
+  })
+
+  test('stacks the profile without horizontal overflow on mobile', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 })
+    const profile = page.getByTestId('about-profile')
+    await expect(profile).toHaveCSS('display', 'flex')
+    await expect(profile).toHaveCSS('flex-direction', 'column')
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
+    ).toBe(true)
+  })
+
+  test('shows four public contact links', async ({ page }) => {
+    const connect = page.getByTestId('about-connect')
+    await expect(connect).toBeVisible()
+    await expect(connect.getByRole('link')).toHaveCount(4)
+
+    for (const { name, href } of [
+      { name: 'GitHub — github.com/terry90918', href: 'https://github.com/terry90918' },
+      { name: 'X — @zxtw17985321', href: 'https://x.com/zxtw17985321' },
+      {
+        name: 'LinkedIn — Tien-Yi Chen',
+        href: 'https://www.linkedin.com/in/tien-yi-chen-98812812a',
+      },
+      { name: 'Email — zxtw17985321@gmail.com', href: 'mailto:zxtw17985321@gmail.com' },
+    ]) {
+      const hrefLink = connect.locator(`a[href="${href}"]`)
+      const namedLink = connect.getByRole('link', { name, exact: true })
+      await expect(hrefLink).toHaveCount(1)
+      await expect(hrefLink).toBeVisible()
+      await expect(namedLink).toHaveCount(1)
+      await expect(namedLink).toHaveAttribute('href', href)
+      await expect(namedLink).toBeVisible()
+    }
+  })
+
+  test('shows a visible 2px solid focus outline for every keyboard-reached Connect link', async ({
+    page,
+  }) => {
+    const connect = page.getByTestId('about-connect')
+
+    for (const { name, href } of [
+      { name: 'GitHub — github.com/terry90918', href: 'https://github.com/terry90918' },
+      { name: 'X — @zxtw17985321', href: 'https://x.com/zxtw17985321' },
+      {
+        name: 'LinkedIn — Tien-Yi Chen',
+        href: 'https://www.linkedin.com/in/tien-yi-chen-98812812a',
+      },
+      { name: 'Email — zxtw17985321@gmail.com', href: 'mailto:zxtw17985321@gmail.com' },
+    ]) {
+      const link = connect.getByRole('link', { name, exact: true })
+
+      for (let tabCount = 0; tabCount < 16; tabCount += 1) {
+        await page.keyboard.press('Tab')
+        if (await link.evaluate((element) => document.activeElement === element)) break
+      }
+
+      await expect(link).toBeFocused()
+      await expect(link).toHaveAttribute('href', href)
+      await expect(link).toHaveCSS('outline-style', 'solid')
+      await expect(link).toHaveCSS('outline-width', '2px')
+      expect(
+        await link.evaluate((element) => {
+          const channels = getComputedStyle(element).outlineColor.match(/[\d.]+/g)?.map(Number)
+          return channels !== undefined && (channels.length < 4 || channels[3] > 0)
+        })
+      ).toBe(true)
+    }
   })
 })
 
