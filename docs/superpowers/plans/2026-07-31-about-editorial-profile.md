@@ -21,10 +21,12 @@
 ### Task 1: Define About-page behaviour with focused E2E coverage
 
 **Files:**
+
 - Modify: `tests/e2e/frontend-blog.spec.ts:90-114`
 - Test: `tests/e2e/frontend-blog.spec.ts`
 
 **Interfaces:**
+
 - Consumes: rendered `/about` route and existing Playwright `page` fixture.
 - Produces: regression coverage for profile layout, contribution chart, contact set, and narrow viewport behaviour.
 
@@ -36,7 +38,11 @@
   test('uses an editorial profile composition on desktop', async ({ page }) => {
     const profile = page.getByTestId('about-profile')
     await expect(profile).toBeVisible()
-    expect(await profile.locator('img[alt="Terry Chen avatar"]').evaluate((element) => parseFloat(getComputedStyle(element).width))).toBeGreaterThanOrEqual(144)
+    expect(
+      await profile
+        .locator('img[alt="Terry Chen avatar"]')
+        .evaluate((element) => parseFloat(getComputedStyle(element).width))
+    ).toBeGreaterThanOrEqual(144)
     await expect(profile).toHaveCSS('display', 'flex')
     await expect(profile).toHaveCSS('flex-direction', 'row')
   })
@@ -58,7 +64,9 @@
     const profile = page.getByTestId('about-profile')
     await expect(profile).toHaveCSS('display', 'flex')
     await expect(profile).toHaveCSS('flex-direction', 'column')
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true)
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
+    ).toBe(true)
   })
   ```
 
@@ -78,10 +86,12 @@
 ### Task 2: Implement the responsive editorial profile and evidence sections
 
 **Files:**
+
 - Modify: `app/(frontend)/about/page.tsx:11-83`
 - Test: `tests/e2e/frontend-blog.spec.ts`
 
 **Interfaces:**
+
 - Consumes: the data-testid and link assertions established in Task 1.
 - Produces: a static, responsive About page with no new component or API boundary.
 
@@ -107,7 +117,10 @@
   Keep the existing chart URL and meaningful alt text, but add responsive width constraints and section spacing. Give heading labels a semantic `h2`, retain their actual section meaning, and add Email after LinkedIn using the public mailto target. Apply the same visible focus treatment used by homepage contact links.
 
   ```tsx
-  <Link href="mailto:zxtw17985321@gmail.com" className="text-accent rounded-sm hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+  <Link
+    href="mailto:zxtw17985321@gmail.com"
+    className="text-accent focus-visible:outline-accent rounded-sm hover:underline focus-visible:outline-2 focus-visible:outline-offset-4"
+  >
     Email — zxtw17985321@gmail.com
   </Link>
   ```
@@ -138,10 +151,12 @@
 ### Task 3: Complete repository and visual acceptance
 
 **Files:**
+
 - Modify: `openspec/changes/align-about-editorial-profile/tasks.md`
 - Test: `tests/e2e/frontend-blog.spec.ts`
 
 **Interfaces:**
+
 - Consumes: the route and test coverage from Tasks 1 and 2.
 - Produces: verified local evidence for PR review and deployment.
 

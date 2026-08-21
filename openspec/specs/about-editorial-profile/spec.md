@@ -1,8 +1,11 @@
 # about-editorial-profile Specification
 
 ## Purpose
+
 TBD - created by archiving change align-about-editorial-profile. Update Purpose after archive.
+
 ## Requirements
+
 ### Requirement: Responsive profile composition
 
 The About page SHALL present Terry Chen's portrait and approved Traditional-Chinese professional narrative in a responsive editorial profile block that is horizontal on wider screens and stacked on narrow screens.
@@ -44,4 +47,3 @@ The About page SHALL present GitHub, X, LinkedIn, and Email as visible public co
 
 - **WHEN** a keyboard visitor tabs through the Connect links
 - **THEN** GitHub, X, LinkedIn, and Email each expose a visible focus indicator
-

@@ -1,8 +1,11 @@
 # homepage-visual-rhythm Specification
 
 ## Purpose
+
 TBD - created by archiving change align-homepage-visual-rhythm. Update Purpose after archive.
+
 ## Requirements
+
 ### Requirement: Editorial content width
 
 The homepage and persistent header SHALL share a narrow editorial inner width that keeps identity
@@ -66,4 +69,3 @@ keyboard accessibility.
 - **WHEN** a keyboard visitor navigates the header and homepage
 - **THEN** links and the theme toggle expose visible focus states
 - **AND** the theme toggle continues to switch between light and dark themes
-
