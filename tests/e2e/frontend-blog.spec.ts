@@ -348,7 +348,9 @@ test.describe('/about page', () => {
       await expect(link).toHaveCSS('outline-width', '2px')
       expect(
         await link.evaluate((element) => {
-          const channels = getComputedStyle(element).outlineColor.match(/[\d.]+/g)?.map(Number)
+          const channels = getComputedStyle(element)
+            .outlineColor.match(/[\d.]+/g)
+            ?.map(Number)
           return channels !== undefined && (channels.length < 4 || channels[3] > 0)
         })
       ).toBe(true)

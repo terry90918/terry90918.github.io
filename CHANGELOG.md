@@ -2,35 +2,31 @@
 
 ## [1.9.0](https://github.com/terry90918/terry90918.github.io/compare/v1.8.0...v1.9.0) (2026-07-31)
 
-
 ### Features
 
-* align About editorial profile ([a8df247](https://github.com/terry90918/terry90918.github.io/commit/a8df247b312ca7afd315f7f00db12c5ca9a8d77c))
-* align About editorial profile ([b0d3322](https://github.com/terry90918/terry90918.github.io/commit/b0d3322e79cacfa7252cfc7aae77ec65f51da5b5))
-* center About narrative on AI products ([df7710d](https://github.com/terry90918/terry90918.github.io/commit/df7710d70b922fdb28db660a49244eff56263de9))
-* refine About enterprise AI narrative ([571fcb4](https://github.com/terry90918/terry90918.github.io/commit/571fcb4be19c5514e1d3dd6093b389ba07858596))
-* strengthen About narrative in Chinese ([1166cc7](https://github.com/terry90918/terry90918.github.io/commit/1166cc7448bf6e786a30de6a44d9d95e8d0a6a37))
-
+- align About editorial profile ([a8df247](https://github.com/terry90918/terry90918.github.io/commit/a8df247b312ca7afd315f7f00db12c5ca9a8d77c))
+- align About editorial profile ([b0d3322](https://github.com/terry90918/terry90918.github.io/commit/b0d3322e79cacfa7252cfc7aae77ec65f51da5b5))
+- center About narrative on AI products ([df7710d](https://github.com/terry90918/terry90918.github.io/commit/df7710d70b922fdb28db660a49244eff56263de9))
+- refine About enterprise AI narrative ([571fcb4](https://github.com/terry90918/terry90918.github.io/commit/571fcb4be19c5514e1d3dd6093b389ba07858596))
+- strengthen About narrative in Chinese ([1166cc7](https://github.com/terry90918/terry90918.github.io/commit/1166cc7448bf6e786a30de6a44d9d95e8d0a6a37))
 
 ### Bug Fixes
 
-* address About profile review findings ([#34](https://github.com/terry90918/terry90918.github.io/issues/34)) ([aed934c](https://github.com/terry90918/terry90918.github.io/commit/aed934c662e7cf7a5254a8d85ac2a0c7b3c55b49))
-* strengthen About review contracts ([#34](https://github.com/terry90918/terry90918.github.io/issues/34)) ([65a65b8](https://github.com/terry90918/terry90918.github.io/commit/65a65b8880be67754c5bccf6caf519e66ec9f72c))
+- address About profile review findings ([#34](https://github.com/terry90918/terry90918.github.io/issues/34)) ([aed934c](https://github.com/terry90918/terry90918.github.io/commit/aed934c662e7cf7a5254a8d85ac2a0c7b3c55b49))
+- strengthen About review contracts ([#34](https://github.com/terry90918/terry90918.github.io/issues/34)) ([65a65b8](https://github.com/terry90918/terry90918.github.io/commit/65a65b8880be67754c5bccf6caf519e66ec9f72c))
 
 ## [1.8.0](https://github.com/terry90918/terry90918.github.io/compare/v1.7.0...v1.8.0) (2026-07-31)
 
-
 ### Features
 
-* add homepage email contact ([3d476a2](https://github.com/terry90918/terry90918.github.io/commit/3d476a2e7ca471f2a079398a33bbb93300080d8d))
-* align homepage visual rhythm ([5b0e95f](https://github.com/terry90918/terry90918.github.io/commit/5b0e95fac3cdf48f2bfd5cc96a1a140c4cf71d2d))
-* align homepage visual rhythm ([5f3f1ab](https://github.com/terry90918/terry90918.github.io/commit/5f3f1ab9dee0ee34f73404f11206742ed1faf81f))
-* rename homepage identity to Terry.TY Chen ([#27](https://github.com/terry90918/terry90918.github.io/issues/27)) ([a41da80](https://github.com/terry90918/terry90918.github.io/commit/a41da804ff32226e65102caa281d188f8a3302f2))
-
+- add homepage email contact ([3d476a2](https://github.com/terry90918/terry90918.github.io/commit/3d476a2e7ca471f2a079398a33bbb93300080d8d))
+- align homepage visual rhythm ([5b0e95f](https://github.com/terry90918/terry90918.github.io/commit/5b0e95fac3cdf48f2bfd5cc96a1a140c4cf71d2d))
+- align homepage visual rhythm ([5f3f1ab](https://github.com/terry90918/terry90918.github.io/commit/5f3f1ab9dee0ee34f73404f11206742ed1faf81f))
+- rename homepage identity to Terry.TY Chen ([#27](https://github.com/terry90918/terry90918.github.io/issues/27)) ([a41da80](https://github.com/terry90918/terry90918.github.io/commit/a41da804ff32226e65102caa281d188f8a3302f2))
 
 ### Bug Fixes
 
-* **content:** remove AI daily prefix from 2026-07-31 title ([0ca9875](https://github.com/terry90918/terry90918.github.io/commit/0ca9875ecf615e0edffd5fd4beb74dd578e1fd16))
+- **content:** remove AI daily prefix from 2026-07-31 title ([0ca9875](https://github.com/terry90918/terry90918.github.io/commit/0ca9875ecf615e0edffd5fd4beb74dd578e1fd16))
 
 ## [1.7.0](https://github.com/terry90918/terry90918.github.io/compare/v1.6.0...v1.7.0) (2026-07-16)
 
