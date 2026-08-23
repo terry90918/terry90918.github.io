@@ -3,6 +3,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { getPostBySlug, getAdjacentPosts, getAllPostSlugs } from '@/lib/posts/queries'
 import type { Post, Tag } from '@/lib/posts/types'
+import { formatPublishedDate } from '@/lib/date'
 
 interface PageParams {
   params: Promise<{ year: string; slug: string }>
@@ -21,14 +22,6 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
 export async function generateStaticParams() {
   const slugs = await getAllPostSlugs()
   return slugs.map(({ year, slug }) => ({ year, slug }))
-}
-
-function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
 }
 
 function TagBadge({ tag }: { tag: Tag }) {
@@ -98,7 +91,7 @@ export default async function PostPage({ params }: PageParams) {
       <header className="mb-8">
         <h1 className="text-foreground text-2xl leading-tight font-bold">{post.title}</h1>
         <div className="text-foreground mt-2 flex flex-wrap items-center gap-3 text-xs opacity-50">
-          {post.publishedAt && <span>Published: {formatDate(post.publishedAt)}</span>}
+          {post.publishedAt && <span>Published: {formatPublishedDate(post.publishedAt)}</span>}
           {post.readingTime && <span>• {post.readingTime} min read</span>}
           <Link
             href={githubEditUrl}
