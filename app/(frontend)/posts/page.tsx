@@ -2,18 +2,11 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { getPostsByYearMonth } from '@/lib/posts/queries'
 import type { Post } from '@/lib/posts/types'
+import { formatPublishedDate } from '@/lib/date'
 
 export const metadata: Metadata = {
   title: 'All Posts',
   description: 'Browse all blog posts by Terry Chen.',
-}
-
-function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
 }
 
 function PostCard({ post }: { post: Post }) {
@@ -29,7 +22,7 @@ function PostCard({ post }: { post: Post }) {
           {post.title}
         </h3>
         <p className="text-foreground mt-0.5 text-xs opacity-50">
-          {post.publishedAt ? formatDate(post.publishedAt) : 'Unpublished'}
+          {post.publishedAt ? formatPublishedDate(post.publishedAt) : 'Unpublished'}
           {post.readingTime ? ` • ${post.readingTime} min read` : ''}
         </p>
         {post.excerpt && (

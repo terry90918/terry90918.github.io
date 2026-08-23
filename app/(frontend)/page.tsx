@@ -2,14 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { getLatestPosts } from '@/lib/posts/queries'
 import type { Post } from '@/lib/posts/types'
-
-function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
-}
+import { formatPublishedDate } from '@/lib/date'
 
 interface PostCardProps {
   post: Post
@@ -31,7 +24,7 @@ function PostCard({ post }: PostCardProps) {
           {post.title}
         </h2>
         <p className="text-foreground mt-0.5 text-xs leading-5 opacity-55">
-          {post.publishedAt ? `Published: ${formatDate(post.publishedAt)}` : 'Draft'}
+          {post.publishedAt ? `Published: ${formatPublishedDate(post.publishedAt)}` : 'Draft'}
           {post.readingTime ? ` • ${post.readingTime} min read` : ''}
         </p>
         {post.excerpt && (
