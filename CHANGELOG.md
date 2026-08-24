@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.1](https://github.com/terry90918/terry90918.github.io/compare/v1.9.0...v1.9.1) (2026-08-24)
+
+
+### Bug Fixes
+
+* render published dates in Taiwan time ([#40](https://github.com/terry90918/terry90918.github.io/issues/40)) ([756ee14](https://github.com/terry90918/terry90918.github.io/commit/756ee145d5b5eb10d8d6db0a7f6fa4e13eec5ed3))
+
 ## [1.9.0](https://github.com/terry90918/terry90918.github.io/compare/v1.8.0...v1.9.0) (2026-07-31)
 
 ### Features
