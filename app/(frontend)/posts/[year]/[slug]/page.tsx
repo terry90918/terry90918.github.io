@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { getPostBySlug, getAdjacentPosts, getAllPostSlugs } from '@/lib/posts/queries'
 import type { Post, Tag } from '@/lib/posts/types'
 import { formatPublishedDate } from '@/lib/date'
+import { hasLeadingExcerptBlockquote } from '@/lib/posts/excerpt'
 
 interface PageParams {
   params: Promise<{ year: string; slug: string }>
@@ -84,6 +85,7 @@ export default async function PostPage({ params }: PageParams) {
   const { prev, next } = await getAdjacentPosts(slug)
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://terry90918.github.io'
   const githubEditUrl = `https://github.com/terry90918/terry90918.github.io/edit/main/content/posts/${post.year}/${post.slug}.md`
+  const renderStandaloneExcerpt = post.excerpt && !hasLeadingExcerptBlockquote(post)
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-8">
@@ -106,7 +108,7 @@ export default async function PostPage({ params }: PageParams) {
 
       {/* Content */}
       <div className="prose prose-sm max-w-none">
-        {post.excerpt && (
+        {renderStandaloneExcerpt && (
           <p className="text-foreground border-accent not-prose mb-6 border-l-2 pl-4 text-base opacity-70">
             {post.excerpt}
           </p>
