@@ -228,20 +228,48 @@ test.describe('/posts listing page', () => {
 
 // ---- Post detail pages ----
 test.describe('Post detail pages', () => {
-  for (const slug of [
-    'ai-daily-2026-08-28',
-    'ai-daily-2026-08-27',
-    'ai-daily-2026-08-26',
-    'ai-daily-2026-08-25',
-    'ai-daily-2026-08-24',
-    'ai-daily-2026-08-21',
-    'ai-daily-2026-08-20',
+  for (const { slug, excerpt } of [
+    {
+      slug: 'ai-daily-2026-08-28',
+      excerpt:
+        'NVIDIA 收購 Hugging Face 的報導尚待確認，PULSE、NVIDIA 財測與客服代理則把同一個問題推到前台：能力擴張之後，誰來驗證來源、成本與責任邊界？',
+    },
+    {
+      slug: 'ai-daily-2026-08-27',
+      excerpt:
+        'Anthropic 用三十兆美元描繪市場上限，研究、晶片與醫療設備則把焦點拉回可驗證的效能、風險與實際工作流程。',
+    },
+    {
+      slug: 'ai-daily-2026-08-26',
+      excerpt:
+        'NVIDIA 把生成速度推向即時互動，Einride 用 500 輛 Tesla Semi 擴張智慧貨運；研究代理與個人助理也同時把管理能力、資料邊界推到產品核心。',
+    },
+    {
+      slug: 'ai-daily-2026-08-25',
+      excerpt:
+        'Hugging Face 的潛在出售、企業轉向較便宜模型，以及創作者資料與自動化決策爭議，都指向同一個轉折：市場開始為分發、成本與控制權重新定價。',
+    },
+    {
+      slug: 'ai-daily-2026-08-24',
+      excerpt:
+        'Target 把生成式搜尋導流寫進財報，越界代理則把供應鏈攻擊延伸到社交工程；另一份大型觀察研究，也讓內容授權與引用分配的關係浮上檯面。',
+    },
+    {
+      slug: 'ai-daily-2026-08-21',
+      excerpt:
+        'Merck 與 Moderna 的個人化 mRNA 療法達成三期試驗終點，Cursor 把代理帶進程式碼託管，ChatGPT 的來源分布則突然改變；共同問題是平台如何證明自己的選擇。',
+    },
+    {
+      slug: 'ai-daily-2026-08-20',
+      excerpt:
+        'OpenAI 以人工覆核通報暴力威脅，MIT 揭示生成模型的歸因衰減，醫療實驗與運算基礎設施同步擴張；關鍵不再只是能力，而是誰能解釋、覆核並承擔後果。',
+    },
   ]) {
     test(`${slug} renders its leading excerpt exactly once`, async ({ page }) => {
       await page.goto(`/posts/2026/${slug}`)
 
       await expect(page.locator('article .prose > p.not-prose')).toHaveCount(0)
-      await expect(page.locator('article .prose blockquote').first()).not.toBeEmpty()
+      await expect(page.locator('article .prose blockquote').first()).toHaveText(excerpt)
     })
   }
 
@@ -250,7 +278,9 @@ test.describe('Post detail pages', () => {
   }) => {
     await page.goto('/posts/2026/ai-daily-2026-07-06')
 
-    await expect(page.locator('article .prose > p.not-prose')).toHaveCount(1)
+    await expect(page.locator('article .prose > p.not-prose')).toHaveText(
+      '好萊塢的版權訴訟照見片商自身的生成工具使用，教育與生命科學迎來新工作流，Meta 的未成年假帳號測試則把安全與競爭的界線推向灰區。'
+    )
   })
 })
 

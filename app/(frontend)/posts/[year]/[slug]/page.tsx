@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { getPostBySlug, getAdjacentPosts, getAllPostSlugs } from '@/lib/posts/queries'
 import type { Post, Tag } from '@/lib/posts/types'
 import { formatPublishedDate } from '@/lib/date'
+import { hasLeadingExcerptBlockquote } from '@/lib/posts/excerpt'
 
 interface PageParams {
   params: Promise<{ year: string; slug: string }>
@@ -30,19 +31,6 @@ function TagBadge({ tag }: { tag: Tag }) {
       {tag.name}
     </span>
   )
-}
-
-function hasLeadingExcerptBlockquote(post: Post): boolean {
-  const firstBlock = post.rawContent.trimStart().split(/\n\s*\n/, 1)[0]
-  if (!firstBlock.startsWith('>')) return false
-
-  const blockquoteText = firstBlock
-    .split(/\r?\n/)
-    .map((line) => line.replace(/^> ?/, ''))
-    .join('\n')
-    .trim()
-
-  return blockquoteText === post.excerpt.trim()
 }
 
 function ShareLinks({ post, siteUrl }: { post: Post; siteUrl: string }) {
