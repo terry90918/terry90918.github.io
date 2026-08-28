@@ -32,6 +32,19 @@ function TagBadge({ tag }: { tag: Tag }) {
   )
 }
 
+function hasLeadingExcerptBlockquote(post: Post): boolean {
+  const firstBlock = post.rawContent.trimStart().split(/\n\s*\n/, 1)[0]
+  if (!firstBlock.startsWith('>')) return false
+
+  const blockquoteText = firstBlock
+    .split(/\r?\n/)
+    .map((line) => line.replace(/^> ?/, ''))
+    .join('\n')
+    .trim()
+
+  return blockquoteText === post.excerpt.trim()
+}
+
 function ShareLinks({ post, siteUrl }: { post: Post; siteUrl: string }) {
   const url = encodeURIComponent(`${siteUrl}/posts/${post.year}/${post.slug}`)
   const title = encodeURIComponent(post.title)
@@ -84,6 +97,7 @@ export default async function PostPage({ params }: PageParams) {
   const { prev, next } = await getAdjacentPosts(slug)
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://terry90918.github.io'
   const githubEditUrl = `https://github.com/terry90918/terry90918.github.io/edit/main/content/posts/${post.year}/${post.slug}.md`
+  const renderStandaloneExcerpt = post.excerpt && !hasLeadingExcerptBlockquote(post)
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-8">
@@ -106,7 +120,7 @@ export default async function PostPage({ params }: PageParams) {
 
       {/* Content */}
       <div className="prose prose-sm max-w-none">
-        {post.excerpt && (
+        {renderStandaloneExcerpt && (
           <p className="text-foreground border-accent not-prose mb-6 border-l-2 pl-4 text-base opacity-70">
             {post.excerpt}
           </p>

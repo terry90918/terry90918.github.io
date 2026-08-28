@@ -226,6 +226,34 @@ test.describe('/posts listing page', () => {
   })
 })
 
+// ---- Post detail pages ----
+test.describe('Post detail pages', () => {
+  for (const slug of [
+    'ai-daily-2026-08-28',
+    'ai-daily-2026-08-27',
+    'ai-daily-2026-08-26',
+    'ai-daily-2026-08-25',
+    'ai-daily-2026-08-24',
+    'ai-daily-2026-08-21',
+    'ai-daily-2026-08-20',
+  ]) {
+    test(`${slug} renders its leading excerpt exactly once`, async ({ page }) => {
+      await page.goto(`/posts/2026/${slug}`)
+
+      await expect(page.locator('article .prose > p.not-prose')).toHaveCount(0)
+      await expect(page.locator('article .prose blockquote').first()).not.toBeEmpty()
+    })
+  }
+
+  test('keeps a standalone excerpt when the body does not begin with the same blockquote', async ({
+    page,
+  }) => {
+    await page.goto('/posts/2026/ai-daily-2026-07-06')
+
+    await expect(page.locator('article .prose > p.not-prose')).toHaveCount(1)
+  })
+})
+
 // ---- /about page ----
 test.describe('/about page', () => {
   test.beforeEach(async ({ page }) => {
