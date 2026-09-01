@@ -1,0 +1,246 @@
+{
+  "articlePath": "content/posts/2026/ai-daily-2026-09-02.md",
+  "slug": "ai-daily-2026-09-02",
+  "generatedAt": "2026-09-02T05:21:48+08:00",
+  "indexBasis": "Markdown body only; split on blank lines; first blockquote is logicalBlockIndex 0. physicalChildIndex is 1-based within the containing paragraph or list item and is kept separate from logicalBlockIndex.",
+  "images": [
+    {
+      "path": "/images/ai-daily/2026-09-02/01-hero.webp",
+      "alt": "紙藝拼貼：從供應鏈與領導交棒，走向尚未完成的 AI 系統",
+      "logicalBlockIndex": 2,
+      "physicalChildIndex": 1,
+      "containingBlock": "hero image"
+    },
+    {
+      "path": "/images/ai-daily/2026-09-02/02-concept.webp",
+      "alt": "紙藝拼貼：CVD 反應器、二維材料與多代理推理路徑",
+      "logicalBlockIndex": 10,
+      "physicalChildIndex": 1,
+      "containingBlock": "M2 concept image"
+    },
+    {
+      "path": "/images/ai-daily/2026-09-02/03-impact.webp",
+      "alt": "紙藝拼貼：桌上型裝置、資料中心機器人、預測曲線與可搜尋的記憶層",
+      "logicalBlockIndex": 20,
+      "physicalChildIndex": 1,
+      "containingBlock": "impact image"
+    }
+  ],
+  "links": [
+    {
+      "anchorText": "Apple 的交棒公告",
+      "verifiedUrl": "https://www.apple.com/newsroom/2026/04/tim-cook-to-become-apple-executive-chairman-john-ternus-to-become-apple-ceo/",
+      "logicalBlockIndex": 4,
+      "physicalChildIndex": 1,
+      "occurrenceOrder": 1,
+      "containingBlock": "M1 paragraph 1",
+      "nakedSourceSuffix": null,
+      "sourceIds": ["M1"]
+    },
+    {
+      "anchorText": "Apple 的 Siri AI 公告",
+      "verifiedUrl": "https://www.apple.com/newsroom/2026/06/apple-introduces-siri-ai-a-profoundly-more-capable-and-personal-assistant/",
+      "logicalBlockIndex": 5,
+      "physicalChildIndex": 1,
+      "occurrenceOrder": 2,
+      "containingBlock": "M1 paragraph 2",
+      "nakedSourceSuffix": null,
+      "sourceIds": ["M1"]
+    },
+    {
+      "anchorText": "Private Cloud Compute 說明",
+      "verifiedUrl": "https://security.apple.com/blog/expanding-pcc/",
+      "logicalBlockIndex": 5,
+      "physicalChildIndex": 2,
+      "occurrenceOrder": 3,
+      "containingBlock": "M1 paragraph 2",
+      "nakedSourceSuffix": null,
+      "sourceIds": ["M1"]
+    },
+    {
+      "anchorText": "Google DeepMind 的專案說明",
+      "verifiedUrl": "https://deepmind.google/blog/co-scientist-a-multi-agent-ai-partner-to-accelerate-research/",
+      "logicalBlockIndex": 8,
+      "physicalChildIndex": 1,
+      "occurrenceOrder": 4,
+      "containingBlock": "M2 paragraph 1",
+      "nakedSourceSuffix": null,
+      "sourceIds": ["M2"]
+    },
+    {
+      "anchorText": "論文摘要",
+      "verifiedUrl": "https://arxiv.org/abs/2608.26701",
+      "logicalBlockIndex": 8,
+      "physicalChildIndex": 2,
+      "occurrenceOrder": 5,
+      "containingBlock": "M2 paragraph 1",
+      "nakedSourceSuffix": null,
+      "sourceIds": ["M2"]
+    },
+    {
+      "anchorText": "Google Research 的 TimesFM-3 說明",
+      "verifiedUrl": "https://research.google/blog/timesfm-3-a-zero-shot-foundation-model-for-multivariate-forecasting/",
+      "logicalBlockIndex": 13,
+      "physicalChildIndex": 1,
+      "occurrenceOrder": 6,
+      "containingBlock": "M3 paragraph 1",
+      "nakedSourceSuffix": null,
+      "sourceIds": ["M3"]
+    },
+    {
+      "anchorText": "官方 GitHub repository",
+      "verifiedUrl": "https://github.com/google-research/timesfm",
+      "logicalBlockIndex": 13,
+      "physicalChildIndex": 2,
+      "occurrenceOrder": 7,
+      "containingBlock": "M3 paragraph 1",
+      "nakedSourceSuffix": null,
+      "sourceIds": ["M3"]
+    },
+    {
+      "anchorText": "《The Information》的報導",
+      "verifiedUrl": "https://www.theinformation.com/articles/apple-stumbled-ai-hardware-success-mac",
+      "logicalBlockIndex": 17,
+      "physicalChildIndex": 1,
+      "occurrenceOrder": 8,
+      "containingBlock": "M4 paragraph 1",
+      "nakedSourceSuffix": null,
+      "sourceIds": ["M4"]
+    },
+    {
+      "anchorText": "《MacRumors》的轉述",
+      "verifiedUrl": "https://www.macrumors.com/2026/08/30/apple-unexpected-mac-mini-and-studio-demand/",
+      "logicalBlockIndex": 17,
+      "physicalChildIndex": 2,
+      "occurrenceOrder": 9,
+      "containingBlock": "M4 paragraph 1",
+      "nakedSourceSuffix": null,
+      "sourceIds": ["M4"]
+    },
+    {
+      "anchorText": "Apple 的季度業績公告",
+      "verifiedUrl": "https://www.apple.com/newsroom/2026/07/apple-reports-third-quarter-results/",
+      "logicalBlockIndex": 18,
+      "physicalChildIndex": 1,
+      "occurrenceOrder": 10,
+      "containingBlock": "M4 paragraph 2",
+      "nakedSourceSuffix": null,
+      "sourceIds": ["M4"]
+    },
+    {
+      "anchorText": "Apple 的 SEC 申報",
+      "verifiedUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm",
+      "logicalBlockIndex": 18,
+      "physicalChildIndex": 2,
+      "occurrenceOrder": 11,
+      "containingBlock": "M4 paragraph 2",
+      "nakedSourceSuffix": null,
+      "sourceIds": ["M4"]
+    },
+    {
+      "anchorText": "OpenAI 的 GenAI.mil 說明",
+      "verifiedUrl": "https://openai.com/index/bringing-chatgpt-to-genaimil/",
+      "logicalBlockIndex": 22,
+      "physicalChildIndex": 1,
+      "occurrenceOrder": 12,
+      "containingBlock": "T1 list item",
+      "listItemIndex": 1,
+      "nakedSourceSuffix": null,
+      "sourceIds": ["T1"]
+    },
+    {
+      "anchorText": "TechCrunch 的報導",
+      "verifiedUrl": "https://techcrunch.com/2026/08/31/the-pentagon-now-has-its-own-version-of-chatgpt-and-grok/",
+      "logicalBlockIndex": 22,
+      "physicalChildIndex": 2,
+      "occurrenceOrder": 13,
+      "containingBlock": "T1 list item",
+      "listItemIndex": 1,
+      "nakedSourceSuffix": null,
+      "sourceIds": ["T1"]
+    },
+    {
+      "anchorText": "歐盟執委會公告",
+      "verifiedUrl": "https://digital-strategy.ec.europa.eu/en/news/commission-designates-chatgpt-reddit-roblox-under-digital-services-act",
+      "logicalBlockIndex": 22,
+      "physicalChildIndex": 1,
+      "occurrenceOrder": 14,
+      "containingBlock": "T2 list item",
+      "listItemIndex": 2,
+      "nakedSourceSuffix": null,
+      "sourceIds": ["T2"]
+    },
+    {
+      "anchorText": "TechCrunch 的訴訟整理",
+      "verifiedUrl": "https://techcrunch.com/2026/08/31/apple-shares-shocking-evidence-against-former-employee-accused-of-stealing-company-data-for-openai/",
+      "logicalBlockIndex": 22,
+      "physicalChildIndex": 1,
+      "occurrenceOrder": 15,
+      "containingBlock": "T3 list item",
+      "listItemIndex": 3,
+      "nakedSourceSuffix": null,
+      "sourceIds": ["T3"]
+    },
+    {
+      "anchorText": "TechCrunch 的政策整理",
+      "verifiedUrl": "https://techcrunch.com/2026/08/31/instagram-puts-new-limits-on-undisclosed-ai-profiles/",
+      "logicalBlockIndex": 22,
+      "physicalChildIndex": 1,
+      "occurrenceOrder": 16,
+      "containingBlock": "T4 list item",
+      "listItemIndex": 4,
+      "nakedSourceSuffix": null,
+      "sourceIds": ["T4"]
+    },
+    {
+      "anchorText": "NVIDIA 官方公告",
+      "verifiedUrl": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "logicalBlockIndex": 22,
+      "physicalChildIndex": 1,
+      "occurrenceOrder": 17,
+      "containingBlock": "T5 list item",
+      "listItemIndex": 5,
+      "nakedSourceSuffix": null,
+      "sourceIds": ["T5"]
+    },
+    {
+      "anchorText": "FSB 的官方信函說明",
+      "verifiedUrl": "https://www.fsb.org/2026/08/fsb-chairs-letter-to-g20-finance-ministers-and-central-bank-governors-august-2026/",
+      "logicalBlockIndex": 22,
+      "physicalChildIndex": 1,
+      "occurrenceOrder": 18,
+      "containingBlock": "T6 list item",
+      "listItemIndex": 6,
+      "nakedSourceSuffix": null,
+      "sourceIds": ["T6"]
+    },
+    {
+      "anchorText": "WIRED 的現場報導",
+      "verifiedUrl": "https://www.wired.com/story/inside-metas-experiments-with-data-center-robots/",
+      "logicalBlockIndex": 22,
+      "physicalChildIndex": 1,
+      "occurrenceOrder": 19,
+      "containingBlock": "T7 list item",
+      "listItemIndex": 7,
+      "nakedSourceSuffix": null,
+      "sourceIds": ["T7"]
+    },
+    {
+      "anchorText": "TechCrunch 的報導",
+      "verifiedUrl": "https://techcrunch.com/2026/08/31/three-year-old-ai-media-search-startup-clipto-hits-a-250m-valuation/",
+      "logicalBlockIndex": 22,
+      "physicalChildIndex": 1,
+      "occurrenceOrder": 20,
+      "containingBlock": "T8 list item",
+      "listItemIndex": 8,
+      "nakedSourceSuffix": null,
+      "sourceIds": ["T8"]
+    }
+  ],
+  "sourceCoverage": {
+    "mainCount": 4,
+    "shortCount": 8,
+    "mainIds": ["M1", "M2", "M3", "M4"],
+    "shortIds": ["T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8"]
+  }
+}
