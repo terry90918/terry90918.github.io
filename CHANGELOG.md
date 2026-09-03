@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.10.0](https://github.com/terry90918/terry90918.github.io/compare/v1.9.1...v1.10.0) (2026-09-03)
+
+
+### Features
+
+* add Google Analytics to blog ([9beb4b7](https://github.com/terry90918/terry90918.github.io/commit/9beb4b79f492eabc12d84702f837ed636e068bf0))
+
+
+### Bug Fixes
+
+* **blog:** avoid duplicate post excerpts ([0564d97](https://github.com/terry90918/terry90918.github.io/commit/0564d9710ce92a3c96f217dcbe5275b0b3a3708f))
+* **content:** clarify AI earnings reporting periods ([546a73c](https://github.com/terry90918/terry90918.github.io/commit/546a73cdcaa487c56aa086e205e008d3e09a9266))
+
 ## [1.9.1](https://github.com/terry90918/terry90918.github.io/compare/v1.9.0...v1.9.1) (2026-08-24)
 
 
