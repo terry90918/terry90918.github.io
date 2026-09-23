@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.10.0](https://github.com/terry90918/terry90918.github.io/compare/v1.9.1...v1.10.0) (2026-09-23)
+
+
+### Features
+
+* add Google Analytics to blog ([9beb4b7](https://github.com/terry90918/terry90918.github.io/commit/9beb4b79f492eabc12d84702f837ed636e068bf0))
+
+
+### Bug Fixes
+
+* **blog:** avoid duplicate post excerpts ([0564d97](https://github.com/terry90918/terry90918.github.io/commit/0564d9710ce92a3c96f217dcbe5275b0b3a3708f))
+* **content:** clarify AI earnings reporting periods ([546a73c](https://github.com/terry90918/terry90918.github.io/commit/546a73cdcaa487c56aa086e205e008d3e09a9266))
+* **content:** label Reuters syndication source ([bb06540](https://github.com/terry90918/terry90918.github.io/commit/bb0654046b19ca42f1cce9d676f97b36a74de207))
+* **content:** publish AI daily digest 2026-09-19 ([14282fe](https://github.com/terry90918/terry90918.github.io/commit/14282fe3d597d923a9d16cb596d0bfe0a1ee479e))
+* **content:** publish AI daily digest metadata ([180125c](https://github.com/terry90918/terry90918.github.io/commit/180125c50ae8e0d2cfe8bdf166138f46279c754f))
+* publish recovered 2026-09-18 draft ([#68](https://github.com/terry90918/terry90918.github.io/issues/68)) ([802cd51](https://github.com/terry90918/terry90918.github.io/commit/802cd51beca5bf20aa04619fe2b66e9049ada975))
+* publish recovered AI daily drafts ([#67](https://github.com/terry90918/terry90918.github.io/issues/67)) ([bfdf028](https://github.com/terry90918/terry90918.github.io/commit/bfdf028b291f480dc69e4e0087541d9ff1487a7a))
+
 ## [1.9.1](https://github.com/terry90918/terry90918.github.io/compare/v1.9.0...v1.9.1) (2026-08-24)
 
 
