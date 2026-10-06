@@ -59,6 +59,7 @@
 - main advanced via another CI-only PR #76; original70 articles/product tree unchanged. Retain isolated feature history and do not take over its workflow or merge/deploy authorization — cost if wrong: PR base comparison/mergeability and final GitHub checks must expose integration issues.
 - rebuilding out/ replaced the temporary server's cwd; Python raised FileNotFoundError before serving any request. Pass the explicit out directory to SimpleHTTPRequestHandler instead of chdir, restart only own server — product unchanged — cost if wrong: final complete static browser run must fail rather than accepted.
 - an additional automatic Copilot review flagged loss of inherited twitter.creator on both pageMetadata and existing article metadata. Real HTML tests reproduced absence (2 RED); restore the existing public handle in both page-level objects, leaving titles/body/date untouched — cost if wrong: metadata checks across9 newpages+originalarticle fail. No review was requested or retriggered by this task.
+- semantic audit found three archived OpenSpec files still required the old English H1, older recent-list presentation and mandatory About chart. Synchronize only these existing specs to approved JUR-508 v2; do not create unrelated requirements or count format validation as semantic alignment — cost if wrong: Linear/v2-to-diff table exposes an unauthorized change. Product tree and already-green30 tests remain unchanged.
 
 ## 程式審查
 
@@ -115,3 +116,7 @@
 - 額外自動Copilot審查兩則意見是同一項twitter.creator回歸。實際HTML兩測試先RED（欄位缺失），在兩個頁級twitter物件補回既有公開@zxtw17985321；標題／摘要／本文不變。依同一修正與驗證流程處理，不觸發新review。
 
 9c609f0 的 [GitHub PR build](https://github.com/terry90918/terry90918.github.io/actions/runs/37432401948) 已success；是pull_request驗收，沒有執行Pages deploy。Twitter修正後正式匯出再次完整30/30（1.1分鐘，零重試）；最終head仍需讀回其PR檢查。
+
+### 舊OpenSpec與最新批准規格的差異處理
+
+語意稽核發現homepage-visual-rhythm、about-editorial-profile、site-identity三份舊文件仍要求舊英文H1、舊近況樣式和必備GitHub活動圖。只同步這三份既有規格至JUR-508已批准v2，保留版面／身分／社群／互動合約；沒有新增無關規格或產品功能。OpenSpec8/8僅是格式驗證，語意合規另以本文件逐項對照及行為測試證明。此次文件同步後產品程式未變，沿用已完成的最新30/30正式匯出證據。

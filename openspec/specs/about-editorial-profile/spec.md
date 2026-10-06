@@ -2,48 +2,39 @@
 
 ## Purpose
 
-TBD - created by archiving change align-about-editorial-profile. Update Purpose after archive.
+Describe the factual personal profile and reading paths approved by the JUR-508 version 2 design, superseding the earlier promotional narrative and required activity chart.
 
 ## Requirements
 
-### Requirement: Responsive profile composition
+### Requirement: Responsive factual profile
 
-The About page SHALL present Terry Chen's portrait and approved Traditional-Chinese professional narrative in a responsive editorial profile block that is horizontal on wider screens and stacked on narrow screens.
+The About page SHALL show Terry's existing portrait and the approved Traditional-Chinese site introduction in a responsive profile block. It SHALL NOT invent private life, interests, motives or personal reflections.
 
 #### Scenario: Desktop profile
 
-- **WHEN** the About page is rendered at a desktop viewport
-- **THEN** the portrait and biography are visible in a horizontal composition within the editorial content width
+- **WHEN** About opens on a desktop viewport
+- **THEN** the portrait and introduction appear horizontally within the editorial content width
 
 #### Scenario: Narrow profile
 
-- **WHEN** the About page is rendered at a narrow viewport
-- **THEN** the portrait and biography stack without horizontal page overflow
+- **WHEN** About opens on a narrow viewport
+- **THEN** the portrait and introduction stack without horizontal page overflow
 
-#### Scenario: Traditional-Chinese professional narrative
+### Requirement: Distinct reading paths
 
-- **WHEN** a visitor reads the About profile
-- **THEN** it presents the approved Traditional-Chinese narrative about Hsinchu, enterprise-ready AI systems, and socially or industrially valuable AI applications
+The About page SHALL link to Story for selected factual experiences, Work for selected outcomes, Writing for the complete article index, and the independent CV for full career details. A GitHub contribution chart MAY appear as secondary evidence but is not required.
 
-### Requirement: Evidence-led GitHub activity
+#### Scenario: Choose a reading path
 
-The About page SHALL retain a visible, legible GitHub contribution chart in a dedicated GitHub Activity section.
+- **WHEN** a visitor reads About
+- **THEN** Story, Work, Writing and the independent CV are reachable
 
-#### Scenario: Activity chart render
+### Requirement: Complete public contacts
 
-- **WHEN** a visitor opens the About page
-- **THEN** the GitHub Activity heading and contribution chart are visible with meaningful alternative text
+The About page SHALL preserve visible GitHub, X, LinkedIn and Email links with keyboard-visible focus.
 
-### Requirement: Complete public contact paths
+#### Scenario: Contact availability
 
-The About page SHALL present GitHub, X, LinkedIn, and Email as visible public contact links with keyboard-visible focus.
-
-#### Scenario: Contact link availability
-
-- **WHEN** a visitor reaches the Connect section
-- **THEN** GitHub, X, LinkedIn, and Email links are available
-
-#### Scenario: Keyboard-visible contact focus
-
-- **WHEN** a keyboard visitor tabs through the Connect links
-- **THEN** GitHub, X, LinkedIn, and Email each expose a visible focus indicator
+- **WHEN** a visitor reaches the public contact section
+- **THEN** GitHub, X, LinkedIn and Email links use the existing public account destinations
+- **AND** each exposes a visible keyboard focus indicator

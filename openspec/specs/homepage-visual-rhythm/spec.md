@@ -2,70 +2,61 @@
 
 ## Purpose
 
-TBD - created by archiving change align-homepage-visual-rhythm. Update Purpose after archive.
+Describe the approved personal introduction and reading flow, superseding the earlier homepage visual refinement with the JUR-508 version 2 design.
 
 ## Requirements
 
 ### Requirement: Editorial content width
 
-The homepage and persistent header SHALL share a narrow editorial inner width that keeps identity
-and recent writing on the same visual axis.
+The homepage and persistent header SHALL share a narrow editorial inner width and remain horizontally centered.
 
 #### Scenario: Header and homepage align on desktop
 
 - **WHEN** a visitor opens the homepage at a desktop viewport
 - **THEN** the header inner content and homepage content use the same maximum width
-- **AND** the content remains horizontally centered
 
 ### Requirement: Identity-first hero
 
-The homepage SHALL present Terry's portrait beside the introduction at desktop widths and SHALL
-retain a readable stacked composition on narrow screens.
+The homepage SHALL show Terry's existing portrait and the approved Traditional-Chinese introduction, arranged in a row on desktop and stacked on narrow screens.
 
-#### Scenario: Desktop hero uses two columns
+#### Scenario: Desktop hero
 
 - **WHEN** the viewport is at or above the small-screen breakpoint
-- **THEN** the circular portrait is displayed at 160px by 160px
-- **AND** the portrait and introduction are arranged in a row
-- **AND** the heading remains exactly `Hi, I'm Terry.TY Chen.`
+- **THEN** the circular portrait is 160px by 160px beside the introduction
+- **AND** the heading is exactly `嗨，我是 Terry。`
 
-#### Scenario: Mobile hero stacks without overflow
+#### Scenario: Narrow hero
 
 - **WHEN** the viewport is narrower than the small-screen breakpoint
-- **THEN** the portrait and introduction are stacked
-- **AND** all hero text and social links fit within the viewport
-- **AND** the page has no horizontal overflow
+- **THEN** the portrait and introduction stack without horizontal overflow
 
-### Requirement: Open recent-post list
+### Requirement: Experience-first reading flow
 
-The homepage SHALL present recent posts as an open editorial list using whitespace and type
-hierarchy rather than bordered cards.
+The homepage SHALL present the introduction, three approved factual experience entries, available recent updates, selected work and contact in that order. It SHALL NOT invent personal reflections or place membership, order or recall metrics in its summaries.
 
-#### Scenario: Posts are easy to scan
+#### Scenario: Experience entries
 
-- **WHEN** recent posts are available
-- **THEN** each post shows its title, publication date, reading time when available, and excerpt
-- **AND** individual post rows do not use visible borders
-- **AND** the list does not add a decorative `Latest Posts` heading
-- **AND** activating a post navigates to its existing route
+- **WHEN** a visitor follows an experience link
+- **THEN** the link opens the corresponding readable Story section
+- **AND** the section links to a real selected work case
 
-### Requirement: Existing identity and interaction contracts
+### Requirement: Limited recent updates
 
-The visual refinement SHALL preserve Terry's identity, account destinations, theme behavior, and
-keyboard accessibility.
+The homepage SHALL show at most three published updates, newest first, with at most the latest AI daily entry. Translation and daily roundup labels SHALL distinguish them from original writing. An empty published set SHALL omit the section.
 
-#### Scenario: Identity and account destinations remain Terry-owned
+#### Scenario: Daily series does not dominate
 
-- **WHEN** a visitor views the hero
-- **THEN** the visible identity is `Terry.TY Chen`
-- **AND** the GitHub link remains `https://github.com/terry90918`
-- **AND** the X link remains `https://x.com/zxtw17985321`
-- **AND** the LinkedIn link remains
-  `https://www.linkedin.com/in/tien-yi-chen-98812812a`
-- **AND** the Email link is `mailto:zxtw17985321@gmail.com`
+- **WHEN** many published AI daily articles are available
+- **THEN** only their newest entry appears among homepage updates
+- **AND** the complete series and year index remain reachable at their existing article URLs
 
-#### Scenario: Interactive controls remain accessible
+### Requirement: Existing interaction contracts
 
-- **WHEN** a keyboard visitor navigates the header and homepage
-- **THEN** links and the theme toggle expose visible focus states
-- **AND** the theme toggle continues to switch between light and dark themes
+The site SHALL preserve Terry's public account destinations, visible CV and email paths, theme switching and keyboard focus indicators.
+
+#### Scenario: Contact and interaction
+
+- **WHEN** a visitor uses the navigation or contact section
+- **THEN** CV links to `https://terry90918.github.io/cv/` and email to `mailto:zxtw17985321@gmail.com`
+- **AND** public social accounts remain reachable from About or the footer
+- **AND** keyboard controls expose visible focus and theme switching remains functional
