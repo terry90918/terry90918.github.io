@@ -1,90 +1,103 @@
 import Link from 'next/link'
-import type { Metadata } from 'next'
 import { getPostsByYearMonth } from '@/lib/posts/queries'
-import type { Post } from '@/lib/posts/types'
-import { formatPublishedDate } from '@/lib/date'
+import { classifyPost } from '@/lib/site/writing'
+import { pageMetadata } from '@/lib/site/metadata'
+import { WritingPostCard } from '@/components/WritingPostCard'
 
-export const metadata: Metadata = {
-  title: 'All Posts',
-  description: 'Browse all blog posts by Terry Chen.',
-}
-
-function PostCard({ post }: { post: Post }) {
-  const year = post.publishedAt
-    ? new Date(post.publishedAt).getFullYear()
-    : new Date().getFullYear()
-  const href = `/posts/${year}/${post.slug}`
-
-  return (
-    <article className="border-border border-b py-3 last:border-0">
-      <Link href={href} className="group block">
-        <h3 className="text-foreground group-hover:text-accent text-sm font-bold transition-colors">
-          {post.title}
-        </h3>
-        <p className="text-foreground mt-0.5 text-xs opacity-50">
-          {post.publishedAt ? formatPublishedDate(post.publishedAt) : 'Unpublished'}
-          {post.readingTime ? ` • ${post.readingTime} min read` : ''}
-        </p>
-        {post.excerpt && (
-          <p className="text-foreground mt-1 line-clamp-2 text-xs opacity-60">{post.excerpt}</p>
-        )}
-      </Link>
-    </article>
-  )
-}
+export const metadata = pageMetadata(
+  '文章',
+  '按年份閱讀 Terry 的文章，探索 AI 日報系列與軟體工程翻譯；內容標明類型與原作者。',
+  '/posts'
+)
 
 export default async function PostsPage() {
-  const grouped = await getPostsByYearMonth()
-
-  const totalPosts = grouped.reduce(
-    (acc, y) => acc + y.months.reduce((a, m) => a + m.posts.length, 0),
-    0
-  )
+  const isDevelopment = process.env.NODE_ENV === 'development'
+  const grouped = (await getPostsByYearMonth())
+    .map((year) => ({
+      ...year,
+      months: year.months
+        .map((month) => ({
+          ...month,
+          posts: month.posts.filter((post) => isDevelopment || post.status === 'published'),
+        }))
+        .filter((month) => month.posts.length > 0),
+    }))
+    .filter((year) => year.months.length > 0)
+  const posts = grouped.flatMap((year) => year.months.flatMap((month) => month.posts))
+  const publishedCount = posts.filter((post) => post.status === 'published').length
+  const draftCount = posts.length - publishedCount
+  const translation = posts.find((post) => classifyPost(post) === 'translation')
+  const hasDaily = posts.some((post) => classifyPost(post) === 'ai-daily')
 
   return (
-    <section>
-      <div className="mb-8">
-        <h1 className="text-foreground text-2xl font-bold">All Posts</h1>
-        <p className="text-foreground mt-1 text-sm opacity-50">
-          Browse all blog posts by year and month
+    <div className="space-y-8">
+      <header>
+        <h1 className="text-3xl font-bold">文章</h1>
+        <p className="mt-4 leading-7 opacity-80">
+          持續整理的 AI 資訊與翻譯，按年份放在這裡。日報是資訊整理；翻譯標明原作者與來源。
         </p>
-      </div>
-
-      {grouped.length === 0 ? (
-        <p className="text-foreground text-sm opacity-50">No posts yet. Check back soon!</p>
-      ) : (
-        <div className="space-y-8">
-          {grouped.map(({ year, months }) => {
-            const yearTotal = months.reduce((a, m) => a + m.posts.length, 0)
-            return (
-              <div key={year}>
-                <div className="mb-4 flex items-baseline gap-2">
-                  <h2 className="text-foreground text-lg font-bold">{year}</h2>
-                  <span className="text-foreground text-sm opacity-40">{yearTotal}</span>
-                </div>
-                <div className="border-border space-y-6 border-l pl-4">
-                  {months.map(({ month, monthName, posts }) => (
-                    <div key={month}>
-                      <h3 className="text-foreground mb-2 text-sm font-bold opacity-60">
-                        {monthName} <span className="font-normal opacity-60">({posts.length})</span>
-                      </h3>
-                      <div>
-                        {posts.map((post) => (
-                          <PostCard key={post.slug} post={post} />
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )
-          })}
-        </div>
+      </header>
+      {(hasDaily || translation) && (
+        <nav
+          aria-label="文章主題"
+          className="border-border flex flex-wrap gap-5 border-y py-4 text-sm"
+        >
+          {hasDaily && (
+            <Link
+              href="/posts/ai-daily"
+              className="text-accent rounded-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+            >
+              AI 資訊
+            </Link>
+          )}
+          {translation && (
+            <a
+              href={`#writing-${translation.year}-${translation.slug}`}
+              className="text-accent rounded-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+            >
+              軟體工程
+            </a>
+          )}
+          <a
+            href="#all-posts"
+            className="text-accent rounded-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+          >
+            按年份閱讀
+          </a>
+        </nav>
       )}
-
-      <div className="text-foreground mt-8 text-xs opacity-30">
-        {totalPosts} post{totalPosts !== 1 ? 's' : ''} total
+      <div id="all-posts" data-writing-entry className="space-y-8">
+        {grouped.length === 0 ? (
+          <p>目前沒有已發佈文章。</p>
+        ) : (
+          grouped.map(({ year, months }) => (
+            <section key={year} className="px-0">
+              <h2 className="text-xl font-bold">{year}</h2>
+              <div className="border-border mt-4 space-y-6 border-l pl-4">
+                {months.map(({ month, posts }) => (
+                  <div key={month}>
+                    <h3 className="text-sm font-bold opacity-65">
+                      {month} 月 · {posts.length} 篇
+                    </h3>
+                    {posts.map((post) => (
+                      <div
+                        key={post.slug}
+                        id={`writing-${post.year}-${post.slug}`}
+                        data-writing-entry
+                      >
+                        <WritingPostCard post={post} />
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </section>
+          ))
+        )}
       </div>
-    </section>
+      <p className="text-sm opacity-65">
+        共 {publishedCount} 篇已發佈文章{draftCount > 0 && ` · ${draftCount} 篇草稿（開發預覽）`}
+      </p>
+    </div>
   )
 }
