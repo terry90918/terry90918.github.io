@@ -20,6 +20,7 @@ jobs:
     permissions:
       contents: read
       pages: read
+      statuses: read
     env:
       NEXT_PUBLIC_GA_ID: ${{ vars.NEXT_PUBLIC_GA_ID }}
     steps:
