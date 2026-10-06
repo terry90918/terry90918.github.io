@@ -346,6 +346,10 @@ test.describe('Writing and metadata', () => {
       await expect(page.locator('meta[property="og:locale"]')).toHaveAttribute('content', 'zh_TW')
       expect(await page.locator('meta[name="description"]').getAttribute('content')).toBeTruthy()
       expect(await page.locator('meta[property="og:title"]').getAttribute('content')).toBeTruthy()
+      await expect(page.locator('meta[name="twitter:creator"]')).toHaveAttribute(
+        'content',
+        '@zxtw17985321'
+      )
       if (path === '/') await expect(page).toHaveTitle('Terry Chen')
     }
   })
@@ -380,6 +384,9 @@ test('[writing] gives an existing article its own canonical and social title', a
   const html = await response.text()
   expect(html.match(/<link[^>]*rel="canonical"[^>]*href="([^"]+)"/)?.[1]).toBe(
     `https://terry90918.github.io${path}`
+  )
+  expect(html.match(/<meta[^>]*name="twitter:creator"[^>]*content="([^"]+)"/)?.[1]).toBe(
+    '@zxtw17985321'
   )
   expect(html.match(/<meta[^>]*property="og:title"[^>]*content="([^"]+)"/)?.[1]).toBe(
     'AI 工程技能地圖：軟體工程基礎'

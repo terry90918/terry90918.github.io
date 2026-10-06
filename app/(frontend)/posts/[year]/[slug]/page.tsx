@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
       publishedTime: post.publishedAt ?? undefined,
       siteName: 'Terry Chen',
     },
-    twitter: { card: 'summary', title: post.title, description },
+    twitter: { creator: '@zxtw17985321', card: 'summary', title: post.title, description },
   }
 }
 

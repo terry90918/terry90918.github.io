@@ -28,7 +28,7 @@
 - 本地正式靜態預覽：http://127.0.0.1:43117/（僅本機）。
 - `bun run build`：成功，85 個靜態輸出。
 - 全專案 lint／typecheck：通過。
-- 初版 Vitest：82/82；修正後保留原日期測試並新增3項，完整結果記於最終提交hook。OpenSpec：8/8。
+- 初版 Vitest：82/82；修正後保留原日期測試並新增3項，完整85/85（9c609f0提交hook）。OpenSpec：8/8。
 - 初版正式匯出 frontend Playwright：29/29，45.6秒；後續穩定錨點／日期修正後最終30/30，46.2秒，`--retries=0`。
 - 已驗證 320／375／1046 px、light／dark、鍵盤焦點、Story／既有文章錨點、原文摘要與 RSS。
 - 70 個舊文 HTML、h1、原 canonical 逐一查核通過；未知路由 404。
@@ -58,6 +58,7 @@
 - accept CodeRabbit minor date-locale finding; add optional locale to existing formatter with unchanged en-US default and Asia/Taipei zone, use zh-TW only on new writing cards — cost if wrong: legacy English/Taiwan-boundary unit tests and public-card browser check fail.
 - main advanced via another CI-only PR #76; original70 articles/product tree unchanged. Retain isolated feature history and do not take over its workflow or merge/deploy authorization — cost if wrong: PR base comparison/mergeability and final GitHub checks must expose integration issues.
 - rebuilding out/ replaced the temporary server's cwd; Python raised FileNotFoundError before serving any request. Pass the explicit out directory to SimpleHTTPRequestHandler instead of chdir, restart only own server — product unchanged — cost if wrong: final complete static browser run must fail rather than accepted.
+- an additional automatic Copilot review flagged loss of inherited twitter.creator on both pageMetadata and existing article metadata. Real HTML tests reproduced absence (2 RED); restore the existing public handle in both page-level objects, leaving titles/body/date untouched — cost if wrong: metadata checks across9 newpages+originalarticle fail. No review was requested or retriggered by this task.
 
 ## 程式審查
 
@@ -110,3 +111,7 @@
 - Writing卡片改用zh-TW日期；formatPublishedDate新增可選locale，預設en-US與Asia/Taipei時區不變，舊文詳情呼叫不變。保留原date-format回歸測試，加中文／時區邊界驗收；publishedAt完全不變。
 
 最終修正後建置成功；正式靜態預覽30/30零重試通過。完整lint／typecheck／unit／OpenSpec依原repo pre-commit hook驗證；任何hook失敗會阻止提交。未要求第二次Codex或CodeRabbit審查。
+
+- 額外自動Copilot審查兩則意見是同一項twitter.creator回歸。實際HTML兩測試先RED（欄位缺失），在兩個頁級twitter物件補回既有公開@zxtw17985321；標題／摘要／本文不變。依同一修正與驗證流程處理，不觸發新review。
+
+9c609f0 的 [GitHub PR build](https://github.com/terry90918/terry90918.github.io/actions/runs/37432401948) 已success；是pull_request驗收，沒有執行Pages deploy。Twitter修正後正式匯出再次完整30/30（1.1分鐘，零重試）；最終head仍需讀回其PR檢查。

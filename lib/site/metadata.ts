@@ -14,6 +14,6 @@ export function pageMetadata(title: string, description: string, path: string): 
       type: 'website',
       siteName: 'Terry Chen',
     },
-    twitter: { card: 'summary', title, description },
+    twitter: { creator: '@zxtw17985321', card: 'summary', title, description },
   }
 }
