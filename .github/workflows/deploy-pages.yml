@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
   workflow_dispatch:
 
 permissions:
@@ -19,23 +16,37 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     permissions:
       contents: read
       pages: read
     env:
       NEXT_PUBLIC_GA_ID: ${{ vars.NEXT_PUBLIC_GA_ID }}
     steps:
+      - name: Wait for Woodpecker validation
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const expected = 'ci/woodpecker/push/validate';
+            for (let attempt = 0; attempt < 120; attempt++) {
+              const { data } = await github.rest.repos.getCombinedStatusForRef({
+                ...context.repo,
+                ref: context.sha,
+              });
+              const status = data.statuses.find(item => item.context === expected);
+              if (status?.state === 'success') return;
+              if (status && ['failure', 'error'].includes(status.state)) {
+                throw new Error(`Woodpecker validation failed: ${status.target_url}`);
+              }
+              await new Promise(resolve => setTimeout(resolve, 10000));
+            }
+            throw new Error(`Woodpecker validation timed out for ${context.sha}`);
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: 1.3.14
       - run: bun install --frozen-lockfile
-      - run: bun lint
-      - run: bun run test
-      - run: bunx @fission-ai/openspec validate --specs
       - run: bun run build
-      - run: bun typecheck
       - run: touch out/.nojekyll
       - uses: actions/configure-pages@v5
         if: github.ref == 'refs/heads/main'
