@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
 import { useSyncExternalStore } from 'react'
+import { CV_URL, SITE_EMAIL } from '@/lib/site/content'
 
 function useIsClient() {
   return useSyncExternalStore(
@@ -70,36 +71,40 @@ function ThemeToggle() {
 }
 
 export function BlogHeader() {
+  const links = [
+    ['關於我', '/about'],
+    ['故事', '/story'],
+    ['作品', '/work'],
+    ['文章', '/posts'],
+    ['CV', CV_URL],
+    ['聯絡', SITE_EMAIL],
+  ]
   return (
-    <header className="border-border bg-background/80 sticky top-0 z-50 border-b backdrop-blur-sm">
+    <header className="border-border bg-background/95 sticky top-0 z-50 border-b backdrop-blur-sm">
       <div
         data-testid="header-inner"
-        style={{
-          width: 'calc(100% - 2rem)',
-          maxWidth: 'var(--editorial-width)',
-        }}
-        className="mx-auto flex items-center justify-between px-4 py-7"
+        style={{ width: 'calc(100% - 2rem)', maxWidth: 'var(--editorial-width)' }}
+        className="mx-auto py-3"
       >
-        <Link
-          href="/"
-          className="text-foreground rounded-sm font-bold no-underline transition-opacity hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
-        >
-          Terry.TY Chen
-        </Link>
-        <nav className="flex items-center gap-4">
+        <div className="flex min-h-11 items-center justify-between">
           <Link
-            href="/posts"
-            className="text-foreground rounded-sm text-sm opacity-70 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
+            href="/"
+            className="rounded-sm font-bold hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4"
           >
-            Posts
-          </Link>
-          <Link
-            href="/about"
-            className="text-foreground rounded-sm text-sm opacity-70 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
-          >
-            About
+            Terry.TY Chen
           </Link>
           <ThemeToggle />
+        </div>
+        <nav aria-label="主要導覽" className="flex flex-wrap items-center gap-x-4 gap-y-1">
+          {links.map(([label, href]) => (
+            <Link
+              key={label}
+              href={href}
+              className="hover:text-accent flex min-h-11 items-center rounded-sm text-sm focus-visible:outline-2 focus-visible:outline-offset-4"
+            >
+              {label}
+            </Link>
+          ))}
         </nav>
       </div>
     </header>

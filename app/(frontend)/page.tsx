@@ -1,59 +1,35 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { getLatestPosts } from '@/lib/posts/queries'
-import type { Post } from '@/lib/posts/types'
-import { formatPublishedDate } from '@/lib/date'
+import { getPosts } from '@/lib/posts/queries'
+import { EXPERIENCE_NOTES, SITE_EMAIL, WORK_CASES } from '@/lib/site/content'
+import { getRecentUpdates } from '@/lib/site/writing'
+import { pageMetadata } from '@/lib/site/metadata'
+import { WritingPostCard } from '@/components/WritingPostCard'
+import { SiteContact } from '@/components/SiteContact'
 
-interface PostCardProps {
-  post: Post
-}
-
-function PostCard({ post }: PostCardProps) {
-  const year = post.publishedAt ? new Date(post.publishedAt).getFullYear() : ''
-  const href = post.publishedAt
-    ? `/posts/${year}/${post.slug}`
-    : `/posts/${new Date().getFullYear()}/${post.slug}`
-
-  return (
-    <article className="py-3">
-      <Link
-        href={href}
-        className="group block rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
-      >
-        <h2 className="text-accent text-base leading-6 font-bold transition-opacity group-hover:opacity-70">
-          {post.title}
-        </h2>
-        <p className="text-foreground mt-0.5 text-xs leading-5 opacity-55">
-          {post.publishedAt ? `Published: ${formatPublishedDate(post.publishedAt)}` : 'Draft'}
-          {post.readingTime ? ` • ${post.readingTime} min read` : ''}
-        </p>
-        {post.excerpt && (
-          <p className="text-foreground mt-1 line-clamp-2 text-sm leading-5 opacity-70">
-            {post.excerpt}
-          </p>
-        )}
-      </Link>
-    </article>
-  )
-}
+export const metadata = pageMetadata(
+  'Terry Chen',
+  '認識 Terry：幾段產品與工程經歷、精選作品，以及最近整理的 AI 資訊。',
+  '/'
+)
 
 export default async function HomePage() {
-  const posts = await getLatestPosts(10)
-
+  const updates = getRecentUpdates(await getPosts())
   return (
-    <div data-testid="homepage-inner" className="-mt-2 w-full">
+    <div data-testid="homepage-inner" className="w-full space-y-12">
       <section
+        data-home-section="intro"
         data-testid="homepage-hero"
         aria-labelledby="homepage-title"
-        className="border-border flex flex-col items-start gap-6 border-b pb-4 sm:flex-row sm:items-center sm:gap-4"
+        className="flex flex-col items-start gap-6 px-0 sm:flex-row sm:items-center sm:gap-8"
       >
         <Link
           href="/about"
-          className="shrink-0 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
+          className="shrink-0 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4"
         >
           <Image
             src="https://github.com/terry90918.png"
-            alt="Terry Chen avatar"
+            alt="Terry Chen 的照片"
             width={160}
             height={160}
             className="h-28 w-28 rounded-full sm:h-40 sm:w-40"
@@ -62,69 +38,106 @@ export default async function HomePage() {
           />
         </Link>
         <div className="min-w-0">
-          <h1
-            id="homepage-title"
-            className="text-foreground text-[1.625rem] leading-8 font-bold sm:text-[1.875rem] sm:leading-9"
-          >
-            Hi, I&apos;m Terry.TY Chen.
+          <h1 id="homepage-title" className="text-3xl leading-tight font-bold">
+            嗨，我是 Terry。
           </h1>
-          <p className="text-foreground mt-2 max-w-lg text-sm leading-5 opacity-70 sm:text-base sm:leading-6">
-            AI-powered tools from Swift roots to web frontiers. Every commit lands on GitHub for you
-            to fork &amp; remix.
+          <p className="mt-4 max-w-prose leading-7 opacity-80">
+            這裡放我做過的產品、幾段經歷，以及最近整理的 AI 資訊。你可以從下面開始認識我。
           </p>
-          <div className="mt-3 flex flex-wrap items-center gap-4 text-sm">
+          <div className="mt-4 flex flex-wrap gap-5 text-sm">
             <Link
-              href="https://github.com/terry90918"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent rounded-sm hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
+              href="/about"
+              className="text-accent rounded-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
             >
-              GitHub
+              關於我
             </Link>
             <Link
-              href="https://x.com/zxtw17985321"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent rounded-sm hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
+              href={SITE_EMAIL}
+              className="text-accent rounded-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
             >
-              X
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/tien-yi-chen-98812812a"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent rounded-sm hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
-            >
-              LinkedIn
-            </Link>
-            <Link
-              href="mailto:zxtw17985321@gmail.com"
-              className="text-accent rounded-sm hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
-            >
-              Email
+              寫信給我
             </Link>
           </div>
         </div>
       </section>
 
-      <section aria-label="Latest posts" className="pt-6">
-        {posts.length === 0 ? (
-          <p className="text-foreground text-sm opacity-50">No posts yet. Stay tuned!</p>
-        ) : (
-          <div data-testid="homepage-post-list" className="space-y-2">
-            {posts.map((post) => (
-              <PostCard key={post.slug} post={post} />
+      <section data-home-section="experiences" aria-labelledby="experience-title" className="px-0">
+        <h2 id="experience-title" className="text-xl font-bold">
+          從這裡開始認識我
+        </h2>
+        <div data-testid="experience-entries" className="mt-5 space-y-5">
+          {EXPERIENCE_NOTES.map((note) => (
+            <article key={note.id} className="border-border border-l-2 pl-4">
+              <p className="text-xs opacity-60">經歷紀錄</p>
+              <h3 className="mt-1 text-lg leading-7 font-bold">
+                <Link
+                  href={`/story#${note.id}`}
+                  className="text-accent rounded-sm hover:underline focus-visible:outline-2 focus-visible:outline-offset-4"
+                >
+                  {note.title}
+                </Link>
+              </h3>
+              <p className="mt-1 text-sm leading-6 opacity-80">{note.summary}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {updates.length > 0 && (
+        <section data-home-section="updates" aria-labelledby="updates-title" className="px-0">
+          <h2 id="updates-title" className="text-xl font-bold">
+            最近更新
+          </h2>
+          <div data-testid="home-updates" className="mt-2">
+            {updates.map((post) => (
+              <WritingPostCard key={post.slug} post={post} />
             ))}
           </div>
-        )}
-        <div className="mt-6">
-          <Link
-            href="/posts"
-            className="text-accent rounded-sm text-sm hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
-          >
-            All Posts →
-          </Link>
+          <div className="mt-4 flex flex-wrap gap-5 text-sm">
+            <Link
+              href="/posts"
+              className="text-accent rounded-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+            >
+              看全部文章
+            </Link>
+            <Link
+              href="/posts/ai-daily"
+              className="text-accent rounded-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+            >
+              AI 日報系列
+            </Link>
+          </div>
+        </section>
+      )}
+
+      <section data-home-section="work" aria-labelledby="work-title" className="px-0">
+        <h2 id="work-title" className="text-xl font-bold">
+          做過的作品
+        </h2>
+        <div className="mt-4 grid gap-5 sm:grid-cols-3">
+          {WORK_CASES.map((work) => (
+            <article key={work.slug}>
+              <h3 className="font-bold">
+                <Link
+                  href={`/work/${work.slug}`}
+                  className="text-accent rounded-sm hover:underline focus-visible:outline-2 focus-visible:outline-offset-4"
+                >
+                  {work.title}
+                </Link>
+              </h3>
+              <p className="mt-2 text-sm leading-6 opacity-80">{work.summary}</p>
+            </article>
+          ))}
         </div>
+        <Link
+          href="/work"
+          className="text-accent mt-5 inline-block rounded-sm text-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+        >
+          看精選作品
+        </Link>
+      </section>
+      <section data-home-section="contact" aria-label="聯絡 Terry" className="px-0">
+        <SiteContact />
       </section>
     </div>
   )

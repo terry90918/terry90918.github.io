@@ -103,3 +103,12 @@ html[data-theme='dark'] [data-rehype-pretty-code-figure] code[data-theme*=' '] s
     transform: translateY(0);
   }
 }
+
+[data-story-note] {
+  scroll-margin-top: 14rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { CV_URL, SITE_EMAIL } from '@/lib/site/content'
 
 function GitHubIcon() {
   return (
@@ -55,7 +56,7 @@ export function BlogFooter() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            className="text-foreground opacity-50 transition-opacity hover:opacity-100"
+            className="text-foreground rounded-sm p-2 opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-4"
           >
             <GitHubIcon />
           </Link>
@@ -64,7 +65,7 @@ export function BlogFooter() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="X (Twitter)"
-            className="text-foreground opacity-50 transition-opacity hover:opacity-100"
+            className="text-foreground rounded-sm p-2 opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-4"
           >
             <XIcon />
           </Link>
@@ -73,12 +74,26 @@ export function BlogFooter() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="text-foreground opacity-50 transition-opacity hover:opacity-100"
+            className="text-foreground rounded-sm p-2 opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-4"
           >
             <LinkedInIcon />
           </Link>
         </div>
-        <p className="text-foreground text-xs opacity-40">CC BY 4.0 · Code MIT</p>
+        <div className="flex gap-4 text-sm">
+          <Link
+            href={CV_URL}
+            className="text-accent rounded-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+          >
+            CV
+          </Link>
+          <Link
+            href={SITE_EMAIL}
+            className="text-accent rounded-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+          >
+            聯絡
+          </Link>
+        </div>
+        <p className="text-foreground text-xs opacity-60">CC BY 4.0 · Code MIT</p>
       </div>
     </footer>
   )
