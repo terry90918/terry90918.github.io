@@ -1,7 +1,25 @@
-import { test, expect } from '@playwright/test'
+import { test, expect, type Page } from '@playwright/test'
 import { readdir, readFile } from 'node:fs/promises'
 import { join, basename } from 'node:path'
 import matter from 'gray-matter'
+
+async function waitForScrollToSettle(page: Page) {
+  await page.evaluate(async () => {
+    await document.fonts.ready
+    await new Promise<void>((resolve) => {
+      let previous = window.scrollY
+      let stableFrames = 0
+      const check = () => {
+        const current = window.scrollY
+        stableFrames = Math.abs(current - previous) < 0.5 ? stableFrames + 1 : 0
+        previous = current
+        if (stableFrames >= 15) resolve()
+        else requestAnimationFrame(check)
+      }
+      requestAnimationFrame(check)
+    })
+  })
+}
 
 const cv = 'https://terry90918.github.io/cv/'
 const email = 'mailto:zxtw17985321@gmail.com'
@@ -135,13 +153,10 @@ test.describe('Personal site', () => {
   test('[brand] story anchors clear the sticky navigation on a narrow screen', async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 900 })
     await page.goto('/story#nidin')
-    await expect
-      .poll(async () => {
-        const section = await page.locator('#nidin').boundingBox()
-        const header = await page.getByRole('banner').boundingBox()
-        return (section?.y ?? -1) >= (header?.height ?? 0)
-      })
-      .toBe(true)
+    await waitForScrollToSettle(page)
+    const section = await page.locator('#nidin').boundingBox()
+    const header = await page.getByRole('banner').boundingBox()
+    expect(section?.y).toBeGreaterThanOrEqual((header?.y ?? 0) + (header?.height ?? 0))
   })
 
   test('footer preserves social links and license', async ({ page }) => {
@@ -155,20 +170,32 @@ test.describe('Personal site', () => {
 
 // ---- Post detail pages ----
 test.describe('Post detail pages', () => {
-  test('existing article heading anchors clear the mobile sticky navigation', async ({ page }) => {
-    await page.setViewportSize({ width: 320, height: 900 })
-    await page.goto('/posts/2026/ai-daily-2026-08-28')
-    const heading = page.locator('.prose h2[id]').first()
-    const id = await heading.getAttribute('id')
-    await page.goto(`/posts/2026/ai-daily-2026-08-28#${encodeURIComponent(id ?? '')}`)
-    await expect
-      .poll(async () => {
-        const target = await heading.boundingBox()
-        const header = await page.getByRole('banner').boundingBox()
-        return (target?.y ?? -1) >= (header?.height ?? 0)
-      })
-      .toBe(true)
-  })
+  for (const width of [320, 1046]) {
+    test(`[anchors] settled article hashes and heading links clear the header at ${width}px`, async ({
+      page,
+    }) => {
+      const path = '/posts/2026/ai-daily-2026-08-28'
+      await page.setViewportSize({ width, height: 900 })
+      await page.goto(path)
+      const heading = page.locator('.prose h2[id]').nth(2)
+      const id = await heading.getAttribute('id')
+      expect(id).toBeTruthy()
+      await page.goto(`${path}#${encodeURIComponent(id!)}`)
+      await waitForScrollToSettle(page)
+      let target = await heading.boundingBox()
+      let header = await page.getByRole('banner').boundingBox()
+      expect(target?.y).toBeGreaterThanOrEqual((header?.y ?? 0) + (header?.height ?? 0))
+
+      await page.goto('/posts')
+      await page.locator(`main a[href="${path}"]`).click()
+      await expect(page).toHaveURL(path)
+      await heading.locator('a').click()
+      await waitForScrollToSettle(page)
+      target = await heading.boundingBox()
+      header = await page.getByRole('banner').boundingBox()
+      expect(target?.y).toBeGreaterThanOrEqual((header?.y ?? 0) + (header?.height ?? 0))
+    })
+  }
 
   for (const { slug, excerpt } of [
     {
@@ -267,7 +294,9 @@ test.describe('Writing and metadata', () => {
       .evaluateAll((nodes) => nodes.map((node) => node.getAttribute('href')).sort())
     expect(hrefs).toEqual(await sourceArticleURLs())
     await expect(page.locator('[data-writing-kind="translation"]')).toContainText('Andrew Ng')
-    await expect(page.locator('[data-writing-kind="translation"]')).toContainText('翻譯')
+    await expect(page.locator('[data-writing-kind="translation"]')).toContainText(
+      '翻譯 · 2026年8月31日 · 原文：Andrew Ng'
+    )
     await expect(page.locator('main')).not.toContainText('原創觀點')
   })
 

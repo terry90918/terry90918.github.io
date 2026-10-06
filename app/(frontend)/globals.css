@@ -68,7 +68,7 @@ html[data-theme='dark'] {
 
 /* Headings: clear hierarchy + breathing room above each section */
 .prose :where(h2, h3):not(:where([class~='not-prose'] *)) {
-  scroll-margin-top: 5rem;
+  scroll-margin-top: 14rem;
 }
 .prose :where(h2):not(:where([class~='not-prose'] *)) {
   margin-top: 2.5em;

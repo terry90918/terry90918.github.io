@@ -28,8 +28,8 @@
 - 本地正式靜態預覽：http://127.0.0.1:43117/（僅本機）。
 - `bun run build`：成功，85 個靜態輸出。
 - 全專案 lint／typecheck：通過。
-- Vitest：82/82；OpenSpec：8/8。
-- 正式靜態匯出上的 frontend Playwright：29/29，45.6 秒，無重試失敗。
+- 初版 Vitest：82/82；修正後保留原日期測試並新增3項，完整結果記於最終提交hook。OpenSpec：8/8。
+- 初版正式匯出 frontend Playwright：29/29，45.6秒；後續穩定錨點／日期修正後最終30/30，46.2秒，`--retries=0`。
 - 已驗證 320／375／1046 px、light／dark、鍵盤焦點、Story／既有文章錨點、原文摘要與 RSS。
 - 70 個舊文 HTML、h1、原 canonical 逐一查核通過；未知路由 404。
 - GitHub 現有公開 `/about` 讀取為 200，這次沒有修改主機設定。
@@ -53,7 +53,60 @@
 - freshly passed full pre-commit lint/typecheck/unit suite on the same source satisfies these verification commands; run production build/export and browser tests next without a redundant ritual replay — cost if wrong: production browser and final head lint detect remaining differences.
 - Next 16 export includes RSC directories alongside route .html files; the preview adapter's exists() check served directory listings instead of pages. Prefer a corresponding actual .html when the requested path is not a regular file, including RSC-only directories — no SPA fallback or product route changes — cost if wrong: production page and unknown-route tests verify behavior.
 - static-preview console showed a required JS chunk failing with ERR_CONNECTION_RESET; Python's listen queue was 5. Raising only the temporary server queue to 128 made the same diagnostic load expose the theme button; product code unchanged — cost if wrong: fresh complete production E2E still must pass.
+- PR #77 automatically started a Codex review on 6b79af1. Count that single independent remote review as the Native final whole-branch Codex review and do not dispatch a duplicate reviewer — JT Harness explicitly counts automatic reviews — cost if wrong: remote review lacks local private source inventory, so factual provenance remains the approved spec plus local source audit.
+- follow-up settled-scroll audit disproved the earlier anchor GREEN (stable heading y≈80 < header bottom113). Replace the transient poll with font-ready + 15 stable animation frames and assert after settling; raise the shared prose h2/h3 margin to14rem, matching Story margin — cost if wrong: desktop/mobile direct-hash and list-to-article-to-heading browser tests fail.
+- accept CodeRabbit minor date-locale finding; add optional locale to existing formatter with unchanged en-US default and Asia/Taipei zone, use zh-TW only on new writing cards — cost if wrong: legacy English/Taiwan-boundary unit tests and public-card browser check fail.
+- main advanced via another CI-only PR #76; original70 articles/product tree unchanged. Retain isolated feature history and do not take over its workflow or merge/deploy authorization — cost if wrong: PR base comparison/mergeability and final GitHub checks must expose integration issues.
+- rebuilding out/ replaced the temporary server's cwd; Python raised FileNotFoundError before serving any request. Pass the explicit out directory to SimpleHTTPRequestHandler instead of chdir, restart only own server — product unchanged — cost if wrong: final complete static browser run must fail rather than accepted.
 
 ## 程式審查
 
-完整 Codex 與 CodeRabbit 審查在建立 PR 後進行。
+- Ready PR：https://github.com/terry90918/terry90918.github.io/pull/77。
+- 審查 head：`6b79af185b262834f1271943a5b97a1bb6428565`。
+- [Codex review](https://github.com/terry90918/terry90918.github.io/pull/77#issuecomment-6011637850) 自動執行一次，Completed（07:38:32 UTC）且 bot 對 PR 👍；無行內問題。沒有另外觸發重複 review。
+- CodeRabbit 自動審查依 repository 設定跳過（不計為通過），手動請求一次完整 review 已完成：1 minor（[Writing 日期語系](https://github.com/terry90918/terry90918.github.io/pull/77#discussion_r4192767002)）。採納後只驗證修正，不要求第二次 review。
+- 預览在本機保留；11 張 desktop／mobile 與各頁截圖留在本地，未上傳私人來源素材。
+
+## Linear → diff → 驗收 → 開發規範對照
+
+本表對照最新讀回的 [JUR-508](https://linear.app/jurislm/issue/JUR-508)（updatedAt 2026-10-06 06:56:29 UTC）與已批准 v2 書面規格／四步計畫。使用者後續要求逐項稽核，未擴大合併／部署授權。JUR-508 的 69 篇加「後續新增文章」在執行基準實際為 70 篇。
+
+| 規格／驗收                                           | 實際 diff                                                                | 證據與判定                                                                                                                                         |
+| ---------------------------------------------------- | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 人物入口→三段經歷→少量近況→作品／聯絡                | Home、EXPERIENCE_NOTES、getRecentUpdates                                 | DOM順序／三真實連結／日報最多一則；分類10單元測試。符合                                                                                            |
+| About／Story／Work／Writing 分工，GJ／Nidin／JurisLM | 新Story、Work及三案例；About改為本人與站內入口                           | 三案例200、未知案例404，公開聯絡連結；未重建完整職涯。符合                                                                                         |
+| 文章URL／正文／RSS保全                               | 只改索引與單篇額外metadata；沒有Markdown、audio、parser、RSS builder變更 | 70項manifest完全一致，70 HTML/h1/canonical讀回；RSS驗收。符合                                                                                      |
+| 獨立CV保留                                           | 共用CV_URL、Header／Footer／SiteContact                                  | 原 https://terry90918.github.io/cv/ href比對。符合                                                                                                 |
+| AI日報系列、翻譯／原創區分                           | classifyPost、WritingPostCard、/posts/ai-daily                           | 69日報原URL、Andrew Ng翻譯署名、未知slug不推定原創，無假原創精選。符合                                                                             |
+| 只用真實資料，首頁不堆成果                           | content.ts；指標只出現在Work詳情                                         | 已批准v2素材池→文案逐项本地mapping；10直屬、20次樣本召回情境；未用未確認團隊規模／市佔／生活心境。符合                                             |
+| 中文介面／SEO                                        | zh-TW layout、各頁metadata、sitemap；卡片可選zh-TW日期                   | 正式HTML metadata／sitemap驗收；日期需採納CodeRabbit minor並在變更後驗證。見下方修正                                                               |
+| 桌面／手機／鍵盤／深色／錨點                         | wrapping header、focus、scroll-margin；穩定捲動測試                      | 原29/29中的錨點檢查不足，穩定量測重現遮擋，最小CSS修正後重新驗收；不把舊GREEN當作完成                                                              |
+| 隔離worktree，不碰Entire服務                         | task-owned bare+linked worktree；127.0.0.1:43117                         | 原checkout乾淨；獨立無頭瀏覽器，沒有使用3000/3001或使用者Chrome。符合                                                                              |
+| Superpowers設計／計畫先行                            | 本地完整v2 spec+plan；四task ledger                                      | 已批准書面設計及Native四步計畫；設計文件保留階段性描述，後續實作批准及本次結果由Linear／驗收文件記錄。原始私人文件未上傳公開PR                     |
+| Superpowers TDD／驗證                                | 行為測試先RED，再實作；修正亦先重現                                      | Task1 8 RED→10 GREEN；Task2首頁RED→22 GREEN；Task3索引等5 RED+canonical RED→正式29 GREEN；錨點2 RED，日期2 RED→3 GREEN；最終current-head結果列下方 |
+| JT Linear先讀後改、開始／完成紀錄                    | JUR-508於產品編輯前建立In Progress並有開始紀錄                           | 最後完成留言附PR／review／測試／不部署狀態；不新增逐步Linear留言                                                                                   |
+| JT 一次Codex＋一次CodeRabbit                         | PR自動Codex；CodeRabbit明確skip後一次manual                              | Codex Completed且bot 👍、無行內問題；CodeRabbit完整報告1 minor。Skip本身不計為pass，沒有第二次全量或incremental review                             |
+| Ready PR，不合併／部署                               | #77標籤feat、Ready、attached                                             | 本任務未執行任何PR merge或deploy；保留預覽／工作樹。符合                                                                                           |
+
+### 明列證據限制
+
+- 原始Notion母版和完整私人來源索引僅在本地／已交付Library，公開審查者沒有完整私人文件；完整事實mapping交使用者／parent稽核，公開PR只放已批准事實。
+- 70篇已發布原文均沒有h3標題。本次真實長文重現使用h2；最小CSS同時覆蓋h2/h3，未為測試公開任何草稿或假文章。
+- 本機預覽驗收不代表GitHub Pages已發布本次改版；發布明確不在本次授權範圍。
+
+## 額外唯讀稽核：#76
+
+使用者另外要求核對 #76，本任務沒有接管或修改該PR。
+
+- [#76](https://github.com/terry90918/terry90918.github.io/pull/76) 只變更 `.github/workflows/deploy-pages.yml`（20 additions／3 deletions），分支 `ci/ai-publishing-preflight`。
+- 可見作者與合併帳號均為 `terry90918`；合併時間07:39:57 UTC、merge `08cb0b9639e6d5f17ff9130cedc6d46a0e1a6b47`。GitHub帳號紀錄不能判定實際是本人或哪個代理。本任務沒有執行該合併；其授權依據在已讀PR記錄中未出現，不能猜測。
+- [Pages自動部署](https://github.com/terry90918/terry90918.github.io/actions/runs/37431083997) 為push觸發且success；actor／triggering_actor均為terry90918。只讀查核，未回滾。
+- CodeRabbit PR審查明確rate-limited；已讀PR body／comments／reviews沒有CLI fallback的證據，不能認定合規或把限流當pass。本次未重跑該PR任何review來追補。
+- 最新main相對本任務起始基準只有該CI變更，沒有新增文章／產品程式。#77不改該workflow，不覆蓋main變更；保全範圍仍是70文章。本次不在其他PR稽核缺口上補規格、合併或部署。
+
+## 後續修正
+
+- 穩定捲動後真實重現h2被113px導覽列遮擋（桌面80.203125px、320手機79.859375px）。將既有h2/h3共用scroll-margin由5rem改14rem；測試等待字體ready及15個穩定animation frames後斷言，不再在動畫途中poll一次即過關。涵蓋直接hash與Writing索引→文章→標題連結。
+- Writing卡片改用zh-TW日期；formatPublishedDate新增可選locale，預設en-US與Asia/Taipei時區不變，舊文詳情呼叫不變。保留原date-format回歸測試，加中文／時區邊界驗收；publishedAt完全不變。
+
+最終修正後建置成功；正式靜態預覽30/30零重試通過。完整lint／typecheck／unit／OpenSpec依原repo pre-commit hook驗證；任何hook失敗會阻止提交。未要求第二次Codex或CodeRabbit審查。
