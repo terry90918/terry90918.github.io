@@ -38,7 +38,7 @@
 
 ## 執行決定
 
-以下列出相對計畫的全部實際調整。
+以下列出相對計畫的全部實際調整（依發生顺序，後續決定可明確取代先前選擇）。
 
 - Native worktree tool is unavailable for this delegated execution context (returned Managed worktrees require a local, SSH, or WSL task); use an isolated task-owned bare repository plus linked git worktree — source checkout untouched — cost if wrong: host artifact management will not list this worktree; paths are recorded here.
 - latest GitHub main now has 70 published articles (69 AI daily + 1 translation), rather than the spec's earlier 69 — protect all 70 — cost if wrong: route audit catches missing/new articles.
@@ -60,6 +60,7 @@
 - rebuilding out/ replaced the temporary server's cwd; Python raised FileNotFoundError before serving any request. Pass the explicit out directory to SimpleHTTPRequestHandler instead of chdir, restart only own server — product unchanged — cost if wrong: final complete static browser run must fail rather than accepted.
 - an additional automatic Copilot review flagged loss of inherited twitter.creator on both pageMetadata and existing article metadata. Real HTML tests reproduced absence (2 RED); restore the existing public handle in both page-level objects, leaving titles/body/date untouched — cost if wrong: metadata checks across9 newpages+originalarticle fail. No review was requested or retriggered by this task.
 - semantic audit found three archived OpenSpec files still required the old English H1, older recent-list presentation and mandatory About chart. Synchronize only these existing specs to approved JUR-508 v2; do not create unrelated requirements or count format validation as semantic alignment — cost if wrong: Linear/v2-to-diff table exposes an unauthorized change. Product tree and already-green30 tests remain unchanged.
+- latest main d7e4e3f (another CI-only #78 after#76) switched validation to Woodpecker; feature head lacked its pipeline and had no current validation status. Supersede the earlier retain-without-sync decision: locally integrate already-merged main CI into the isolated feature, preserve upstream files unchanged and no product diff, then push only feature to obtain current PR validation — cost if wrong: provider readback/current-head checks expose failure. No GitHub PR was merged by this task, and no deployment was dispatched.
 
 ## 程式審查
 
@@ -104,7 +105,7 @@
 - 可見作者與合併帳號均為 `terry90918`；合併時間07:39:57 UTC、merge `08cb0b9639e6d5f17ff9130cedc6d46a0e1a6b47`。GitHub帳號紀錄不能判定實際是本人或哪個代理。本任務沒有執行該合併；其授權依據在已讀PR記錄中未出現，不能猜測。
 - [Pages自動部署](https://github.com/terry90918/terry90918.github.io/actions/runs/37431083997) 為push觸發且success；actor／triggering_actor均為terry90918。只讀查核，未回滾。
 - CodeRabbit PR審查明確rate-limited；已讀PR body／comments／reviews沒有CLI fallback的證據，不能認定合規或把限流當pass。本次未重跑該PR任何review來追補。
-- 最新main相對本任務起始基準只有該CI變更，沒有新增文章／產品程式。#77不改該workflow，不覆蓋main變更；保全範圍仍是70文章。本次不在其他PR稽核缺口上補規格、合併或部署。
+- 首次核對main只有#76的CI變更，之後d7e4e3f再加入其他任務已合併#78的Woodpecker驗收設定。兩者均沒有新增文章／產品程式。最終在隔離feature工作樹同步這些既有上游CI檔案，PR diff不修改該workflow／pipeline，保全範圍仍是70文章。本次不在其他PR稽核缺口上補規格、合併或部署。
 
 ## 後續修正
 
@@ -120,3 +121,7 @@
 ### 舊OpenSpec與最新批准規格的差異處理
 
 語意稽核發現homepage-visual-rhythm、about-editorial-profile、site-identity三份舊文件仍要求舊英文H1、舊近況樣式和必備GitHub活動圖。只同步這三份既有規格至JUR-508已批准v2，保留版面／身分／社群／互動合約；沒有新增無關規格或產品功能。OpenSpec8/8僅是格式驗證，語意合規另以本文件逐項對照及行為測試證明。此次文件同步後產品程式未變，沿用已完成的最新30/30正式匯出證據。
+
+### 最終CI基準同步
+
+最新main `d7e4e3febc1d529fe97adb23349b48c2977e7a44` 已切換Woodpecker驗收，原feature head沒有該pipeline、只見CodeRabbit skipped。本任務在自己的feature分支合入已合併main的兩份CI設定，不修改設定内容；只推送feature，讓現行PR驗收發生。這是同步上游Git歷史，不是GitHub PR合併，沒有推送main或發動部署。產品／文章／資源／測試樹與已驗證c1935a2完全一致；最後provider結果記於PR與完成留言，不把未出現或skipped狀態當pass。
