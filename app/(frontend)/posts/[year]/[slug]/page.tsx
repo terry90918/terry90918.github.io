@@ -14,9 +14,22 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
   const { slug } = await params
   const post = await getPostBySlug(slug)
   if (!post) return {}
+  const description = post.metaDescription ?? post.excerpt ?? undefined
+  const url = `https://terry90918.github.io/posts/${post.year}/${post.slug}`
   return {
     title: post.title,
-    description: post.metaDescription ?? post.excerpt ?? undefined,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: post.title,
+      description,
+      url,
+      locale: 'zh_TW',
+      type: 'article',
+      publishedTime: post.publishedAt ?? undefined,
+      siteName: 'Terry Chen',
+    },
+    twitter: { card: 'summary', title: post.title, description },
   }
 }
 

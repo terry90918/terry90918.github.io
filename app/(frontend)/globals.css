@@ -104,7 +104,8 @@ html[data-theme='dark'] [data-rehype-pretty-code-figure] code[data-theme*=' '] s
   }
 }
 
-[data-story-note] {
+[data-story-note],
+[data-writing-entry] {
   scroll-margin-top: 14rem;
 }
 @media (prefers-reduced-motion: reduce) {

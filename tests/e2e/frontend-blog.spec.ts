@@ -1,4 +1,7 @@
 import { test, expect } from '@playwright/test'
+import { readdir, readFile } from 'node:fs/promises'
+import { join, basename } from 'node:path'
+import matter from 'gray-matter'
 
 const cv = 'https://terry90918.github.io/cv/'
 const email = 'mailto:zxtw17985321@gmail.com'
@@ -152,6 +155,21 @@ test.describe('Personal site', () => {
 
 // ---- Post detail pages ----
 test.describe('Post detail pages', () => {
+  test('existing article heading anchors clear the mobile sticky navigation', async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 900 })
+    await page.goto('/posts/2026/ai-daily-2026-08-28')
+    const heading = page.locator('.prose h2[id]').first()
+    const id = await heading.getAttribute('id')
+    await page.goto(`/posts/2026/ai-daily-2026-08-28#${encodeURIComponent(id ?? '')}`)
+    await expect
+      .poll(async () => {
+        const target = await heading.boundingBox()
+        const header = await page.getByRole('banner').boundingBox()
+        return (target?.y ?? -1) >= (header?.height ?? 0)
+      })
+      .toBe(true)
+  })
+
   for (const { slug, excerpt } of [
     {
       slug: 'ai-daily-2026-08-28',
@@ -222,4 +240,119 @@ test.describe('/rss.xml feed', () => {
     const body = await response?.text()
     expect(body).toContain('<title>Terry Chen</title>')
   })
+})
+
+async function sourceArticleURLs() {
+  const root = join(process.cwd(), 'content/posts')
+  const paths: string[] = []
+  for (const year of await readdir(root, { withFileTypes: true })) {
+    if (!year.isDirectory()) continue
+    for (const file of await readdir(join(root, year.name))) {
+      if (!file.endsWith('.md')) continue
+      const { data } = matter(await readFile(join(root, year.name, file), 'utf8'))
+      if (data.status !== 'published') continue
+      paths.push(
+        `/posts/${new Date(data.publishedAt).getUTCFullYear()}/${data.slug ?? basename(file, '.md')}`
+      )
+    }
+  }
+  return paths.sort()
+}
+
+test.describe('Writing and metadata', () => {
+  test('[writing] retains every published article URL, excluding drafts', async ({ page }) => {
+    await page.goto('/posts')
+    const hrefs = await page
+      .locator('main a[href^="/posts/20"]')
+      .evaluateAll((nodes) => nodes.map((node) => node.getAttribute('href')).sort())
+    expect(hrefs).toEqual(await sourceArticleURLs())
+    await expect(page.locator('[data-writing-kind="translation"]')).toContainText('Andrew Ng')
+    await expect(page.locator('[data-writing-kind="translation"]')).toContainText('翻譯')
+    await expect(page.locator('main')).not.toContainText('原創觀點')
+  })
+
+  test('[writing] indexes all daily articles at their original URLs', async ({ page }) => {
+    await page.goto('/posts/ai-daily')
+    await expect(page.getByRole('heading', { name: 'AI 日報', exact: true })).toBeVisible()
+    const hrefs = await page
+      .locator('main a[href^="/posts/20"]')
+      .evaluateAll((nodes) => nodes.map((node) => node.getAttribute('href')).sort())
+    expect(hrefs).toEqual((await sourceArticleURLs()).filter((url) => url.includes('/ai-daily-')))
+    await expect(page.locator('[data-writing-kind="translation"]')).toHaveCount(0)
+  })
+
+  test('[writing] offers truthful topic and series entry points', async ({ page }) => {
+    await page.goto('/posts')
+    const nav = page.getByRole('navigation', { name: '文章主題' })
+    await expect(nav.getByRole('link', { name: 'AI 資訊', exact: true })).toHaveAttribute(
+      'href',
+      '/posts/ai-daily'
+    )
+    await nav.getByRole('link', { name: '軟體工程', exact: true }).click()
+    await expect(
+      page.locator('#writing-2026-ai-engineering-skills-map-software-engineering-fundamentals')
+    ).toBeInViewport()
+  })
+
+  test('[writing] gives new pages public canonical URLs and page-specific metadata', async ({
+    page,
+  }) => {
+    for (const path of [
+      '/',
+      '/about',
+      '/story',
+      '/work',
+      '/work/gj',
+      '/work/nidin',
+      '/work/jurislm',
+      '/posts',
+      '/posts/ai-daily',
+    ]) {
+      await page.goto(path)
+      await expect(page.locator('html')).toHaveAttribute('lang', 'zh-TW')
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+        'href',
+        `https://terry90918.github.io${path === '/' ? '' : path}`
+      )
+      await expect(page.locator('meta[property="og:locale"]')).toHaveAttribute('content', 'zh_TW')
+      expect(await page.locator('meta[name="description"]').getAttribute('content')).toBeTruthy()
+      expect(await page.locator('meta[property="og:title"]').getAttribute('content')).toBeTruthy()
+      if (path === '/') await expect(page).toHaveTitle('Terry Chen')
+    }
+  })
+
+  test('[writing] sitemap retains source article URLs and adds only real public routes', async ({
+    request,
+  }) => {
+    const response = await request.get('/sitemap.xml')
+    expect(response.status()).toBe(200)
+    const xml = await response.text()
+    for (const path of [
+      ...(await sourceArticleURLs()),
+      '/story',
+      '/work',
+      '/work/gj',
+      '/work/nidin',
+      '/work/jurislm',
+      '/posts/ai-daily',
+    ]) {
+      expect(xml).toContain(`https://terry90918.github.io${path}`)
+    }
+    expect(xml).not.toContain('unverified-story')
+  })
+})
+
+test('[writing] gives an existing article its own canonical and social title', async ({
+  request,
+}) => {
+  const path = '/posts/2026/ai-engineering-skills-map-software-engineering-fundamentals'
+  const response = await request.get(path)
+  expect(response.status()).toBe(200)
+  const html = await response.text()
+  expect(html.match(/<link[^>]*rel="canonical"[^>]*href="([^"]+)"/)?.[1]).toBe(
+    `https://terry90918.github.io${path}`
+  )
+  expect(html.match(/<meta[^>]*property="og:title"[^>]*content="([^"]+)"/)?.[1]).toBe(
+    'AI 工程技能地圖：軟體工程基礎'
+  )
 })
