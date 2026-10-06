@@ -66,7 +66,7 @@
 
 - Ready PR：https://github.com/terry90918/terry90918.github.io/pull/77。
 - 審查 head：`6b79af185b262834f1271943a5b97a1bb6428565`。
-- [Codex review](https://github.com/terry90918/terry90918.github.io/pull/77#issuecomment-6011637850) 自動執行一次，Completed（07:38:32 UTC）且 bot 對 PR 👍；無行內問題。沒有另外觸發重複 review。
+- [Codex review](https://github.com/terry90918/terry90918.github.io/pull/77#issuecomment-6011637850) 初次自動執行，Completed（07:38:32 UTC）且 bot 對 PR 👍；初次無行內問題。後續自動報告於07:55:10 UTC針對9c609f0提出開發草稿可見性P2，最終討論核對時補處理。沒有手動要求第二次review。
 - CodeRabbit 自動審查依 repository 設定跳過（不計為通過），手動請求一次完整 review 已完成：1 minor（[Writing 日期語系](https://github.com/terry90918/terry90918.github.io/pull/77#discussion_r4192767002)）。採納後只驗證修正，不要求第二次 review。
 - 預览在本機保留；11 張 desktop／mobile 與各頁截圖留在本地，未上傳私人來源素材。
 
@@ -74,22 +74,22 @@
 
 本表對照最新讀回的 [JUR-508](https://linear.app/jurislm/issue/JUR-508)（updatedAt 2026-10-06 06:56:29 UTC）與已批准 v2 書面規格／四步計畫。使用者後續要求逐項稽核，未擴大合併／部署授權。JUR-508 的 69 篇加「後續新增文章」在執行基準實際為 70 篇。
 
-| 規格／驗收                                           | 實際 diff                                                                | 證據與判定                                                                                                                                         |
-| ---------------------------------------------------- | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 人物入口→三段經歷→少量近況→作品／聯絡                | Home、EXPERIENCE_NOTES、getRecentUpdates                                 | DOM順序／三真實連結／日報最多一則；分類10單元測試。符合                                                                                            |
-| About／Story／Work／Writing 分工，GJ／Nidin／JurisLM | 新Story、Work及三案例；About改為本人與站內入口                           | 三案例200、未知案例404，公開聯絡連結；未重建完整職涯。符合                                                                                         |
-| 文章URL／正文／RSS保全                               | 只改索引與單篇額外metadata；沒有Markdown、audio、parser、RSS builder變更 | 70項manifest完全一致，70 HTML/h1/canonical讀回；RSS驗收。符合                                                                                      |
-| 獨立CV保留                                           | 共用CV_URL、Header／Footer／SiteContact                                  | 原 https://terry90918.github.io/cv/ href比對。符合                                                                                                 |
-| AI日報系列、翻譯／原創區分                           | classifyPost、WritingPostCard、/posts/ai-daily                           | 69日報原URL、Andrew Ng翻譯署名、未知slug不推定原創，無假原創精選。符合                                                                             |
-| 只用真實資料，首頁不堆成果                           | content.ts；指標只出現在Work詳情                                         | 已批准v2素材池→文案逐项本地mapping；10直屬、20次樣本召回情境；未用未確認團隊規模／市佔／生活心境。符合                                             |
-| 中文介面／SEO                                        | zh-TW layout、各頁metadata、sitemap；卡片可選zh-TW日期                   | 正式HTML metadata／sitemap驗收；日期需採納CodeRabbit minor並在變更後驗證。見下方修正                                                               |
-| 桌面／手機／鍵盤／深色／錨點                         | wrapping header、focus、scroll-margin；穩定捲動測試                      | 原29/29中的錨點檢查不足，穩定量測重現遮擋，最小CSS修正後重新驗收；不把舊GREEN當作完成                                                              |
-| 隔離worktree，不碰Entire服務                         | task-owned bare+linked worktree；127.0.0.1:43117                         | 原checkout乾淨；獨立無頭瀏覽器，沒有使用3000/3001或使用者Chrome。符合                                                                              |
-| Superpowers設計／計畫先行                            | 本地完整v2 spec+plan；四task ledger                                      | 已批准書面設計及Native四步計畫；設計文件保留階段性描述，後續實作批准及本次結果由Linear／驗收文件記錄。原始私人文件未上傳公開PR                     |
-| Superpowers TDD／驗證                                | 行為測試先RED，再實作；修正亦先重現                                      | Task1 8 RED→10 GREEN；Task2首頁RED→22 GREEN；Task3索引等5 RED+canonical RED→正式29 GREEN；錨點2 RED，日期2 RED→3 GREEN；最終current-head結果列下方 |
-| JT Linear先讀後改、開始／完成紀錄                    | JUR-508於產品編輯前建立In Progress並有開始紀錄                           | 最後完成留言附PR／review／測試／不部署狀態；不新增逐步Linear留言                                                                                   |
-| JT 一次Codex＋一次CodeRabbit                         | PR自動Codex；CodeRabbit明確skip後一次manual                              | Codex Completed且bot 👍、無行內問題；CodeRabbit完整報告1 minor。Skip本身不計為pass，沒有第二次全量或incremental review                             |
-| Ready PR，不合併／部署                               | #77標籤feat、Ready、attached                                             | 本任務未執行任何PR merge或deploy；保留預覽／工作樹。符合                                                                                           |
+| 規格／驗收                                           | 實際 diff                                                                | 證據與判定                                                                                                                                           |
+| ---------------------------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 人物入口→三段經歷→少量近況→作品／聯絡                | Home、EXPERIENCE_NOTES、getRecentUpdates                                 | DOM順序／三真實連結／日報最多一則；分類10單元測試。符合                                                                                              |
+| About／Story／Work／Writing 分工，GJ／Nidin／JurisLM | 新Story、Work及三案例；About改為本人與站內入口                           | 三案例200、未知案例404，公開聯絡連結；未重建完整職涯。符合                                                                                           |
+| 文章URL／正文／RSS保全                               | 只改索引與單篇額外metadata；沒有Markdown、audio、parser、RSS builder變更 | 70項manifest完全一致，70 HTML/h1/canonical讀回；RSS驗收。符合                                                                                        |
+| 獨立CV保留                                           | 共用CV_URL、Header／Footer／SiteContact                                  | 原 https://terry90918.github.io/cv/ href比對。符合                                                                                                   |
+| AI日報系列、翻譯／原創區分                           | classifyPost、WritingPostCard、/posts/ai-daily                           | 69日報原URL、Andrew Ng翻譯署名、未知slug不推定原創，無假原創精選。符合                                                                               |
+| 只用真實資料，首頁不堆成果                           | content.ts；指標只出現在Work詳情                                         | 已批准v2素材池→文案逐项本地mapping；10直屬、20次樣本召回情境；未用未確認團隊規模／市佔／生活心境。符合                                               |
+| 中文介面／SEO                                        | zh-TW layout、各頁metadata、sitemap；卡片可選zh-TW日期                   | 正式HTML metadata／sitemap驗收；日期需採納CodeRabbit minor並在變更後驗證。見下方修正                                                                 |
+| 桌面／手機／鍵盤／深色／錨點                         | wrapping header、focus、scroll-margin；穩定捲動測試                      | 原29/29中的錨點檢查不足，穩定量測重現遮擋，最小CSS修正後重新驗收；不把舊GREEN當作完成                                                                |
+| 隔離worktree，不碰Entire服務                         | task-owned bare+linked worktree；127.0.0.1:43117                         | 原checkout乾淨；獨立無頭瀏覽器，沒有使用3000/3001或使用者Chrome。符合                                                                                |
+| Superpowers設計／計畫先行                            | 本地完整v2 spec+plan；四task ledger                                      | 已批准書面設計及Native四步計畫；設計文件保留階段性描述，後續實作批准及本次結果由Linear／驗收文件記錄。原始私人文件未上傳公開PR                       |
+| Superpowers TDD／驗證                                | 行為測試先RED，再實作；修正亦先重現                                      | Task1 8 RED→10 GREEN；Task2首頁RED→22 GREEN；Task3索引等5 RED+canonical RED→正式29 GREEN；錨點2 RED，日期2 RED→3 GREEN；最終current-head結果列下方   |
+| JT Linear先讀後改、開始／完成紀錄                    | JUR-508於產品編輯前建立In Progress並有開始紀錄                           | 最後完成留言附PR／review／測試／不部署狀態；不新增逐步Linear留言                                                                                     |
+| JT 一次Codex＋一次CodeRabbit                         | PR自動Codex；CodeRabbit明確skip後一次manual                              | Codex初次Completed且bot 👍；後到自動報告的草稿P2另經RED/GREEN修正；CodeRabbit完整報告1 minor。Skip本身不計為pass，沒有第二次全量或incremental review |
+| Ready PR，不合併／部署                               | #77標籤feat、Ready、attached                                             | 本任務未執行任何PR merge或deploy；保留預覽／工作樹。符合                                                                                             |
 
 ### 明列證據限制
 
@@ -125,3 +125,7 @@
 ### 最終CI基準同步
 
 最新main `d7e4e3febc1d529fe97adb23349b48c2977e7a44` 已切換Woodpecker驗收，原feature head沒有該pipeline、只見CodeRabbit skipped。本任務在自己的feature分支合入已合併main的兩份CI設定，不修改設定内容；只推送feature，讓現行PR驗收發生。這是同步上游Git歷史，不是GitHub PR合併，沒有推送main或發動部署。產品／文章／資源／測試樹與已驗證c1935a2完全一致；最後provider結果記於PR與完成留言，不把未出現或skipped狀態當pass。
+
+### 後到Codex意見：開發草稿索引
+
+最終討論串核對發現07:55:10 UTC的自動Codex報告（review5425402489、head9c609f0）有一項P2：新Writing索引的無條件published篩選破壞開發草稿入口。既有markdown-loader規格明確要求development可讀草稿、production排除。先以實際頁面server rendering重現草稿URL缺失（1 RED／production相容性1 pass），再只在development允許loader返回的草稿，卡片明列草稿、計數分開；正式索引仍published。沒有改loader／文章／RSS。新增Vitest的既有@alias解析以直接測試頁面，而非只測複製的篩選函式。修正後2/2，完整驗證與最後head結果記於PR及完成證據。此自動報告不是本任務要求的第二次完整審查，不再觸發新的review。

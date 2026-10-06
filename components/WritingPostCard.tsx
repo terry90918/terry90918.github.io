@@ -9,6 +9,7 @@ export function WritingPostCard({ post }: { post: Post }) {
     <article data-writing-kind={kind} className="border-border border-b py-4 last:border-0">
       <p className="mb-1 text-xs opacity-65">
         {WRITING_LABELS[kind]} · {formatPublishedDate(post.publishedAt, 'zh-TW')}
+        {post.status === 'draft' && ' · 草稿（開發預覽）'}
         {kind === 'translation' && ' · 原文：Andrew Ng'}
       </p>
       <Link

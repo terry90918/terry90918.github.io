@@ -11,18 +11,21 @@ export const metadata = pageMetadata(
 )
 
 export default async function PostsPage() {
+  const isDevelopment = process.env.NODE_ENV === 'development'
   const grouped = (await getPostsByYearMonth())
     .map((year) => ({
       ...year,
       months: year.months
         .map((month) => ({
           ...month,
-          posts: month.posts.filter((post) => post.status === 'published'),
+          posts: month.posts.filter((post) => isDevelopment || post.status === 'published'),
         }))
         .filter((month) => month.posts.length > 0),
     }))
     .filter((year) => year.months.length > 0)
   const posts = grouped.flatMap((year) => year.months.flatMap((month) => month.posts))
+  const publishedCount = posts.filter((post) => post.status === 'published').length
+  const draftCount = posts.length - publishedCount
   const translation = posts.find((post) => classifyPost(post) === 'translation')
   const hasDaily = posts.some((post) => classifyPost(post) === 'ai-daily')
 
@@ -92,7 +95,9 @@ export default async function PostsPage() {
           ))
         )}
       </div>
-      <p className="text-sm opacity-65">共 {posts.length} 篇已發佈文章</p>
+      <p className="text-sm opacity-65">
+        共 {publishedCount} 篇已發佈文章{draftCount > 0 && ` · ${draftCount} 篇草稿（開發預覽）`}
+      </p>
     </div>
   )
 }
