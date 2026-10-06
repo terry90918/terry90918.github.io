@@ -8,32 +8,61 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      pages: read
+      statuses: read
     env:
       NEXT_PUBLIC_GA_ID: ${{ vars.NEXT_PUBLIC_GA_ID }}
     steps:
+      - name: Wait for Woodpecker validation
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const expected = 'ci/woodpecker/push/validate';
+            for (let attempt = 0; attempt < 120; attempt++) {
+              const { data } = await github.rest.repos.getCombinedStatusForRef({
+                ...context.repo,
+                ref: context.sha,
+              });
+              const status = data.statuses.find(item => item.context === expected);
+              if (status?.state === 'success') return;
+              if (status && ['failure', 'error'].includes(status.state)) {
+                throw new Error(`Woodpecker validation failed: ${status.target_url}`);
+              }
+              await new Promise(resolve => setTimeout(resolve, 10000));
+            }
+            throw new Error(`Woodpecker validation timed out for ${context.sha}`);
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
       - run: bun install --frozen-lockfile
       - run: bun run build
       - run: touch out/.nojekyll
       - uses: actions/configure-pages@v5
+        if: github.ref == 'refs/heads/main'
       - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main'
         with:
           path: out
 
   deploy:
+    if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
