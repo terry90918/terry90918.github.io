@@ -46,10 +46,13 @@ app/
                            # recognized, unlike sitemap/icon/opengraph-image which are unanchored)
   (frontend)/
     layout.tsx             # Root layout with ThemeProvider, BlogHeader, BlogFooter
-    page.tsx               # Homepage: avatar + hero + latest 10 posts
-    posts/                 # All posts grouped by year/month
+    page.tsx               # Homepage: introduction, experience notes, recent updates, selected work and contact
+    posts/                 # Published posts by year/month; ai-daily/ series index
     posts/[year]/[slug]/   # Post detail with tags, share, prev/next
-    about/                 # About page with GitHub activity chart
+    about/                 # Public profile, site purpose and contacts
+    story/                 # Factual experience notes, with anchors
+    work/                  # Selected cases grouped by product/platform/AI
+    work/[slug]/           # Three statically generated work cases
     rss.xml/               # RSS 2.0 Route Handler (statically exported)
     sitemap.ts             # Sitemap (statically exported)
     icon.svg               # Favicon
@@ -65,6 +68,7 @@ components/
   BlogFooter.tsx           # Footer with social links + CC BY 4.0
   ThemeProvider.tsx        # next-themes wrapper (attribute="data-theme")
 lib/
+  site/                   # Verified experience/work registry, writing classification and metadata
   rss.ts                   # RSS 2.0 feed builder
 lib/posts/
   types.ts                 # Post, Tag, PostsByYearMonth, PaginatedResult types
