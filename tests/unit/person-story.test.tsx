@@ -4,12 +4,21 @@ import StoryPage from '../../app/(frontend)/story/page'
 import WorkPage from '../../app/(frontend)/work/page'
 import AboutPage from '../../app/(frontend)/about/page'
 import HomePage from '../../app/(frontend)/page'
+import WorkCasePage from '../../app/(frontend)/work/[slug]/page'
 
 function documentFor(html: string) {
   return new DOMParser().parseFromString(html, 'text/html')
 }
 
 describe('Approved personal story reading paths', () => {
+  it('removes only the unconfirmed delivery claim from the existing Nidin case', async () => {
+    const doc = documentFor(
+      renderToStaticMarkup(await WorkCasePage({ params: Promise.resolve({ slug: 'nidin' }) }))
+    )
+    expect(doc.body.textContent).toContain('820 萬會員')
+    expect(doc.body.textContent).toContain('1,500 萬筆以上訂單')
+    expect(doc.body.textContent).not.toContain('55 項')
+  })
   it('renders five chronological chapters while preserving existing experience anchors', () => {
     const doc = documentFor(renderToStaticMarkup(<StoryPage />))
     expect([...doc.querySelectorAll('[data-story-note] h2')].map((n) => n.textContent)).toEqual([
