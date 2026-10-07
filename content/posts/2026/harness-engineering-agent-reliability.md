@@ -71,7 +71,7 @@ Harness 先要提供工具。例如搜尋程式碼、讀取檔案、修改檔案
 
 這套分類不是新的 agent 架構，而是排查次序。先找重複出現的失敗，再把它對應到工具、狀態、脈絡、環境或驗證，通常比一開始就替模型加更長的指示有效。
 
-Skills、MCP、子 agent 和長期記憶也可以放回這些問題裡理解。Skill 封裝特定任務的指示和資源；MCP 提供連接外部工具與資料來源的共同方式；子 agent 可以切分工作或獨立覆核；長期記憶則保存跨任務可重用的資訊。它們擴充的是既有能力，不會取代明確的權限和驗收。
+Skills、MCP、子 agent 和長期記憶也可以放回這些問題裡理解。Skill 封裝特定任務的指示與資源；[Santi 的原文](https://x.com/santtiagom_/article/2098782814837543075)也提到按需載入 skill 的做法。MCP 則是連接 AI 應用與外部系統、資料來源及工具的開放標準，見 [MCP 官方文件](https://modelcontextprotocol.io/docs/getting-started/intro)。子 agent 可以切分工作或獨立覆核；長期記憶則保存跨任務可重用的資訊。它們擴充的是既有能力，不會取代明確的權限和驗收。
 
 ## Harness Engineering 是持續校正
 
