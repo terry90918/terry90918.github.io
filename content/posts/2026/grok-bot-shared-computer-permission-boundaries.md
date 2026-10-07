@@ -24,6 +24,8 @@ Bot 可以有自己的名稱、工作描述、對話和學習脈絡。這讓工�
 
 官方安全 FAQ 也說明，Bot 沒有獨立身分；它能用哪些帳號和外掛，取決於使用者或團隊授予的存取權。需要獨立電腦與憑證的工作負載，文件建議使用另一個 Cursor 使用者帳號。[Grok Bot 安全 FAQ](https://docs.x.ai/grok-bot/security-faq)
 
+連接器也不是按 Bot 隔離。官方文件說，已安裝連接器的可用性是帳號層級，不會只綁定某個 Bot；連接器能做什麼，仍受已授權來源帳號的權限限制。[電腦與應用程式](https://docs.x.ai/grok-bot/computer-and-apps)
+
 因此，新增一個 Bot 可以隔開職責與部分上下文，卻不能單靠 Bot 名稱隔離瀏覽器裡的客戶系統、共用檔案或命令列憑證。即使每個 Bot 只收到自己的任務描述，它們仍可能在同一個帳號層級接觸共用資源。
 
 隱藏或刪除 Bot 也不等於清掉共用電腦上的資料。官方文件提醒，檔案和登入工作階段可能仍留在雲端電腦上，必須另外檢查與清理。[建立與管理 Bots](https://docs.x.ai/grok-bot/bots)
@@ -65,7 +67,7 @@ Bot 模板不會把原使用者的雲端電腦、登入狀態或對話紀錄交�
 5. **核准：** 傳送、發布、購買、刪除和正式環境變更，會在哪一步停下來等人確認？
 6. **分享：** Bot 模板公開後，哪些身份、技能、流程或 routines 會被看見？
 
-Grok Bot 官方文件指出，產品沿用 Cursor 帳號的驗證與資料設定，並要求雲端資料儲存。企業稽核、Action Recording 和網路管制等能力也受方案限制。若要用於客戶資料或受監管工作，還需逐項核對現行合約、管理設定與資料政策；不能只從 Bot 角色描述推論出隔離或合規保證。[核准、安全與隱私](https://docs.x.ai/grok-bot/approvals-security-and-privacy) · [Grok Bot 安全 FAQ](https://docs.x.ai/grok-bot/security-faq)
+Grok Bot 官方文件指出，產品沿用 Cursor 帳號的驗證與資料設定，必須使用雲端資料儲存，且不支援 Legacy Privacy Mode。企業稽核、Action Recording 和網路管制等能力也受方案限制。若要用於客戶資料或受監管工作，還需逐項核對現行合約、管理設定與資料政策；不能只從 Bot 角色描述推論出隔離或合規保證。[核准、安全與隱私](https://docs.x.ai/grok-bot/approvals-security-and-privacy) · [Grok Bot 安全 FAQ](https://docs.x.ai/grok-bot/security-faq)
 
 多 Bot 團隊能降低交接成本，也能把不同工作交給專家角色。但 Bot 角色是協作方法，不是安全邊界。真正的存取範圍由帳號、共用電腦、連接器、網路政策和核准機制共同決定。部署前先把這些層次畫清楚，才知道該把什麼工作交出去。
 
