@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { useSyncExternalStore } from 'react'
 import { CV_URL, SITE_EMAIL } from '@/lib/site/content'
@@ -71,6 +72,7 @@ function ThemeToggle() {
 }
 
 export function BlogHeader() {
+  const inCv = usePathname().startsWith('/cv')
   const links = [
     ['關於我', '/about'],
     ['故事', '/story'],
@@ -89,6 +91,7 @@ export function BlogHeader() {
         <div className="flex min-h-11 items-center justify-between">
           <Link
             href="/"
+            prefetch={inCv ? false : undefined}
             className="rounded-sm font-bold hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4"
           >
             Terry.TY Chen
@@ -100,6 +103,7 @@ export function BlogHeader() {
             <Link
               key={label}
               href={href}
+              prefetch={inCv || href === CV_URL ? false : undefined}
               className="hover:text-accent flex min-h-11 items-center rounded-sm text-sm focus-visible:outline-2 focus-visible:outline-offset-4"
             >
               {label}

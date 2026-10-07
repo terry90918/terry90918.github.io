@@ -2,6 +2,17 @@ import { describe, it, expect } from 'vitest'
 import { renderMarkdown } from '../../lib/posts/markdown'
 
 describe('renderMarkdown()', () => {
+  it('prioritizes only the first image and defers later images without changing their text', async () => {
+    const html = await renderMarkdown(
+      '![First](https://example.com/first.webp)\n\n![Second](https://example.com/second.webp)'
+    )
+    const doc = new DOMParser().parseFromString(html, 'text/html')
+    const images = [...doc.querySelectorAll('img')]
+    expect(images.map((image) => image.getAttribute('loading'))).toEqual(['eager', 'lazy'])
+    expect(images.map((image) => image.getAttribute('decoding'))).toEqual(['async', 'async'])
+    expect(images[0].getAttribute('fetchpriority')).toBe('high')
+    expect(images[1].alt).toBe('Second')
+  })
   it('renders headings', async () => {
     const html = await renderMarkdown('# Hello\n\n## World')
     expect(html).toContain('<h1')

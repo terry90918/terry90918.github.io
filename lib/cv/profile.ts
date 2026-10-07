@@ -17,7 +17,7 @@ export const contact = {
   phoneHref: 'tel:+886931206500',
   github: 'https://github.com/terry90918',
   linkedin: 'https://www.linkedin.com/in/%E5%A4%A9%E4%B8%80-%E9%99%B3-98812812a/',
-  photo: assetPath('/images/profile/tien-yi-chen.png'),
+  photo: assetPath('/images/profile/tien-yi-chen.webp'),
 }
 export const profiles = {
   'zh-TW': {
