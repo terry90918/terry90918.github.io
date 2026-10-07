@@ -54,6 +54,8 @@ status: 'published' # or "draft"
 
 文章圖片自動提供原始寬高、響應式選圖與非首圖延遲載入。主站 CV 連結停用跨根版型的預先載入；中英文、既有路由、照片內容與 3D 互動保留。
 
+CV 字型由瀏覽器按實際使用載入，避免主站頁面預先下載 CV 專用字型。
+
 效能以前後相同版本、裝置與設定的 Lighthouse 重複測量中位數比較，另確認 LCP／CLS。Lighthouse 分數與 TBT 屬於實驗室結果，不代替 CrUX 的實際訪客 INP／Core Web Vitals。
 
 ## 設計色彩
