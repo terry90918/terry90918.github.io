@@ -18,7 +18,7 @@ const contacts = [
 export default function AboutPage() {
   return (
     <div className="space-y-10">
-      <h1 className="text-3xl font-bold">關於我</h1>
+      <h1 className="text-3xl font-bold">嗨，我是 Terry。</h1>
       <div
         data-testid="about-profile"
         className="flex flex-col items-start gap-6 sm:flex-row sm:gap-8"
@@ -32,26 +32,30 @@ export default function AboutPage() {
           unoptimized
         />
         <div className="max-w-prose space-y-4 leading-8">
-          <p>嗨，我是 Terry。這個網站放我做過的產品、幾段經歷與持續整理的 AI 資訊。</p>
           <p>
-            你可以從
-            <Link href="/story" className="text-accent underline underline-offset-4">
-              幾段經歷
-            </Link>
-            認識我，到
-            <Link href="/work" className="text-accent underline underline-offset-4">
-              作品頁
-            </Link>
-            看具體工作，或在
-            <Link href="/posts" className="text-accent underline underline-offset-4">
-              文章索引
-            </Link>
-            找到翻譯與 AI 日報。
+            我做軟體產品、規劃系統架構，也帶工程團隊。從工作媒合、線上學習到點餐平台，近年也參與法律與旅遊的
+            AI 工作。
           </p>
           <p>
-            完整雙語履歷在{' '}
+            設計與藝術，是最早吸引我走進開發的原因。後來，我的工作從前端延伸到後端、系統與團隊，經歷過新產品上線，也參與長期平台與大型專案的推進。
+          </p>
+          <p>我也整理 AI 相關資訊與翻譯。這裡收錄我的故事、作品，以及持續更新的文章。</p>
+          <p>
+            <Link href="/story" className="text-accent underline underline-offset-4">
+              讀我的故事
+            </Link>
+            {' · '}
+            <Link href="/work" className="text-accent underline underline-offset-4">
+              看精選作品
+            </Link>
+            {' · '}
+            <Link href="/posts" className="text-accent underline underline-offset-4">
+              閱讀文章
+            </Link>
+          </p>
+          <p>
             <Link href={CV_URL} className="text-accent underline underline-offset-4">
-              CV
+              完整 CV
             </Link>
             ，聯絡我可以直接寫信。
           </p>

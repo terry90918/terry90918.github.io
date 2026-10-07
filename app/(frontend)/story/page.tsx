@@ -1,11 +1,11 @@
 import Link from 'next/link'
-import { EXPERIENCE_NOTES, CV_URL } from '@/lib/site/content'
+import { STORY_CHAPTERS, CV_URL } from '@/lib/site/content'
 import { pageMetadata } from '@/lib/site/metadata'
 import { SiteContact } from '@/components/SiteContact'
 
 export const metadata = pageMetadata(
-  '幾段經歷',
-  '共同創辦 GJ、在 Nidin 做系統與帶團隊，以及近期法律與旅遊 AI 的工作紀錄。',
+  '我的故事',
+  '從書店走進開發，經歷 GJ、VoiceTube、昕力資訊、Nidin，以及法律與旅遊 AI 工作。',
   '/story'
 )
 
@@ -13,7 +13,7 @@ export default function StoryPage() {
   return (
     <div className="space-y-10">
       <header>
-        <h1 className="text-3xl font-bold">幾段經歷</h1>
+        <h1 className="text-3xl font-bold">我的故事</h1>
         <p className="mt-4 max-w-prose leading-7 opacity-80">
           從做出一個產品，到平台、團隊與近期的 AI 工作，這裡選了幾段經歷。完整職涯可在{' '}
           <Link href={CV_URL} className="text-accent underline underline-offset-4">
@@ -22,7 +22,7 @@ export default function StoryPage() {
           查看。
         </p>
       </header>
-      {EXPERIENCE_NOTES.map((note) => (
+      {STORY_CHAPTERS.map((note) => (
         <section
           key={note.id}
           id={note.id}
@@ -39,12 +39,14 @@ export default function StoryPage() {
               {paragraph}
             </p>
           ))}
-          <Link
-            href={note.workHref}
-            className="text-accent inline-block rounded-sm text-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
-          >
-            看相關作品
-          </Link>
+          {note.workHref && (
+            <Link
+              href={note.workHref}
+              className="text-accent inline-block rounded-sm text-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+            >
+              看相關作品
+            </Link>
+          )}
         </section>
       ))}
       <SiteContact />
