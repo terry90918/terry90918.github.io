@@ -16,6 +16,7 @@ export function SiteContact() {
         </Link>
         <Link
           href={CV_URL}
+          prefetch={false}
           className="text-accent rounded-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
         >
           完整 CV

@@ -3,15 +3,16 @@
   "version": "1.9.1",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build && node scripts/finish-cv-export.mjs",
+    "dev": "bun run images:prepare && next dev",
+    "build": "bun run images:prepare && next build && node scripts/finish-cv-export.mjs",
     "start": "next start",
     "format": "prettier --write .",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "prepare": "husky"
+    "prepare": "husky",
+    "images:prepare": "node scripts/prepare-images.mjs"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.18",
@@ -47,7 +48,8 @@
     "motion": "12.43.0",
     "next-mdx-remote-client": "2.1.12",
     "tailwind-merge": "3.4.0",
-    "three": "0.185.1"
+    "three": "0.185.1",
+    "sharp": "0.34.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.3",

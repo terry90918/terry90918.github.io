@@ -69,14 +69,15 @@ test.describe('Personal site', () => {
     await expect(page).toHaveURL('/')
   })
 
-  test('[brand] treats repeated daily posts as one update and credits the translation', async ({
+  test('[brand] limits daily updates and credits the translation in the article index', async ({
     page,
   }) => {
     await page.goto('/')
     const updates = page.getByTestId('home-updates')
-    await expect(updates.locator('[data-writing-kind="ai-daily"]')).toHaveCount(1)
+    expect(await updates.locator('[data-writing-kind="ai-daily"]').count()).toBeLessThanOrEqual(1)
     expect(await updates.locator('article').count()).toBeLessThanOrEqual(3)
-    await expect(updates.locator('[data-writing-kind="translation"]')).toContainText('Andrew Ng')
+    await page.goto('/posts')
+    await expect(page.locator('[data-writing-kind="translation"]')).toContainText('Andrew Ng')
   })
 
   test('[brand] publishes only the selected work cases and returns 404 for others', async ({

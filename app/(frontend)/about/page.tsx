@@ -24,7 +24,7 @@ export default function AboutPage() {
         className="flex flex-col items-start gap-6 sm:flex-row sm:gap-8"
       >
         <Image
-          src="https://github.com/terry90918.png"
+          src="/images/profile/avatar.webp"
           alt="Terry Chen 的照片"
           width={160}
           height={160}
@@ -54,7 +54,11 @@ export default function AboutPage() {
             </Link>
           </p>
           <p>
-            <Link href={CV_URL} className="text-accent underline underline-offset-4">
+            <Link
+              href={CV_URL}
+              prefetch={false}
+              className="text-accent underline underline-offset-4"
+            >
               完整 CV
             </Link>
             ，聯絡我可以直接寫信。

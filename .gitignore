@@ -6,6 +6,7 @@ node_modules
 # Build
 .next
 out
+public/image-variants/
 build
 dist
 

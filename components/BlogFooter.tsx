@@ -82,6 +82,7 @@ export function BlogFooter() {
         <div className="flex gap-4 text-sm">
           <Link
             href={CV_URL}
+            prefetch={false}
             className="text-accent rounded-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
           >
             CV

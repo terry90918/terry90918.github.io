@@ -46,7 +46,17 @@ status: 'published' # or "draft"
 
 詳細規範見 `content/README.md`。
 
-## 設計系統
+## 圖片與效能
+
+頁面肖像使用本機 WebP。`bun build` 與 `bun dev` 會先產生文章圖片的 768px／1440px WebP 選項，保留原圖網址與檔案；產物位於忽略的 `public/image-variants/`。新增文章圖片後可執行 `bun run images:prepare` 更新。
+
+縮圖名稱包含轉換版本。修改方向、裁切等轉換行為時，需更新版本以避免重用舊產物。
+
+文章圖片自動提供原始寬高、響應式選圖與非首圖延遲載入。主站 CV 連結停用跨根版型的預先載入；中英文、既有路由、照片內容與 3D 互動保留。
+
+效能以前後相同版本、裝置與設定的 Lighthouse 重複測量中位數比較，另確認 LCP／CLS。Lighthouse 分數與 TBT 屬於實驗室結果，不代替 CrUX 的實際訪客 INP／Core Web Vitals。
+
+## 設計色彩
 
 | Token      | Light     | Dark      |
 | ---------- | --------- | --------- |

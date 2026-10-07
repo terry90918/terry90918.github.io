@@ -28,7 +28,7 @@ export default async function HomePage() {
           className="shrink-0 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4"
         >
           <Image
-            src="https://github.com/terry90918.png"
+            src="/images/profile/avatar.webp"
             alt="Terry Chen 的照片"
             width={160}
             height={160}
