@@ -2,6 +2,7 @@ import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'nod
 import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { spawnSync } from 'node:child_process'
+import { createHash } from 'node:crypto'
 import sharp from 'sharp'
 import { expect, it } from 'vitest'
 
@@ -24,6 +25,13 @@ it('prepares smaller WebP choices without changing canonical article images', as
       .withMetadata({ orientation: 6 })
       .toBuffer()
     writeFileSync(path.join(images, 'rotated.jpg'), rotated)
+    const destination = path.join(directory, 'public/image-variants')
+    mkdirSync(destination, { recursive: true })
+    const hash = createHash('sha256').update(rotated).digest('hex').slice(0, 20)
+    await sharp(rotated)
+      .resize({ width: 768 })
+      .webp({ quality: 82, effort: 5 })
+      .toFile(path.join(destination, `${hash}-768-q82.webp`))
     const result = spawnSync(process.execPath, [path.resolve('scripts/prepare-images.mjs')], {
       cwd: directory,
       encoding: 'utf8',

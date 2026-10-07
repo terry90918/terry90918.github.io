@@ -34,7 +34,7 @@ for (const file of await files(path.join(root, 'images/ai-daily'))) {
   const hash = createHash('sha256').update(input).digest('hex').slice(0, 20)
   const variants = []
   for (const size of [768, 1440].filter((size) => size < width)) {
-    const name = `${hash}-${size}-q82.webp`
+    const name = `v2-${hash}-${size}-q82.webp`
     const output = path.join(destination, name)
     if (
       !(await access(output).then(
