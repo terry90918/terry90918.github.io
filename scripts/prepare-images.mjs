@@ -1,5 +1,5 @@
-import { createHash } from 'node:crypto'
-import { mkdir, readFile, readdir, writeFile, access } from 'node:fs/promises'
+import { createHash, randomUUID } from 'node:crypto'
+import { mkdir, readFile, readdir, writeFile, access, rename } from 'node:fs/promises'
 import path from 'node:path'
 import sharp from 'sharp'
 
@@ -29,7 +29,8 @@ await mkdir(destination, { recursive: true })
 
 for (const file of await files(path.join(root, 'images/ai-daily'))) {
   const input = await readFile(file)
-  const { width, height } = await sharp(input).metadata()
+  const { width, height } = (await sharp(input).metadata()).autoOrient
+  if (!width || !height) throw new Error(`Cannot read image dimensions: ${file}`)
   const hash = createHash('sha256').update(input).digest('hex').slice(0, 20)
   const variants = []
   for (const size of [768, 1440].filter((size) => size < width)) {
@@ -41,10 +42,13 @@ for (const file of await files(path.join(root, 'images/ai-daily'))) {
         () => false
       ))
     ) {
+      const temporary = `${output}.${randomUUID()}.tmp`
       await sharp(input)
+        .autoOrient()
         .resize({ width: size, withoutEnlargement: true })
         .webp({ quality: 82, effort: 5 })
-        .toFile(output)
+        .toFile(temporary)
+      await rename(temporary, output)
     }
     variants.push(`/image-variants/${name} ${size}w`)
   }

@@ -17,6 +17,13 @@ it('prepares smaller WebP choices without changing canonical article images', as
       .toBuffer()
     const file = path.join(images, 'hero.webp')
     writeFileSync(file, original)
+    const rotated = await sharp({
+      create: { width: 941, height: 1672, channels: 3, background: '#6688aa' },
+    })
+      .jpeg()
+      .withMetadata({ orientation: 6 })
+      .toBuffer()
+    writeFileSync(path.join(images, 'rotated.jpg'), rotated)
     const result = spawnSync(process.execPath, [path.resolve('scripts/prepare-images.mjs')], {
       cwd: directory,
       encoding: 'utf8',
@@ -25,16 +32,20 @@ it('prepares smaller WebP choices without changing canonical article images', as
     const manifest = JSON.parse(
       readFileSync(path.join(directory, 'public/image-variants/manifest.json'), 'utf8')
     )
-    const image = manifest['/images/ai-daily/example/hero.webp']
-    expect([image.width, image.height]).toEqual([1672, 941])
-    expect(image.srcSet).toMatch(/768w, .*1440w$/)
-    for (const entry of image.srcSet.split(', ')) {
-      const [src, width] = entry.split(' ')
-      const metadata = await sharp(path.join(directory, 'public', src)).metadata()
-      expect(metadata.format).toBe('webp')
-      expect(metadata.width).toBe(Number(width.slice(0, -1)))
+    for (const name of ['hero.webp', 'rotated.jpg']) {
+      const image = manifest[`/images/ai-daily/example/${name}`]
+      expect([image.width, image.height]).toEqual([1672, 941])
+      expect(image.srcSet).toMatch(/768w, .*1440w$/)
+      for (const entry of image.srcSet.split(', ')) {
+        const [src, width] = entry.split(' ')
+        const metadata = await sharp(path.join(directory, 'public', src)).metadata()
+        expect(metadata.format).toBe('webp')
+        expect(metadata.width).toBe(Number(width.slice(0, -1)))
+        expect(metadata.height).toBe(Math.round((Number(width.slice(0, -1)) * 941) / 1672))
+      }
     }
     expect(readFileSync(file)).toEqual(original)
+    expect(readFileSync(path.join(images, 'rotated.jpg'))).toEqual(rotated)
   } finally {
     rmSync(directory, { recursive: true, force: true })
   }
