@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { getPosts } from '@/lib/posts/queries'
 import { WORK_CASES } from '@/lib/site/content'
 import { getPostHref } from '@/lib/site/writing'
+import { locales, projectSlugs } from '@/lib/cv/profile'
 
 export const dynamic = 'force-static'
 const baseUrl = 'https://terry90918.github.io'
@@ -15,6 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/work',
     '/posts',
     '/posts/ai-daily',
+    '/cv',
     ...WORK_CASES.map((work) => `/work/${work.slug}`),
   ]
   return [
@@ -23,6 +25,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly' as const,
       priority: path === '/' ? 1 : 0.7,
     })),
+    ...locales.flatMap((locale) =>
+      ['', '/contact', ...projectSlugs.map((slug) => `/case-study/${slug}`)].map((route) => ({
+        url: `${baseUrl}/cv/${locale}${route}`,
+        alternates: {
+          languages: {
+            'zh-TW': `${baseUrl}/cv/zh-TW${route}`,
+            en: `${baseUrl}/cv/en${route}`,
+          },
+        },
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+      }))
+    ),
     ...posts.map((post) => ({
       url: `${baseUrl}${getPostHref(post)}`,
       changeFrequency: 'monthly' as const,

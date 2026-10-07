@@ -50,14 +50,14 @@ describe('Approved personal story reading paths', () => {
     expect(doc.body.textContent).not.toContain('55 項')
   })
 
-  it('provides the approved About greeting, reading paths and independent CV', () => {
+  it('provides the approved About greeting, reading paths and integrated CV', () => {
     const doc = documentFor(renderToStaticMarkup(<AboutPage />))
     expect(doc.querySelector('h1')?.textContent).toBe('嗨，我是 Terry。')
     for (const [text, href] of [
       ['讀我的故事', '/story'],
       ['看精選作品', '/work'],
       ['閱讀文章', '/posts'],
-      ['完整 CV', 'https://terry90918.github.io/cv/'],
+      ['完整 CV', '/cv'],
     ]) {
       expect(
         [...doc.querySelectorAll('a')].some(

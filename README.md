@@ -52,6 +52,16 @@ status: 'published' # or "draft"
 | ---------- | --------- | --------- |
 | `--accent` | `#006cac` | `#ff6b01` |
 
-## 部署
+## 站內 CV
+
+`/cv` 直接顯示繁體中文履歷；`/cv/zh-TW` 與 `/cv/en` 提供雙語履歷，各自包含聯絡頁與六個案例。主站與 CV 共用導覽、頁尾、主題設定及 Google Analytics，CV 保留原版型與 3D 名牌。
+
+履歷來源為 `lib/cv/profile.ts`，雙語案例放在 `content/cv/case-studies/`；圖片、模型及游標放在 `public/cv-assets/`。元件位於 `components/cv/`，CV 樣式限定在 `.cv-site`。來源為原 `cv` 專案的 `c2ef213`，授權與來源說明保留在 `licenses/`。
+
+`bun build` 會為 CV 產生尾斜線網址相容入口，所有頁面共用根目錄 `/_next`。公開發佈只由本儲存庫管理；舊 `cv` 儲存庫保留歷史，在主站部署完成後停止獨立發布，再回讀站內履歷確認切換。
+
+`BASE_URL=http://localhost:3001 bunx playwright test --project=frontend` 驗證站內導覽、CV 語言與章節切換、手機版面及既有文章頁。
+
+## 部署流程
 
 透過 GitHub Actions 自動部署至 GitHub Pages：push 到 `main` → 觸發 `.github/workflows/deploy-pages.yml` → 靜態匯出（`next build`, `output: 'export'`）→ 發佈到 https://terry90918.github.io。
