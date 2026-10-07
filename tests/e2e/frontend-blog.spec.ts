@@ -21,7 +21,7 @@ async function waitForScrollToSettle(page: Page) {
   })
 }
 
-const cv = 'https://terry90918.github.io/cv/'
+const cv = '/cv'
 const email = 'mailto:zxtw17985321@gmail.com'
 
 test.describe('Personal site', () => {

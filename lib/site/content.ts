@@ -1,5 +1,5 @@
 export const SITE_EMAIL = 'mailto:zxtw17985321@gmail.com'
-export const CV_URL = 'https://terry90918.github.io/cv/'
+export const CV_URL = '/cv'
 
 export interface ExperienceNote {
   id: 'origins' | 'gj' | 'tpi' | 'nidin' | 'ai-work'

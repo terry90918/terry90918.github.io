@@ -1,0 +1,9 @@
+const EdgeBlur = () => {
+  return (
+    <>
+      <div className="pointer-events-none fixed inset-x-0 top-0 z-40 h-24 mask-[linear-gradient(to_bottom,black,transparent)] backdrop-blur-xs sm:h-20" />
+      <div className="pointer-events-none fixed inset-x-0 bottom-0 z-40 h-24 mask-[linear-gradient(to_top,black,transparent)] backdrop-blur-xs sm:h-20" />
+    </>
+  )
+}
+export default EdgeBlur

@@ -57,6 +57,6 @@ The site SHALL preserve Terry's public account destinations, visible CV and emai
 #### Scenario: Contact and interaction
 
 - **WHEN** a visitor uses the navigation or contact section
-- **THEN** CV links to `https://terry90918.github.io/cv/` and email to `mailto:zxtw17985321@gmail.com`
+- **THEN** CV links to the integrated `/cv` page and email to `mailto:zxtw17985321@gmail.com`
 - **AND** public social accounts remain reachable from About or the footer
 - **AND** keyboard controls expose visible focus and theme switching remains functional
