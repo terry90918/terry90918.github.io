@@ -16,7 +16,7 @@ export default function StoryPage() {
         <h1 className="text-3xl font-bold">我的故事</h1>
         <p className="mt-4 max-w-prose leading-7 opacity-80">
           從做出一個產品，到平台、團隊與近期的 AI 工作，這裡選了幾段經歷。完整職涯可在{' '}
-          <Link href={CV_URL} className="text-accent underline underline-offset-4">
+          <Link href={CV_URL} prefetch={false} className="text-accent underline underline-offset-4">
             CV
           </Link>{' '}
           查看。

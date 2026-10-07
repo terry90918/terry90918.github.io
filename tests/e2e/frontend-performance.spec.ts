@@ -7,6 +7,7 @@ test('reading the CV does not preload a different root application', async ({ pa
       mainRequests.push(request.url())
   })
   await page.goto('/cv/en')
+  await expect(page.getByRole('button', { name: 'Toggle theme' })).toBeVisible()
   await page.waitForLoadState('networkidle')
   expect(mainRequests).toEqual([])
 })
@@ -21,8 +22,14 @@ test('the main portrait uses a local WebP and does not preload the CV applicatio
   await page.goto('/')
   const portrait = page.getByTestId('homepage-hero').getByRole('img', { name: 'Terry Chen 的照片' })
   await expect(portrait).toHaveAttribute('src', '/images/profile/avatar.webp')
-  await page.waitForLoadState('networkidle')
-  expect(cvRequests).toEqual([])
+  for (const route of ['/', '/about', '/story', '/work/gj']) {
+    if (route !== '/') await page.goto(route)
+    await expect(page.getByRole('button', { name: 'Toggle theme' })).toBeVisible()
+    await page.waitForLoadState('networkidle')
+    await page.keyboard.press('End')
+    await page.waitForLoadState('networkidle')
+    expect(cvRequests, route).toEqual([])
+  }
 })
 
 test('article images reserve space and use responsive WebP choices', async ({ page }) => {
