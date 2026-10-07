@@ -180,6 +180,7 @@ test.describe('Personal site', () => {
     const target = await page.locator('#tpi').boundingBox()
     const header = await page.getByRole('banner').boundingBox()
     expect(target?.y).toBeGreaterThanOrEqual((header?.y ?? 0) + (header?.height ?? 0))
+    expect(target?.y).toBeLessThan(page.viewportSize()?.height ?? 0)
   })
 })
 
