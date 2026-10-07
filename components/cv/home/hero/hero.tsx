@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import IdCard from '@/components/cv/ui/id-card'
+import DesktopIdCard from '@/components/cv/ui/desktop-id-card'
 import { contact } from '@/lib/cv/profile'
 import type { Locale, Profile } from '@/lib/cv/profile'
 export default function Hero({ locale, profile }: { locale: Locale; profile: Profile }) {
@@ -43,7 +43,7 @@ export default function Hero({ locale, profile }: { locale: Locale; profile: Pro
           </div>
         </div>
       </div>
-      <IdCard
+      <DesktopIdCard
         frontImage={contact.photo}
         className="mx-auto mt-8 aspect-4/5 w-full max-w-80 max-lg:hidden lg:absolute lg:-top-31 lg:right-0 lg:left-0 lg:z-10 lg:mt-0 lg:aspect-auto lg:h-192 lg:max-w-none"
       />

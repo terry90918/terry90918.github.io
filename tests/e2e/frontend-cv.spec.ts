@@ -106,3 +106,21 @@ test('CV styles preserve the main-site link shape', async ({ page }) => {
   const brand = page.getByRole('link', { name: 'Terry.TY Chen', exact: true })
   expect(await brand.evaluate((element) => getComputedStyle(element).borderRadius)).toBe('4px')
 })
+
+test('loads the 3D badge only when its desktop layout is visible', async ({ page }) => {
+  const models: string[] = []
+  page.on('request', (request) => {
+    if (request.url().includes('/cv-assets/models/lanyard/card.glb')) models.push(request.url())
+  })
+  await page.setViewportSize({ width: 375, height: 812 })
+  await page.goto('/cv/en')
+  await expect(page.getByRole('button', { name: 'Toggle theme', exact: true })).toBeVisible({
+    timeout: 20000,
+  })
+  await page.waitForLoadState('networkidle')
+  await expect(page.locator('#top canvas')).toHaveCount(0)
+  expect(models).toEqual([])
+  await page.setViewportSize({ width: 1280, height: 900 })
+  await expect(page.locator('#top canvas')).toHaveCount(1)
+  await expect.poll(() => models.length).toBeGreaterThan(0)
+})

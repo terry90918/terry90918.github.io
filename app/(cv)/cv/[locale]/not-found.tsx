@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { isLocale, profiles } from '@/lib/cv/profile'
 export default function NotFound() {
-  const segment = usePathname().split('/')[1]
+  const segment = usePathname().split('/')[2]
   const locale = isLocale(segment) ? segment : 'zh-TW'
   const labels = profiles[locale].labels
   return (

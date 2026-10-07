@@ -355,7 +355,7 @@ const CameraAlign = () => {
   })
   return null
 }
-type IdCardProps = {
+export type IdCardProps = {
   frontImage: string
   className?: string
 }
@@ -365,6 +365,13 @@ const IdCard = ({ frontImage, className }: IdCardProps) => {
   )
   const eventSourceRef = useRef<HTMLElement | null>(
     typeof document !== 'undefined' ? document.body : null
+  )
+  useEffect(
+    () => () => {
+      document.body.style.userSelect = ''
+      setIdCardHover(false)
+    },
+    []
   )
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768)
