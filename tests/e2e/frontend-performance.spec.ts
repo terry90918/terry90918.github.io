@@ -12,12 +12,12 @@ test('reading the CV does not preload a different root application', async ({ pa
   expect(mainRequests).toEqual([])
 })
 
-test('the main portrait uses a local WebP and does not preload the CV application', async ({
-  page,
-}) => {
+test('the main portrait uses WebP and main pages skip unused CV resources', async ({ page }) => {
   const cvRequests: string[] = []
+  const fontRequests: string[] = []
   page.on('request', (request) => {
     if (/^\/cv(\/|$)/.test(new URL(request.url()).pathname)) cvRequests.push(request.url())
+    if (new URL(request.url()).pathname.includes('/satoshi_')) fontRequests.push(request.url())
   })
   await page.goto('/')
   const portrait = page.getByTestId('homepage-hero').getByRole('img', { name: 'Terry Chen 的照片' })
@@ -29,6 +29,7 @@ test('the main portrait uses a local WebP and does not preload the CV applicatio
     await page.keyboard.press('End')
     await page.waitForLoadState('networkidle')
     expect(cvRequests, route).toEqual([])
+    expect(fontRequests, route).toEqual([])
   }
 })
 
