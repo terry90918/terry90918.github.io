@@ -310,9 +310,16 @@ test.describe('Writing and metadata', () => {
       .locator('main a[href^="/posts/20"]')
       .evaluateAll((nodes) => nodes.map((node) => node.getAttribute('href')).sort())
     expect(hrefs).toEqual(await sourceArticleURLs())
-    await expect(page.locator('[data-writing-kind="translation"]')).toContainText('Andrew Ng')
-    await expect(page.locator('[data-writing-kind="translation"]')).toContainText(
-      '翻譯 · 2026年8月31日 · 原文：Andrew Ng'
+    const andrewTranslation = page
+      .locator('[data-writing-kind="translation"]')
+      .filter({ hasText: 'AI 工程技能地圖：軟體工程基礎' })
+    await expect(andrewTranslation).toContainText('Andrew Ng')
+    await expect(andrewTranslation).toContainText('翻譯 · 2026年8月31日 · 原文：Andrew Ng')
+    const coinbaseTranslation = page
+      .locator('[data-writing-kind="translation"]')
+      .filter({ hasText: 'Coinbase 如何讓 1,000 多名工程師真正用上 AI' })
+    await expect(coinbaseTranslation).toContainText(
+      '翻譯 · 2026年10月13日 · 原文：Chintan Turakhia'
     )
     await expect(page.locator('main')).not.toContainText('原創觀點')
   })

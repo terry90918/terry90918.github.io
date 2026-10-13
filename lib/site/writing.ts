@@ -4,7 +4,10 @@ export type WritingKind = 'original' | 'translation' | 'ai-daily' | 'unclassifie
 
 // Only articles explicitly reviewed as Terry's own stories belong here.
 export const ORIGINAL_STORY_SLUGS: readonly string[] = []
-const translationSlug = 'ai-engineering-skills-map-software-engineering-fundamentals'
+const translationAuthorsBySlug = new Map<string, string>([
+  ['ai-engineering-skills-map-software-engineering-fundamentals', 'Andrew Ng'],
+  ['coinbase-ai-engineering-adoption', 'Chintan Turakhia'],
+])
 
 export const WRITING_LABELS: Record<WritingKind, string> = {
   original: '原創',
@@ -13,8 +16,12 @@ export const WRITING_LABELS: Record<WritingKind, string> = {
   unclassified: '文章',
 }
 
+export function getTranslationAuthor(slug: string): string | null {
+  return translationAuthorsBySlug.get(slug) ?? null
+}
+
 export function classifyPost(post: Pick<Post, 'slug' | 'tags'>): WritingKind {
-  if (post.slug === translationSlug) return 'translation'
+  if (getTranslationAuthor(post.slug)) return 'translation'
   if (post.slug.startsWith('ai-daily-')) return 'ai-daily'
   if (ORIGINAL_STORY_SLUGS.includes(post.slug)) return 'original'
   return 'unclassified'

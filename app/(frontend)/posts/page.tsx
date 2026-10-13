@@ -6,7 +6,7 @@ import { WritingPostCard } from '@/components/WritingPostCard'
 
 export const metadata = pageMetadata(
   '文章',
-  '按年份閱讀 Terry 的文章，探索 AI 日報系列與軟體工程翻譯；內容標明類型與原作者。',
+  '按年份閱讀 Terry 的文章，探索 AI 日報系列與翻譯文章；內容標明類型與原文來源。',
   '/posts'
 )
 
@@ -26,7 +26,10 @@ export default async function PostsPage() {
   const posts = grouped.flatMap((year) => year.months.flatMap((month) => month.posts))
   const publishedCount = posts.filter((post) => post.status === 'published').length
   const draftCount = posts.length - publishedCount
-  const translation = posts.find((post) => classifyPost(post) === 'translation')
+  const softwareEngineeringTranslation = posts.find(
+    (post) =>
+      classifyPost(post) === 'translation' && post.tags.some((tag) => tag.name === '軟體工程')
+  )
   const hasDaily = posts.some((post) => classifyPost(post) === 'ai-daily')
 
   return (
@@ -37,7 +40,7 @@ export default async function PostsPage() {
           持續整理的 AI 資訊與翻譯，按年份放在這裡。日報是資訊整理；翻譯標明原作者與來源。
         </p>
       </header>
-      {(hasDaily || translation) && (
+      {(hasDaily || softwareEngineeringTranslation) && (
         <nav
           aria-label="文章主題"
           className="border-border flex flex-wrap gap-5 border-y py-4 text-sm"
@@ -50,9 +53,9 @@ export default async function PostsPage() {
               AI 資訊
             </Link>
           )}
-          {translation && (
+          {softwareEngineeringTranslation && (
             <a
-              href={`#writing-${translation.year}-${translation.slug}`}
+              href={`#writing-${softwareEngineeringTranslation.year}-${softwareEngineeringTranslation.slug}`}
               className="text-accent rounded-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
             >
               軟體工程

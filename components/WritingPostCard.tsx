@@ -1,16 +1,17 @@
 import Link from 'next/link'
 import type { Post } from '@/lib/posts/types'
 import { formatPublishedDate } from '@/lib/date'
-import { classifyPost, getPostHref, WRITING_LABELS } from '@/lib/site/writing'
+import { classifyPost, getPostHref, getTranslationAuthor, WRITING_LABELS } from '@/lib/site/writing'
 
 export function WritingPostCard({ post }: { post: Post }) {
   const kind = classifyPost(post)
+  const translationAuthor = kind === 'translation' ? getTranslationAuthor(post.slug) : null
   return (
     <article data-writing-kind={kind} className="border-border border-b py-4 last:border-0">
       <p className="mb-1 text-xs opacity-65">
         {WRITING_LABELS[kind]} · {formatPublishedDate(post.publishedAt, 'zh-TW')}
         {post.status === 'draft' && ' · 草稿（開發預覽）'}
-        {kind === 'translation' && ' · 原文：Andrew Ng'}
+        {translationAuthor && ` · 原文：${translationAuthor}`}
       </p>
       <Link
         href={getPostHref(post)}
