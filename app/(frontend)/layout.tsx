@@ -40,7 +40,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <SiteShell>
-          <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8">{children}</main>
+          <main className="mx-auto w-full max-w-(--editorial-width) flex-1 px-5 md:px-8">
+            {children}
+          </main>
         </SiteShell>
       </body>
     </html>

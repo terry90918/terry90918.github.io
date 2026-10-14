@@ -120,7 +120,9 @@ test.describe('Personal site', () => {
     expect(await updates.locator('[data-writing-kind="ai-daily"]').count()).toBeLessThanOrEqual(1)
     expect(await updates.locator('article').count()).toBeLessThanOrEqual(3)
     await page.goto('/posts')
-    await expect(page.locator('[data-writing-kind="translation"]')).toContainText('Andrew Ng')
+    await expect(
+      page.locator('[data-writing-kind="translation"]').filter({ hasText: 'Andrew Ng' })
+    ).toContainText('AI 工程技能地圖：軟體工程基礎')
   })
 
   test('[brand] publishes only the selected work cases and returns 404 for others', async ({
@@ -154,6 +156,16 @@ test.describe('Personal site', () => {
     ]) {
       await expect(page.locator(`main a[href="${href}"]`)).toBeVisible()
     }
+  })
+
+  test('content links use readable accent colors in light and dark themes', async ({ page }) => {
+    await page.addInitScript(() => localStorage.setItem('theme', 'light'))
+    await page.goto('/')
+    const link = page.getByTestId('experience-entries').getByRole('link').first()
+    await expect(link).toHaveCSS('color', 'rgb(184, 59, 8)')
+    await page.getByRole('button', { name: 'Toggle theme' }).click()
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
+    await expect(link).toHaveCSS('color', 'rgb(255, 140, 80)')
   })
 
   test('theme toggle is keyboard reachable, has visible focus and changes the theme', async ({
@@ -363,7 +375,9 @@ test.describe('Writing and metadata', () => {
   test('[writing] retains every published article URL, excluding drafts', async ({ page }) => {
     await page.goto('/posts')
     const hrefs = await page
-      .locator('main a[href^="/posts/20"]')
+      .locator('main [data-writing-kind]')
+      .filter({ hasNotText: '草稿（開發預覽）' })
+      .locator('a[href^="/posts/20"]')
       .evaluateAll((nodes) => nodes.map((node) => node.getAttribute('href')).sort())
     expect(hrefs).toEqual(await sourceArticleURLs())
     const andrewTranslation = page
