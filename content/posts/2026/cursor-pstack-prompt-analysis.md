@@ -340,9 +340,9 @@ Playbook 描述的是流程意圖。當它要求 live UI、cloud agents、外部
 
 ### comment-sicko：把註解視為需證明的例外
 
-[comment-sicko.md](https://github.com/cursor/plugins/blob/1e5c90a4b6f249917bd21fe361b3a2a7deb741b8/pstack/agents/comment-sicko.md) 專看註解、lint suppressions 和長篇 workaround 說明。它只接受少數外部契約例外；對自有程式碼的驚訝行為，要求回到 /how、/why 找出結構性修正方向。它只回報，不改程式。
+[comment-sicko.md](https://github.com/cursor/plugins/blob/1e5c90a4b6f249917bd21fe361b3a2a7deb741b8/pstack/agents/comment-sicko.md) 專看註解、lint suppressions 和長篇 workaround 說明。它只接受少數外部契約例外；對自有程式碼的驚訝行為，要求回到 /how、/why 找出結構性修正方向。它會刪除範圍內不符合例外條件的註解和 suppression，也會標出要重構的 symbol；它不得改寫應用程式邏輯。/no-comments 的主流程會檢查它的 diff，復原不接受的刪除，並處理已接受的修正。
 
-這提示的重點不是「刪掉所有註解」，而是要求保留理由必須能由外部契約證明，且把每個問題精確標成需重構的 symbol。語氣刻意極端有助於反向挑戰替註解辯護的慣性，但可能把有效維護說明也推向刪除。README 稱它唯讀；frontmatter 沒有明確的 readonly: true，所以這是模型行為要求，不是權限保障。
+這提示的重點不是「刪掉所有註解」，而是要求保留理由必須能由外部契約證明，且把每個問題精確標成需重構的 symbol。語氣刻意極端有助於反向挑戰替註解辯護的慣性，但可能把有效維護說明也推向刪除。README 稱它唯讀，原始代理提示卻要求刪除註解；frontmatter 也沒有 `readonly: true`。因此「不寫應用程式邏輯」才是提示中寫下的範圍，Cursor 的權限設定沒有保證它只能回報。
 
 ## Benny：兩段 Slack 回報自動化
 
