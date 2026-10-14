@@ -20,10 +20,9 @@ test('CV opens inside the main site and shares its navigation and theme', async 
   await expect(page.getByRole('heading', { level: 1 })).toContainText('陳天一')
   expect(
     await page
-      .locator('#top .bg-accent')
-      .first()
-      .evaluate((element) => getComputedStyle(element).backgroundColor)
-  ).toBe('lab(61.5867 61.0772 71.9669)')
+      .locator('html')
+      .evaluate((element) => getComputedStyle(element).getPropertyValue('--brand').trim())
+  ).toBe('#ff5c00')
   await expect(page.getByRole('banner')).toHaveCount(1)
   await expect(page.getByRole('contentinfo')).toHaveCount(1)
   await expect(page.getByRole('button', { name: 'Toggle theme', exact: true })).toHaveCount(1)
