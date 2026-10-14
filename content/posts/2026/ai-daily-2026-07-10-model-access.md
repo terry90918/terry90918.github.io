@@ -1,7 +1,7 @@
 ---
 title: '從桌面整合到廣告揭露：模型競爭也取決於入口'
 publishedAt: '2026-07-10T05:00:00+08:00'
-status: 'draft'
+status: 'published'
 slug: 'ai-daily-2026-07-10-model-access'
 excerpt: 'OpenAI 整合桌面工具，Meta 透過 X 宣傳新模型，Google 增加廣告生成資訊；同一天的基金回撤與治理消息，也提醒我們分清產品承諾和證據。'
 tags:
