@@ -69,6 +69,49 @@ test.describe('Personal site', () => {
     await expect(page).toHaveURL('/')
   })
 
+  test('mobile navigation opens by keyboard and closes on Escape and navigation', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 375, height: 900 })
+    await page.goto('/')
+    const menu = page.getByRole('button', { name: '開啟導覽' })
+    const nav = page.getByRole('navigation', { name: '手機導覽' })
+    await expect(menu).toHaveAttribute('aria-expanded', 'false')
+    await expect(nav).toBeHidden()
+    for (let i = 0; i < 20; i++) {
+      await page.keyboard.press('Tab')
+      if (await menu.evaluate((el) => el === document.activeElement)) break
+    }
+    await expect(menu).toBeFocused()
+    await expect(menu).toHaveCSS('outline-style', 'solid')
+    await page.keyboard.press('Enter')
+    await expect(menu).toHaveAttribute('aria-expanded', 'true')
+    await expect(nav).toBeVisible()
+    for (const [name, href] of [
+      ['關於我', '/about'],
+      ['故事', '/story'],
+      ['作品', '/work'],
+      ['文章', '/posts'],
+      ['CV', cv],
+      ['聯絡', email],
+    ]) {
+      await expect(nav.getByRole('link', { name, exact: true })).toBeVisible()
+      await expect(nav.getByRole('link', { name, exact: true })).toHaveAttribute('href', href)
+    }
+    await page.keyboard.press('Tab')
+    await expect(nav.getByRole('link', { name: '關於我', exact: true })).toBeFocused()
+    await page.keyboard.press('Escape')
+    await expect(menu).toHaveAttribute('aria-expanded', 'false')
+    await expect(nav).toBeHidden()
+    await expect(menu).toBeFocused()
+    await page.keyboard.press('Enter')
+    await nav.getByRole('link', { name: '關於我', exact: true }).click()
+    await expect(page).toHaveURL('/about')
+    await expect(menu).toHaveAttribute('aria-expanded', 'false')
+    await expect(nav).toBeHidden()
+    await expect(menu).toBeFocused()
+  })
+
   test('[brand] limits daily updates and credits the translation in the article index', async ({
     page,
   }) => {
@@ -142,11 +185,16 @@ test.describe('Personal site', () => {
               () => document.documentElement.scrollWidth <= document.documentElement.clientWidth
             )
           ).toBe(true)
-          await expect(
-            page
-              .getByRole('navigation', { name: '主要導覽' })
-              .getByRole('link', { name: 'CV', exact: true })
-          ).toBeVisible()
+          if (width < 768) {
+            await expect(page.getByRole('button', { name: '開啟導覽' })).toBeVisible()
+            await expect(page.getByRole('navigation', { name: '主要導覽' })).toBeHidden()
+          } else {
+            await expect(
+              page
+                .getByRole('navigation', { name: '主要導覽' })
+                .getByRole('link', { name: 'CV', exact: true })
+            ).toBeVisible()
+          }
           await page.getByRole('button', { name: 'Toggle theme' }).click()
         }
       }
@@ -164,10 +212,18 @@ test.describe('Personal site', () => {
 
   test('footer preserves social links and license', async ({ page }) => {
     await page.goto('/')
-    await expect(page.locator('footer')).toContainText('CC BY 4.0')
-    await expect(
-      page.locator('footer').getByRole('link', { name: 'GitHub', exact: true })
-    ).toBeVisible()
+    const footer = page.locator('footer')
+    await expect(footer).toContainText('CC BY 4.0 · Code MIT')
+    for (const [name, href] of [
+      ['GitHub', 'https://github.com/terry90918'],
+      ['X (Twitter)', 'https://x.com/zxtw17985321'],
+      ['LinkedIn', 'https://www.linkedin.com/in/tien-yi-chen-98812812a'],
+      ['CV', cv],
+      ['聯絡', email],
+    ]) {
+      await expect(footer.getByRole('link', { name, exact: true })).toBeVisible()
+      await expect(footer.getByRole('link', { name, exact: true })).toHaveAttribute('href', href)
+    }
   })
 
   test('[brand] TPI related work clears the sticky header after cross-page navigation', async ({
