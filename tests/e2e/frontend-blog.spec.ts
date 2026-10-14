@@ -69,6 +69,49 @@ test.describe('Personal site', () => {
     await expect(page).toHaveURL('/')
   })
 
+  test('mobile navigation opens by keyboard and closes on Escape and navigation', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 375, height: 900 })
+    await page.goto('/')
+    const menu = page.getByRole('button', { name: '導覽選單' })
+    const nav = page.getByRole('navigation', { name: '手機導覽' })
+    await expect(menu).toHaveAttribute('aria-expanded', 'false')
+    await expect(nav).toBeHidden()
+    for (let i = 0; i < 20; i++) {
+      await page.keyboard.press('Tab')
+      if (await menu.evaluate((el) => el === document.activeElement)) break
+    }
+    await expect(menu).toBeFocused()
+    await expect(menu).toHaveCSS('outline-style', 'solid')
+    await page.keyboard.press('Enter')
+    await expect(menu).toHaveAttribute('aria-expanded', 'true')
+    await expect(nav).toBeVisible()
+    for (const [name, href] of [
+      ['關於我', '/about'],
+      ['故事', '/story'],
+      ['作品', '/work'],
+      ['文章', '/posts'],
+      ['CV', cv],
+      ['聯絡', email],
+    ]) {
+      await expect(nav.getByRole('link', { name, exact: true })).toBeVisible()
+      await expect(nav.getByRole('link', { name, exact: true })).toHaveAttribute('href', href)
+    }
+    await page.keyboard.press('Tab')
+    await expect(nav.getByRole('link', { name: '關於我', exact: true })).toBeFocused()
+    await page.keyboard.press('Escape')
+    await expect(menu).toHaveAttribute('aria-expanded', 'false')
+    await expect(nav).toBeHidden()
+    await expect(menu).toBeFocused()
+    await page.keyboard.press('Enter')
+    await nav.getByRole('link', { name: '關於我', exact: true }).click()
+    await expect(page).toHaveURL('/about')
+    await expect(menu).toHaveAttribute('aria-expanded', 'false')
+    await expect(nav).toBeHidden()
+    await expect(menu).toBeFocused()
+  })
+
   test('[brand] limits daily updates and credits the translation in the article index', async ({
     page,
   }) => {
@@ -77,7 +120,9 @@ test.describe('Personal site', () => {
     expect(await updates.locator('[data-writing-kind="ai-daily"]').count()).toBeLessThanOrEqual(1)
     expect(await updates.locator('article').count()).toBeLessThanOrEqual(3)
     await page.goto('/posts')
-    await expect(page.locator('[data-writing-kind="translation"]')).toContainText('Andrew Ng')
+    await expect(
+      page.locator('[data-writing-kind="translation"]').filter({ hasText: 'Andrew Ng' })
+    ).toContainText('AI 工程技能地圖：軟體工程基礎')
   })
 
   test('[brand] publishes only the selected work cases and returns 404 for others', async ({
@@ -113,6 +158,16 @@ test.describe('Personal site', () => {
     }
   })
 
+  test('content links use readable accent colors in light and dark themes', async ({ page }) => {
+    await page.addInitScript(() => localStorage.setItem('theme', 'light'))
+    await page.goto('/')
+    const link = page.getByTestId('experience-entries').getByRole('link').first()
+    await expect(link).toHaveCSS('color', 'rgb(184, 59, 8)')
+    await page.getByRole('button', { name: 'Toggle theme' }).click()
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
+    await expect(link).toHaveCSS('color', 'rgb(255, 140, 80)')
+  })
+
   test('theme toggle is keyboard reachable, has visible focus and changes the theme', async ({
     page,
   }) => {
@@ -142,11 +197,16 @@ test.describe('Personal site', () => {
               () => document.documentElement.scrollWidth <= document.documentElement.clientWidth
             )
           ).toBe(true)
-          await expect(
-            page
-              .getByRole('navigation', { name: '主要導覽' })
-              .getByRole('link', { name: 'CV', exact: true })
-          ).toBeVisible()
+          if (width < 768) {
+            await expect(page.getByRole('button', { name: '導覽選單' })).toBeVisible()
+            await expect(page.getByRole('navigation', { name: '主要導覽' })).toBeHidden()
+          } else {
+            await expect(
+              page
+                .getByRole('navigation', { name: '主要導覽' })
+                .getByRole('link', { name: 'CV', exact: true })
+            ).toBeVisible()
+          }
           await page.getByRole('button', { name: 'Toggle theme' }).click()
         }
       }
@@ -164,10 +224,18 @@ test.describe('Personal site', () => {
 
   test('footer preserves social links and license', async ({ page }) => {
     await page.goto('/')
-    await expect(page.locator('footer')).toContainText('CC BY 4.0')
-    await expect(
-      page.locator('footer').getByRole('link', { name: 'GitHub', exact: true })
-    ).toBeVisible()
+    const footer = page.locator('footer')
+    await expect(footer).toContainText('CC BY 4.0 · Code MIT')
+    for (const [name, href] of [
+      ['GitHub', 'https://github.com/terry90918'],
+      ['X (Twitter)', 'https://x.com/zxtw17985321'],
+      ['LinkedIn', 'https://www.linkedin.com/in/tien-yi-chen-98812812a'],
+      ['CV', cv],
+      ['聯絡', email],
+    ]) {
+      await expect(footer.getByRole('link', { name, exact: true })).toBeVisible()
+      await expect(footer.getByRole('link', { name, exact: true })).toHaveAttribute('href', href)
+    }
   })
 
   test('[brand] TPI related work clears the sticky header after cross-page navigation', async ({
@@ -307,7 +375,9 @@ test.describe('Writing and metadata', () => {
   test('[writing] retains every published article URL, excluding drafts', async ({ page }) => {
     await page.goto('/posts')
     const hrefs = await page
-      .locator('main a[href^="/posts/20"]')
+      .locator('main [data-writing-kind]')
+      .filter({ hasNotText: '草稿（開發預覽）' })
+      .locator('a[href^="/posts/20"]')
       .evaluateAll((nodes) => nodes.map((node) => node.getAttribute('href')).sort())
     expect(hrefs).toEqual(await sourceArticleURLs())
     const andrewTranslation = page

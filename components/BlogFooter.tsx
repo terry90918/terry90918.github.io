@@ -48,15 +48,18 @@ function LinkedInIcon() {
 
 export function BlogFooter() {
   return (
-    <footer className="border-border border-t py-8">
-      <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 px-4 sm:flex-row sm:justify-between">
+    <footer className="border-border w-full max-w-none border-t px-0 py-8">
+      <div
+        style={{ width: 'calc(100% - 2rem)', maxWidth: 'var(--editorial-width)' }}
+        className="mx-auto flex flex-col items-center gap-4 sm:flex-row sm:justify-between"
+      >
         <div className="flex items-center gap-4">
           <Link
             href="https://github.com/terry90918"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            className="text-foreground rounded-sm p-2 opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-4"
+            className="text-foreground hover:text-accent rounded-sm p-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]"
           >
             <GitHubIcon />
           </Link>
@@ -65,7 +68,7 @@ export function BlogFooter() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="X (Twitter)"
-            className="text-foreground rounded-sm p-2 opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-4"
+            className="text-foreground hover:text-accent rounded-sm p-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]"
           >
             <XIcon />
           </Link>
@@ -74,7 +77,7 @@ export function BlogFooter() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="text-foreground rounded-sm p-2 opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-4"
+            className="text-foreground hover:text-accent rounded-sm p-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]"
           >
             <LinkedInIcon />
           </Link>
@@ -83,13 +86,13 @@ export function BlogFooter() {
           <Link
             href={CV_URL}
             prefetch={false}
-            className="text-accent rounded-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+            className="text-accent rounded-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]"
           >
             CV
           </Link>
           <Link
             href={SITE_EMAIL}
-            className="text-accent rounded-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+            className="text-accent rounded-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]"
           >
             聯絡
           </Link>

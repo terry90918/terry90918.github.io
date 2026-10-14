@@ -6,11 +6,11 @@ import type { Locale, Profile } from '@/lib/cv/profile'
 export default function Hero({ locale, profile }: { locale: Locale; profile: Profile }) {
   return (
     <section id="top" className="lg:relative">
-      <div className="border-b pt-24 pb-12 sm:py-16 lg:pt-32 lg:pb-24">
+      <div className="border-b pt-16 pb-12 sm:py-20 lg:pt-24 lg:pb-20">
         <div className="px-4 sm:px-6 lg:px-10.5">
           <div className="space-y-6 lg:max-w-lg">
-            <span className="bg-card inline-flex h-5 w-fit items-center gap-2 rounded-full border px-3 py-1 text-xs shadow-sm">
-              <span className="bg-accent size-1.5 rounded-full" />
+            <span className="bg-card inline-flex h-7 w-fit items-center gap-2 rounded-md border px-3 py-1 text-xs">
+              <span className="bg-brand size-1.5 rounded-full" />
               {profile.location}
             </span>
             <h1 className="text-4xl leading-[1.15] font-semibold tracking-tight sm:text-5xl lg:text-[64px] lg:font-bold">
@@ -27,15 +27,15 @@ export default function Hero({ locale, profile }: { locale: Locale; profile: Pro
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <Link
                 href={`/cv/${locale}/#experience`}
-                className="bg-background hover:text-accent-ink rounded-full border px-5 py-3 text-sm"
+                className="bg-brand text-brand-foreground hover:bg-brand/90 rounded-md px-5 py-3 text-sm"
               >
                 {profile.labels.viewExperience}
               </Link>
               <Link
                 href={`/cv/${locale}/#contact`}
-                className="bg-card hover:text-accent-ink flex items-center gap-3 rounded-full border px-5 py-3 text-sm shadow-sm"
+                className="bg-card hover:bg-accent-surface hover:text-accent-ink flex items-center gap-3 rounded-md border px-5 py-3 text-sm"
               >
-                <span className="bg-accent size-2 rounded-full" />
+                <span className="bg-brand size-2 rounded-full" />
                 {profile.labels.contact}
                 <ArrowRight className="size-4" />
               </Link>

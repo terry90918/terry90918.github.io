@@ -14,7 +14,7 @@ Records engineering articles and personal insights.
 - **Markdown**: unified → remark-gfm → remark-rehype (allowDangerousHtml) → rehype-raw → rehype-sanitize → rehype-slug → rehype-autolink-headings → rehype-pretty-code → rehype-stringify
 - **Syntax Highlighting**: rehype-pretty-code (dual theme: github-light / github-dark-dimmed)
 - **Styling**: Tailwind CSS 4 + `@tailwindcss/typography`
-- **Fonts**: Atkinson Hyperlegible (Google Fonts), `font-mono` global
+- **Fonts**: Local Satoshi via `next/font/local`; see `DESIGN.md`
 - **Dark Mode**: next-themes (`attribute="data-theme"`)
 - **Package Manager**: bun (not npm — `package-lock.json` is gitignored)
 
@@ -22,7 +22,7 @@ Records engineering articles and personal insights.
 
 ```bash
 bun dev            # Dev server on localhost:3000
-bun build          # Production build (no DB required)
+bun run build      # Production static export (no DB required)
 bun start          # Production server
 bun lint           # ESLint
 bun format         # Prettier format
@@ -56,8 +56,7 @@ app/
     rss.xml/               # RSS 2.0 Route Handler (statically exported)
     sitemap.ts             # Sitemap (statically exported)
     icon.svg               # Favicon
-    globals.css            # Tailwind base + CSS variables + syntax highlighting
-    fonts.ts               # Stub (font loaded via CSS @import)
+    globals.css            # Tailwind base, theme tokens, and syntax highlighting
 content/
   posts/<year>/<slug>.md   # Markdown blog posts (frontmatter + content)
   README.md                # Frontmatter schema and authoring guide
@@ -68,7 +67,7 @@ components/
   BlogFooter.tsx           # Footer with social links + CC BY 4.0
   ThemeProvider.tsx        # next-themes wrapper (attribute="data-theme")
 lib/
-  site/                   # Verified experience/work registry, writing classification and metadata
+  site/                   # Verified site content, metadata, and shared font configuration
   rss.ts                   # RSS 2.0 feed builder
 lib/posts/
   types.ts                 # Post, Tag, PostsByYearMonth, PaginatedResult types
@@ -124,20 +123,7 @@ Any tag/attribute not in the sanitize schema is silently stripped — extend `sa
 
 ## Design System
 
-CSS variables in `app/(frontend)/globals.css`:
-
-| Token          | Light     | Dark        |
-| -------------- | --------- | ----------- |
-| `--background` | `#fdfdfd` | `#212737`   |
-| `--foreground` | `#282728` | `#eaedf3`   |
-| `--accent`     | `#006cac` | `#ff6b01`   |
-| `--muted`      | `#e6e6e6` | `#343f60bf` |
-| `--border`     | `#ece9e9` | `#ab4b08`   |
-
-- Font: Atkinson Hyperlegible loaded via `@import url()` in `globals.css`; `fonts.ts` is `export {}` (unused)
-- Container: `max-w-3xl` centered by default; the homepage header uses the
-  `--editorial-width: 46rem` token so its outer box aligns with the homepage's 736px content box
-- Dark mode: `data-theme="dark"` on `<html>` (next-themes `attribute="data-theme"`)
+`DESIGN.md` is the visual source of truth for typography, semantic tokens, widths, radii, and motion. Runtime theme values live in `app/(frontend)/globals.css`; CV styles consume those shared tokens from `styles/cv.css`. Keep the `html[data-theme]` contract used by next-themes.
 
 ### Syntax Highlighting (rehype-pretty-code)
 

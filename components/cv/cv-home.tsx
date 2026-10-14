@@ -21,21 +21,21 @@ export default function CvHome({
   return (
     <>
       <Hero locale={locale} profile={profile} />
-      <section id="about" className="border-b px-4 py-12 sm:px-6 sm:py-24 lg:px-10.5">
+      <section id="about" className="border-b px-4 py-14 sm:px-6 sm:py-20 lg:px-10.5 lg:py-24">
         <Eyebrow>{labels.about}</Eyebrow>
         <h2 className="mt-2 text-2xl leading-snug font-semibold md:text-3xl lg:text-4xl">
           {labels.aboutTitle}
         </h2>
         <div className="mt-10 grid gap-6 md:grid-cols-[280px_1fr]">
-          <div className="bg-card overflow-hidden rounded-3xl border p-2">
+          <div className="bg-card overflow-hidden rounded-lg border p-1.5">
             <Image
               src={contact.photo}
               alt={profile.name}
               width={560}
               height={700}
-              className="aspect-4/5 w-full rounded-2xl object-cover"
+              className="aspect-4/5 w-full rounded-lg object-cover"
             />
-            <div className="px-4 py-5">
+            <div className="px-3.5 py-4">
               <p className="text-xl font-semibold">{profile.name}</p>
               <p className="text-muted-foreground mt-2 flex items-center gap-2 text-xs">
                 <MapPin className="size-3.5 shrink-0" />
@@ -53,7 +53,7 @@ export default function CvHome({
               {profile.stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="bg-card flex flex-col justify-center rounded-2xl border p-5"
+                  className="bg-card flex flex-col justify-center rounded-lg border p-4 sm:p-5"
                 >
                   <p className="text-accent-ink text-3xl font-semibold tracking-tight">
                     {stat.value}
@@ -72,7 +72,7 @@ export default function CvHome({
         title={labels.workTitle}
       />
       <Experience profile={profile} />
-      <section id="skills" className="border-b px-4 py-12 sm:px-6 sm:py-24 lg:px-10.5">
+      <section id="skills" className="border-b px-4 py-14 sm:px-6 sm:py-20 lg:px-10.5 lg:py-24">
         <Eyebrow>{labels.skills}</Eyebrow>
         <h2 className="mt-2 text-2xl leading-snug font-semibold md:text-3xl lg:text-4xl">
           {labels.skillsTitle}
@@ -90,7 +90,7 @@ export default function CvHome({
               <div className="space-y-4 pt-5 sm:pl-9">
                 <div className="flex flex-wrap gap-2">
                   {skill.tags.map((tag) => (
-                    <span key={tag} className="bg-card rounded-full border px-3 py-1 text-xs">
+                    <span key={tag} className="bg-card rounded-md border px-3 py-1 text-xs">
                       {tag}
                     </span>
                   ))}
@@ -103,15 +103,15 @@ export default function CvHome({
           ))}
         </div>
       </section>
-      <section id="education" className="border-b px-4 py-12 sm:px-6 sm:py-24 lg:px-10.5">
+      <section id="education" className="border-b px-4 py-14 sm:px-6 sm:py-20 lg:px-10.5 lg:py-24">
         <Eyebrow>{labels.education}</Eyebrow>
         <div className="mt-6 grid gap-6 sm:grid-cols-2">
-          <div className="bg-card rounded-3xl border p-6">
+          <div className="bg-card rounded-lg border p-5 sm:p-6">
             <h2 className="text-2xl font-semibold">{profile.education.school}</h2>
             <p className="mt-3">{profile.education.field}</p>
             <p className="text-muted-foreground mt-4 text-sm">{profile.education.period}</p>
           </div>
-          <div className="rounded-3xl border p-6">
+          <div className="bg-card rounded-lg border p-5 sm:p-6">
             <h2 className="text-xl font-medium">{labels.military}</h2>
             <p className="text-muted-foreground mt-4 text-sm">{profile.military}</p>
           </div>
@@ -119,7 +119,7 @@ export default function CvHome({
       </section>
       <section
         id="contact"
-        className="min-h-[calc(100svh-6rem)] px-4 py-12 sm:px-6 sm:py-24 lg:px-10.5"
+        className="min-h-[calc(100svh-6rem)] px-4 py-14 sm:px-6 sm:py-20 lg:px-10.5 lg:py-24"
       >
         <Eyebrow>{labels.contact}</Eyebrow>
         <div className="mt-3 flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-end">
@@ -136,7 +136,7 @@ export default function CvHome({
           </div>
           <Link
             href={`/cv/${locale}/contact#contact-top`}
-            className="bg-card hover:text-accent-ink flex shrink-0 items-center gap-3 rounded-full border px-5 py-3 text-sm shadow-sm"
+            className="bg-brand text-brand-foreground hover:bg-brand/90 flex shrink-0 items-center gap-3 rounded-md px-5 py-3 text-sm"
           >
             {labels.contactDetails}
             <ArrowUpRight className="size-4" />

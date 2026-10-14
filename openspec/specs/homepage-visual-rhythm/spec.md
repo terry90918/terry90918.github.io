@@ -2,13 +2,13 @@
 
 ## Purpose
 
-Describe the approved personal introduction and reading flow, superseding the earlier homepage visual refinement with the JUR-508 version 2 design.
+Describe the approved personal introduction and reading flow. Visual values and layout rules are maintained in `DESIGN.md`.
 
 ## Requirements
 
 ### Requirement: Editorial content width
 
-The homepage and persistent header SHALL share a narrow editorial inner width and remain horizontally centered.
+The homepage and persistent header SHALL share the desktop content maximum defined in `DESIGN.md` and remain horizontally centered.
 
 #### Scenario: Header and homepage align on desktop
 
@@ -22,7 +22,7 @@ The homepage SHALL show Terry's existing portrait and the approved Traditional-C
 #### Scenario: Desktop hero
 
 - **WHEN** the viewport is at or above the small-screen breakpoint
-- **THEN** the circular portrait is 160px by 160px beside the introduction
+- **THEN** the existing portrait appears beside the introduction using the profile treatment defined in `DESIGN.md`
 - **AND** the heading is exactly `嗨，我是 Terry。`
 
 #### Scenario: Narrow hero

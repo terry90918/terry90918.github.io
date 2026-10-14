@@ -15,9 +15,15 @@ test('reading the CV does not preload a different root application', async ({ pa
 test('the main portrait uses WebP and main pages skip unused CV resources', async ({ page }) => {
   const cvRequests: string[] = []
   const fontRequests: string[] = []
+  const googleFontRequests: string[] = []
   page.on('request', (request) => {
     if (/^\/cv(\/|$)/.test(new URL(request.url()).pathname)) cvRequests.push(request.url())
-    if (new URL(request.url()).pathname.includes('/satoshi_')) fontRequests.push(request.url())
+    const url = new URL(request.url())
+    if (url.pathname.startsWith('/_next/static/media/') && url.pathname.endsWith('.woff2'))
+      fontRequests.push(request.url())
+    if (['fonts.googleapis.com', 'fonts.gstatic.com'].includes(url.hostname))
+      googleFontRequests.push(request.url())
+    if (url.pathname.startsWith('/cv-assets/models/')) cvRequests.push(request.url())
   })
   await page.goto('/')
   const portrait = page.getByTestId('homepage-hero').getByRole('img', { name: 'Terry Chen 的照片' })
@@ -29,7 +35,25 @@ test('the main portrait uses WebP and main pages skip unused CV resources', asyn
     await page.keyboard.press('End')
     await page.waitForLoadState('networkidle')
     expect(cvRequests, route).toEqual([])
-    expect(fontRequests, route).toEqual([])
+    expect(
+      await page.locator('body').evaluate((element) => getComputedStyle(element).fontFamily),
+      route
+    ).toContain('satoshi')
+    expect(
+      await page.evaluate(async () => {
+        await document.fonts.ready
+        const family = getComputedStyle(document.body)
+          .fontFamily.split(',')[0]
+          .replaceAll('"', '')
+          .trim()
+        return Array.from(document.fonts).some(
+          (face) => face.family === family && face.status === 'loaded'
+        )
+      }),
+      route
+    ).toBe(true)
+    expect(fontRequests.length, route).toBeGreaterThan(0)
+    expect(googleFontRequests, route).toEqual([])
   }
 })
 

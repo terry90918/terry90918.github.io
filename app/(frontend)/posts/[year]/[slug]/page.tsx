@@ -57,7 +57,7 @@ function ShareLinks({ post, siteUrl }: { post: Post; siteUrl: string }) {
         href={`https://x.com/intent/tweet?url=${url}&text=${title}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="hover:text-accent transition-colors"
+        className="hover:text-accent-ink transition-colors"
       >
         X
       </Link>
@@ -65,7 +65,7 @@ function ShareLinks({ post, siteUrl }: { post: Post; siteUrl: string }) {
         href={`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="hover:text-accent transition-colors"
+        className="hover:text-accent-ink transition-colors"
       >
         LinkedIn
       </Link>
@@ -73,13 +73,13 @@ function ShareLinks({ post, siteUrl }: { post: Post; siteUrl: string }) {
         href={`https://t.me/share/url?url=${url}&text=${title}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="hover:text-accent transition-colors"
+        className="hover:text-accent-ink transition-colors"
       >
         Telegram
       </Link>
       <Link
         href={`mailto:?subject=${title}&body=${url}`}
-        className="hover:text-accent transition-colors"
+        className="hover:text-accent-ink transition-colors"
       >
         Email
       </Link>
@@ -112,7 +112,7 @@ export default async function PostPage({ params }: PageParams) {
             href={githubEditUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-accent transition-colors"
+            className="hover:text-accent-ink transition-colors"
           >
             Edit on GitHub
           </Link>
@@ -122,7 +122,7 @@ export default async function PostPage({ params }: PageParams) {
       {/* Content */}
       <div className="prose prose-sm max-w-none">
         {renderStandaloneExcerpt && (
-          <p className="text-foreground border-accent not-prose mb-6 border-l-2 pl-4 text-base opacity-70">
+          <p className="text-foreground border-brand not-prose mb-6 border-l-2 pl-4 text-base opacity-70">
             {post.excerpt}
           </p>
         )}
@@ -148,7 +148,7 @@ export default async function PostPage({ params }: PageParams) {
         {prev ? (
           <Link
             href={`/posts/${prev.year}/${prev.slug}`}
-            className="text-accent text-sm hover:underline"
+            className="text-accent-ink text-sm hover:underline"
           >
             ← {prev.title}
           </Link>
@@ -158,7 +158,7 @@ export default async function PostPage({ params }: PageParams) {
         {next ? (
           <Link
             href={`/posts/${next.year}/${next.slug}`}
-            className="text-accent text-right text-sm hover:underline"
+            className="text-accent-ink text-right text-sm hover:underline"
           >
             {next.title} →
           </Link>

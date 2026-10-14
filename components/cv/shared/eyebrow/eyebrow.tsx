@@ -6,7 +6,7 @@ type EyebrowProps = {
 const Eyebrow = ({ children, className }: EyebrowProps) => {
   return (
     <p
-      className={cn('text-accent-ink text-[22px] font-medium italic', className)}
+      className={cn('text-accent-ink text-sm font-medium tracking-wide', className)}
     >{`// ${children}`}</p>
   )
 }

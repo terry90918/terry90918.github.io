@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { SiteShell } from '@/components/SiteShell'
+import { satoshi } from '@/lib/site/fonts'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://terry90918.github.io'),
@@ -33,13 +34,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="zh-TW" suppressHydrationWarning>
+    <html lang="zh-TW" className={satoshi.variable} suppressHydrationWarning>
       <head>
         <link rel="alternate" type="application/rss+xml" title="Terry Chen" href="/rss.xml" />
       </head>
       <body>
         <SiteShell>
-          <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8">{children}</main>
+          <main className="mx-auto w-full max-w-(--editorial-width) flex-1 px-5 md:px-8">
+            {children}
+          </main>
         </SiteShell>
       </body>
     </html>

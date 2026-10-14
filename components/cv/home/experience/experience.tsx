@@ -3,7 +3,10 @@ import Timeline from '@/components/cv/ui/timeline'
 import type { Profile } from '@/lib/cv/profile'
 export default function Experience({ profile }: { profile: Profile }) {
   return (
-    <section id="experience" className="min-w-0 border-b px-4 py-12 sm:px-6 sm:py-24 lg:px-10.5">
+    <section
+      id="experience"
+      className="min-w-0 border-b px-4 py-14 sm:px-6 sm:py-20 lg:px-10.5 lg:py-24"
+    >
       <Eyebrow>{profile.labels.experience}</Eyebrow>
       <h2 className="mt-2 text-2xl leading-snug font-semibold md:text-3xl lg:text-4xl">
         {profile.labels.experienceTitle}
@@ -27,13 +30,13 @@ export default function Experience({ profile }: { profile: Profile }) {
                     key={bullet}
                     className="text-muted-foreground flex items-start gap-3 text-sm leading-relaxed sm:text-base"
                   >
-                    <span className="bg-accent mt-2.5 size-1 shrink-0 rounded-full" />
+                    <span className="bg-brand mt-2.5 size-1 shrink-0 rounded-full" />
                     <span>{bullet}</span>
                   </li>
                 ))}
               </ul>
               {experience.projects.map((project) => (
-                <div key={project.name} className="bg-card rounded-2xl border p-4 sm:p-5">
+                <div key={project.name} className="bg-card rounded-lg border p-4 sm:p-5">
                   <h4 className="text-base font-medium">{project.name}</h4>
                   <p className="text-muted-foreground mt-2 text-xs">{project.period}</p>
                   <ul className="mt-4 space-y-3">

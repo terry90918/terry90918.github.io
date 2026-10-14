@@ -30,7 +30,7 @@ const FeaturedWorks = ({
   showBorder = true,
 }: FeaturedWorksProps) => {
   return (
-    <section id={id} className={cn('py-8 sm:py-16 lg:py-24', showBorder && 'border-b')}>
+    <section id={id} className={cn('py-14 sm:py-20 lg:py-24', showBorder && 'border-b')}>
       <div className="mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:space-y-16 lg:px-10.5">
         <div className="space-y-2">
           <Eyebrow>{eyebrow}</Eyebrow>

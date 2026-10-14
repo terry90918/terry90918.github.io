@@ -20,10 +20,9 @@ test('CV opens inside the main site and shares its navigation and theme', async 
   await expect(page.getByRole('heading', { level: 1 })).toContainText('陳天一')
   expect(
     await page
-      .locator('#top .bg-accent')
-      .first()
-      .evaluate((element) => getComputedStyle(element).backgroundColor)
-  ).toBe('lab(61.5867 61.0772 71.9669)')
+      .locator('html')
+      .evaluate((element) => getComputedStyle(element).getPropertyValue('--brand').trim())
+  ).toBe('#ff5c00')
   await expect(page.getByRole('banner')).toHaveCount(1)
   await expect(page.getByRole('contentinfo')).toHaveCount(1)
   await expect(page.getByRole('button', { name: 'Toggle theme', exact: true })).toHaveCount(1)
@@ -43,6 +42,25 @@ test('language switching stays on the corresponding case and chapter', async ({ 
   await expect(page).toHaveURL(
     /\/cv\/zh-TW\/case-study\/jurislm#(%E6%88%91%E7%9A%84%E8%A7%92%E8%89%B2|我的角色)$/
   )
+})
+
+test('case study progress stays below section navigation on mobile', async ({ page }) => {
+  for (const width of [375, 320]) {
+    await page.setViewportSize({ width, height: 812 })
+    await page.goto('/cv/en/case-study/jurislm')
+    const navigation = await page.getByRole('navigation', { name: 'CV sections' }).boundingBox()
+    const progress = await page.locator('main > div.fixed.inset-x-0').boundingBox()
+
+    expect(progress!.y - (navigation!.y + navigation!.height)).toBeGreaterThanOrEqual(8)
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
+    ).toBe(true)
+
+    if (width === 375) {
+      await page.getByRole('link', { name: '切換至繁體中文', exact: true }).click()
+      await expect(page).toHaveURL(/\/cv\/zh-TW\/case-study\/jurislm\/?$/)
+    }
+  }
 })
 
 test('both locales export every case and contact without old asset prefixes', async ({
@@ -93,12 +111,28 @@ test('mobile CV keeps its sections readable and language links inside the site',
         .getByRole('contentinfo')
         .getByText('CC BY 4.0 · Code MIT', { exact: true })
         .boundingBox()
-      const dock = await page
+      const navigation = await page
         .getByRole('navigation', { name: 'CV sections', exact: true })
         .boundingBox()
-      return license!.y + license!.height <= dock!.y
+      return navigation!.y + navigation!.height <= license!.y
     })
     .toBe(true)
+})
+
+test('section navigation remains below the header at narrow widths', async ({ page }) => {
+  for (const width of [375, 320]) {
+    await page.setViewportSize({ width, height: 812 })
+    await page.goto('/cv/en')
+    const header = await page.getByRole('banner').boundingBox()
+    const navigation = await page.getByRole('navigation', { name: 'CV sections' }).boundingBox()
+    const offset = navigation!.y - (header!.y + header!.height)
+
+    expect(offset).toBeGreaterThanOrEqual(0)
+    expect(offset).toBeLessThanOrEqual(120)
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
+    ).toBe(true)
+  }
 })
 
 test('CV styles preserve the main-site link shape', async ({ page }) => {
