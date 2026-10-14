@@ -39,6 +39,19 @@ test('the main portrait uses WebP and main pages skip unused CV resources', asyn
       await page.locator('body').evaluate((element) => getComputedStyle(element).fontFamily),
       route
     ).toContain('satoshi')
+    expect(
+      await page.evaluate(async () => {
+        await document.fonts.ready
+        const family = getComputedStyle(document.body)
+          .fontFamily.split(',')[0]
+          .replaceAll('"', '')
+          .trim()
+        return Array.from(document.fonts).some(
+          (face) => face.family === family && face.status === 'loaded'
+        )
+      }),
+      route
+    ).toBe(true)
     expect(fontRequests.length, route).toBeGreaterThan(0)
     expect(googleFontRequests, route).toEqual([])
   }
