@@ -1,9 +1,9 @@
 ---
-title: '看得到不等於看得懂：廣告揭露、工作入口與模型宣傳'
+title: '工作入口、投資模型與廣告揭露：資訊如何影響決定'
 publishedAt: '2026-07-10T05:00:00+08:00'
 status: 'published'
 slug: 'ai-daily-2026-07-10-ai-rules'
-excerpt: 'Google 把生成式廣告資訊放進 My Ad Center，OpenAI 用 ChatGPT Work 整合工具與桌面操作，Meta 到 X 宣傳新模型；揭露、入口與比較方式，決定使用者實際能理解多少。'
+excerpt: 'OpenAI 整合 Chat、Work 與 Codex，量化基金在 AI 股票回撤中承壓，Meta 到 X 宣傳 Muse Spark，Google 新增廣告生成資訊；入口、比較條件與揭露位置，都會改變使用者的判斷。'
 tags:
   - ai-news
   - openai
@@ -11,39 +11,53 @@ tags:
   - google
 ---
 
-近期的科技新聞混雜著產品公告、媒體觀察與財經數字。拼起來看，真正需要對帳的不只是公司有沒有提供資訊，而是資訊放在哪裡、用什麼比較條件呈現，以及讀者能不能分清楚官方事實、訴訟主張與評論推論。
+> AI 競爭延伸到工作入口、模型宣傳與廣告揭露。資訊即使存在，仍要看使用者何時看到、能否理解，以及它足以支持什麼結論。
 
-## 有揭露，不代表會在第一眼看到
+![暖色剪紙插畫：OpenAI 整合 Chat、Work 與 Codex 的桌面入口](/images/ai-daily/2026-07-10/01-ai-rules-unified-work-console.webp)
 
-[Google 公告新的廣告透明度功能](https://blog.google/products/ads-commerce/google-ads-ai-transparency-labels/)：在 Search、YouTube 與 Discover 的廣告上點三點選單或資訊圖示，可進入 My Ad Center 的「How this ad was made」區塊，查看廣告是否由生成式工具製作或編輯。使用 Google 廣告生成工具時會自動加入揭露，外部工具則由廣告主主動標示；依當地規範，標籤也可能直接出現在廣告上。
+## OpenAI 整合 Chat、Work 與 Codex 的桌面入口
 
-![使用者在廣告旁打開資訊入口，仔細查看生成內容的來源與製作方式](/images/ai-daily/2026-07-10-ai-rules/01-hero.webp)
+[OpenAI 公布新的 ChatGPT 工作體驗](https://openai.com/index/chatgpt-for-your-most-ambitious-work/)，並讓 [GPT-5.6 模型家族正式推出](https://openai.com/index/gpt-5-6/)。新版桌面程式把 Chat、Work 與 Codex 放進同一個視窗，加入內建瀏覽器，讓工作可延伸到檔案、應用程式與連接工具。既有 Codex App 更新後會成為新版 ChatGPT 桌面程式；舊版 ChatGPT 桌面程式改名 ChatGPT Classic，獨立 Atlas 瀏覽器則開始逐步停用。
 
-這確實提供了可查詢資訊，但「要主動打開面板」和「廣告本體直接顯示」是兩種不同的可見度。公告沒有證明 Google 刻意確保沒人看到，也不能代表所有外部生成素材都會被正確申報；比較精確的觀察是，揭露責任同時落在平台自動化、廣告主申報與不同地區規範上，而多數使用者仍需多做一步才會看到完整說明。
+桌面版當時向所有方案開放，包含 Free。Work 的網頁與行動版先從 Pro、Enterprise、Edu 開始，再於數日內擴展到 Plus、Business。這是分階段推出，不能把「模型正式推出」直接寫成所有人立即取得相同功能，也不能把電腦操作能力理解成無條件存取每個檔案；官方仍設有權限、確認及組織管理控制。
 
-## 整合工作入口，不等於替代選項都消失
+我認為，聊天、編碼與長時間任務集中後，使用者會更依賴同一個工作入口。便利性之外，也應確認接入哪些帳號、工具能做哪些動作，以及何時需要核准。程式整合可以從公告驗證，整個桌面是否會被單一公司掌控，則仍是推論。
 
-[OpenAI 的 ChatGPT Work 頁面](https://openai.com/chatgpt-work/)顯示，產品以 GPT-5.6 為基礎，把團隊工具、檔案與桌面應用程式的脈絡帶進文件、試算表、簡報與自動化工作。桌面版開放所有方案，網頁與行動版則開放 Plus、Pro、Business、Enterprise 與 Edu；新版桌面體驗也加入內建瀏覽器、多分頁與較完整的代理工作流程。
+![暖色剪紙插畫：AI 股票回撤，讓部分量化策略承受損失](/images/ai-daily/2026-07-10/02-ai-rules-quant-market-risk.webp)
 
-![工作團隊在同一張桌上整合文件、瀏覽資料與程式工具，同時保留審核出口](/images/ai-daily/2026-07-10-ai-rules/02-concept.webp)
+## AI 股票回撤，讓部分量化策略承受損失
 
-這說明 OpenAI 正把更多工作集中到 ChatGPT，但官方頁沒有說獨立 Codex App 已關閉、Atlas 將被淘汰，或使用者「沒有離開的選項」。可以驗證的是入口整合與方案可用範圍；至於產品線是否正式退役，需要另外的停用公告才能成立。整合帶來的真正治理問題，是使用者是否清楚哪些工具與帳號被接入、每一步是否可預覽，以及錯誤操作能否撤回。
+[量化基金績效報導](https://economictimes.indiatimes.com/markets/us-stocks/news/ai-selloff-drives-quant-funds-worst-performance-since-august/articleshow/132288844.cms)引述 Goldman Sachs 資料指出，一組系統化股票多空基金的年初至今報酬，從 6 月 22 日的 14.4% 降至 10.8%，近期表現是自前一年 8 月以來最差的一段。這相當於回吐原先累積漲幅的四分之一，並非基金本金損失四分之一。
 
-## 宣傳平台與市場回撤，都不能直接代替因果
+報導把回撤放在 AI 相關股票的擁擠交易與市場波動中，也提到基本面選股基金同樣受損，並積極退出相關部位。用演算法交易並不代表能準確抓住每一次轉折；同樣地，一段時間的人類選股優勢，也無法證明人類在所有情境下都更可靠。
 
-[Inc. 報導](https://www.inc.com/moses-jeanfrancois/mark-zuckerberg-returned-to-elon-musk-x-after-3-year-why-he-came-back/91372184)，Mark Zuckerberg 在相隔約三年後回到 X，發布 Muse Spark 1.1 的消息，並轉發團隊與評測平台貼文。Meta 將這款代理與編碼模型定位為低價產品，透過 Meta Model API 與 Meta AI 提供。選在競爭平台發文可以合理解讀為擴大觸及，但不能由此證明開發者社群「只在 X」或 Meta 自有平台沒有話語權。
+我會把這次表現視為檢查模型、部位集中度與風控假設的理由。不同策略的持有期間、曝險與減倉條件不一樣，不能只由這組績效推論「演算法讀不懂 AI」或整個量化投資方法失效。
 
-[Reuters 引述 Goldman Sachs 資料](https://www.reuters.com/markets/wealth/ai-selloff-drives-quant-funds-worst-performance-since-august-2026-07-09/)，一組系統化股票多空基金的年初至今報酬，從 6 月 22 日的 14.4% 降至 10.8%；報導把近期損失放在市場劇烈波動與擁擠交易鬆動的背景下，也提到 Micron、Intel、Marvell 等科技股年內一度大漲。這不能簡化成「演算法看不懂、真人先看懂」：量化與基本面基金各有不同部位、風控與持有週期，單一時段回撤只能證明特定策略當時承壓。
+![暖色剪紙插畫：Zuckerberg 回到 X 宣傳 Muse Spark，觸及與能力要分開看](/images/ai-daily/2026-07-10/03-ai-rules-muse-spark-distribution.webp)
 
-![分析師與一般投資人一起檢查模型假設、擁擠部位與市場回撤，而非只看單一結果](/images/ai-daily/2026-07-10-ai-rules/03-impact.webp)
+## Zuckerberg 回到 X 宣傳 Muse Spark，觸及與能力要分開看
 
-把這幾件事並排，能看到「資訊存在」與「足以做決定」之間仍有距離。廣告面板需要使用者主動開啟，整合式工作入口需要權限與撤回設計，模型宣傳和基金績效則需要比較條件。規則的品質，不只看有沒有一段文字，也看它是否在決策當下可見、可理解、可驗證。
+[媒體報導 Zuckerberg 重返 X](https://www.cnbctv18.com/technology/mark-zuckerberg-returns-to-x-after-nearly-3-years-to-unveil-metas-new-ai-model-muse-spark-1-1-19942315.htm)，在相隔約三年後發文宣傳 Muse Spark 1.1。[Meta 的官方介紹](https://research.meta.ai/blog/introducing-muse-spark-meta-model-api)把它定位為多模態推理模型，強化工具操作、電腦使用與編碼，並透過 Meta Model API 公開預覽及 Meta AI 提供使用。
 
-## 快訊
+一家擁有多個大型社群平台的公司，也會到競爭平台接觸讀者。可以把這理解為擴大觸及，卻不能直接推論所有開發者都在 X、Meta 自有平台沒有決策者，或新模型只能靠低價與宣傳取勝。
 
-- [Microsoft 2026 環境永續報告前言](https://blogs.microsoft.com/on-the-issues/2026/07/09/responsibly-building-the-ai-future/)指出，2025 財年的 Scope 1、2、3 總排放較前一年增加 25%，主因包括資料中心擴張，以及停止使用部分未增加新電力供給的再生能源憑證。這是年增率，不是相對 2020 基準增加 25%。
-- [Anthropic 任命 Ben Bernanke 加入長期利益信託](https://www.anthropic.com/news/ben-bernanke)。該信託可任命 Anthropic 董事，並就風險與社會影響向董事會和管理層提供意見；成員不持有公司股權。
-- [《紐約時報》與 Daily News 向法院主張 OpenAI 隱匿證據](https://techcrunch.com/2026/07/09/new-york-times-says-openai-hid-evidence-in-chatgpt-copyright-trial/)，並請求制裁；OpenAI 否認指控。這仍是訴訟雙方主張，不是法院已認定的事實。
-- [Character.AI 測試把角色改編成直式短劇](https://www.theverge.com/entertainment/962897/character-ai-series-microdrama-vertical-video)，探索聊天角色跨到連續影像內容的可能性；測試不等於已形成成熟商業模式。
-- [WIRED 報導 Fidji Simo 離開 AGI Deployment 的全職職位](https://www.wired.com/story/fidji-simo-ceo-agi-deployment-openai/)，在長期病況惡化與數月醫療休假後改任兼職顧問。
-- [Patreon 啟用 Cloudflare Crawl Control](https://www.404media.co/patreon-cloudflare-partnership-ai-crawlers/)，在網路層封鎖已知的 AI 訓練爬蟲，同時保留有助搜尋與內容被發現的爬蟲；這是依已知分類執行的控制，不等於能攔下所有抓取方式。
+我認為，發布在哪裡影響誰會先看到產品，模型是否適合工作則仍需直接測試。官方展示的評估和定價定位，都需要比較條件；社群聲量不能代替品質、可靠性或完整成本的判斷。
+
+![暖色剪紙插畫：Google 新增廣告生成揭露，資訊仍需主動打開](/images/ai-daily/2026-07-10/04-ai-rules-ai-ad-disclosure.webp)
+
+## Google 新增廣告生成揭露，資訊仍需主動打開
+
+[Google 公告廣告透明度功能](https://blog.google/products/ads-commerce/google-ads-ai-transparency-labels/)：在 Search、YouTube 與 Discover 的廣告點開三點選單或資訊圖示，可進入 My Ad Center 的「How this ad was made」區塊，查看廣告是否由生成式工具製作或編輯。使用 Google 自有生成工具時，平台會自動加入揭露；外部工具則有供廣告主標示的控制項。依當地規範，標籤也可能直接出現在廣告本體。
+
+放在資訊面板中的揭露，和直接顯示在廣告上的標籤，具有不同的可見度。一般使用者需要多做一步才能看到完整資訊，也仍仰賴廣告主申報與平台識別；公告沒有證明揭露完全不影響點擊，更沒有證明 Google 刻意讓資訊無人看見。
+
+我會從決策當下的可見度判斷這項設計：使用者能否在相信廣告內容之前看到生成資訊，標示是否一致，漏標又如何處理。提供一個可查詢入口，是透明度的一部分，效果仍需觀察。
+
+**其他動向**
+
+- [Microsoft 發布環境永續報告前言](https://blogs.microsoft.com/on-the-issues/2026/07/09/responsibly-building-the-ai-future/)，指出 2025 財年的 Scope 1、2、3 總排放年增 25%，主因包含資料中心擴張與停止使用部分未帶來新增電力的再生能源憑證。25% 是較前一年增加，並非較 2020 基準增加；AI 建設與氣候目標之間仍有具體資源壓力。
+- [Ben Bernanke 加入 Anthropic 長期利益信託](https://www.anthropic.com/news/ben-bernanke)。該獨立機構可任命公司董事，並就重大風險與社會影響向董事會及管理層提供意見；這讓總體經濟與政策經驗進入治理架構，實際影響仍需後續決策檢驗。
+- [《紐約時報》與 Daily News 請求法院制裁 OpenAI](https://techcrunch.com/2026/07/09/new-york-times-says-openai-hid-evidence-in-chatgpt-copyright-trial/)，主張公司隱匿可搜尋聊天紀錄與訓練資料的能力，妨礙著作權案件的證據開示。OpenAI 否認指控；這是當事人的訴訟主張，不能寫成法院已認定隱匿證據。
+- [Character.AI 推出直式短劇服務](https://blog.character.ai/cai-series/)，由內部工作室製作，AI 參與製作流程；成年使用者看完後可繼續與劇中角色聊天。這把角色從聊天延伸到行動影像與互動故事，商業成效仍待觀察。
+- [Fidji Simo 宣布離開 OpenAI 全職職位](https://www.cnbc.com/2026/07/09/openai-exec-fidji-simo-says-she-will-step-down-and-transition-to-part-time-advisor.html)，原因是慢性疾病嚴重惡化，需要專注恢復，並轉為兼職顧問。這是職務與工作方式的調整，不能據此推論公司策略已改變。
+- [Patreon 與 Cloudflare 合作封鎖 AI 訓練爬蟲](https://www.404media.co/patreon-cloudflare-partnership-ai-crawlers/)，在網路層保護創作者文章。報導引述 Patreon 說明，封鎖對象是已知的訓練爬蟲，同時保留協助搜尋與內容曝光的爬蟲；這提高了用途控制能力，但不保證攔下所有未識別的抓取方式。
