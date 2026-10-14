@@ -35,12 +35,13 @@
 ### Task 1: Establish shared visual tokens and typography
 
 **Files:**
+
 - Create: `DESIGN.md`
 - Create: `lib/site/fonts.ts`
 - Modify: `README.md`
 - Modify: `app/(frontend)/globals.css`
 - Modify: `app/(frontend)/layout.tsx`
-- Modify: `app/(cv)/cv/[locale]/layout.tsx`
+- Modify: `components/cv/cv-layout.tsx`
 - Modify: `styles/cv.css`
 - Modify: `openspec/specs/homepage-visual-rhythm/spec.md`
 - Modify: `tests/e2e/frontend-performance.spec.ts`
@@ -48,26 +49,29 @@
 - Delete: `app/(frontend)/fonts.ts`
 
 **Interfaces:**
+
 - `lib/site/fonts.ts` exports one `satoshi` `next/font/local` configuration using the existing 400, 500, 700, and 900 font files.
 - Both root layouts apply `satoshi.variable`; global CSS uses `var(--font-satoshi)` with the spec's Chinese fallbacks.
 - Global CSS owns the light/dark semantic token values; `@theme` and CV utility aliases consume those values.
 
 - [ ] **Step 1: Change the font and CV palette E2E contracts first.** In `frontend-performance.spec.ts`, assert that a main page loads the local Satoshi asset and does not request Google Fonts; keep the existing check that main pages do not fetch CV model assets. In `frontend-cv.spec.ts`, assert that the root `--brand` token is exactly `#ff5c00`.
 - [ ] **Step 2: Run focused E2E tests and confirm RED.** Run `BASE_URL=http://localhost:3001 bunx playwright test --project=frontend tests/e2e/frontend-performance.spec.ts tests/e2e/frontend-cv.spec.ts -g "main portrait|CV opens inside"`. Expected: the new local-font assertion fails on the current Atkinson/monospace implementation and the missing `--brand` token assertion fails.
-- [ ] **Step 3: Share the local font configuration.** Add the exported `satoshi` config in `lib/site/fonts.ts`, apply it in both root layouts, and remove the unused `app/(frontend)/fonts.ts` placeholder.
+- [ ] **Step 3: Share the local font configuration.** Add the exported `satoshi` config in `lib/site/fonts.ts`, apply it in the public `RootLayout` and CV `CvLayout`, and remove the unused `app/(frontend)/fonts.ts` placeholder.
 - [ ] **Step 4: Map the accepted palette once.** Replace the current light/dark values in `globals.css`, remove the remote Atkinson import, and map Tailwind aliases for `brand`, `brand-foreground`, `accent` link text, `accent-ink`, and `accent-surface` to the spec values. Update `styles/cv.css` to consume the shared palette and remove its conflicting dotted background.
 - [ ] **Step 5: Record the durable design authority.** Add `DESIGN.md` with the accepted values, font fallback, layout width, shape, and motion rules; replace the stale README accent table with a link to it. Update `homepage-visual-rhythm/spec.md` to point visual rules to `DESIGN.md` and remove the old 46rem/160px portrait requirements while retaining content order and route behavior.
 - [ ] **Step 6: Run focused E2E tests and confirm GREEN.** Run `BASE_URL=http://localhost:3001 bunx playwright test --project=frontend tests/e2e/frontend-performance.spec.ts tests/e2e/frontend-cv.spec.ts -g "main portrait|CV opens inside"`. Expected: local font is requested, Google Fonts is not, the root `--brand` token is `#ff5c00`, and CV model assets remain absent from main pages.
-- [ ] **Step 7: Commit the foundation.** `git add DESIGN.md README.md 'app/(frontend)/globals.css' 'app/(frontend)/layout.tsx' 'app/(frontend)/fonts.ts' 'app/(cv)/cv/[locale]/layout.tsx' lib/site/fonts.ts styles/cv.css openspec/specs/homepage-visual-rhythm/spec.md tests/e2e/frontend-performance.spec.ts tests/e2e/frontend-cv.spec.ts && git commit -m "style: establish personal site design tokens"`
+- [ ] **Step 7: Commit the foundation.** `git add DESIGN.md README.md 'app/(frontend)/globals.css' 'app/(frontend)/layout.tsx' 'app/(frontend)/fonts.ts' components/cv/cv-layout.tsx lib/site/fonts.ts styles/cv.css openspec/specs/homepage-visual-rhythm/spec.md tests/e2e/frontend-performance.spec.ts tests/e2e/frontend-cv.spec.ts && git commit -m "style: establish personal site design tokens"`
 
 ### Task 2: Restyle the shared site shell and add mobile navigation
 
 **Files:**
+
 - Modify: `components/BlogHeader.tsx`
 - Modify: `components/BlogFooter.tsx`
 - Modify: `tests/e2e/frontend-blog.spec.ts`
 
 **Interfaces:**
+
 - The desktop `主要導覽` links keep their existing `href` values.
 - The mobile menu button is named `開啟導覽`, exposes `aria-expanded`, and toggles a `手機導覽` navigation containing the same destinations.
 - Activating a menu link or Escape closes the panel; closing restores a usable focus target.
@@ -82,6 +86,7 @@
 ### Task 3: Apply the reference styling to main-site page families
 
 **Files:**
+
 - Modify: `app/(frontend)/page.tsx`
 - Modify: `app/(frontend)/about/page.tsx`
 - Modify: `app/(frontend)/story/page.tsx`
@@ -95,6 +100,7 @@
 - Modify: `tests/e2e/frontend-blog.spec.ts`
 
 **Interfaces:**
+
 - All data continues to come from the existing `lib/site` and `lib/posts` sources.
 - All links continue to use the existing Next.js route paths and metadata functions.
 - Article detail markup remains governed by its current page component and `.prose` rules.
@@ -109,6 +115,7 @@
 ### Task 4: Align the bilingual CV presentation
 
 **Files:**
+
 - Modify: `components/cv/cv-layout.tsx`
 - Modify: `components/cv/cv-home.tsx`
 - Modify: `components/cv/home/hero/hero.tsx`
@@ -126,6 +133,7 @@
 - Delete: `components/cv/layout/edge-blur.tsx`
 
 **Interfaces:**
+
 - `NavDock` keeps current locale and section destination calculations and `aria-current` behavior while matching the reference's horizontal sticky section navigation.
 - Existing `DesktopIdCard` and `id-card.tsx` physics remain unchanged.
 
@@ -139,9 +147,11 @@
 ### Task 5: Verify delivery gates and prepare the pull request
 
 **Files:**
+
 - No new product files; verification and PR metadata only.
 
 **Interfaces:**
+
 - The final PR contains the four implementation task commits and remains limited to style, shared navigation, design documentation, and relevant existing E2E assertions.
 
 - [ ] **Step 1: Run full-project local gates.** Run `bun lint`, `bun run typecheck`, `bun run test`, and `bun build` on the final branch head.
