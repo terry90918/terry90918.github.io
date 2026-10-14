@@ -45,7 +45,7 @@ export default function FeaturedWorkCard({
               <p className="text-muted-foreground text-xs">{caseStudy.duration}</p>
               <p className="mt-2 text-xs leading-relaxed">{caseStudy.role}</p>
             </div>
-            <span className="bg-accent text-accent-foreground flex size-9 shrink-0 items-center justify-center rounded-full transition-transform group-hover:rotate-45">
+            <span className="bg-brand text-brand-foreground flex size-9 shrink-0 items-center justify-center rounded-full transition-transform group-hover:rotate-45">
               <ArrowUpRight className="size-4" />
             </span>
           </div>
