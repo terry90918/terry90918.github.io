@@ -87,6 +87,7 @@
 
 **Files:**
 
+- Modify: `app/(frontend)/layout.tsx`
 - Modify: `app/(frontend)/page.tsx`
 - Modify: `app/(frontend)/about/page.tsx`
 - Modify: `app/(frontend)/story/page.tsx`
@@ -105,12 +106,12 @@
 - All links continue to use the existing Next.js route paths and metadata functions.
 - Article detail markup remains governed by its current page component and `.prose` rules.
 
-- [ ] **Step 1: Restyle the home composition.** Apply the reference's desktop profile image/introduction layout, section spacing, experience cards, recent-update cards, work cards, and contact panel using the existing data and destinations.
+- [ ] **Step 1: Restyle the home composition.** Set the shared public `<main>` width from `--editorial-width` in the root layout, then apply the reference's desktop profile image/introduction layout, section spacing, experience cards, recent-update cards, work cards, and contact panel using the existing data and destinations. Keep the article detail's own narrow reading-width class intact.
 - [ ] **Step 2: Restyle About, Story, Work, and work-case pages.** Apply the reference's page intro, two-column/single-column sections, cards, dividers, and case detail hierarchy without changing copy or case data.
 - [ ] **Step 3: Restyle Writing index and AI Daily.** Apply the shared typography, spacing, date/label hierarchy, and list surfaces to `WritingPostCard` consumers without changing post filters, counts, ordering, or URLs. In the article page, change only utility roles for link and accent colors; preserve its markup and `.prose` layout.
 - [ ] **Step 4: Assert the link contrast tokens.** In `frontend-blog.spec.ts`, assert a representative link computes to `rgb(184, 59, 8)` in light mode and `rgb(255, 140, 80)` in dark mode.
 - [ ] **Step 5: Run the existing content and route E2E suite.** Run `BASE_URL=http://localhost:3001 bunx playwright test --project=frontend tests/e2e/frontend-blog.spec.ts`. Expected: current homepage order, all existing article URLs, work cases, RSS assertions, theme behavior, link colors, and anchor offsets pass.
-- [ ] **Step 6: Commit the main-page styling.** `git add 'app/(frontend)/page.tsx' 'app/(frontend)/about/page.tsx' 'app/(frontend)/story/page.tsx' 'app/(frontend)/work/page.tsx' 'app/(frontend)/work/[slug]/page.tsx' 'app/(frontend)/posts/page.tsx' 'app/(frontend)/posts/ai-daily/page.tsx' 'app/(frontend)/posts/[year]/[slug]/page.tsx' components/SiteContact.tsx components/WritingPostCard.tsx tests/e2e/frontend-blog.spec.ts && git commit -m "style: apply design system to public pages"`
+- [ ] **Step 6: Commit the main-page styling.** `git add 'app/(frontend)/layout.tsx' 'app/(frontend)/page.tsx' 'app/(frontend)/about/page.tsx' 'app/(frontend)/story/page.tsx' 'app/(frontend)/work/page.tsx' 'app/(frontend)/work/[slug]/page.tsx' 'app/(frontend)/posts/page.tsx' 'app/(frontend)/posts/ai-daily/page.tsx' 'app/(frontend)/posts/[year]/[slug]/page.tsx' components/SiteContact.tsx components/WritingPostCard.tsx tests/e2e/frontend-blog.spec.ts && git commit -m "style: apply design system to public pages"`
 
 ### Task 4: Align the bilingual CV presentation
 
