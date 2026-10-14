@@ -130,6 +130,7 @@
 - Modify: `components/cv/case-study/reading-progress-pill.tsx`
 - Modify: `app/(cv)/cv/[locale]/contact/page.tsx`
 - Modify: `components/cv/ui/card.tsx`
+- Modify: `styles/cv.css`
 - Modify: `tests/e2e/frontend-cv.spec.ts`
 - Delete: `components/cv/layout/edge-blur.tsx`
 
@@ -141,9 +142,9 @@
 - [ ] **Step 1: Add a failing sticky-section-navigation E2E case.** In `frontend-cv.spec.ts`, at 375px and 320px assert that the nav's top is below the shared header and no more than 120px below its bottom.
 - [ ] **Step 2: Run the focused CV case and confirm RED.** Run `BASE_URL=http://localhost:3001 bunx playwright test --project=frontend tests/e2e/frontend-cv.spec.ts -g "section navigation remains below the header"`. Expected: the current fixed-bottom mobile dock fails the 120px maximum offset assertion.
 - [ ] **Step 3: Restyle shared CV sections and cards.** Align hero, profile stats, works, experience, education, skills, contact, eyebrow, and card surfaces with the new tokens and reference spacing in both locales. Use `brand` for filled dots/progress/controls, `accent-surface` for selected navigation, and `accent-ink` for readable emphasized text.
-- [ ] **Step 4: Align CV shell and section navigation.** Increase the content width to the reference width, replace the floating dock presentation with the horizontal sticky navigation, remove the unreferenced edge blur, and retain the language switch, custom cursor, measured header offset, and reduced-motion behavior.
+- [ ] **Step 4: Align CV shell and section navigation.** Increase the content width to the reference width, replace the floating dock presentation with the horizontal sticky navigation, remove the unreferenced edge blur and its mobile bottom-padding compensation, and retain the language switch, custom cursor, measured header offset, and reduced-motion behavior.
 - [ ] **Step 5: Run CV E2E and confirm GREEN.** Run `BASE_URL=http://localhost:3001 bunx playwright test --project=frontend tests/e2e/frontend-cv.spec.ts`. Expected: both locales, section navigation, contact/case routes, no horizontal overflow, and the real desktop/mobile ID-card behavior pass.
-- [ ] **Step 6: Commit the CV styling.** `git add components/cv/cv-layout.tsx components/cv/cv-home.tsx components/cv/home/hero/hero.tsx components/cv/home/experience/experience.tsx components/cv/shared/eyebrow/eyebrow.tsx components/cv/shared/featured-works/featured-works.tsx components/cv/shared/featured-works/featured-work-card.tsx components/cv/layout/nav-dock.tsx components/cv/layout/edge-blur.tsx components/cv/ui/card.tsx components/cv/ui/timeline.tsx components/cv/mdx-content.tsx components/cv/case-study/reading-progress-pill.tsx 'app/(cv)/cv/[locale]/contact/page.tsx' tests/e2e/frontend-cv.spec.ts && git commit -m "style: align bilingual cv with site design"`
+- [ ] **Step 6: Commit the CV styling.** `git add components/cv/cv-layout.tsx components/cv/cv-home.tsx components/cv/home/hero/hero.tsx components/cv/home/experience/experience.tsx components/cv/shared/eyebrow/eyebrow.tsx components/cv/shared/featured-works/featured-works.tsx components/cv/shared/featured-works/featured-work-card.tsx components/cv/layout/nav-dock.tsx components/cv/layout/edge-blur.tsx components/cv/ui/card.tsx components/cv/ui/timeline.tsx components/cv/mdx-content.tsx components/cv/case-study/reading-progress-pill.tsx styles/cv.css 'app/(cv)/cv/[locale]/contact/page.tsx' tests/e2e/frontend-cv.spec.ts && git commit -m "style: align bilingual cv with site design"`
 
 ### Task 5: Verify delivery gates and prepare the pull request
 
@@ -164,4 +165,4 @@
 
 ## Execution Handoff
 
-The user asked for JT Harness and Superpowers delivery but has not selected an execution method. Review this plan and ask whether to use the Native in-session workflow or Subagent-driven workflow. Recommend Native because the shared tokens, header, content pages, and CV styles are tightly coupled and have sequential visual acceptance gates.
+Execution method approved in-session: Subagent-driven, with one implementer and an independent reviewer per sequential task.
