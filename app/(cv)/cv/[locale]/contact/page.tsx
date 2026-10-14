@@ -37,7 +37,10 @@ export default async function Contact({
   ]
   return (
     <>
-      <section id="contact-top" className="border-b px-4 pt-24 pb-12 sm:px-6 sm:py-24 lg:px-10.5">
+      <section
+        id="contact-top"
+        className="border-b px-4 pt-16 pb-14 sm:px-6 sm:py-20 lg:px-10.5 lg:py-24"
+      >
         <Link
           href={`/cv/${locale}#top`}
           className="text-muted-foreground hover:text-accent-ink mb-12 inline-flex text-sm"
@@ -57,7 +60,7 @@ export default async function Contact({
                 href={href}
                 target={href.startsWith('https') ? '_blank' : undefined}
                 rel={href.startsWith('https') ? 'noopener noreferrer' : undefined}
-                className="bg-card hover:border-accent flex min-w-0 items-center gap-4 rounded-2xl border p-5 transition-colors"
+                className="bg-card hover:bg-accent-surface hover:border-accent-ink flex min-w-0 items-center gap-4 rounded-xl border p-5 transition-colors"
               >
                 <Icon className="text-accent-ink size-5 shrink-0" />
                 <div className="min-w-0 flex-1">
@@ -72,13 +75,13 @@ export default async function Contact({
               {profile.location}
             </div>
           </div>
-          <div className="bg-card overflow-hidden rounded-3xl border p-2">
+          <div className="bg-card overflow-hidden rounded-xl border p-1.5">
             <Image
               src={contact.photo}
               alt={profile.name}
               width={560}
               height={700}
-              className="aspect-4/5 w-full rounded-2xl object-cover"
+              className="aspect-4/5 w-full rounded-lg object-cover"
             />
             <div className="p-4">
               <p className="text-xl font-semibold">{profile.name}</p>

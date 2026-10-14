@@ -44,6 +44,25 @@ test('language switching stays on the corresponding case and chapter', async ({ 
   )
 })
 
+test('case study progress stays below section navigation on mobile', async ({ page }) => {
+  for (const width of [375, 320]) {
+    await page.setViewportSize({ width, height: 812 })
+    await page.goto('/cv/en/case-study/jurislm')
+    const navigation = await page.getByRole('navigation', { name: 'CV sections' }).boundingBox()
+    const progress = await page.locator('main > div.fixed.inset-x-0').boundingBox()
+
+    expect(progress!.y - (navigation!.y + navigation!.height)).toBeGreaterThanOrEqual(8)
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
+    ).toBe(true)
+
+    if (width === 375) {
+      await page.getByRole('link', { name: '切換至繁體中文', exact: true }).click()
+      await expect(page).toHaveURL(/\/cv\/zh-TW\/case-study\/jurislm\/?$/)
+    }
+  }
+})
+
 test('both locales export every case and contact without old asset prefixes', async ({
   request,
 }) => {
@@ -92,12 +111,28 @@ test('mobile CV keeps its sections readable and language links inside the site',
         .getByRole('contentinfo')
         .getByText('CC BY 4.0 · Code MIT', { exact: true })
         .boundingBox()
-      const dock = await page
+      const navigation = await page
         .getByRole('navigation', { name: 'CV sections', exact: true })
         .boundingBox()
-      return license!.y + license!.height <= dock!.y
+      return navigation!.y + navigation!.height <= license!.y
     })
     .toBe(true)
+})
+
+test('section navigation remains below the header at narrow widths', async ({ page }) => {
+  for (const width of [375, 320]) {
+    await page.setViewportSize({ width, height: 812 })
+    await page.goto('/cv/en')
+    const header = await page.getByRole('banner').boundingBox()
+    const navigation = await page.getByRole('navigation', { name: 'CV sections' }).boundingBox()
+    const offset = navigation!.y - (header!.y + header!.height)
+
+    expect(offset).toBeGreaterThanOrEqual(0)
+    expect(offset).toBeLessThanOrEqual(120)
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
+    ).toBe(true)
+  }
 })
 
 test('CV styles preserve the main-site link shape', async ({ page }) => {

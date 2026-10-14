@@ -1,14 +1,15 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { BriefcaseBusiness, FolderOpen, Globe, Mail, Sparkles, UserRound } from 'lucide-react'
+import { Globe } from 'lucide-react'
 import { useActiveSection } from '@/hooks/cv/use-active-section'
 import { localeHref } from '@/lib/cv/profile'
 import type { Locale, Profile } from '@/lib/cv/profile'
 import { cn } from '@/lib/cv/utils'
 const sectionIds = ['about', 'featured-works', 'experience', 'skills', 'contact']
 export default function NavDock({ locale, labels }: { locale: Locale; labels: Profile['labels'] }) {
+  const navigationRef = useRef<HTMLElement>(null)
   const currentPath = usePathname().replace(/\/$/, '')
   const pathname = currentPath === '/cv' ? `/cv/${locale}` : currentPath
   const activeId = useActiveSection(sectionIds, pathname)
@@ -16,26 +17,33 @@ export default function NavDock({ locale, labels }: { locale: Locale; labels: Pr
   const targetLocale = locale === 'en' ? 'zh-TW' : 'en'
   useEffect(() => {
     const header = document.querySelector('header')
-    if (!header) return
-    const measure = () =>
+    const navigation = navigationRef.current
+    if (!header || !navigation) return
+    const measure = () => {
       document.body.style.setProperty(
         '--cv-header-height',
         `${header.getBoundingClientRect().height}px`
       )
+      document.body.style.setProperty(
+        '--cv-section-nav-height',
+        `${navigation.getBoundingClientRect().height}px`
+      )
+    }
     measure()
     const observer = new ResizeObserver(measure)
     observer.observe(header)
+    observer.observe(navigation)
     return () => observer.disconnect()
   }, [])
   const items = [
-    { id: 'about', label: labels.about, Icon: UserRound },
-    { id: 'featured-works', label: labels.work, Icon: FolderOpen },
-    { id: 'experience', label: labels.experience, Icon: BriefcaseBusiness },
-    { id: 'skills', label: labels.skills, Icon: Sparkles },
-    { id: 'contact', label: labels.contact, Icon: Mail },
+    { id: 'about', label: labels.about },
+    { id: 'featured-works', label: labels.work },
+    { id: 'experience', label: labels.experience },
+    { id: 'skills', label: labels.skills },
+    { id: 'contact', label: labels.contact },
   ]
   const linkClass =
-    'hover:text-accent-ink hover:bg-accent/10 flex min-h-10 items-center gap-2 rounded-md px-2.5 transition-colors'
+    'flex min-h-9 shrink-0 items-center rounded-full px-2 text-[11px] font-medium whitespace-nowrap transition-colors hover:bg-accent-surface hover:text-accent-ink focus-visible:outline-2 sm:px-3 sm:text-sm'
   const currentFragment = () => {
     const sections = [
       ...document.querySelectorAll<HTMLElement>(
@@ -67,11 +75,12 @@ export default function NavDock({ locale, labels }: { locale: Locale; labels: Pr
   }
   return (
     <nav
+      ref={navigationRef}
       aria-label={locale === 'en' ? 'CV sections' : '履歷章節'}
-      className="group fixed bottom-4 left-1/2 z-70 -translate-x-1/2 lg:top-1/2 lg:bottom-auto lg:left-6 lg:translate-x-0 lg:-translate-y-1/2"
+      className="sticky top-[var(--cv-header-height,4.75rem)] z-40 mx-auto w-fit max-w-[calc(100vw-2rem)]"
     >
-      <div className="bg-card flex w-fit items-stretch gap-0.5 rounded-2xl border p-1.5 shadow-lg lg:flex-col lg:gap-1 lg:p-2">
-        {items.map(({ id, label, Icon }) => {
+      <div className="bg-card flex w-fit max-w-full items-center gap-0.5 overflow-x-auto rounded-full border p-1 shadow-sm">
+        {items.map(({ id, label }) => {
           const href = `/cv/${locale}/#${id}`
           const active =
             (pathname === `/cv/${locale}` && activeId === id) ||
@@ -84,17 +93,13 @@ export default function NavDock({ locale, labels }: { locale: Locale; labels: Pr
               aria-current={active ? 'location' : undefined}
               className={cn(
                 linkClass,
-                active ? 'text-accent-ink bg-accent/10' : 'text-muted-foreground'
+                active ? 'bg-accent-surface text-accent-ink' : 'text-muted-foreground'
               )}
             >
-              <Icon className="size-4 shrink-0" />
-              <span className="hidden overflow-hidden text-sm whitespace-nowrap lg:inline-block lg:max-w-0 lg:opacity-0 lg:group-hover:max-w-32 lg:group-hover:opacity-100">
-                {label}
-              </span>
+              {label}
             </Link>
           )
         })}
-        <span className="mx-0.5 border-l lg:my-1 lg:border-t lg:border-l-0" />
         <a
           href={localeHref(pathname, targetLocale, fragment)}
           onPointerEnter={() => setFragment(currentFragment())}
@@ -102,12 +107,10 @@ export default function NavDock({ locale, labels }: { locale: Locale; labels: Pr
           hrefLang={targetLocale}
           onClick={switchLanguage}
           aria-label={locale === 'en' ? '切換至繁體中文' : 'Switch to English'}
-          className={cn(linkClass, 'text-muted-foreground')}
+          className={cn(linkClass, 'border-border text-muted-foreground border-l')}
         >
-          <Globe className="size-4 shrink-0" />
-          <span className="hidden text-sm lg:group-hover:block">
-            {locale === 'en' ? '中文' : 'EN'}
-          </span>
+          <Globe aria-hidden="true" className="mr-1 size-3.5 shrink-0" />
+          <span>{locale === 'en' ? '中文' : 'EN'}</span>
         </a>
       </div>
     </nav>

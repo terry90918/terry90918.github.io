@@ -48,7 +48,7 @@ const components: MDXRemoteProps['components'] = {
   ol: ({ children }) => <ol className={cn(PROSE_WIDTH, 'mt-4 list-decimal pl-6')}>{children}</ol>,
   li: ({ children }) => (
     <li className="bg-card ring-border flex items-start gap-2 rounded-md p-3 ring-1">
-      <span className="bg-accent text-accent-foreground mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full">
+      <span className="bg-brand text-brand-foreground mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full">
         <CheckIcon className="size-3" />
       </span>
       <span className="text-base font-medium">{children}</span>
@@ -68,7 +68,7 @@ const components: MDXRemoteProps['components'] = {
     <blockquote
       className={cn(
         PROSE_WIDTH,
-        'border-accent text-foreground mt-6 border-l-2 bg-(--background-darker) p-2 pl-3 text-lg font-medium italic [&_p]:mt-0'
+        'border-brand bg-accent-surface text-foreground mt-6 border-l-2 p-2 pl-3 text-lg font-medium italic [&_p]:mt-0'
       )}
     >
       {children}

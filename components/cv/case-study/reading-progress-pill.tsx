@@ -97,7 +97,7 @@ const ReadingProgressPill = ({ headings, contentId, idleLabel }: ReadingProgress
   return (
     <div
       ref={containerRef}
-      className="fixed inset-x-0 top-[var(--cv-header-height,7.0625rem)] z-40 flex justify-center max-md:mx-4"
+      className="fixed inset-x-0 top-[calc(var(--cv-header-height,7.0625rem)+var(--cv-section-nav-height,2.875rem)+0.5rem)] z-30 flex justify-center max-md:mx-4"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -131,7 +131,7 @@ const ReadingProgressPill = ({ headings, contentId, idleLabel }: ReadingProgress
                 fill="none"
                 strokeWidth="2"
                 strokeLinecap="round"
-                className="stroke-accent"
+                className="stroke-brand"
                 style={{ pathLength: progress }}
               />
             </svg>

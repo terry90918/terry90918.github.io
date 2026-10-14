@@ -129,9 +129,3 @@
   margin-inline: 0;
   max-width: none;
 }
-
-@media (width < 64rem) {
-  .cv-site {
-    padding-bottom: calc(5rem + env(safe-area-inset-bottom));
-  }
-}

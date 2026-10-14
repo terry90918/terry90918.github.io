@@ -66,7 +66,7 @@ const TimelineSegment = ({
     >
       <motion.div
         style={{ height }}
-        className="bg-accent absolute inset-x-0 top-0 w-0.5 rounded-full"
+        className="bg-brand absolute inset-x-0 top-0 w-0.5 rounded-full"
       />
     </div>
   )

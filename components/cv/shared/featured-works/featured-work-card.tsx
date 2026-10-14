@@ -23,7 +23,7 @@ export default function FeaturedWorkCard({
     >
       <Card
         className={cn(
-          'group ring-border h-full gap-0 overflow-hidden rounded-3xl p-0 shadow-lg',
+          'group ring-border h-full gap-0 overflow-hidden rounded-xl p-0 shadow-sm',
           isHero && (imageSide === 'left' ? 'md:flex-row-reverse' : 'md:flex-row')
         )}
       >
@@ -52,7 +52,7 @@ export default function FeaturedWorkCard({
         </div>
         <div
           className={cn(
-            'relative order-1 flex min-h-60 flex-col justify-between overflow-hidden bg-(--background-darker) p-7 sm:p-8',
+            'bg-accent-surface relative order-1 flex min-h-60 flex-col justify-between overflow-hidden p-6 sm:p-8',
             isHero && 'md:order-0 md:w-1/2'
           )}
         >
@@ -65,7 +65,7 @@ export default function FeaturedWorkCard({
               {caseStudy.metricLabel}
             </p>
           </div>
-          <div className="border-accent/30 absolute -right-12 -bottom-12 size-44 rounded-full border-24 opacity-30" />
+          <div className="border-brand/20 absolute -right-12 -bottom-12 size-44 rounded-full border-24" />
           <span className="text-muted-foreground relative font-mono text-[10px] tracking-widest uppercase">
             {caseStudy.tools.join(' / ')}
           </span>
