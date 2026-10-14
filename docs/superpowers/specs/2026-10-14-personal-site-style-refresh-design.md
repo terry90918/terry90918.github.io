@@ -29,12 +29,15 @@ Use the existing local Satoshi font assets, with `PingFang TC`, `Microsoft Jheng
 | Card background | `#ffffff` | `#141414` |
 | Secondary surface | `#eeebe5` | `#262626` |
 | Muted surface | `#f0ede8` | `#262626` |
+| Accent surface | `#fff0e6` | `#3b251b` |
 | Brand accent | `#ff5c00` | `#ff5c00` |
 | Accent text and links | `#b83b08` | `#ff8c50` |
 | Borders | `#d6d0c8` | `#303030` |
 | Focus ring | `#b83b08` | `#ff8c50` |
 
 Use a 1120px desktop content maximum, a 76px shared header, fine borders, generous section spacing, light cards, and a 10px standard card radius. Use the reference's paired profile image and introduction on desktop; stack them at narrow widths. Do not add decorative effects that are absent from the reference. The CV preview's static ID-card image is only a placeholder; the product keeps its interactive React Three card.
+
+Keep the orange brand color, link color, and pale accent surface as separate semantic roles. A shared `accent` utility must not use the same value for link text and filled surfaces when that harms contrast.
 
 ## Scope
 
