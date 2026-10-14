@@ -1,5 +1,5 @@
 ---
-title: '逐項拆解 Cursor pstack 的提示詞：技能、原則、工作手冊與代理設計'
+title: 'Cursor pstack 提示詞逐項解析'
 publishedAt: '2026-10-15T06:57:39+08:00'
 status: 'published'
 slug: 'cursor-pstack-prompt-analysis'
