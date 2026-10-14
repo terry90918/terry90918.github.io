@@ -156,9 +156,9 @@
 
 - The final PR contains the four implementation task commits and remains limited to style, shared navigation, design documentation, and relevant existing E2E assertions.
 
-- [ ] **Step 1: Run full-project local gates.** Run `bun lint`, `bun run typecheck`, `bun run test`, and `bun build` on the final branch head.
-- [ ] **Step 2: Run frontend E2E.** With the app server from the Global Constraints running, execute `BASE_URL=http://localhost:3001 bunx playwright test --project=frontend`. Expected: all frontend routes and interaction checks pass, including existing article/RSS and CV export assertions.
-- [ ] **Step 3: Inspect rendered pages in the in-app browser.** Compare the home, story, work, posts, and both CV locales at desktop, 375px, and 320px; check light/dark themes, menu open/close, keyboard focus, reduced motion, and article/CV detail exclusions.
+- [x] **Step 1: Run full-project local gates.** Run `bun lint`, `bun run typecheck`, `bun run test`, and `bun run build` on the final branch head.
+- [x] **Step 2: Run frontend E2E.** With the app server from the Global Constraints running, execute `BASE_URL=http://localhost:3001 bunx playwright test --project=frontend`. Expected: all frontend routes and interaction checks pass, including existing article/RSS and CV export assertions.
+- [x] **Step 3: Inspect rendered pages in the in-app browser.** Compare the home, story, work, posts, and both CV locales at desktop, 375px, and 320px; check light/dark themes, menu open/close, keyboard focus, reduced motion, and article/CV detail exclusions.
 - [ ] **Step 4: Inspect the final diff and required CI.** Confirm no content, route, metadata, RSS, or unrelated files changed. Read the matching Woodpecker pipeline if configured and the required GitHub checks on the current head.
 - [ ] **Step 5: Open a Ready PR and complete JT reviews.** Let one Codex review and one CodeRabbit review finish; resolve actionable findings and verify those changes without requesting duplicate full reviews.
 - [ ] **Step 6: Merge, pull, and read back.** After review, full lint, required checks, and mergeability pass, merge under the user's authorization, pull the merge commit into the root checkout without touching its untracked article, and read back the pulled head plus the deployed site when deployment completes.
