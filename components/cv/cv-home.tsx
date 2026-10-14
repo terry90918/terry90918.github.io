@@ -27,7 +27,7 @@ export default function CvHome({
           {labels.aboutTitle}
         </h2>
         <div className="mt-10 grid gap-6 md:grid-cols-[280px_1fr]">
-          <div className="bg-card overflow-hidden rounded-xl border p-1.5">
+          <div className="bg-card overflow-hidden rounded-lg border p-1.5">
             <Image
               src={contact.photo}
               alt={profile.name}
@@ -106,12 +106,12 @@ export default function CvHome({
       <section id="education" className="border-b px-4 py-14 sm:px-6 sm:py-20 lg:px-10.5 lg:py-24">
         <Eyebrow>{labels.education}</Eyebrow>
         <div className="mt-6 grid gap-6 sm:grid-cols-2">
-          <div className="bg-card rounded-xl border p-5 sm:p-6">
+          <div className="bg-card rounded-lg border p-5 sm:p-6">
             <h2 className="text-2xl font-semibold">{profile.education.school}</h2>
             <p className="mt-3">{profile.education.field}</p>
             <p className="text-muted-foreground mt-4 text-sm">{profile.education.period}</p>
           </div>
-          <div className="bg-card rounded-xl border p-5 sm:p-6">
+          <div className="bg-card rounded-lg border p-5 sm:p-6">
             <h2 className="text-xl font-medium">{labels.military}</h2>
             <p className="text-muted-foreground mt-4 text-sm">{profile.military}</p>
           </div>

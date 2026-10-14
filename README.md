@@ -13,7 +13,7 @@ Terry Chen 的個人技術部落格。以 Markdown 檔案為內容來源，Next.
 ```bash
 bun install         # 安裝依賴
 bun dev             # 開發伺服器 http://localhost:3000
-bun build           # 建置（無需 DB）
+bun run build       # 建置（無需 DB）
 bun lint            # ESLint 檢查
 bun format          # Prettier 格式化
 bun run typecheck   # TypeScript 檢查
@@ -48,7 +48,7 @@ status: 'published' # or "draft"
 
 ## 圖片與效能
 
-頁面肖像使用本機 WebP。`bun build` 與 `bun dev` 會先產生文章圖片的 768px／1440px WebP 選項，保留原圖網址與檔案；產物位於忽略的 `public/image-variants/`。新增文章圖片後可執行 `bun run images:prepare` 更新。
+頁面肖像使用本機 WebP。`bun run build` 與 `bun run dev` 會先產生文章圖片的 768px／1440px WebP 選項，保留原圖網址與檔案；產物位於忽略的 `public/image-variants/`。新增文章圖片後可執行 `bun run images:prepare` 更新。
 
 縮圖名稱包含轉換版本。修改方向、裁切等轉換行為時，需更新版本以避免重用舊產物。
 
@@ -68,7 +68,7 @@ status: 'published' # or "draft"
 
 履歷來源為 `lib/cv/profile.ts`，雙語案例放在 `content/cv/case-studies/`；圖片、模型及游標放在 `public/cv-assets/`。元件位於 `components/cv/`，CV 樣式限定在 `.cv-site`。來源為原 `cv` 專案的 `c2ef213`，授權與來源說明保留在 `licenses/`。
 
-`bun build` 會為 CV 產生尾斜線網址相容入口，所有頁面共用根目錄 `/_next`。公開發佈只由本儲存庫管理；舊 `cv` 儲存庫保留歷史，在主站部署完成後停止獨立發布，再回讀站內履歷確認切換。
+`bun run build` 會為 CV 產生尾斜線網址相容入口，所有頁面共用根目錄 `/_next`。公開發佈只由本儲存庫管理；舊 `cv` 儲存庫保留歷史，在主站部署完成後停止獨立發布，再回讀站內履歷確認切換。
 
 `BASE_URL=http://localhost:3001 bunx playwright test --project=frontend` 驗證站內導覽、CV 語言與章節切換、手機版面及既有文章頁。
 

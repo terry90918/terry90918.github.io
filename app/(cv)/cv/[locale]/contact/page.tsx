@@ -60,7 +60,7 @@ export default async function Contact({
                 href={href}
                 target={href.startsWith('https') ? '_blank' : undefined}
                 rel={href.startsWith('https') ? 'noopener noreferrer' : undefined}
-                className="bg-card hover:bg-accent-surface hover:border-accent-ink flex min-w-0 items-center gap-4 rounded-xl border p-5 transition-colors"
+                className="bg-card hover:bg-accent-surface hover:border-accent-ink flex min-w-0 items-center gap-4 rounded-lg border p-5 transition-colors"
               >
                 <Icon className="text-accent-ink size-5 shrink-0" />
                 <div className="min-w-0 flex-1">
@@ -75,7 +75,7 @@ export default async function Contact({
               {profile.location}
             </div>
           </div>
-          <div className="bg-card overflow-hidden rounded-xl border p-1.5">
+          <div className="bg-card overflow-hidden rounded-lg border p-1.5">
             <Image
               src={contact.photo}
               alt={profile.name}

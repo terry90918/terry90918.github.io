@@ -74,7 +74,7 @@ test.describe('Personal site', () => {
   }) => {
     await page.setViewportSize({ width: 375, height: 900 })
     await page.goto('/')
-    const menu = page.getByRole('button', { name: '開啟導覽' })
+    const menu = page.getByRole('button', { name: '導覽選單' })
     const nav = page.getByRole('navigation', { name: '手機導覽' })
     await expect(menu).toHaveAttribute('aria-expanded', 'false')
     await expect(nav).toBeHidden()
@@ -198,7 +198,7 @@ test.describe('Personal site', () => {
             )
           ).toBe(true)
           if (width < 768) {
-            await expect(page.getByRole('button', { name: '開啟導覽' })).toBeVisible()
+            await expect(page.getByRole('button', { name: '導覽選單' })).toBeVisible()
             await expect(page.getByRole('navigation', { name: '主要導覽' })).toBeHidden()
           } else {
             await expect(

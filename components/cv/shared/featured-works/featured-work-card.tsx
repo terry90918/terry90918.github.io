@@ -23,7 +23,7 @@ export default function FeaturedWorkCard({
     >
       <Card
         className={cn(
-          'group ring-border h-full gap-0 overflow-hidden rounded-xl p-0 shadow-sm',
+          'group ring-border h-full gap-0 overflow-hidden rounded-lg p-0 shadow-sm',
           isHero && (imageSide === 'left' ? 'md:flex-row-reverse' : 'md:flex-row')
         )}
       >

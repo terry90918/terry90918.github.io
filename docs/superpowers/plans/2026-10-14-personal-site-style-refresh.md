@@ -39,6 +39,7 @@
 - Create: `DESIGN.md`
 - Create: `lib/site/fonts.ts`
 - Modify: `README.md`
+- Modify: `CLAUDE.md`
 - Modify: `app/(frontend)/globals.css`
 - Modify: `app/(frontend)/layout.tsx`
 - Modify: `components/cv/cv-layout.tsx`
@@ -58,9 +59,9 @@
 - [ ] **Step 2: Run focused E2E tests and confirm RED.** Run `BASE_URL=http://localhost:3001 bunx playwright test --project=frontend tests/e2e/frontend-performance.spec.ts tests/e2e/frontend-cv.spec.ts -g "main portrait|CV opens inside"`. Expected: the new local-font assertion fails on the current Atkinson/monospace implementation and the missing `--brand` token assertion fails.
 - [ ] **Step 3: Share the local font configuration.** Add the exported `satoshi` config in `lib/site/fonts.ts`, apply it in the public `RootLayout` and CV `CvLayout`, and remove the unused `app/(frontend)/fonts.ts` placeholder.
 - [ ] **Step 4: Map the accepted palette once.** Replace the current light/dark values in `globals.css`, remove the remote Atkinson import, and map Tailwind aliases for `brand`, `brand-foreground`, `accent` link text, `accent-ink`, and `accent-surface` to the spec values. Update `styles/cv.css` to consume the shared palette and remove its conflicting dotted background.
-- [ ] **Step 5: Record the durable design authority.** Add `DESIGN.md` with the accepted values, font fallback, layout width, shape, and motion rules; replace the stale README accent table with a link to it. Update `homepage-visual-rhythm/spec.md` to point visual rules to `DESIGN.md` and remove the old 46rem/160px portrait requirements while retaining content order and route behavior.
+- [ ] **Step 5: Record the durable design authority.** Add `DESIGN.md` with the accepted values, font fallback, layout width, shape, and motion rules; replace stale visual guidance in `README.md` and `CLAUDE.md` with a link or pointer to it. Update `homepage-visual-rhythm/spec.md` to point visual rules to `DESIGN.md` and remove the old 46rem/160px portrait requirements while retaining content order and route behavior.
 - [ ] **Step 6: Run focused E2E tests and confirm GREEN.** Run `BASE_URL=http://localhost:3001 bunx playwright test --project=frontend tests/e2e/frontend-performance.spec.ts tests/e2e/frontend-cv.spec.ts -g "main portrait|CV opens inside"`. Expected: local font is requested, Google Fonts is not, the root `--brand` token is `#ff5c00`, and CV model assets remain absent from main pages.
-- [ ] **Step 7: Commit the foundation.** `git add DESIGN.md README.md 'app/(frontend)/globals.css' 'app/(frontend)/layout.tsx' 'app/(frontend)/fonts.ts' components/cv/cv-layout.tsx lib/site/fonts.ts styles/cv.css openspec/specs/homepage-visual-rhythm/spec.md tests/e2e/frontend-performance.spec.ts tests/e2e/frontend-cv.spec.ts && git commit -m "style: establish personal site design tokens"`
+- [ ] **Step 7: Commit the foundation.** `git add DESIGN.md README.md CLAUDE.md 'app/(frontend)/globals.css' 'app/(frontend)/layout.tsx' 'app/(frontend)/fonts.ts' components/cv/cv-layout.tsx lib/site/fonts.ts styles/cv.css openspec/specs/homepage-visual-rhythm/spec.md tests/e2e/frontend-performance.spec.ts tests/e2e/frontend-cv.spec.ts && git commit -m "style: establish personal site design tokens"`
 
 ### Task 2: Restyle the shared site shell and add mobile navigation
 
@@ -73,7 +74,7 @@
 **Interfaces:**
 
 - The desktop `主要導覽` links keep their existing `href` values.
-- The mobile menu button is named `開啟導覽`, exposes `aria-expanded`, and toggles a `手機導覽` navigation containing the same destinations.
+- The mobile menu button is named `導覽選單`, exposes `aria-expanded`, and toggles a `手機導覽` navigation containing the same destinations.
 - Activating a menu link or Escape closes the panel; closing restores a usable focus target.
 
 - [ ] **Step 1: Add the failing mobile-menu E2E case.** In `frontend-blog.spec.ts`, at 375px verify the menu starts closed, opens by keyboard, exposes all current destinations, closes on Escape, and closes after navigating to About. Update the existing navigation test so desktop checks the desktop nav and mobile checks the menu button.

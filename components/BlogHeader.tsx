@@ -131,7 +131,7 @@ export function BlogHeader() {
           <button
             ref={menuButton}
             type="button"
-            aria-label="開啟導覽"
+            aria-label="導覽選單"
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
             onClick={() => setMenuOpen(!menuOpen)}

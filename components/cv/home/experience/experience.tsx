@@ -36,7 +36,7 @@ export default function Experience({ profile }: { profile: Profile }) {
                 ))}
               </ul>
               {experience.projects.map((project) => (
-                <div key={project.name} className="bg-card rounded-xl border p-4 sm:p-5">
+                <div key={project.name} className="bg-card rounded-lg border p-4 sm:p-5">
                   <h4 className="text-base font-medium">{project.name}</h4>
                   <p className="text-muted-foreground mt-2 text-xs">{project.period}</p>
                   <ul className="mt-4 space-y-3">
