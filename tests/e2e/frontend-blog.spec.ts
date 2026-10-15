@@ -80,7 +80,7 @@ test.describe('Personal site', () => {
     await page.setViewportSize({ width: 375, height: 900 })
     await page.goto('/')
     const menu = page.getByRole('button', { name: '導覽選單' })
-    const nav = page.getByRole('navigation', { name: '手機導覽' })
+    const nav = page.getByRole('navigation', { name: '手機導覽', includeHidden: true })
     await expect(menu).toHaveAttribute('aria-expanded', 'false')
     await expect(nav).toBeHidden()
     for (let i = 0; i < 20; i++) {
@@ -112,13 +112,12 @@ test.describe('Personal site', () => {
     await page.keyboard.press('Enter')
     await nav.getByRole('link', { name: '關於我', exact: true }).click()
     await expect(page).toHaveURL('/about')
-    await expect(nav.getByRole('link', { name: '關於我', exact: true })).toHaveAttribute(
-      'aria-current',
-      'page'
-    )
-    await expect(nav.getByRole('link', { name: '聯絡', exact: true })).not.toHaveAttribute(
-      'aria-current'
-    )
+    await expect(
+      nav.getByRole('link', { name: '關於我', exact: true, includeHidden: true })
+    ).toHaveAttribute('aria-current', 'page')
+    await expect(
+      nav.getByRole('link', { name: '聯絡', exact: true, includeHidden: true })
+    ).not.toHaveAttribute('aria-current')
     await expect(menu).toHaveAttribute('aria-expanded', 'false')
     await expect(nav).toBeHidden()
     await expect(menu).toBeFocused()
@@ -349,11 +348,14 @@ test.describe('Post detail pages', () => {
   test('keeps a standalone excerpt when the body does not begin with the same blockquote', async ({
     page,
   }) => {
+    const { data } = matter(
+      await readFile(join(process.cwd(), 'content/posts/2026/ai-daily-2026-07-06.md'), 'utf8')
+    )
+    expect(data.excerpt).toEqual(expect.any(String))
     await page.goto('/posts/2026/ai-daily-2026-07-06')
 
-    await expect(page.locator('article .prose > p.not-prose')).toHaveText(
-      '好萊塢的版權訴訟照見片商自身的生成工具使用，教育與生命科學迎來新工作流，Meta 的未成年假帳號測試則把安全與競爭的界線推向灰區。'
-    )
+    await expect(page.locator('article .prose > p.not-prose')).toHaveText(data.excerpt)
+    await expect(page.locator('article .prose blockquote').first()).not.toHaveText(data.excerpt)
   })
 })
 
@@ -403,13 +405,19 @@ test.describe('Writing and metadata', () => {
       .locator('[data-writing-kind="translation"]')
       .filter({ hasText: 'AI 工程技能地圖：軟體工程基礎' })
     await expect(andrewTranslation).toContainText('Andrew Ng')
-    await expect(andrewTranslation).toContainText('翻譯 · 2026年8月31日 · 原文：Andrew Ng')
+    await expect(andrewTranslation.locator('.site-writing-meta > span')).toHaveText([
+      '翻譯',
+      '2026年8月31日',
+      '原文：Andrew Ng',
+    ])
     const coinbaseTranslation = page
       .locator('[data-writing-kind="translation"]')
       .filter({ hasText: 'Coinbase 如何讓 1,000 多名工程師真正用上 AI' })
-    await expect(coinbaseTranslation).toContainText(
-      '翻譯 · 2026年10月13日 · 原文：Chintan Turakhia'
-    )
+    await expect(coinbaseTranslation.locator('.site-writing-meta > span')).toHaveText([
+      '翻譯',
+      '2026年10月13日',
+      '原文：Chintan Turakhia',
+    ])
     await expect(page.locator('main')).not.toContainText('原創觀點')
   })
 

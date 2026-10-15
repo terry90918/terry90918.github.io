@@ -21,7 +21,7 @@ Spec: Open Design project `76e33fa9-e2bc-4bf3-b92d-b38f0e5c0ae2` (`index.html`, 
 - [x] Align header/footer, tokens, portrait, section headings, cards, links and writing metadata using SitePrimitives.tsx and styles/editorial.css.
 - [x] Align CV shell/navigation, hero type, about stats, featured-work cards, chronology, education/contact/skills spacing to reference while preserving facts and interaction owners.
 - [x] Run full lint, typecheck, unit tests, OpenSpec validation and production build.
-- [ ] Run existing frontend tests if their browser execution is available. Do not treat DOM counts as visual acceptance.
+- [x] Run existing frontend tests if their browser execution is available. Do not treat DOM counts as visual acceptance.
 - [x] Inspect diff and one Codex/CodeRabbit review, create labeled PR and record exact gates and visual limitations in JUR-705.
 
 ## Review focus
@@ -51,7 +51,7 @@ Normal Chrome recovered through the same browser tool. Story was captured in lig
 - [x] Verify the original wording and second-row location in the selected design.
 - [x] Add a placement/text assertion and observe it fail against the omitted prefix.
 - [x] Add only the confirmed original prefix and remove its audit exception.
-- [ ] Rebuild, regenerate the audit, validate and push this small follow-up to the same PR. Read its own CI terminal state without another full provider review.
+- [x] Rebuild, regenerate the audit, validate and push this small follow-up to the same PR. Read its own CI terminal state without another full provider review.
 
 Full mobile/keyboard and other previously unverified acceptance remain incomplete. A normal Chrome availability read may support a narrow screenshot check; no stopped or denied browser action may be bypassed.
 
@@ -67,6 +67,10 @@ The latest request supersedes a deletion-only interpretation. Use `管理工程�
 - [x] Run full lint/typecheck, 103 tests, OpenSpec 10/10 and the 125-page production build.
 - [x] Read normal Chrome screenshots for both updated Nidin case pages and persist the original JPEGs.
 - [x] Regenerate the 11-view copy audit with no missing text, and record the external design patch/fingerprints.
-- [ ] Push this follow-up to PR #110 and read its own CI terminal status. No new provider review, merge or deployment.
+- [x] Push this follow-up to PR #110 and read its own CI terminal status. No new provider review, merge or deployment.
 
 The complete mobile/keyboard/reduced-motion acceptance matrix remains incomplete.
+
+## Verification-only follow-up
+
+Original supported Chrome recovered; 320/375px × 11-view visual checks, keyboard/menu/focus, CV skills/locale hash and reduced-motion CSS were verified. Existing frontend E2E initially found three stale assertions; corrected locators/source expectations without changing thresholds or product code, then all 45 tests passed. See the review-gate and E2E report for exact historical review status and scope. No second complete/incremental review was requested. Merge/deployment remain outside authorisation.

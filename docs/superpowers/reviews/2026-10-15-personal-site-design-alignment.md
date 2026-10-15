@@ -65,3 +65,7 @@ Local previews on Terry Mac: website `http://127.0.0.1:4318/work/nidin`; selecte
 - The latest commit’s own CI terminal readback is recorded in PR #110 and JUR-705 after pushing. Earlier successful pipeline #142 does not validate this follow-up. No manual CI rerun or budget change.
 - Earlier normal-browser work covered desktop views and selected theme/menu/skills/language/3D interactions. This follow-up adds the focused desktop case comparison above. The full 320px/375px, keyboard/Escape/focus, reduced-motion and long-page acceptance matrix remains incomplete. Automated E2E was not executed and DOM counts are not treated as visual acceptance.
 - PR #110 remains review-only, unmerged and undeployed. JUR-705 remains In Review pending the remaining visual acceptance.
+
+## Later review-gate and E2E verification
+
+The earlier browser/E2E limitations above are historical. The [review-gate and E2E follow-up](2026-10-15-review-gate-and-e2e.md) records recovered original Chrome acceptance, the completed initial Codex review versus a later automatic failed attempt, inspected deltas and a full 45/45 passing frontend E2E run. Product source remains identical to 248626f; only stale test assertions and verification records changed. No provider review was requested again, and no merge/deployment was performed.
