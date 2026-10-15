@@ -1,6 +1,6 @@
 ---
 title: "AI Coding 詞典拆解（03）：工具、環境與 Agent 的權限邊界"
-publishedAt: "2026-10-15T08:25:00+08:00"
+publishedAt: "2026-10-15T08:43:02+08:00"
 status: "published"
 slug: "ai-coding-dictionary-03-tools-environment"
 excerpt: "模型本身不會讀檔或執行命令。Agent 的行動來自 Harness 提供的工具，而工具真正能影響什麼，則取決於環境、權限和隔離方式。"

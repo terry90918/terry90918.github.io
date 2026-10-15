@@ -1,6 +1,6 @@
 ---
 title: "AI Coding 詞典拆解（04）：從幻覺、迎合到注意力退化，診斷 Agent 失敗"
-publishedAt: "2026-10-15T08:25:00+08:00"
+publishedAt: "2026-10-15T08:43:03+08:00"
 status: "published"
 slug: "ai-coding-dictionary-04-failure-modes"
 excerpt: "Agent 的錯誤不是單一的「幻覺」。知識來源、迎合傾向、脈絡品質和任務難度會造成不同失敗，需要分別診斷。"

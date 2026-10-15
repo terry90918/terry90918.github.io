@@ -1,6 +1,6 @@
 ---
 title: "AI Coding 詞典拆解（05）：用 Handoff 讓工程工作跨 Session 延續"
-publishedAt: "2026-10-15T08:25:00+08:00"
+publishedAt: "2026-10-15T08:43:04+08:00"
 status: "published"
 slug: "ai-coding-dictionary-05-handoffs"
 excerpt: "模型和 Session 都可能結束，專案工作卻會跨天、跨人和跨代理。可靠交接要把目標、決策和未完成事項寫到環境中，再讓下一個 Session 回到一手證據確認。"

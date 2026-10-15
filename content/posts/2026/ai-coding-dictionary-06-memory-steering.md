@@ -1,6 +1,6 @@
 ---
 title: "AI Coding 詞典拆解（06）：用 Memory、AGENTS.md 和 Skills 引導 Agent"
-publishedAt: "2026-10-15T08:25:00+08:00"
+publishedAt: "2026-10-15T08:43:05+08:00"
 status: "published"
 slug: "ai-coding-dictionary-06-memory-steering"
 excerpt: "把所有規則塞進一個檔案，未必能讓 Agent 更聽話。記憶、專案指令、Skills 和 Context Pointer 有不同載入時機，應放在對的層級。"
