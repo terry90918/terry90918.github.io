@@ -22,7 +22,7 @@ The correction now synchronises visible copy as well as styling across all 11 se
 | story → `/story`               | Three chapters in GJ/Nidin/AI order; Nidin 02, 在 Nidin，做系統，也帶團隊, exact two paragraphs; selected GJ/AI paragraphs                                    | site/content.ts, story/page.tsx          |
 | work → `/work`                 | Product/platform/AI numbered groups; concise GJ/Nidin/JurisLM summaries; VClass and Channel-T supporting cards; remove old main-site TPI expansion            | site/content.ts, work/page.tsx           |
 | work-gj → `/work/gj`           | GJ title and concise reference summary; existing verified role, dates and delivery evidence                                                                   | work/[slug]/page.tsx                     |
-| work-nidin → `/work/nidin`     | Reference summary, role, date and evidence layout; main-site 55-delivery prefix remains an explicit exception                                                 | work/[slug]/page.tsx                     |
+| work-nidin → `/work/nidin`     | Reference summary, role, date and evidence layout; confirmed 55-delivery statement restored verbatim in evidence row 02                                       | work/[slug]/page.tsx                     |
 | work-jurislm → `/work/jurislm` | Reference concise summary, role and evidence; retain sampled-recall qualification                                                                             | work/[slug]/page.tsx                     |
 | posts → `/posts`               | Reference intro, topic chips, month/count hierarchy, neutral article headings and metadata badges; current article data                                       | WritingPostCard, posts/page.tsx          |
 | ai-daily → `/posts/ai-daily`   | Correct AI 日報 eyebrow and back-link arrow; reference lead; current 77 published daily rows                                                                  | posts/ai-daily/page.tsx                  |
@@ -33,10 +33,10 @@ The shared warm-white/charcoal/orange palette, Satoshi fonts, 1120px outer maxim
 
 ## Copy audit and exceptions
 
-[Full source → implementation → status audit](2026-10-15-design-copy-audit.md) contains 858 entries across all 11 views, including repeated shared-shell checks. 852 static text checks match within their mapped sections, with zero unexplained missing blocks. Whitespace and decorative arrows/plus signs are ignored. This check does not prove visual geometry, ordering or absence of extra copy; source inspection, order tests and browser evidence are separate.
+[Full source → implementation → status audit](2026-10-15-design-copy-audit.md) contains 858 entries across all 11 views, including repeated shared-shell checks. 853 static text checks match within their mapped sections, with zero unexplained missing blocks. Whitespace and decorative arrows/plus signs are ignored. This check does not prove visual geometry, ordering or absence of extra copy; source inspection, order tests and browser evidence are separate.
 
 - Three dynamic slots intentionally use current published article data: 3 home updates, 92 archive rows and 77 daily rows. The prototype's 71-post snapshot is not frozen into the product. Dates, excerpts, classification and translation attribution continue to come from real content.
-- One main-site Nidin statement excludes `任職期間主導 55 項產品交付；` because the earlier explicit factual restriction was not separately reconfirmed. The platform scale remains. Existing CV/case-study sources already contain their 55-delivery claim; this correction does not introduce it there.
+- The user subsequently confirmed the remaining 55-delivery fact. Nidin evidence row 02 now matches the original statement verbatim: `任職期間主導 55 項產品交付；當時平台支援 820 萬會員與每年 1,500 萬筆以上訂單。`. Its former copy exception is removed. No other achievement or placement was added.
 - Two prototype badge-name entries belong to its static 3D placeholder. The real card implementation and its mobile fallback are retained instead.
 - `scripts/sync-design-reference.mjs <selected-index.html>` captures both CV presentations with the HTML hash. Navigation receives only the server-selected labels, rather than importing the full snapshot into its client bundle. `scripts/check-design-reference.mjs <selected-index.html> <output.json>` checks the production export.
 
@@ -50,7 +50,7 @@ The shared warm-white/charcoal/orange palette, Satoshi fonts, 1120px outer maxim
 - The local dependency copy initially contained nested `node_modules`, producing duplicate Three warnings and `R3F: Hooks can only be used within the Canvas component!`. That task-local dependency copy and `.next` were moved to temporary backups; main's existing dependencies were copied correctly, without changing package files or versions. A clean build and fresh same-Chrome preview displayed the real card, and dragging worked. Only deprecation warnings remained.
 - The local-only Python preview helper was corrected to use an absolute directory and prefer exported `.html` routes over Next's RSC-data directories. No product/server/credential configuration was changed.
 - A broader 320px pass then returned `js execution timed out; kernel reset, rerun your request`. Recovery reported `Tab not found in browser 1`. Browser inventory after that reset exposed only Codex In-app Browser and MCP Apps, not the earlier Chrome extension. No alternative UI automation was used. The new provider's viewport reset succeeded, but cleanup of the no-longer-exposed Chrome override cannot be verified.
-- Remaining acceptance: complete 320px/375px page matrix, settled CV language-switch scroll placement, full keyboard/focus/Escape matrix, reduced-motion behavior and every lower archive/timeline region. Browser screenshot images were emitted in the tool results; a persistent exported screenshot artifact was not obtained before the session reset. No DOM count is treated as visual acceptance.
+- Remaining acceptance: complete 320px/375px page matrix, settled CV language-switch scroll placement, full keyboard/focus/Escape matrix, reduced-motion behavior and every lower archive/timeline region. Earlier browser images were emitted in tool results and were not exported before that session reset. A later focused capture of the confirmed Nidin statement is persisted below. No DOM count is treated as visual acceptance.
 
 ## Review and PR state
 
@@ -59,3 +59,13 @@ The shared warm-white/charcoal/orange palette, Satoshi fonts, 1120px outer maxim
 - Exactly one CodeRabbit PR review completed on that head. Its section-landmark finding and mobile-current-route nit were fixed at `0b68760`, verified and resolved. [Original finding](https://github.com/terry90918/terry90918.github.io/pull/110#discussion_r4278577226). No new complete or incremental review was requested for the later copy delta; that delta was self-inspected and checked locally.
 - Original-head Woodpecker #137 succeeded at 03:20:15 UTC on 2026-10-15. This does not validate later copy commits. New-head check status is read back separately after the push. No pipeline was manually rerun and no budget was changed.
 - PR remains unmerged and undeployed. JUR-705 stays In Review because the remaining visual/interaction matrix is not fully accepted.
+
+## Confirmed Nidin statement and persisted desktop evidence
+
+The user separately confirmed `主導 55 項產品交付`. The only product-copy change in this follow-up restores the selected source’s full second evidence row: `任職期間主導 55 項產品交付；當時平台支援 820 萬會員與每年 1,500 萬筆以上訂單。`. A placement/text regression assertion first failed on the omitted prefix and passed after the correction. The copy audit now has 853 aligned static entries out of 858, with only three current-article slots and two interactive-badge entries treated separately. No factual-copy exception remains.
+
+Normal Chrome became available again and displayed the rebuilt `/work/nidin` case. The screenshot below captures the desktop page, including the role panel and complete second evidence row. It does not extend the earlier mobile/keyboard/reduced-motion acceptance. The original 1441×837 JPEG is 46,909 bytes, SHA-256 `08bb676ba195fc3435f5d2c74db203845917ee1aa59307adb7f0aeb5341d7be6`. Its Library ID is `libfile_9b21d3e1e07081919af42a20ecf0499b`, filename `nidin-confirmed-delivery.jpg`.
+
+![Confirmed Nidin statement in the rebuilt desktop case](evidence/2026-10-15-nidin-confirmed-delivery.jpg)
+
+Full lint/typecheck, 102 unit tests, OpenSpec 10/10 and the 125-page production build passed again for this follow-up. The later commit’s own CI terminal result is recorded in the PR description and JUR-705 after pushing; earlier pipeline #140 is not a substitute. No additional complete provider review, merge or deployment is requested.

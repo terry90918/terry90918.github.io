@@ -43,7 +43,7 @@ The About page SHALL preserve visible GitHub, X, LinkedIn and Email links with k
 
 ### Requirement: Story and work reading paths
 
-Story SHALL show the three selected design chapters in GJ, Nidin and AI order. Existing anchors `gj`, `nidin` and `ai-work` SHALL remain reachable. Work SHALL show product, platform and AI categories in that order, with VClass and Channel-T as concise supporting work. Homepage SHALL retain three concise experience entries in the same GJ, Nidin and AI order. Full career details, including TPI, SHALL remain in the bilingual CV. Nidin's unconfirmed 55-delivery claim SHALL remain excluded from the main-site case until separately confirmed.
+Story SHALL show the three selected design chapters in GJ, Nidin and AI order. Existing anchors `gj`, `nidin` and `ai-work` SHALL remain reachable. Work SHALL show product, platform and AI categories in that order, with VClass and Channel-T as concise supporting work. Homepage SHALL retain three concise experience entries in the same GJ, Nidin and AI order. Full career details, including TPI, SHALL remain in the bilingual CV. Following the user's separate confirmation, the Nidin case SHALL show `任職期間主導 55 項產品交付；當時平台支援 820 萬會員與每年 1,500 萬筆以上訂單。` as its second delivery evidence row.
 
 #### Scenario: Read experience and supporting work
 

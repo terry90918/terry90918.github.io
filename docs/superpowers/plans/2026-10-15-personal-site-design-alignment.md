@@ -9,7 +9,7 @@ Spec: Open Design project `76e33fa9-e2bc-4bf3-b92d-b38f0e5c0ae2` (`index.html`, 
 ## Constraints
 
 - Use dedicated `codex/jur-705-design-alignment` worktree; main and its untracked files remain untouched.
-- Synchronise selected visible copy and Story/Work ordering. Preserve article data/bodies, canonical routes and factual accuracy. The user explicitly confirmed all 31 CV skill categories in both languages. Keep the main-site 55-delivery omission as a separately documented exception.
+- Synchronise selected visible copy and Story/Work ordering. Preserve article data/bodies, canonical routes and factual accuracy. The user explicitly confirmed all 31 CV skill categories in both languages. The user separately confirmed the 55-delivery statement; include the exact selected wording in the second Nidin case evidence row.
 - Treat preview chrome and the static CV badge as prototype-only. Retain the real React Three/physics card and mobile fallback.
 - No deployment or merge in this correction task. One complete review per provider, with existing review results checked first.
 
@@ -43,4 +43,14 @@ Normal Chrome recovered through the same browser tool. Story was captured in lig
 - [x] Update Story, About, Home, Work, all three work cases, daily eyebrow and both CV home presentations in the same PR.
 - [x] Update superseded order/copy assertions and add bilingual CV reading-path/skills coverage.
 - [x] Audit all 11 views against production HTML, within mapped sections, with explicit dynamic/claim/interactive-card exceptions.
-- [ ] Push the verified delta to PR #110 and read back its new-head check status. No additional complete review, merge or deployment.
+- [x] Push the verified copy delta to PR #110 and read back its new-head check status. No additional complete review, merge or deployment.
+
+## Confirmed Nidin statement follow-up
+
+- [x] Confirm the existing branch/PR head and clean worktree before editing.
+- [x] Verify the original wording and second-row location in the selected design.
+- [x] Add a placement/text assertion and observe it fail against the omitted prefix.
+- [x] Add only the confirmed original prefix and remove its audit exception.
+- [ ] Rebuild, regenerate the audit, validate and push this small follow-up to the same PR. Read its own CI terminal state without another full provider review.
+
+Full mobile/keyboard and other previously unverified acceptance remain incomplete. A normal Chrome availability read may support a narrow screenshot check; no stopped or denied browser action may be bypassed.

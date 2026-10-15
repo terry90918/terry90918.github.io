@@ -11,7 +11,7 @@ function documentFor(html: string) {
 }
 
 describe('Approved personal story reading paths', () => {
-  it('removes only the unconfirmed delivery claim from the existing Nidin case', async () => {
+  it('places the confirmed delivery statement in the second Nidin evidence row', async () => {
     const doc = documentFor(
       renderToStaticMarkup(await WorkCasePage({ params: Promise.resolve({ slug: 'nidin' }) }))
     )
@@ -19,7 +19,11 @@ describe('Approved personal story reading paths', () => {
     expect(doc.querySelector('section[aria-labelledby="delivery-title"]')).not.toBeNull()
     expect(doc.body.textContent).toContain('820 萬會員')
     expect(doc.body.textContent).toContain('1,500 萬筆以上訂單')
-    expect(doc.body.textContent).not.toContain('55 項')
+    const evidence = doc.querySelectorAll('.site-evidence li')
+    expect(evidence).toHaveLength(3)
+    expect(evidence[1]?.textContent).toBe(
+      '任職期間主導 55 項產品交付；當時平台支援 820 萬會員與每年 1,500 萬筆以上訂單。'
+    )
   })
   it('renders the three selected design chapters and their work links', () => {
     const doc = documentFor(renderToStaticMarkup(<StoryPage />))

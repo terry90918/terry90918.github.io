@@ -77,8 +77,6 @@ for (const [view, route] of Object.entries(routes)) {
     let status = 'aligned'
     if (element.closest('.writing-row,.month-head,.id-card-visual') || /共 \d+ 篇/.test(expected))
       status = 'dynamic / retained implementation'
-    else if (view === 'work-nidin' && expected.startsWith('任職期間主導 55 項'))
-      status = 'exception: unconfirmed main-site 55-delivery claim omitted; platform scale retained'
     else if (!candidates.some((candidate) => normalize(candidate) === normalize(expected))) {
       status = 'MISSING'
       missing++
