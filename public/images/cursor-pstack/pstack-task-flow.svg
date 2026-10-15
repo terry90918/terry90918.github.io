@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 1390" role="img" aria-labelledby="title desc">
+  <title id="title">pstack 任務如何流向可驗證結果</title>
+  <desc id="desc">一般任務從使用者需求進入 poteto-mode，由 playbook 組織工作，再按需要使用技能、原則和角色提示詞。主代理檢查結果並在真實介面驗證。Benny 是需另行設定的自動化路徑。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M1 1L10 6L1 11" fill="none" stroke="#64748b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" />
+    </marker>
+    <style>
+      text{font-family:Inter,-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC",sans-serif;fill:#172033}
+      .title{font-size:28px;font-weight:700}
+      .label{font-size:23px;font-weight:700}
+      .body{font-size:19px;fill:#475569}
+      .small{font-size:16px;fill:#64748b}
+      .blue{fill:#eff6ff;stroke:#93c5fd;stroke-width:1.5}
+      .purple{fill:#f5f3ff;stroke:#c4b5fd;stroke-width:1.5}
+      .green{fill:#ecfdf5;stroke:#86efac;stroke-width:1.5}
+      .amber{fill:#fffbeb;stroke:#fcd34d;stroke-width:1.5}
+      .muted{fill:#f8fafc;stroke:#cbd5e1;stroke-width:1.5}
+    </style>
+  </defs>
+  <rect width="640" height="1390" rx="28" fill="#f8fafc" />
+  <text x="40" y="62" class="title">pstack：從任務到可驗證結果</text>
+  <text x="40" y="96" class="body">先選流程，再按需要載入其他層。</text>
+
+  <rect x="40" y="120" width="560" height="100" rx="16" class="blue" />
+  <text x="66" y="162" class="label">1. 使用者提出任務</text>
+  <text x="66" y="196" class="body">說清楚目標、症狀和預期結果</text>
+
+  <path d="M320 222V260" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+
+  <rect x="40" y="274" width="560" height="110" rx="16" class="purple" />
+  <text x="66" y="318" class="label">2. /poteto-mode 選路由</text>
+  <text x="66" y="354" class="body">調查、Bug fix、Feature、重構或效能工作</text>
+
+  <path d="M320 386V420" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+
+  <rect x="40" y="434" width="560" height="116" rx="16" class="purple" />
+  <text x="66" y="478" class="label">3. Playbook 排定步驟與檢查點</text>
+  <text x="66" y="516" class="body">定義順序、證據和停止條件</text>
+
+  <path d="M320 552V588H128V618" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M320 552V618" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M320 552V588H512V618" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+
+  <rect x="40" y="635" width="176" height="180" rx="16" class="blue" />
+  <text x="56" y="674" class="label">Skill</text>
+  <text x="56" y="710" class="body">怎麼做</text>
+  <text x="56" y="750" class="small">可重用的操作方法</text>
+  <text x="56" y="782" class="small">how / tdd / architect</text>
+
+  <rect x="232" y="635" width="176" height="180" rx="16" class="amber" />
+  <text x="248" y="674" class="label">Principle</text>
+  <text x="248" y="710" class="body">怎麼判斷</text>
+  <text x="248" y="750" class="small">影響相關取捨</text>
+  <text x="248" y="782" class="small">例：fix-root-causes</text>
+
+  <rect x="424" y="635" width="176" height="180" rx="16" class="green" />
+  <text x="440" y="674" class="label">角色提示詞</text>
+  <text x="440" y="710" class="body">怎麼委派</text>
+  <text x="440" y="750" class="small">只在委派時使用</text>
+  <text x="440" y="782" class="small">範圍・限制・回報</text>
+
+  <path d="M128 817V840H320V860" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M320 817V860" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M512 817V840H320V860" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+
+  <rect x="40" y="876" width="560" height="100" rx="16" class="muted" />
+  <text x="66" y="918" class="label">4. 主代理使用宿主提供的工具</text>
+  <text x="66" y="952" class="body">檢查委派結果；權限設定決定工具能否執行</text>
+
+  <path d="M320 978V1016" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+
+  <rect x="40" y="1030" width="560" height="140" rx="16" class="green" />
+  <text x="66" y="1074" class="label">5. 驗證完成條件並交付</text>
+  <text x="66" y="1112" class="body">在同一介面重跑原始情境</text>
+  <text x="66" y="1145" class="small">失敗就回到調查；能力不足時回報受阻</text>
+
+  <rect x="40" y="1210" width="560" height="130" rx="16" class="amber" />
+  <text x="66" y="1254" class="label">獨立路徑：Benny 自動化</text>
+  <text x="66" y="1292" class="body">設定後由 Slack 等事件觸發</text>
+  <text x="66" y="1322" class="small">不經 /poteto-mode 的一般任務路由</text>
+</svg>

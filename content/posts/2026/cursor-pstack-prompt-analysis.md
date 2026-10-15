@@ -14,6 +14,8 @@ metaDescription: '依固定原始碼版本逐項解析 Cursor pstack 的提示�
 
 本文是 [pstack 架構總覽](/posts/2026/cursor-pstack-plugin-analysis) 的續篇。前文拆解套件由哪些元件組成；這篇往下看提示詞本身，逐項分析它要求 Agent 做什麼、怎麼分流、依賴哪些工具與上下文，以及何處仍只是文字要求。
 
+第一次接觸 pstack 的讀者，可以先看[入門教學：從 Bug 修復看懂提示詞架構](/posts/2026/cursor-pstack-workflow-design-guide)，再回到本文按類別查閱每一份提示詞。
+
 分析固定在 pstack 0.15.24 的原始碼 commit [1e5c90a](https://github.com/cursor/plugins/tree/1e5c90a4b6f249917bd21fe361b3a2a7deb741b8/pstack)。下文的「觸發」指 README、技能描述或主路由寫明的呼叫條件。提示要求 Agent 做某事，不代表它已執行；權限、CI 和實際 readback 才能證明結果。
 
 ## 先分清六種提示層
