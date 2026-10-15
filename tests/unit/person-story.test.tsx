@@ -21,45 +21,43 @@ describe('Approved personal story reading paths', () => {
     expect(doc.body.textContent).toContain('1,500 萬筆以上訂單')
     expect(doc.body.textContent).not.toContain('55 項')
   })
-  it('renders five chronological chapters while preserving existing experience anchors', () => {
+  it('renders the three selected design chapters and their work links', () => {
     const doc = documentFor(renderToStaticMarkup(<StoryPage />))
     expect([...doc.querySelectorAll('[data-story-note] h2')].map((n) => n.textContent)).toEqual([
-      '從書店走進開發',
-      '和團隊一起做 GJ',
-      '從產品開發到團隊搭建',
-      '在 Nidin，持續做系統與帶團隊',
-      '開始自己的 AI 工作',
+      '共同創辦 GJ 的那段時間',
+      '在 Nidin，做系統，也帶團隊',
+      '從點餐平台到法律與旅遊 AI',
     ])
     for (const id of ['gj', 'nidin', 'ai-work']) {
       expect(doc.getElementById(id)?.querySelector('a[href^="/work"]')).not.toBeNull()
     }
-    expect(doc.getElementById('nidin')?.textContent).toContain('直接管理 10 位工程師')
+    expect(doc.getElementById('nidin')?.querySelector('.site-split-index')?.textContent).toBe('02')
+    expect(doc.getElementById('nidin')?.textContent).toContain(
+      '2021 年到 2025 年，我在雲仲資訊擔任技術經理'
+    )
   })
 
-  it('puts Nidin first and exposes the concrete TPI responsibilities without a new case URL', () => {
+  it('follows the selected product, platform and AI order with concise supporting work', () => {
     const doc = documentFor(renderToStaticMarkup(<WorkPage />))
-    expect(doc.querySelector('article h3')?.textContent).toBe('Nidin 你訂')
-    const tpi = doc.getElementById('tpi')
-    expect(tpi?.textContent).toContain('20 人規模的團隊')
-    expect(tpi?.textContent).not.toMatch(/直接管理|直屬/)
-    expect(tpi?.querySelectorAll('li')).toHaveLength(3)
-    expect(tpi?.textContent).toContain('機關權限')
-    expect(tpi?.textContent).toContain('資料清洗')
-    expect(tpi?.textContent).toContain('資安弱點掃描')
+    expect(doc.querySelector('article h3')?.textContent).toBe('GJ')
+    expect(doc.getElementById('vclass')?.textContent).toContain(
+      '核心負責從零建置並推出線上課程平台'
+    )
+    expect(doc.getElementById('channel-t')?.textContent).toContain('旅行產品平台')
     expect(
       [...doc.querySelectorAll('article h3 a[href^="/work/"]')].map((n) => n.getAttribute('href'))
-    ).toEqual(['/work/nidin', '/work/gj', '/work/jurislm'])
+    ).toEqual(['/work/gj', '/work/nidin', '/work/jurislm'])
     expect(doc.body.textContent).not.toContain('55 項')
   })
 
   it('provides the approved About greeting, reading paths and integrated CV', () => {
     const doc = documentFor(renderToStaticMarkup(<AboutPage />))
-    expect(doc.querySelector('h1')?.textContent).toBe('嗨，我是 Terry。')
+    expect(doc.querySelector('h1')?.textContent).toBe('關於我')
     for (const [text, href] of [
-      ['讀我的故事', '/story'],
-      ['看精選作品', '/work'],
-      ['閱讀文章', '/posts'],
-      ['完整 CV', '/cv'],
+      ['幾段經歷', '/story'],
+      ['作品頁', '/work'],
+      ['文章索引', '/posts'],
+      ['CV', '/cv'],
     ]) {
       expect(
         [...doc.querySelectorAll('a')].some(
@@ -69,14 +67,14 @@ describe('Approved personal story reading paths', () => {
     }
   })
 
-  it('keeps homepage experiences brief, with Nidin first instead of repeating the full story', async () => {
+  it('keeps the three homepage experience entries in the selected design order', async () => {
     const doc = documentFor(renderToStaticMarkup(await HomePage()))
     const entries = doc.querySelector('[data-testid="experience-entries"]')!
     expect(entries.querySelectorAll('article')).toHaveLength(3)
-    expect(entries.querySelector('a')?.getAttribute('href')).toBe('/story#nidin')
+    expect(entries.querySelector('a')?.getAttribute('href')).toBe('/story#gj')
     expect(entries.textContent).not.toContain('材料工程畢業後')
     expect(doc.querySelector('[data-home-section="work"] article a')?.getAttribute('href')).toBe(
-      '/work/nidin'
+      '/work/gj'
     )
   })
 })

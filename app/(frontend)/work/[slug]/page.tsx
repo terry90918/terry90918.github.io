@@ -25,7 +25,7 @@ export default async function WorkCasePage({ params }: { params: Promise<{ slug:
     <article className="site-page">
       <header className="site-page-intro">
         <Link href="/work" className="site-text-link mb-5">
-          回到精選作品
+          ← 回到精選作品
         </Link>
         <p className="text-accent mt-6 text-sm font-medium">
           {WORK_CATEGORY_LABELS[work.category]}
@@ -54,10 +54,7 @@ export default async function WorkCasePage({ params }: { params: Promise<{ slug:
               </li>
             ))}
           </ul>
-          <Link
-            href={`/story#${storyId}`}
-            className="text-accent inline-block text-sm underline underline-offset-4"
-          >
+          <Link href={`/story#${storyId}`} className="site-text-link">
             讀這段經歷
           </Link>
         </section>

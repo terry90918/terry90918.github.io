@@ -18,8 +18,9 @@ export default function Experience({ profile }: { profile: Profile }) {
                 <p className="text-muted-foreground text-sm">{experience.company}</p>
                 <h3 className="mt-2 text-xl font-semibold sm:text-2xl">{experience.role}</h3>
                 <p className="text-muted-foreground mt-3 text-xs leading-relaxed sm:text-sm">
-                  {experience.period} · {experience.kind}
-                  {experience.team && ` · ${experience.team}`}
+                  {[experience.period, experience.kind, experience.team]
+                    .filter(Boolean)
+                    .join(' · ')}
                 </p>
               </div>
               <ul className="space-y-4">

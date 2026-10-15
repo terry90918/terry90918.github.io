@@ -2,14 +2,14 @@
 
 Goal: correct JUR-705 visual drift against the explicitly supplied local Open Design project.
 
-Architecture: retain the existing Next.js routes, factual content and CV 3D implementation. Shared editorial primitives and scoped CSS own the repeated reference geometry. Runtime theme tokens remain in globals.css.
+Architecture: retain the existing Next.js routes and CV 3D implementation. The user’s 2026-10-15 follow-up makes selected design copy and block order authoritative across all 11 views. Shared editorial primitives and scoped CSS own the repeated reference geometry. Runtime theme tokens remain in globals.css.
 
 Spec: Open Design project `76e33fa9-e2bc-4bf3-b92d-b38f0e5c0ae2` (`index.html`, `design.css`, `design.js`, `design-note.md`, read only), plus existing OpenSpec content and route contracts.
 
 ## Constraints
 
 - Use dedicated `codex/jur-705-design-alignment` worktree; main and its untracked files remain untouched.
-- Preserve current content, story/work ordering, dates, article bodies, canonical URLs and bilingual CV facts.
+- Synchronise selected visible copy and Story/Work ordering. Preserve article data/bodies, canonical routes and factual accuracy. The user explicitly confirmed all 31 CV skill categories in both languages. Keep the main-site 55-delivery omission as a separately documented exception.
 - Treat preview chrome and the static CV badge as prototype-only. Retain the real React Three/physics card and mobile fallback.
 - No deployment or merge in this correction task. One complete review per provider, with existing review results checked first.
 
@@ -34,4 +34,13 @@ Spec: Open Design project `76e33fa9-e2bc-4bf3-b92d-b38f0e5c0ae2` (`index.html`, 
 
 ## Browser evidence
 
-Normal Chrome returned home and reference screenshots. Subsequent route navigation timed out, then normal recovery timed out again with `js execution timed out; kernel reset, rerun your request`. No alternative browser automation is used to bypass that limitation. Post-change visual acceptance remains pending until normal browser access works.
+Normal Chrome recovered through the same browser tool. Story was captured in light/dark modes and at 375px. Mobile menu expansion and destination-close, About mobile layout, CV mobile portrait, skills expansion, language URL preservation and desktop 3D-card rendering/drag were exercised. All 11 views have source/export copy coverage and desktop viewport screenshots; long archive/timeline bottoms and the complete keyboard matrix are not fully visually accepted. See the current evidence report and per-block audit for scope and exceptions.
+
+## Explicit copy follow-up
+
+- [x] Read the supplied design/site screenshots and confirm that the deployed screenshot and PR head both had old Nidin copy.
+- [x] Capture the 2026-10-15 selected HTML revision and both CV taxonomies in a reproducible structured snapshot.
+- [x] Update Story, About, Home, Work, all three work cases, daily eyebrow and both CV home presentations in the same PR.
+- [x] Update superseded order/copy assertions and add bilingual CV reading-path/skills coverage.
+- [x] Audit all 11 views against production HTML, within mapped sections, with explicit dynamic/claim/interactive-card exceptions.
+- [ ] Push the verified delta to PR #110 and read back its new-head check status. No additional complete review, merge or deployment.

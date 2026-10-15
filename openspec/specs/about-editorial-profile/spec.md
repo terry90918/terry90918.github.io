@@ -4,7 +4,7 @@
 
 Describe the factual personal profile and reading paths approved by the JUR-508 version 2 design, superseding the earlier promotional narrative and required activity chart.
 
-JUR-521 updates the approved public copy while retaining this layout and the existing account destinations.
+JUR-705 uses the selected Open Design revision of 2026-10-15 for visible copy and layout, superseding the earlier JUR-521 ordering while retaining public account destinations.
 
 ## Requirements
 
@@ -43,7 +43,7 @@ The About page SHALL preserve visible GitHub, X, LinkedIn and Email links with k
 
 ### Requirement: Story and work reading paths
 
-Story SHALL show the five approved chronological chapters. Existing anchors `gj`, `nidin` and `ai-work` SHALL remain reachable. Work SHALL introduce Nidin first and explain TPI's 20-person project team separately from Nidin's 10 direct reports. TPI SHALL expose architecture, file processing and security remediation responsibilities at `/work#tpi` without adding a case route. Homepage SHALL retain three concise experience entries rather than duplicating Story.
+Story SHALL show the three selected design chapters in GJ, Nidin and AI order. Existing anchors `gj`, `nidin` and `ai-work` SHALL remain reachable. Work SHALL show product, platform and AI categories in that order, with VClass and Channel-T as concise supporting work. Homepage SHALL retain three concise experience entries in the same GJ, Nidin and AI order. Full career details, including TPI, SHALL remain in the bilingual CV. Nidin's unconfirmed 55-delivery claim SHALL remain excluded from the main-site case until separately confirmed.
 
 #### Scenario: Read experience and supporting work
 

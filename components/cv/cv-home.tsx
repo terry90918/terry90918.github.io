@@ -6,6 +6,7 @@ import FeaturedWorks from '@/components/cv/shared/featured-works/featured-works'
 import { SiteEyebrow as Eyebrow } from '@/components/SitePrimitives'
 import type { CaseStudyMetadata } from '@/lib/cv/case-studies'
 import { contact } from '@/lib/cv/profile'
+import reference from '@/lib/site/design-reference.json'
 import type { Locale, Profile } from '@/lib/cv/profile'
 export default function CvHome({
   locale,
@@ -16,10 +17,11 @@ export default function CvHome({
   profile: Profile
   projects: CaseStudyMetadata[]
 }) {
-  const labels = profile.labels
+  const copy = reference.cv[locale]
+  const labels = { ...profile.labels, ...copy.labels }
   return (
     <div className="cv-home-reference">
-      <Hero locale={locale} profile={profile} />
+      <Hero locale={locale} profile={profile} role={copy.role} />
       <section id="about" className="border-b px-4 py-14 sm:px-6 sm:py-20 lg:px-10.5 lg:py-24">
         <Eyebrow>{labels.about}</Eyebrow>
         <h2 className="leading-snug font-bold">{labels.aboutTitle}</h2>
@@ -33,30 +35,29 @@ export default function CvHome({
             </div>
           ))}
         </div>
-        <div className="mt-6 space-y-4 text-base leading-[1.85]">
-          {profile.about.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
       </section>
       <FeaturedWorks
         locale={locale}
-        caseStudies={projects}
+        caseStudies={copy.projects.map((copy) => {
+          const project = projects.find((project) => project.slug === copy.slug)
+          if (!project) throw new Error(`Missing CV project: ${copy.slug}`)
+          return { ...project, ...copy }
+        })}
         eyebrow={labels.work}
         title={labels.workTitle}
         layout="reference"
       />
-      <Experience profile={profile} />
+      <Experience profile={{ ...profile, labels, experiences: copy.experiences }} />
       <section id="education" className="border-b px-4 py-14 sm:px-6 sm:py-20 lg:px-10.5 lg:py-24">
         <Eyebrow>{labels.education}</Eyebrow>
         <div className="mt-6 grid gap-6 sm:grid-cols-2">
           <div className="bg-card rounded-lg border p-5 sm:p-6">
-            <h2 className="text-2xl font-semibold">{profile.education.school}</h2>
+            <h3 className="text-xl font-bold">{profile.education.school}</h3>
             <p className="mt-3">{profile.education.field}</p>
             <p className="text-muted-foreground mt-4 text-sm">{profile.education.period}</p>
           </div>
           <div className="bg-card rounded-lg border p-5 sm:p-6">
-            <h2 className="text-xl font-medium">{labels.military}</h2>
+            <h3 className="text-xl font-bold">{labels.military}</h3>
             <p className="text-muted-foreground mt-4 text-sm">{profile.military}</p>
           </div>
         </div>
@@ -88,7 +89,7 @@ export default function CvHome({
         <Eyebrow>{labels.skills}</Eyebrow>
         <h2 className="leading-snug font-bold">{labels.skillsTitle}</h2>
         <div className="site-card cv-skills-card mt-6 divide-y">
-          {profile.skills.map((skill, index) => (
+          {copy.skills.map((skill, index) => (
             <details key={skill.title} className="group py-[18px]" open={index === 0}>
               <summary className="flex min-h-[30px] cursor-pointer list-none items-center justify-between gap-4 text-base font-medium">
                 <span>{skill.title}</span>
@@ -102,9 +103,6 @@ export default function CvHome({
                     </span>
                   ))}
                 </div>
-                <p className="text-muted-foreground max-w-2xl leading-relaxed">
-                  {skill.description}
-                </p>
               </div>
             </details>
           ))}

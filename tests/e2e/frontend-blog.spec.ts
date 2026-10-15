@@ -155,9 +155,9 @@ test.describe('Personal site', () => {
 
   test('[brand] About introduces the site and keeps real public contacts', async ({ page }) => {
     await page.goto('/about')
-    await expect(page.getByRole('heading', { name: '嗨，我是 Terry。', exact: true })).toBeVisible()
+    await expect(page.getByRole('heading', { name: '關於我', exact: true })).toBeVisible()
     await expect(page.getByTestId('about-profile')).toContainText(
-      '我做軟體產品、規劃系統架構，也帶工程團隊'
+      '嗨，我是 Terry。這個網站放我做過的產品、幾段經歷與持續整理的 AI 資訊。'
     )
     await expect(page.locator('main')).not.toContainText(/敬請期待|熱愛旅行|人生使命/)
     for (const href of [
@@ -166,7 +166,7 @@ test.describe('Personal site', () => {
       'https://www.linkedin.com/in/tien-yi-chen-98812812a',
       email,
     ]) {
-      await expect(page.locator(`main a[href="${href}"]`)).toBeVisible()
+      await expect(page.getByTestId('about-connect').locator(`a[href="${href}"]`)).toBeVisible()
     }
   })
 
@@ -257,15 +257,15 @@ test.describe('Personal site', () => {
     }
   })
 
-  test('[brand] TPI related work clears the sticky header after cross-page navigation', async ({
+  test('[brand] Nidin related work clears the sticky header after cross-page navigation', async ({
     page,
   }) => {
     await page.setViewportSize({ width: 320, height: 900 })
-    await page.goto('/story#tpi')
-    await page.locator('#tpi').getByRole('link', { name: '看相關作品' }).click()
-    await expect(page).toHaveURL('/work#tpi')
+    await page.goto('/story#nidin')
+    await page.locator('#nidin').getByRole('link', { name: '看相關作品' }).click()
+    await expect(page).toHaveURL('/work/nidin')
     await waitForScrollToSettle(page)
-    const target = await page.locator('#tpi').boundingBox()
+    const target = await page.locator('main h1').boundingBox()
     const header = await page.getByRole('banner').boundingBox()
     expect(target?.y).toBeGreaterThanOrEqual((header?.y ?? 0) + (header?.height ?? 0))
     expect(target?.y).toBeLessThan(page.viewportSize()?.height ?? 0)

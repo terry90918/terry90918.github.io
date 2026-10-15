@@ -24,15 +24,6 @@ export default function FeaturedWorkCard({
         <p className="site-kicker">{caseStudy.organisation}</p>
         <h3>{caseStudy.title}</h3>
         <p className="site-card-summary">{caseStudy.description}</p>
-        <p className="text-muted-foreground mb-4 text-xs leading-relaxed">
-          {caseStudy.duration} · {caseStudy.role}
-        </p>
-        <p className="text-muted-foreground mb-4 text-xs leading-relaxed">
-          {caseStudy.metric} · {caseStudy.metricLabel}
-        </p>
-        <p className="text-muted-foreground mb-4 text-xs leading-relaxed">
-          {caseStudy.brand} · {caseStudy.tools.join(' / ')}
-        </p>
         <span className="site-text-link">
           {locale === 'en' ? 'Read case study' : '閱讀案例'} <ArrowUpRight className="size-4" />
         </span>

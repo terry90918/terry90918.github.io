@@ -163,8 +163,11 @@
 .cv-reference-hero-copy > * + * {
   margin-top: 20px;
 }
-.cv-reference-hero-copy .cv-reference-name {
+.cv-reference-hero-copy .cv-reference-greeting {
   margin-top: 26px;
+}
+.cv-reference-hero-copy .cv-reference-name {
+  margin-top: 0;
 }
 .cv-reference-name {
   font-size: 56px;
@@ -307,7 +310,7 @@
     font-size: 10px;
   }
 }
-.cv-home-reference #education h2 {
+.cv-home-reference #education h3 {
   font-size: 20px;
 }
 .cv-home-reference #education > div {

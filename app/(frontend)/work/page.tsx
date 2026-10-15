@@ -10,7 +10,7 @@ export const metadata = pageMetadata(
   'Nidin 你訂、昕力資訊、GJ、VoiceTube、JurisLM 與 Channel-T：產品、系統與工程團隊的工作。',
   '/work'
 )
-const categories: WorkCase['category'][] = ['platform', 'product', 'ai']
+const categories: WorkCase['category'][] = ['product', 'platform', 'ai']
 
 export default function WorkPage() {
   return (
@@ -43,12 +43,6 @@ export default function WorkPage() {
                 <p className="site-work-meta">
                   {work.period} · {work.role}
                 </p>
-                {work.slug === 'nidin' && (
-                  <p className="site-card-summary">
-                    擔任雲仲資訊技術經理，直接管理 10 位工程師。促銷優惠券採分批發送與 API
-                    控流，避免影響訂單服務。
-                  </p>
-                )}
                 <Link href={`/work/${work.slug}`} className="site-text-link">
                   看作品
                 </Link>
@@ -60,26 +54,9 @@ export default function WorkPage() {
                 id={work.id}
                 className="site-card site-supporting scroll-mt-56"
               >
+                <p className="site-kicker">合作經驗</p>
                 <h3 className="font-bold">{work.title}</h3>
                 <p className="mt-1 text-sm leading-6 opacity-80">{work.summary}</p>
-                {work.paragraphs?.map((paragraph) => (
-                  <p key={paragraph} className="mt-2 text-sm leading-6 opacity-80">
-                    {paragraph}
-                  </p>
-                ))}
-                {work.responsibilities && (
-                  <>
-                    <p className="mt-3 text-sm leading-6 opacity-80">我主要負責：</p>
-                    <ul className="mt-2 list-disc space-y-2 pl-5 text-sm leading-6 opacity-80">
-                      {work.responsibilities.map((responsibility) => (
-                        <li key={responsibility}>{responsibility}</li>
-                      ))}
-                    </ul>
-                  </>
-                )}
-                {work.afterword && (
-                  <p className="mt-3 text-sm leading-6 opacity-80">{work.afterword}</p>
-                )}
               </article>
             ))}
           </div>

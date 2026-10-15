@@ -1,10 +1,18 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import DesktopIdCard from '@/components/cv/ui/desktop-id-card'
 import { contact } from '@/lib/cv/profile'
 import type { Locale, Profile } from '@/lib/cv/profile'
-export default function Hero({ locale, profile }: { locale: Locale; profile: Profile }) {
+export default function Hero({
+  locale,
+  profile,
+  role,
+}: {
+  locale: Locale
+  profile: Profile
+  role: string
+}) {
   return (
     <section id="top" className="cv-reference-hero lg:relative">
       <div className="cv-reference-hero-inner">
@@ -21,23 +29,22 @@ export default function Hero({ locale, profile }: { locale: Locale; profile: Pro
               <span className="bg-brand size-1.5 rounded-full" />
               {profile.location}
             </span>
+            <p className="cv-reference-greeting text-muted-foreground text-xl font-normal tracking-normal">
+              {profile.greeting}
+            </p>
             <h1 className="cv-reference-name font-bold">
-              <span className="cv-reference-greeting text-muted-foreground block text-xl font-normal tracking-normal">
-                {profile.greeting}
-              </span>
               {profile.name}
               <span className="text-accent-ink">.</span>
             </h1>
-            <p className="cv-reference-role text-muted-foreground">{profile.role}</p>
-            <p className="max-w-lg text-base leading-relaxed lg:max-w-105">{profile.description}</p>
+            <p className="cv-reference-role text-muted-foreground">{role}</p>
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <Link href={`/cv/${locale}/#experience`} className="site-button site-button-primary">
-                {profile.labels.viewExperience}
+                {profile.labels.viewExperience}{' '}
+                <ArrowUpRight aria-hidden="true" className="size-4" />
               </Link>
               <Link href={`/cv/${locale}/#contact`} className="site-button">
-                <span className="bg-brand size-2 rounded-full" />
-                {profile.labels.contact}
-                <ArrowRight className="size-4" />
+                {locale === 'en' ? 'Contact' : '聯絡方式'}
+                <ArrowUpRight aria-hidden="true" className="size-4" />
               </Link>
             </div>
           </div>

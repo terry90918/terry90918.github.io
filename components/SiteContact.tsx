@@ -12,7 +12,7 @@ export function SiteContact({ home = false }: { home?: boolean }) {
       <SiteEyebrow>聯絡</SiteEyebrow>
       <h2>聯絡 Terry</h2>
       <p className="site-contact-copy">
-        如果你正在做產品、規劃系統或建立工程團隊，歡迎聊聊合作，也歡迎合適的工程與技術管理機會。
+        如果你想聊聊產品開發、系統設計，或把 AI 放進實際工作流程，歡迎來信。
       </p>
       <div className="site-actions">
         <Link href={SITE_EMAIL} className="site-button site-button-primary">

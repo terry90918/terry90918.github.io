@@ -19,11 +19,11 @@ export default async function AIDailyPage() {
     <div className="site-page">
       <header className="site-page-intro">
         <Link href="/posts" className="site-text-link mb-5">
-          回到全部文章
+          ← 回到全部文章
         </Link>
         <SiteEyebrow>
           <span className="site-dot" />
-          文章系列
+          AI 日報
         </SiteEyebrow>
         <h1>AI 日報</h1>
         <p className="site-lead">
