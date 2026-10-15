@@ -3,7 +3,7 @@ title: "AI Coding 詞典拆解（02）：Session、Turn 與 Context Window 的�
 publishedAt: "2026-10-15T08:25:00+08:00"
 status: "published"
 slug: "ai-coding-dictionary-02-sessions-context-turns"
-excerpt: "模型是無狀態的，對話看起來有連續性，是 Harness 把 Session 歷史重新送進每次請求。理解 Session、Turn 和 Context Window，才能看懂代理為什麼會忘記。"
+excerpt: "模型本身不保留 Session 狀態；對話的連續性來自 Harness 或 API 保存並按需提供相關脈絡。理解 Session、Turn 和 Context Window，才能看懂代理為什麼會忘記。"
 tags: ["人工智慧", "AI工程", "軟體開發", "Agent"]
 metaDescription: "拆解模型請求、Turn、Session、Context 和 Context Window，說明工具循環如何增加請求、脈絡如何累積，以及為什麼長對話不是可靠記憶。"
 ---
