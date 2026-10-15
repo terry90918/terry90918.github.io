@@ -31,13 +31,15 @@ export default async function AIDailyPage() {
         </p>
         <p className="mt-2 text-sm opacity-65">共 {posts.length} 篇已發佈日報</p>
       </header>
-      <div className="site-card site-writing mt-14 max-[700px]:mt-9.5">
-        {posts.length === 0 ? (
-          <p>目前沒有已發佈日報。</p>
-        ) : (
-          posts.map((post) => <WritingPostCard key={post.slug} post={post} />)
-        )}
-      </div>
+      <section aria-label="已發佈日報">
+        <div className="site-card site-writing">
+          {posts.length === 0 ? (
+            <p>目前沒有已發佈日報。</p>
+          ) : (
+            posts.map((post) => <WritingPostCard key={post.slug} post={post} />)
+          )}
+        </div>
+      </section>
     </div>
   )
 }

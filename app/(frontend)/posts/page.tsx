@@ -39,28 +39,28 @@ export default async function PostsPage() {
         <p className="site-lead">
           持續整理的 AI 資訊與翻譯，按年份放在這裡。日報是資訊整理；翻譯標明原作者與來源。
         </p>
-      </SitePageIntro>
-      {(hasDaily || softwareEngineeringTranslation) && (
-        <nav aria-label="文章主題" className="site-topic-nav">
-          {hasDaily && (
-            <Link href="/posts/ai-daily" className="site-button">
-              AI 資訊
-            </Link>
-          )}
-          {softwareEngineeringTranslation && (
-            <a
-              href={`#writing-${softwareEngineeringTranslation.year}-${softwareEngineeringTranslation.slug}`}
-              className="site-button"
-            >
-              軟體工程
+        {(hasDaily || softwareEngineeringTranslation) && (
+          <nav aria-label="文章主題" className="site-topic-nav">
+            {hasDaily && (
+              <Link href="/posts/ai-daily" className="site-button">
+                AI 資訊
+              </Link>
+            )}
+            {softwareEngineeringTranslation && (
+              <a
+                href={`#writing-${softwareEngineeringTranslation.year}-${softwareEngineeringTranslation.slug}`}
+                className="site-button"
+              >
+                軟體工程
+              </a>
+            )}
+            <a href="#all-posts" className="site-button">
+              按年份閱讀
             </a>
-          )}
-          <a href="#all-posts" className="site-button">
-            按年份閱讀
-          </a>
-        </nav>
-      )}
-      <div id="all-posts" data-writing-entry className="pb-10 md:pb-14">
+          </nav>
+        )}
+      </SitePageIntro>
+      <div id="all-posts" data-writing-entry>
         {grouped.length === 0 ? (
           <p>目前沒有已發佈文章。</p>
         ) : (
@@ -91,7 +91,7 @@ export default async function PostsPage() {
           ))
         )}
       </div>
-      <p className="mt-6 text-sm opacity-65">
+      <p className="site-archive-count text-muted-foreground text-sm">
         共 {publishedCount} 篇已發佈文章{draftCount > 0 && ` · ${draftCount} 篇草稿（開發預覽）`}
       </p>
     </div>

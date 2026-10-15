@@ -22,7 +22,7 @@ Spec: Open Design project `76e33fa9-e2bc-4bf3-b92d-b38f0e5c0ae2` (`index.html`, 
 - [x] Align CV shell/navigation, hero type, about stats, featured-work cards, chronology, education/contact/skills spacing to reference while preserving facts and interaction owners.
 - [x] Run full lint, typecheck, unit tests, OpenSpec validation and production build.
 - [ ] Run existing frontend tests if their browser execution is available. Do not treat DOM counts as visual acceptance.
-- [ ] Inspect diff and one Codex/CodeRabbit review, create labeled PR and record exact gates and visual limitations in JUR-705.
+- [x] Inspect diff and one Codex/CodeRabbit review, create labeled PR and record exact gates and visual limitations in JUR-705.
 
 ## Review focus
 

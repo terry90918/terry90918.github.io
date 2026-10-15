@@ -93,6 +93,9 @@ export function BlogHeader() {
     document.addEventListener('keydown', handleEscape)
     return () => document.removeEventListener('keydown', handleEscape)
   }, [menuOpen])
+  function isCurrentRoute(href: string) {
+    return href.startsWith('/') && (pathname === href || pathname.startsWith(`${href}/`))
+  }
   const links = [
     ['關於我', '/about'],
     ['故事', '/story'],
@@ -117,9 +120,7 @@ export function BlogHeader() {
                 key={label}
                 href={href}
                 prefetch={inCv || href === CV_URL ? false : undefined}
-                aria-current={
-                  pathname === href || pathname.startsWith(`${href}/`) ? 'page' : undefined
-                }
+                aria-current={isCurrentRoute(href) ? 'page' : undefined}
                 className="hover:text-accent flex min-h-11 items-center rounded-sm text-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]"
               >
                 {label}
@@ -171,6 +172,7 @@ export function BlogHeader() {
               href={href}
               prefetch={inCv || href === CV_URL ? false : undefined}
               onClick={closeMenu}
+              aria-current={isCurrentRoute(href) ? 'page' : undefined}
               className="hover:text-accent flex min-h-11 items-center rounded-sm text-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]"
             >
               {label}

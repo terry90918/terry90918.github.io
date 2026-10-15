@@ -49,6 +49,9 @@ export default function WorkPage() {
                     控流，避免影響訂單服務。
                   </p>
                 )}
+                <Link href={`/work/${work.slug}`} className="site-text-link">
+                  看作品
+                </Link>
               </article>
             ))}
             {SUPPORTING_WORK.filter((work) => work.category === category).map((work) => (

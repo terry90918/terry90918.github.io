@@ -84,7 +84,11 @@ export default async function HomePage() {
         </section>
       )}
       <section data-home-section="work" aria-labelledby="work-title">
-        <SiteSectionHeading label="作品" title="做過的作品" id="work-title" />
+        <SiteSectionHeading label="作品" title="做過的作品" id="work-title">
+          <Link href="/work" className="site-text-link">
+            看精選作品
+          </Link>
+        </SiteSectionHeading>
         <div className="site-card-grid">
           {WORK_CASES.map((work) => (
             <article key={work.slug} className="site-card site-work-card">
@@ -99,9 +103,6 @@ export default async function HomePage() {
             </article>
           ))}
         </div>
-        <Link href="/work" className="site-text-link mt-5">
-          看精選作品
-        </Link>
       </section>
       <SiteContact home />
     </div>

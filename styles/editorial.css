@@ -123,7 +123,6 @@
 }
 
 .site-page {
-  padding-bottom: 56px;
   line-height: 1.7;
 }
 
@@ -585,9 +584,6 @@
 }
 
 @media (max-width: 700px) {
-  .site-page {
-    padding-bottom: 38px;
-  }
   .site-page section {
     padding: 38px 0;
   }
@@ -685,4 +681,30 @@
 
 .site-writing > [data-writing-entry]:not(:last-child) .site-writing-row {
   border-bottom: 1px solid var(--border);
+}
+
+.site-archive-count {
+  margin: 24px 0 56px;
+}
+
+.site-case-body > section {
+  padding: 0;
+  border: 0;
+}
+.site-case-body > section.site-card {
+  padding: 24px;
+  border: 1px solid var(--border);
+}
+@media (max-width: 700px) {
+  .site-case-body > section.site-card {
+    padding: 20px;
+  }
+}
+.site-mobile-navigation a[aria-current='page'] {
+  color: var(--card-foreground);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--brand);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
 }

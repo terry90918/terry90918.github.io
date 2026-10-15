@@ -32,7 +32,13 @@ const FeaturedWorks = ({
 }: FeaturedWorksProps) => {
   return (
     <section id={id} className={cn('py-14 sm:py-20 lg:py-24', showBorder && 'border-b')}>
-      <div className="mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:space-y-16 lg:px-10.5">
+      <div
+        className={
+          layout === 'reference'
+            ? 'cv-reference-work-content'
+            : 'mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:space-y-16 lg:px-10.5'
+        }
+      >
         <div className="space-y-2">
           {layout === 'reference' ? (
             <SiteEyebrow>{eyebrow}</SiteEyebrow>

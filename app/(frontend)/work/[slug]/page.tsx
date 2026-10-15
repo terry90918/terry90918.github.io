@@ -36,14 +36,14 @@ export default async function WorkCasePage({ params }: { params: Promise<{ slug:
         <p className="site-lead">{work.summary}</p>
       </header>
       <div className="site-case-body">
-        <div aria-labelledby="role-title" className="site-card self-start">
+        <section aria-labelledby="role-title" className="site-card self-start">
           <h2 id="role-title" className="text-lg font-bold">
             我的角色
           </h2>
           <p className="mt-3 leading-7">{work.role}</p>
           <p className="mt-1 text-sm opacity-65">{work.period}</p>
-        </div>
-        <div aria-labelledby="delivery-title">
+        </section>
+        <section aria-labelledby="delivery-title">
           <h2 id="delivery-title" className="text-lg font-bold">
             做過的工作
           </h2>
@@ -60,7 +60,7 @@ export default async function WorkCasePage({ params }: { params: Promise<{ slug:
           >
             讀這段經歷
           </Link>
-        </div>
+        </section>
       </div>
       <SiteContact />
     </article>

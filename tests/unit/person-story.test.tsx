@@ -15,6 +15,8 @@ describe('Approved personal story reading paths', () => {
     const doc = documentFor(
       renderToStaticMarkup(await WorkCasePage({ params: Promise.resolve({ slug: 'nidin' }) }))
     )
+    expect(doc.querySelector('section[aria-labelledby="role-title"]')).not.toBeNull()
+    expect(doc.querySelector('section[aria-labelledby="delivery-title"]')).not.toBeNull()
     expect(doc.body.textContent).toContain('820 萬會員')
     expect(doc.body.textContent).toContain('1,500 萬筆以上訂單')
     expect(doc.body.textContent).not.toContain('55 項')
@@ -45,7 +47,7 @@ describe('Approved personal story reading paths', () => {
     expect(tpi?.textContent).toContain('資料清洗')
     expect(tpi?.textContent).toContain('資安弱點掃描')
     expect(
-      [...doc.querySelectorAll('a[href^="/work/"]')].map((n) => n.getAttribute('href'))
+      [...doc.querySelectorAll('article h3 a[href^="/work/"]')].map((n) => n.getAttribute('href'))
     ).toEqual(['/work/nidin', '/work/gj', '/work/jurislm'])
     expect(doc.body.textContent).not.toContain('55 項')
   })
@@ -73,7 +75,7 @@ describe('Approved personal story reading paths', () => {
     expect(entries.querySelectorAll('article')).toHaveLength(3)
     expect(entries.querySelector('a')?.getAttribute('href')).toBe('/story#nidin')
     expect(entries.textContent).not.toContain('材料工程畢業後')
-    expect(doc.querySelector('[data-home-section="work"] a')?.getAttribute('href')).toBe(
+    expect(doc.querySelector('[data-home-section="work"] article a')?.getAttribute('href')).toBe(
       '/work/nidin'
     )
   })

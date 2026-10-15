@@ -112,6 +112,13 @@ test.describe('Personal site', () => {
     await page.keyboard.press('Enter')
     await nav.getByRole('link', { name: '關於我', exact: true }).click()
     await expect(page).toHaveURL('/about')
+    await expect(nav.getByRole('link', { name: '關於我', exact: true })).toHaveAttribute(
+      'aria-current',
+      'page'
+    )
+    await expect(nav.getByRole('link', { name: '聯絡', exact: true })).not.toHaveAttribute(
+      'aria-current'
+    )
     await expect(menu).toHaveAttribute('aria-expanded', 'false')
     await expect(nav).toBeHidden()
     await expect(menu).toBeFocused()
