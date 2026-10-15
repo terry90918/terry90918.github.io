@@ -5,7 +5,7 @@
   "article_files_unchanged": 159,
   "article_manifest_sha256": "255d9875b6e730c2e9b22f194ce3835dabaaf5d827b4541c156c0e9b781d7261",
   "published_article_urls_preserved": 92,
-  "e2e": "45 passed (34.3s)",
+  "e2e": "45 passed (37.6s) on final metadata fix",
   "audit": {
     "views": 11,
     "entries": 860,
@@ -28,5 +28,7 @@
       "bytes": 30737,
       "sha256": "0ca186161ef1ec36c7203da5317b92a0dffe6a30177abe1b6089b5f2a3c73382"
     }
-  }
+  },
+  "unit_tests": 104,
+  "review_finding_fixed": "Story/Work descriptions match existing displayed sections, including Open Graph and Twitter"
 }

@@ -6,7 +6,7 @@ import { SitePageIntro } from '@/components/SitePrimitives'
 
 export const metadata = pageMetadata(
   '我的故事',
-  '從書店走進開發，經歷 GJ、VoiceTube、昕力資訊、Nidin，以及法律與旅遊 AI 工作。',
+  '從 GJ 共同創辦、Nidin 的系統與團隊工作，到近期法律與旅遊 AI 合作的幾段經歷。',
   '/story'
 )
 

@@ -73,3 +73,5 @@ The earlier browser/E2E limitations above are historical. The [review-gate and E
 ## Latest Writing navigation follow-up
 
 The user authorised synchronising the subsequent external design edit. The [Writing navigation evidence](2026-10-15-writing-navigation-alignment.md) records the authoritative source hash `8ded8cadf1e4827eba2189f49cc17e9050b7868b281dbc2a6c4706bb0675dae2`, removal of only the two shortcut buttons, byte-identical article sources, the regenerated 860-entry audit, fresh full checks/build/E2E and actual desktop/mobile screenshots. The external design is unchanged by this follow-up. Earlier statements about product source remaining identical to 248626f describe the preceding verification-only stage.
+
+The subsequent automatic-review P2 on stale Story/Work SEO descriptions is verified and fixed in the same follow-up: two description strings and a regression assertion, with matching description/Open Graph/Twitter readback. See the Writing navigation evidence for the final 104-test and E2E results; no visible page content or public route changed.

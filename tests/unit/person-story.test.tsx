@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { renderToStaticMarkup } from 'react-dom/server'
-import StoryPage from '../../app/(frontend)/story/page'
-import WorkPage from '../../app/(frontend)/work/page'
+import StoryPage, { metadata as storyMetadata } from '../../app/(frontend)/story/page'
+import WorkPage, { metadata as workMetadata } from '../../app/(frontend)/work/page'
 import AboutPage from '../../app/(frontend)/about/page'
 import HomePage from '../../app/(frontend)/page'
 import WorkCasePage from '../../app/(frontend)/work/[slug]/page'
@@ -11,6 +11,19 @@ function documentFor(html: string) {
 }
 
 describe('Approved personal story reading paths', () => {
+  it('describes only the selected Story and Work sections in search and social metadata', () => {
+    expect(storyMetadata.description).toBe(
+      '從 GJ 共同創辦、Nidin 的系統與團隊工作，到近期法律與旅遊 AI 合作的幾段經歷。'
+    )
+    expect(workMetadata.description).toBe(
+      'GJ、Nidin 你訂與 JurisLM 的產品、平台與 AI 工作案例，以及 VClass、Channel-T 合作經驗。'
+    )
+    for (const metadata of [storyMetadata, workMetadata]) {
+      expect(metadata.openGraph?.description).toBe(metadata.description)
+      expect(metadata.twitter?.description).toBe(metadata.description)
+      expect(metadata.description).not.toMatch(/書店|昕力資訊|VoiceTube/)
+    }
+  })
   it('places the confirmed delivery statement in the second Nidin evidence row', async () => {
     const doc = documentFor(
       renderToStaticMarkup(await WorkCasePage({ params: Promise.resolve({ slug: 'nidin' }) }))

@@ -1,11 +1,11 @@
 
 Running 45 tests using 1 worker
 
-(node:44656) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(node:68794) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
 (Use `node --trace-warnings ...` to show where the warning was created)
 
 
-(node:44656) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(node:68794) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
 (Use `node --trace-warnings ...` to show where the warning was created)
 
 
@@ -54,4 +54,4 @@ Running 45 tests using 1 worker
 [43/45] [frontend] › tests/e2e/frontend-performance.spec.ts:3:5 › reading the CV does not preload a different root application
 [44/45] [frontend] › tests/e2e/frontend-performance.spec.ts:15:5 › the main portrait uses WebP and main pages skip unused CV resources
 [45/45] [frontend] › tests/e2e/frontend-performance.spec.ts:60:5 › article images reserve space and use responsive WebP choices
-  45 passed (34.3s)
+  45 passed (37.6s)

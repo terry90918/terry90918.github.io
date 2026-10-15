@@ -1,0 +1,11 @@
+{
+  "finding": "https://github.com/terry90918/terry90918.github.io/pull/110#discussion_r4280263621",
+  "scope": "description strings only; titles/body/canonicals/routes unchanged",
+  "pages": {
+    "/story": "從 GJ 共同創辦、Nidin 的系統與團隊工作，到近期法律與旅遊 AI 合作的幾段經歷。",
+    "/work": "GJ、Nidin 你訂與 JurisLM 的產品、平台與 AI 工作案例，以及 VClass、Channel-T 合作經驗。"
+  },
+  "readback": "Normal supported Chrome: all three description/og:description/twitter:description matched per page",
+  "unit_tests": 104,
+  "limits_unchanged": true
+}

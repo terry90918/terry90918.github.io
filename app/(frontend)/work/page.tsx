@@ -7,7 +7,7 @@ import { SitePageIntro } from '@/components/SitePrimitives'
 
 export const metadata = pageMetadata(
   '作品',
-  'Nidin 你訂、昕力資訊、GJ、VoiceTube、JurisLM 與 Channel-T：產品、系統與工程團隊的工作。',
+  'GJ、Nidin 你訂與 JurisLM 的產品、平台與 AI 工作案例，以及 VClass、Channel-T 合作經驗。',
   '/work'
 )
 const categories: WorkCase['category'][] = ['product', 'platform', 'ai']
