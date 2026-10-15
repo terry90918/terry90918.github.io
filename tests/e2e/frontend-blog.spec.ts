@@ -431,17 +431,23 @@ test.describe('Writing and metadata', () => {
     await expect(page.locator('[data-writing-kind="translation"]')).toHaveCount(0)
   })
 
-  test('[writing] offers truthful topic and series entry points', async ({ page }) => {
+  test('[writing] matches the selected design with only the AI series entry point', async ({
+    page,
+  }) => {
     await page.goto('/posts')
     const nav = page.getByRole('navigation', { name: '文章主題' })
+    await expect(nav.getByRole('link')).toHaveText(['AI 資訊'])
     await expect(nav.getByRole('link', { name: 'AI 資訊', exact: true })).toHaveAttribute(
       'href',
       '/posts/ai-daily'
     )
-    await nav.getByRole('link', { name: '軟體工程', exact: true }).click()
+    await expect(page.locator('#all-posts')).toHaveCount(1)
     await expect(
       page.locator('#writing-2026-ai-engineering-skills-map-software-engineering-fundamentals')
-    ).toBeInViewport()
+    ).toHaveCount(1)
+    await nav.getByRole('link', { name: 'AI 資訊', exact: true }).click()
+    await expect(page).toHaveURL('/posts/ai-daily')
+    await expect(page.getByRole('heading', { name: 'AI 日報', exact: true })).toBeVisible()
   })
 
   test('[writing] gives new pages public canonical URLs and page-specific metadata', async ({

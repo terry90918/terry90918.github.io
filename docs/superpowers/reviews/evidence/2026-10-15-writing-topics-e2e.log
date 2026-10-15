@@ -1,0 +1,57 @@
+
+Running 45 tests using 1 worker
+
+(node:44656) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:44656) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/45] [frontend] › tests/e2e/frontend-blog.spec.ts:28:7 › Personal site › [brand] introduces Terry before experiences, updates, work and contact
+[2/45] [frontend] › tests/e2e/frontend-blog.spec.ts:45:7 › Personal site › [brand] provides factual sections for all three experience links
+[3/45] [frontend] › tests/e2e/frontend-blog.spec.ts:57:7 › Personal site › [brand] keeps CV and email available in the main navigation
+[4/45] [frontend] › tests/e2e/frontend-blog.spec.ts:77:7 › Personal site › mobile navigation opens by keyboard and closes on Escape and navigation
+[5/45] [frontend] › tests/e2e/frontend-blog.spec.ts:126:7 › Personal site › [brand] limits daily updates and credits the translation in the article index
+[6/45] [frontend] › tests/e2e/frontend-blog.spec.ts:139:7 › Personal site › [brand] publishes only the selected work cases and returns 404 for others
+[7/45] [frontend] › tests/e2e/frontend-blog.spec.ts:155:7 › Personal site › [brand] About introduces the site and keeps real public contacts
+[8/45] [frontend] › tests/e2e/frontend-blog.spec.ts:172:7 › Personal site › content links use readable accent colors in light and dark themes
+[9/45] [frontend] › tests/e2e/frontend-blog.spec.ts:188:7 › Personal site › theme toggle is keyboard reachable, has visible focus and changes the theme
+[10/45] [frontend] › tests/e2e/frontend-blog.spec.ts:205:9 › Personal site › [brand] remains readable and navigable at 320px in both themes
+[11/45] [frontend] › tests/e2e/frontend-blog.spec.ts:205:9 › Personal site › [brand] remains readable and navigable at 375px in both themes
+[12/45] [frontend] › tests/e2e/frontend-blog.spec.ts:205:9 › Personal site › [brand] remains readable and navigable at 1046px in both themes
+[13/45] [frontend] › tests/e2e/frontend-blog.spec.ts:234:7 › Personal site › [brand] story anchors clear the sticky navigation on a narrow screen
+[14/45] [frontend] › tests/e2e/frontend-blog.spec.ts:243:7 › Personal site › footer preserves social links and license
+[15/45] [frontend] › tests/e2e/frontend-blog.spec.ts:259:7 › Personal site › [brand] Nidin related work clears the sticky header after cross-page navigation
+[16/45] [frontend] › tests/e2e/frontend-blog.spec.ts:277:9 › Post detail pages › [anchors] settled article hashes and heading links clear the header at 320px
+[17/45] [frontend] › tests/e2e/frontend-blog.spec.ts:277:9 › Post detail pages › [anchors] settled article hashes and heading links clear the header at 1046px
+[18/45] [frontend] › tests/e2e/frontend-blog.spec.ts:340:9 › Post detail pages › ai-daily-2026-08-28 renders its leading excerpt exactly once
+[19/45] [frontend] › tests/e2e/frontend-blog.spec.ts:340:9 › Post detail pages › ai-daily-2026-08-27 renders its leading excerpt exactly once
+[20/45] [frontend] › tests/e2e/frontend-blog.spec.ts:340:9 › Post detail pages › ai-daily-2026-08-26 renders its leading excerpt exactly once
+[21/45] [frontend] › tests/e2e/frontend-blog.spec.ts:340:9 › Post detail pages › ai-daily-2026-08-25 renders its leading excerpt exactly once
+[22/45] [frontend] › tests/e2e/frontend-blog.spec.ts:340:9 › Post detail pages › ai-daily-2026-08-24 renders its leading excerpt exactly once
+[23/45] [frontend] › tests/e2e/frontend-blog.spec.ts:340:9 › Post detail pages › ai-daily-2026-08-21 renders its leading excerpt exactly once
+[24/45] [frontend] › tests/e2e/frontend-blog.spec.ts:340:9 › Post detail pages › ai-daily-2026-08-20 renders its leading excerpt exactly once
+[25/45] [frontend] › tests/e2e/frontend-blog.spec.ts:348:7 › Post detail pages › keeps a standalone excerpt when the body does not begin with the same blockquote
+[26/45] [frontend] › tests/e2e/frontend-blog.spec.ts:364:7 › /rss.xml feed › returns XML content
+[27/45] [frontend] › tests/e2e/frontend-blog.spec.ts:371:7 › /rss.xml feed › RSS contains channel title
+[28/45] [frontend] › tests/e2e/frontend-blog.spec.ts:396:7 › Writing and metadata › [writing] retains every published article URL, excluding drafts
+[29/45] [frontend] › tests/e2e/frontend-blog.spec.ts:424:7 › Writing and metadata › [writing] indexes all daily articles at their original URLs
+[30/45] [frontend] › tests/e2e/frontend-blog.spec.ts:434:7 › Writing and metadata › [writing] matches the selected design with only the AI series entry point
+[31/45] [frontend] › tests/e2e/frontend-blog.spec.ts:453:7 › Writing and metadata › [writing] gives new pages public canonical URLs and page-specific metadata
+[32/45] [frontend] › tests/e2e/frontend-blog.spec.ts:484:7 › Writing and metadata › [writing] sitemap retains source article URLs and adds only real public routes
+[33/45] [frontend] › tests/e2e/frontend-blog.spec.ts:505:5 › [writing] gives an existing article its own canonical and social title
+[34/45] [frontend] › tests/e2e/frontend-cv.spec.ts:3:5 › the default Chinese CV highlights its current section
+[35/45] [frontend] › tests/e2e/frontend-cv.spec.ts:12:5 › CV opens inside the main site and shares its navigation and theme
+[36/45] [frontend] › tests/e2e/frontend-cv.spec.ts:35:5 › language switching stays on the corresponding case and chapter
+[37/45] [frontend] › tests/e2e/frontend-cv.spec.ts:47:5 › case study progress stays below section navigation on mobile
+[38/45] [frontend] › tests/e2e/frontend-cv.spec.ts:66:5 › both locales export every case and contact without old asset prefixes
+[39/45] [frontend] › tests/e2e/frontend-cv.spec.ts:90:5 › mobile CV keeps its sections readable and language links inside the site
+[40/45] [frontend] › tests/e2e/frontend-cv.spec.ts:122:5 › section navigation remains below the header at narrow widths
+[41/45] [frontend] › tests/e2e/frontend-cv.spec.ts:138:5 › CV styles preserve the main-site link shape
+[42/45] [frontend] › tests/e2e/frontend-cv.spec.ts:144:5 › loads the 3D badge only when its desktop layout is visible
+[43/45] [frontend] › tests/e2e/frontend-performance.spec.ts:3:5 › reading the CV does not preload a different root application
+[44/45] [frontend] › tests/e2e/frontend-performance.spec.ts:15:5 › the main portrait uses WebP and main pages skip unused CV resources
+[45/45] [frontend] › tests/e2e/frontend-performance.spec.ts:60:5 › article images reserve space and use responsive WebP choices
+  45 passed (34.3s)

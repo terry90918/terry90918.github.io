@@ -48,3 +48,5 @@ Keep visible keyboard focus and theme persistence. Respect `prefers-reduced-moti
 ## Nidin management copy
 
 The user authorised ordinary-file edits in the selected Open Design project for this follow-up. Nidin management copy uses `管理工程部門團隊，協助工作分派與技術決策。` and `Managed the engineering team and supported work allocation and technical decision-making.`. Role panels retain the technical-manager title without repeating that sentence. Nidin’s management headcount and its statistic card are removed from main Work, the case, both CV homes and both CV case studies. Three career metric cards remain. Other companies’ team sizes and the confirmed 55-delivery statement stay unchanged. The local design source uses matching three-column metrics, with two columns below 900px.
+
+Writing navigation follows the latest selected HTML revision `8ded8cad`: only the AI 資訊 series entry is shown. Keep the year-grouped archive, `all-posts`/article anchors and public article URLs even when their shortcut buttons are removed.

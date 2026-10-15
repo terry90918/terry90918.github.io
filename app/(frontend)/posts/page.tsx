@@ -27,10 +27,6 @@ export default async function PostsPage() {
   const posts = grouped.flatMap((year) => year.months.flatMap((month) => month.posts))
   const publishedCount = posts.filter((post) => post.status === 'published').length
   const draftCount = posts.length - publishedCount
-  const softwareEngineeringTranslation = posts.find(
-    (post) =>
-      classifyPost(post) === 'translation' && post.tags.some((tag) => tag.name === '軟體工程')
-  )
   const hasDaily = posts.some((post) => classifyPost(post) === 'ai-daily')
 
   return (
@@ -39,24 +35,11 @@ export default async function PostsPage() {
         <p className="site-lead">
           持續整理的 AI 資訊與翻譯，按年份放在這裡。日報是資訊整理；翻譯標明原作者與來源。
         </p>
-        {(hasDaily || softwareEngineeringTranslation) && (
+        {hasDaily && (
           <nav aria-label="文章主題" className="site-topic-nav">
-            {hasDaily && (
-              <Link href="/posts/ai-daily" className="site-button">
-                AI 資訊
-              </Link>
-            )}
-            {softwareEngineeringTranslation && (
-              <a
-                href={`#writing-${softwareEngineeringTranslation.year}-${softwareEngineeringTranslation.slug}`}
-                className="site-button"
-              >
-                軟體工程
-              </a>
-            )}
-            <a href="#all-posts" className="site-button">
-              按年份閱讀
-            </a>
+            <Link href="/posts/ai-daily" className="site-button">
+              AI 資訊
+            </Link>
           </nav>
         )}
       </SitePageIntro>

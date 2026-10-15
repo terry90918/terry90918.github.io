@@ -1,0 +1,32 @@
+{
+  "design_project": "76e33fa9-e2bc-4bf3-b92d-b38f0e5c0ae2",
+  "design_html_sha256": "8ded8cadf1e4827eba2189f49cc17e9050b7868b281dbc2a6c4706bb0675dae2",
+  "design_modified_by_this_followup": false,
+  "article_files_unchanged": 159,
+  "article_manifest_sha256": "255d9875b6e730c2e9b22f194ce3835dabaaf5d827b4541c156c0e9b781d7261",
+  "published_article_urls_preserved": 92,
+  "e2e": "45 passed (34.3s)",
+  "audit": {
+    "views": 11,
+    "entries": 860,
+    "static_aligned": 855,
+    "missing": 0
+  },
+  "screenshots": {
+    "site": {
+      "filename": "2026-10-15-writing-topics-site.jpg",
+      "bytes": 35700,
+      "sha256": "1ecf6855b6ef20e8cd3c01ceec1696c3489b798acb3a564308d748ec27ec91dd"
+    },
+    "design": {
+      "filename": "2026-10-15-writing-topics-design.jpg",
+      "bytes": 37419,
+      "sha256": "a793624dbec132d6a4303d69aaae6ef742d290bbd79aa084c428f97390dee863"
+    },
+    "mobile": {
+      "filename": "2026-10-15-writing-topics-mobile.jpg",
+      "bytes": 30737,
+      "sha256": "0ca186161ef1ec36c7203da5317b92a0dffe6a30177abe1b6089b5f2a3c73382"
+    }
+  }
+}
