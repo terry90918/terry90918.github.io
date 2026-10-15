@@ -94,7 +94,7 @@
     min-height: 64px;
   }
   .site-header-nav,
-  .site-header-contact {
+  .site-header-utilities .site-header-contact {
     display: none;
   }
   .site-menu-toggle {

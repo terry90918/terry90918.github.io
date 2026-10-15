@@ -210,6 +210,7 @@ test.describe('Personal site', () => {
           ).toBe(true)
           if (width <= 700) {
             await expect(page.getByRole('button', { name: '導覽選單' })).toBeVisible()
+            await expect(page.getByRole('banner').locator('.site-header-contact')).toBeHidden()
             await expect(page.getByRole('navigation', { name: '主要導覽' })).toBeHidden()
           } else {
             await expect(
