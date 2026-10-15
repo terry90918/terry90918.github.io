@@ -21,7 +21,7 @@ export default function CvLayout({
       <body className="cv-site">
         <SiteShell>
           <NavDock locale={locale} labels={profiles[locale].labels} />
-          <main className="cv-content mx-auto flex w-full max-w-[var(--editorial-width)] min-w-0 flex-1 flex-col lg:border-x">
+          <main className="cv-content mx-auto flex w-full max-w-[var(--editorial-width)] min-w-0 flex-1 flex-col px-5 min-[701px]:px-8">
             {children}
           </main>
           <CustomCursor />

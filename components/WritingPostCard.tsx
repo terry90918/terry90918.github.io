@@ -7,21 +7,19 @@ export function WritingPostCard({ post }: { post: Post }) {
   const kind = classifyPost(post)
   const translationAuthor = kind === 'translation' ? getTranslationAuthor(post.slug) : null
   return (
-    <article data-writing-kind={kind} className="border-border min-w-0 border-b py-6 last:border-0">
-      <p className="mb-2 text-xs leading-6 opacity-65">
-        {WRITING_LABELS[kind]} · {formatPublishedDate(post.publishedAt, 'zh-TW')}
-        {post.status === 'draft' && ' · 草稿（開發預覽）'}
-        {translationAuthor && ` · 原文：${translationAuthor}`}
+    <article data-writing-kind={kind} className="site-writing-row">
+      <p className="site-writing-meta">
+        <span className="site-badge">{WRITING_LABELS[kind]}</span>
+        <span>
+          {formatPublishedDate(post.publishedAt, 'zh-TW')}
+          {post.status === 'draft' && ' · 草稿（開發預覽）'}
+        </span>
+        {translationAuthor && <span>原文：{translationAuthor}</span>}
       </p>
-      <Link
-        href={getPostHref(post)}
-        className="text-accent block rounded-sm text-lg leading-8 font-bold tracking-tight hover:underline focus-visible:outline-2 focus-visible:outline-offset-4"
-      >
-        {post.title}
-      </Link>
-      {post.excerpt && (
-        <p className="mt-3 line-clamp-2 text-sm leading-7 opacity-75">{post.excerpt}</p>
-      )}
+      <h3>
+        <Link href={getPostHref(post)}>{post.title}</Link>
+      </h3>
+      {post.excerpt && <p className="site-writing-excerpt">{post.excerpt}</p>}
     </article>
   )
 }

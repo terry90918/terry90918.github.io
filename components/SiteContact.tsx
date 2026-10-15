@@ -1,27 +1,27 @@
 import Link from 'next/link'
 import { CV_URL, SITE_EMAIL } from '@/lib/site/content'
+import { SiteEyebrow } from '@/components/SitePrimitives'
 
-export function SiteContact() {
+export function SiteContact({ home = false }: { home?: boolean }) {
   return (
-    <div className="bg-secondary border-border rounded-(--radius) border p-6 md:p-10">
-      <p className="max-w-prose leading-8">
+    <section
+      data-home-section={home ? 'contact' : undefined}
+      aria-label="聯絡 Terry"
+      className="site-contact-panel"
+    >
+      <SiteEyebrow>聯絡</SiteEyebrow>
+      <h2>聯絡 Terry</h2>
+      <p className="site-contact-copy">
         如果你正在做產品、規劃系統或建立工程團隊，歡迎聊聊合作，也歡迎合適的工程與技術管理機會。
       </p>
-      <div className="mt-6 flex flex-wrap gap-3 text-sm">
-        <Link
-          href={SITE_EMAIL}
-          className="bg-foreground text-background border-foreground inline-flex min-h-11 items-center justify-center rounded-(--radius) border px-4 py-2.5 font-medium hover:opacity-85 focus-visible:outline-2 focus-visible:outline-offset-4"
-        >
-          寫信給我
+      <div className="site-actions">
+        <Link href={SITE_EMAIL} className="site-button site-button-primary">
+          寫信給我 <span aria-hidden="true">↗</span>
         </Link>
-        <Link
-          href={CV_URL}
-          prefetch={false}
-          className="text-accent bg-card border-border hover:bg-accent-surface inline-flex min-h-11 items-center justify-center rounded-(--radius) border px-4 py-2.5 font-medium focus-visible:outline-2 focus-visible:outline-offset-4"
-        >
+        <Link href={CV_URL} prefetch={false} className="site-button">
           完整 CV
         </Link>
       </div>
-    </div>
+    </section>
   )
 }

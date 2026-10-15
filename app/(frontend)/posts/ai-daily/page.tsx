@@ -3,6 +3,7 @@ import { getPosts } from '@/lib/posts/queries'
 import { classifyPost } from '@/lib/site/writing'
 import { pageMetadata } from '@/lib/site/metadata'
 import { WritingPostCard } from '@/components/WritingPostCard'
+import { SiteEyebrow } from '@/components/SitePrimitives'
 
 export const metadata = pageMetadata(
   'AI 日報',
@@ -15,20 +16,22 @@ export default async function AIDailyPage() {
     (post) => post.status === 'published' && classifyPost(post) === 'ai-daily'
   )
   return (
-    <div className="pb-10 md:pb-14">
-      <header className="py-10 md:pt-16 md:pb-11">
-        <Link href="/posts" className="text-accent text-sm underline underline-offset-4">
+    <div className="site-page">
+      <header className="site-page-intro">
+        <Link href="/posts" className="site-text-link mb-5">
           回到全部文章
         </Link>
-        <h1 className="mt-6 text-4xl leading-tight font-bold tracking-tight md:text-5xl">
-          AI 日報
-        </h1>
-        <p className="mt-5 max-w-prose leading-[1.85] opacity-80 md:text-lg">
+        <SiteEyebrow>
+          <span className="site-dot" />
+          文章系列
+        </SiteEyebrow>
+        <h1>AI 日報</h1>
+        <p className="site-lead">
           AI 研究、產品與產業資訊的持續整理。這裡保留每一期，按發佈日期往回讀。
         </p>
         <p className="mt-2 text-sm opacity-65">共 {posts.length} 篇已發佈日報</p>
       </header>
-      <div className="bg-card border-border rounded-(--radius) border px-5 md:px-6">
+      <div className="site-card site-writing mt-14 max-[700px]:mt-9.5">
         {posts.length === 0 ? (
           <p>目前沒有已發佈日報。</p>
         ) : (

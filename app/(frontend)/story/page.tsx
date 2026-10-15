@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { STORY_CHAPTERS, CV_URL } from '@/lib/site/content'
 import { pageMetadata } from '@/lib/site/metadata'
 import { SiteContact } from '@/components/SiteContact'
+import { SitePageIntro } from '@/components/SitePrimitives'
 
 export const metadata = pageMetadata(
   '我的故事',
@@ -11,45 +12,39 @@ export const metadata = pageMetadata(
 
 export default function StoryPage() {
   return (
-    <div className="pb-10 md:pb-14">
-      <header className="py-10 md:pt-16 md:pb-11">
-        <h1 className="text-4xl leading-tight font-bold tracking-tight md:text-5xl">我的故事</h1>
-        <p className="mt-5 max-w-prose leading-[1.85] opacity-80 md:text-lg">
+    <div className="site-page">
+      <SitePageIntro label="故事" title="我的故事">
+        <p className="site-lead">
           從做出一個產品，到平台、團隊與近期的 AI 工作，這裡選了幾段經歷。完整職涯可在{' '}
           <Link href={CV_URL} prefetch={false} className="text-accent underline underline-offset-4">
             CV
           </Link>{' '}
           查看。
         </p>
-      </header>
-      {STORY_CHAPTERS.map((note) => (
+      </SitePageIntro>
+      {STORY_CHAPTERS.map((note, index) => (
         <section
           key={note.id}
           id={note.id}
           data-story-note
           aria-labelledby={`${note.id}-title`}
-          className="border-border grid w-full max-w-none gap-5 border-t px-0 py-10 md:grid-cols-[1fr_2fr] md:gap-14 md:py-14"
+          className="site-split"
         >
           <div>
-            <p className="text-accent text-xs font-medium">經歷紀錄</p>
-            <h2
-              id={`${note.id}-title`}
-              className="mt-2 text-2xl leading-snug font-bold tracking-tight"
-            >
+            <p className="site-split-index">{String(index + 1).padStart(2, '0')}</p>
+            <p className="site-kicker mb-1.5">經歷紀錄</p>
+            <h2 id={`${note.id}-title`} className="font-bold">
               {note.title}
             </h2>
           </div>
-          <div className="min-w-0 space-y-4">
+          <div className="site-story-copy">
             {note.paragraphs.map((paragraph) => (
-              <p key={paragraph} className="max-w-prose leading-[1.9] opacity-85 md:text-lg">
+              <p key={paragraph} className="max-w-prose">
                 {paragraph}
               </p>
             ))}
             {note.workHref && (
-              <Link
-                href={note.workHref}
-                className="text-accent inline-block rounded-sm text-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
-              >
+              <Link href={note.workHref} className="site-text-link">
                 看相關作品
               </Link>
             )}

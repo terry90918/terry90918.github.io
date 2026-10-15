@@ -7,7 +7,7 @@ import { useActiveSection } from '@/hooks/cv/use-active-section'
 import { localeHref } from '@/lib/cv/profile'
 import type { Locale, Profile } from '@/lib/cv/profile'
 import { cn } from '@/lib/cv/utils'
-const sectionIds = ['about', 'featured-works', 'experience', 'skills', 'contact']
+const sectionIds = ['about', 'featured-works', 'experience', 'contact', 'skills']
 export default function NavDock({ locale, labels }: { locale: Locale; labels: Profile['labels'] }) {
   const navigationRef = useRef<HTMLElement>(null)
   const currentPath = usePathname().replace(/\/$/, '')
@@ -39,17 +39,17 @@ export default function NavDock({ locale, labels }: { locale: Locale; labels: Pr
     { id: 'about', label: labels.about },
     { id: 'featured-works', label: labels.work },
     { id: 'experience', label: labels.experience },
-    { id: 'skills', label: labels.skills },
     { id: 'contact', label: labels.contact },
+    { id: 'skills', label: labels.skills },
   ]
   const linkClass =
-    'flex min-h-9 shrink-0 items-center rounded-full px-2 text-[11px] font-medium whitespace-nowrap transition-colors hover:bg-accent-surface hover:text-accent-ink focus-visible:outline-2 sm:px-3 sm:text-sm'
+    'cv-section-link flex min-h-7 shrink-0 items-center whitespace-nowrap hover:text-accent-ink focus-visible:outline-2'
   const currentFragment = () => {
     const sections = [
       ...document.querySelectorAll<HTMLElement>(
         document.getElementById('case-study-content')
           ? '#case-study-content h2, #case-study-content h3'
-          : '.cv-content > section[id]'
+          : '.cv-home-reference > section[id]'
       ),
     ]
     const requested = sections.find(
@@ -77,9 +77,9 @@ export default function NavDock({ locale, labels }: { locale: Locale; labels: Pr
     <nav
       ref={navigationRef}
       aria-label={locale === 'en' ? 'CV sections' : '履歷章節'}
-      className="sticky top-[var(--cv-header-height,4.75rem)] z-40 mx-auto w-fit max-w-[calc(100vw-2rem)]"
+      className="cv-section-navigation sticky top-[var(--cv-header-height,4.75rem)] z-40 mx-auto w-full max-w-[var(--editorial-width)] px-5 min-[701px]:px-8"
     >
-      <div className="bg-card flex w-fit max-w-full items-center gap-0.5 overflow-x-auto rounded-full border p-1 shadow-sm">
+      <div className="border-border bg-background flex max-w-full items-center gap-6 overflow-x-auto border-b py-4 max-[700px]:gap-5 max-[700px]:py-2.5">
         {items.map(({ id, label }) => {
           const href = `/cv/${locale}/#${id}`
           const active =
@@ -91,10 +91,7 @@ export default function NavDock({ locale, labels }: { locale: Locale; labels: Pr
               href={href}
               aria-label={label}
               aria-current={active ? 'location' : undefined}
-              className={cn(
-                linkClass,
-                active ? 'bg-accent-surface text-accent-ink' : 'text-muted-foreground'
-              )}
+              className={cn(linkClass, active ? 'text-accent-ink font-bold' : 'text-foreground')}
             >
               {label}
             </Link>
@@ -107,7 +104,7 @@ export default function NavDock({ locale, labels }: { locale: Locale; labels: Pr
           hrefLang={targetLocale}
           onClick={switchLanguage}
           aria-label={locale === 'en' ? '切換至繁體中文' : 'Switch to English'}
-          className={cn(linkClass, 'border-border text-muted-foreground border-l')}
+          className={cn(linkClass, 'text-muted-foreground ml-auto')}
         >
           <Globe aria-hidden="true" className="mr-1 size-3.5 shrink-0" />
           <span>{locale === 'en' ? '中文' : 'EN'}</span>

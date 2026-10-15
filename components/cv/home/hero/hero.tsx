@@ -1,40 +1,40 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import DesktopIdCard from '@/components/cv/ui/desktop-id-card'
 import { contact } from '@/lib/cv/profile'
 import type { Locale, Profile } from '@/lib/cv/profile'
 export default function Hero({ locale, profile }: { locale: Locale; profile: Profile }) {
   return (
-    <section id="top" className="lg:relative">
-      <div className="border-b pt-16 pb-12 sm:py-20 lg:pt-24 lg:pb-20">
-        <div className="px-4 sm:px-6 lg:px-10.5">
-          <div className="space-y-6 lg:max-w-lg">
+    <section id="top" className="cv-reference-hero lg:relative">
+      <div className="cv-reference-hero-inner">
+        <div>
+          <Image
+            src={contact.photo}
+            alt={profile.name}
+            width={140}
+            height={175}
+            className="cv-mobile-portrait mb-9 rounded-2xl object-contain min-[1024px]:hidden"
+          />
+          <div className="cv-reference-hero-copy lg:max-w-lg">
             <span className="bg-card inline-flex h-7 w-fit items-center gap-2 rounded-md border px-3 py-1 text-xs">
               <span className="bg-brand size-1.5 rounded-full" />
               {profile.location}
             </span>
-            <h1 className="text-4xl leading-[1.15] font-semibold tracking-tight sm:text-5xl lg:text-[64px] lg:font-bold">
-              <span className="text-muted-foreground mb-2 block text-xl font-medium tracking-normal sm:text-2xl">
+            <h1 className="cv-reference-name font-bold">
+              <span className="cv-reference-greeting text-muted-foreground block text-xl font-normal tracking-normal">
                 {profile.greeting}
               </span>
               {profile.name}
               <span className="text-accent-ink">.</span>
             </h1>
-            <p className="text-muted-foreground text-xl font-medium sm:text-2xl lg:text-3xl">
-              {profile.role}
-            </p>
+            <p className="cv-reference-role text-muted-foreground">{profile.role}</p>
             <p className="max-w-lg text-base leading-relaxed lg:max-w-105">{profile.description}</p>
             <div className="flex flex-wrap items-center gap-3 pt-2">
-              <Link
-                href={`/cv/${locale}/#experience`}
-                className="bg-brand text-brand-foreground hover:bg-brand/90 rounded-md px-5 py-3 text-sm"
-              >
+              <Link href={`/cv/${locale}/#experience`} className="site-button site-button-primary">
                 {profile.labels.viewExperience}
               </Link>
-              <Link
-                href={`/cv/${locale}/#contact`}
-                className="bg-card hover:bg-accent-surface hover:text-accent-ink flex items-center gap-3 rounded-md border px-5 py-3 text-sm"
-              >
+              <Link href={`/cv/${locale}/#contact`} className="site-button">
                 <span className="bg-brand size-2 rounded-full" />
                 {profile.labels.contact}
                 <ArrowRight className="size-4" />

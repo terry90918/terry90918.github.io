@@ -1,4 +1,4 @@
-import Eyebrow from '@/components/cv/shared/eyebrow/eyebrow'
+import { SiteEyebrow as Eyebrow } from '@/components/SitePrimitives'
 import Timeline from '@/components/cv/ui/timeline'
 import type { Profile } from '@/lib/cv/profile'
 export default function Experience({ profile }: { profile: Profile }) {
@@ -8,9 +8,7 @@ export default function Experience({ profile }: { profile: Profile }) {
       className="min-w-0 border-b px-4 py-14 sm:px-6 sm:py-20 lg:px-10.5 lg:py-24"
     >
       <Eyebrow>{profile.labels.experience}</Eyebrow>
-      <h2 className="mt-2 text-2xl leading-snug font-semibold md:text-3xl lg:text-4xl">
-        {profile.labels.experienceTitle}
-      </h2>
+      <h2 className="leading-snug font-bold">{profile.labels.experienceTitle}</h2>
       <Timeline
         data={profile.experiences.map((experience, index) => ({
           index: String(index + 1).padStart(2, '0'),

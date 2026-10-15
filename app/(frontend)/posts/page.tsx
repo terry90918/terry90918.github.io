@@ -3,6 +3,7 @@ import { getPostsByYearMonth } from '@/lib/posts/queries'
 import { classifyPost } from '@/lib/site/writing'
 import { pageMetadata } from '@/lib/site/metadata'
 import { WritingPostCard } from '@/components/WritingPostCard'
+import { SitePageIntro } from '@/components/SitePrimitives'
 
 export const metadata = pageMetadata(
   '文章',
@@ -33,38 +34,28 @@ export default async function PostsPage() {
   const hasDaily = posts.some((post) => classifyPost(post) === 'ai-daily')
 
   return (
-    <div className="pb-10 md:pb-14">
-      <header className="py-10 md:pt-16 md:pb-11">
-        <h1 className="text-4xl leading-tight font-bold tracking-tight md:text-5xl">文章</h1>
-        <p className="mt-5 max-w-prose leading-[1.85] opacity-80 md:text-lg">
+    <div className="site-page">
+      <SitePageIntro label="文章" title="文章">
+        <p className="site-lead">
           持續整理的 AI 資訊與翻譯，按年份放在這裡。日報是資訊整理；翻譯標明原作者與來源。
         </p>
-      </header>
+      </SitePageIntro>
       {(hasDaily || softwareEngineeringTranslation) && (
-        <nav
-          aria-label="文章主題"
-          className="border-border flex flex-wrap gap-3 border-y py-6 text-sm"
-        >
+        <nav aria-label="文章主題" className="site-topic-nav">
           {hasDaily && (
-            <Link
-              href="/posts/ai-daily"
-              className="text-accent bg-card border-border hover:bg-accent-surface inline-flex min-h-11 items-center rounded-(--radius) border px-4 font-medium focus-visible:outline-2 focus-visible:outline-offset-4"
-            >
+            <Link href="/posts/ai-daily" className="site-button">
               AI 資訊
             </Link>
           )}
           {softwareEngineeringTranslation && (
             <a
               href={`#writing-${softwareEngineeringTranslation.year}-${softwareEngineeringTranslation.slug}`}
-              className="text-accent bg-card border-border hover:bg-accent-surface inline-flex min-h-11 items-center rounded-(--radius) border px-4 font-medium focus-visible:outline-2 focus-visible:outline-offset-4"
+              className="site-button"
             >
               軟體工程
             </a>
           )}
-          <a
-            href="#all-posts"
-            className="text-accent bg-card border-border hover:bg-accent-surface inline-flex min-h-11 items-center rounded-(--radius) border px-4 font-medium focus-visible:outline-2 focus-visible:outline-offset-4"
-          >
+          <a href="#all-posts" className="site-button">
             按年份閱讀
           </a>
         </nav>
@@ -74,26 +65,25 @@ export default async function PostsPage() {
           <p>目前沒有已發佈文章。</p>
         ) : (
           grouped.map(({ year, months }) => (
-            <section key={year} className="w-full max-w-none px-0">
+            <section key={year} className="site-post-year w-full">
               <h2 className="text-2xl font-bold tracking-tight md:text-3xl">{year}</h2>
               <div className="mt-6 space-y-8">
                 {months.map(({ month, posts }) => (
-                  <div
-                    key={month}
-                    className="bg-card border-border rounded-(--radius) border px-5 md:px-6"
-                  >
-                    <h3 className="border-border border-b py-5 text-sm font-medium opacity-65">
-                      {month} 月 · {posts.length} 篇
+                  <div key={month}>
+                    <h3 className="site-month-head">
+                      {month} 月 <span>{posts.length} 篇</span>
                     </h3>
-                    {posts.map((post) => (
-                      <div
-                        key={post.slug}
-                        id={`writing-${post.year}-${post.slug}`}
-                        data-writing-entry
-                      >
-                        <WritingPostCard post={post} />
-                      </div>
-                    ))}
+                    <div className="site-card site-writing">
+                      {posts.map((post) => (
+                        <div
+                          key={post.slug}
+                          id={`writing-${post.year}-${post.slug}`}
+                          data-writing-entry
+                        >
+                          <WritingPostCard post={post} />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>
