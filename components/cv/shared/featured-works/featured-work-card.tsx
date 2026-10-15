@@ -12,9 +12,24 @@ export default function FeaturedWorkCard({
 }: {
   caseStudy: CaseStudyMetadata
   locale: Locale
-  variant?: 'hero' | 'grid'
+  variant?: 'hero' | 'grid' | 'reference'
   imageSide?: 'left' | 'right'
 }) {
+  if (variant === 'reference') {
+    return (
+      <Link
+        href={`/cv/${locale}/case-study/${caseStudy.slug}#case-study-top`}
+        className="site-card site-work-card h-full"
+      >
+        <p className="site-kicker">{caseStudy.organisation}</p>
+        <h3>{caseStudy.title}</h3>
+        <p className="site-card-summary">{caseStudy.description}</p>
+        <span className="site-text-link">
+          {locale === 'en' ? 'Read case study' : '閱讀案例'} <ArrowUpRight className="size-4" />
+        </span>
+      </Link>
+    )
+  }
   const isHero = variant === 'hero'
   return (
     <Link

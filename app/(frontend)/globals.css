@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import '../../styles/cv.css';
+@import '../../styles/editorial.css';
 @plugin '@tailwindcss/typography';
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
@@ -13,7 +14,7 @@ html[data-theme='light'] {
   --card: #ffffff;
   --secondary: #eeebe5;
   --muted: #f0ede8;
-  --muted-foreground: #3d3d3d;
+  --muted-foreground: #696969;
   --accent-surface: #fff0e6;
   --brand: #ff5c00;
   --brand-foreground: #0b0b0b;
@@ -22,23 +23,26 @@ html[data-theme='light'] {
   --accent-foreground: #ffffff;
   --border: #d6d0c8;
   --ring: #b83b08;
-  --card-foreground: var(--foreground);
+  --card-foreground: #1a1a1a;
   --popover: var(--card);
   --popover-foreground: var(--foreground);
   --secondary-foreground: var(--foreground);
-  --primary: var(--foreground);
-  --primary-foreground: var(--background);
+  --primary: #1a1a1a;
+  --primary-foreground: #fafafa;
   --input: var(--border);
   --background-darker: var(--secondary);
 }
 
 html[data-theme='dark'] {
+  --card-foreground: #fafafa;
+  --primary: #e5e5e5;
+  --primary-foreground: #1a1a1a;
   --background: #0b0b0b;
   --foreground: #fafafa;
   --card: #141414;
   --secondary: #262626;
   --muted: #262626;
-  --muted-foreground: #fafafa;
+  --muted-foreground: #b3b3b3;
   --accent-surface: #3b251b;
   --accent: #ff8c50;
   --accent-foreground: #0b0b0b;
@@ -140,5 +144,59 @@ html[data-theme='dark'] [data-rehype-pretty-code-figure] code[data-theme*=' '] s
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+}
+
+:root {
+  --scrollbar-thumb: var(--border);
+  --scrollbar-track: var(--background);
+  --scrollbar-hover: var(--muted-foreground);
+}
+* {
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border: 3px solid var(--scrollbar-track);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover);
+}
+::-webkit-scrollbar-thumb:active {
+  background: var(--foreground);
+}
+a,
+button,
+summary {
+  outline-offset: 4px;
+}
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--ring);
+}
+button,
+summary {
+  cursor: pointer;
+}
+@media (forced-colors: active) {
+  * {
+    scrollbar-color: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }

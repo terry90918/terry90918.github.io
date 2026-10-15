@@ -15,20 +15,20 @@ function useIsClient() {
 }
 
 function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
+  const { resolvedTheme, setTheme } = useTheme()
   const isClient = useIsClient()
 
   if (!isClient) {
-    return <div className="h-8 w-8" />
+    return <div className="h-11 w-11" />
   }
 
   return (
     <button
       aria-label="Toggle theme"
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="text-foreground flex h-8 w-8 items-center justify-center rounded opacity-70 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]"
+      onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+      className="site-icon-button"
     >
-      {theme === 'dark' ? (
+      {resolvedTheme === 'dark' ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="18"
@@ -72,7 +72,8 @@ function ThemeToggle() {
 }
 
 export function BlogHeader() {
-  const inCv = usePathname().startsWith('/cv')
+  const pathname = usePathname()
+  const inCv = pathname.startsWith('/cv')
   const [menuOpen, setMenuOpen] = useState(false)
   const menuButton = useRef<HTMLButtonElement>(null)
 
@@ -92,77 +93,86 @@ export function BlogHeader() {
     document.addEventListener('keydown', handleEscape)
     return () => document.removeEventListener('keydown', handleEscape)
   }, [menuOpen])
+  function isCurrentRoute(href: string) {
+    return href.startsWith('/') && (pathname === href || pathname.startsWith(`${href}/`))
+  }
   const links = [
     ['關於我', '/about'],
     ['故事', '/story'],
     ['作品', '/work'],
     ['文章', '/posts'],
     ['CV', CV_URL],
-    ['聯絡', SITE_EMAIL],
   ]
   return (
-    <header className="border-border bg-background/95 sticky top-0 z-50 border-b backdrop-blur-sm">
-      <div
-        data-testid="header-inner"
-        style={{ width: 'calc(100% - 2rem)', maxWidth: 'var(--editorial-width)' }}
-        className="mx-auto"
-      >
-        <div className="flex h-[76px] items-center gap-4">
+    <header className="site-header border-border bg-background/95 sticky top-0 z-50 border-b backdrop-blur-sm">
+      <div data-testid="header-inner" className="site-header-inner">
+        <div className="site-header-row">
           <Link
             href="/"
             prefetch={inCv ? false : undefined}
-            className="hover:text-accent mr-auto shrink-0 rounded-sm font-bold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]"
+            className="site-wordmark hover:text-accent shrink-0 rounded-sm font-bold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]"
           >
             Terry.TY Chen
           </Link>
-          <nav aria-label="主要導覽" className="hidden items-center gap-6 md:flex">
+          <nav aria-label="主要導覽" className="site-header-nav">
             {links.map(([label, href]) => (
               <Link
                 key={label}
                 href={href}
                 prefetch={inCv || href === CV_URL ? false : undefined}
+                aria-current={isCurrentRoute(href) ? 'page' : undefined}
                 className="hover:text-accent flex min-h-11 items-center rounded-sm text-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]"
               >
                 {label}
               </Link>
             ))}
           </nav>
-          <ThemeToggle />
-          <button
-            ref={menuButton}
-            type="button"
-            aria-label="導覽選單"
-            aria-expanded={menuOpen}
-            aria-controls="mobile-navigation"
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="hover:text-accent flex h-11 w-11 items-center justify-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)] md:hidden"
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              aria-hidden="true"
+          <div className="site-header-utilities">
+            <Link href={SITE_EMAIL} className="site-header-contact site-text-link">
+              聯絡 <span aria-hidden="true">↗</span>
+            </Link>
+            <ThemeToggle />
+            <button
+              ref={menuButton}
+              type="button"
+              aria-label="導覽選單"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-navigation"
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="site-icon-button site-menu-toggle"
             >
-              {menuOpen ? <path d="m6 6 12 12M6 18 18 6" /> : <path d="M4 6h16M4 12h16M4 18h16" />}
-            </svg>
-          </button>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                aria-hidden="true"
+              >
+                {menuOpen ? (
+                  <path d="m6 6 12 12M6 18 18 6" />
+                ) : (
+                  <path d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
         <nav
           id="mobile-navigation"
           aria-label="手機導覽"
           hidden={!menuOpen}
-          className="border-border border-t py-3 md:hidden"
+          className="site-mobile-navigation"
         >
-          {links.map(([label, href]) => (
+          {[...links, ['聯絡', SITE_EMAIL]].map(([label, href]) => (
             <Link
               key={label}
               href={href}
               prefetch={inCv || href === CV_URL ? false : undefined}
               onClick={closeMenu}
+              aria-current={isCurrentRoute(href) ? 'page' : undefined}
               className="hover:text-accent flex min-h-11 items-center rounded-sm text-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]"
             >
               {label}

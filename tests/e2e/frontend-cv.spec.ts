@@ -5,7 +5,7 @@ test('the default Chinese CV highlights its current section', async ({ page }) =
   await expect(
     page
       .getByRole('navigation', { name: '履歷章節', exact: true })
-      .getByRole('link', { name: '關於我', exact: true })
+      .getByRole('link', { name: '履歷重點', exact: true })
   ).toHaveAttribute('aria-current', 'location')
 })
 

@@ -1,6 +1,7 @@
 import type { CaseStudyMetadata } from '@/lib/cv/case-studies'
 import type { Locale } from '@/lib/cv/profile'
 import Eyebrow from '@/components/cv/shared/eyebrow/eyebrow'
+import { SiteEyebrow } from '@/components/SitePrimitives'
 import FeaturedWorkCard from './featured-work-card'
 import { cn } from '@/lib/cv/utils'
 type FeaturedWorksProps = {
@@ -9,7 +10,7 @@ type FeaturedWorksProps = {
   id?: string
   eyebrow: string
   title: string
-  layout?: 'bento' | 'vertical'
+  layout?: 'bento' | 'vertical' | 'reference'
   showBorder?: boolean
 }
 const CYCLE_SIZE = 3
@@ -31,13 +32,34 @@ const FeaturedWorks = ({
 }: FeaturedWorksProps) => {
   return (
     <section id={id} className={cn('py-14 sm:py-20 lg:py-24', showBorder && 'border-b')}>
-      <div className="mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:space-y-16 lg:px-10.5">
+      <div
+        className={
+          layout === 'reference'
+            ? 'cv-reference-work-content'
+            : 'mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:space-y-16 lg:px-10.5'
+        }
+      >
         <div className="space-y-2">
-          <Eyebrow>{eyebrow}</Eyebrow>
+          {layout === 'reference' ? (
+            <SiteEyebrow>{eyebrow}</SiteEyebrow>
+          ) : (
+            <Eyebrow>{eyebrow}</Eyebrow>
+          )}
           <h2 className="text-2xl font-semibold md:text-3xl lg:text-4xl">{title}</h2>
         </div>
 
-        {layout === 'vertical' ? (
+        {layout === 'reference' ? (
+          <div className="cv-reference-work-grid">
+            {caseStudies.map((caseStudy) => (
+              <FeaturedWorkCard
+                key={caseStudy.slug}
+                caseStudy={caseStudy}
+                locale={locale}
+                variant="reference"
+              />
+            ))}
+          </div>
+        ) : layout === 'vertical' ? (
           <div className="grid gap-8 sm:grid-cols-2">
             {caseStudies.map((caseStudy) => (
               <FeaturedWorkCard

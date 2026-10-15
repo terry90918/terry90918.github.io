@@ -78,10 +78,6 @@ export const profiles = {
         value: '8.2M',
         label: 'Nidin 平台會員',
       },
-      {
-        value: '10',
-        label: '直接管理的工程團隊人數',
-      },
     ],
     skills: [
       {
@@ -147,7 +143,7 @@ export const profiles = {
         role: '技術經理',
         period: '2021.05–2025.06',
         kind: '全職',
-        team: '直接管理 10 人',
+        team: '',
         projects: [],
         bullets: [
           '主導 Nidin 多品牌點餐平台的尖峰流量設計，以排程佇列分批發送活動優惠券，搭配 API 流量控管，避免發券作業影響訂單服務；平台支撐 820 萬會員與每年 1,500 萬筆以上訂單。',
@@ -156,7 +152,7 @@ export const profiles = {
           '通過 LINE 技術資格考試與審核，推動公司取得指定技術合作夥伴資格，並帶領團隊推出 LINE Mini App；串接涵蓋逾六成 POS 市場的業者及支付、物流服務。',
           '建立以會員資料為基礎的客戶管理與行銷功能；平台服務品牌的平均回購率達 50% 以上、業績提升 30% 以上。平台支援的 2025 珍奶節觸及逾 100 萬使用者、售出 200 萬杯，參與品牌訂單金額成長 60～100%。',
           '作為資安團隊成員，參與推動 Nidin 通過 ISO／IEC 27001:2022 認證。',
-          '直接管理 10 人工程團隊，導入 Slack、Notion 與敏捷開發流程，集中管理產品文件與技術知識，年均參與約 100 場面試。',
+          '管理工程部門團隊，協助工作分派與技術決策。導入 Slack、Notion 與敏捷開發流程，集中管理產品文件與技術知識，年均參與約 100 場面試。',
         ],
       },
       {
@@ -292,10 +288,6 @@ export const profiles = {
         value: '8.2M',
         label: 'Nidin platform members',
       },
-      {
-        value: '10',
-        label: 'Engineers directly managed',
-      },
     ],
     skills: [
       {
@@ -363,7 +355,7 @@ export const profiles = {
         role: 'Technical Manager',
         period: '2021.05–2025.06',
         kind: 'Full-time',
-        team: '10 direct reports',
+        team: '',
         bullets: [
           'Led peak traffic architecture for Nidin, a multi-brand ordering platform. Batched promotional coupons through scheduled queues and API traffic controls to protect order services. The platform supported 8.2 million members and over 15 million orders annually.',
           'Built configurable product modules and led 55 deliveries, serving over 400 food and beverage brands, 10,000 stores, and overseas locations of major chains.',
@@ -371,7 +363,7 @@ export const profiles = {
           'Passed LINE technical qualification exams and review, helped the company obtain designated technical partner status, and led the launch of a LINE Mini App. Integrated POS providers covering over 60% of the market, plus payment and logistics services.',
           'Built membership-based CRM and marketing features. Brands served by the platform averaged over 50% repeat purchase rates and over 30% sales growth. The 2025 bubble tea festival supported by the platform reached over 1 million users, sold 2 million cups, and increased participating brands’ order value by 60–100%.',
           'Contributed as a security team member to Nidin’s ISO/IEC 27001:2022 certification.',
-          'Directly managed 10 engineers, introduced Slack, Notion, and agile workflows, centralised product documentation and technical knowledge, and participated in about 100 interviews annually.',
+          'Managed the engineering team and supported work allocation and technical decision-making. Introduced Slack, Notion, and agile workflows, centralised product documentation and technical knowledge, and participated in about 100 interviews annually.',
         ],
         projects: [],
       },

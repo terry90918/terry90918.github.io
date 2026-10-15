@@ -4,7 +4,7 @@
 
 Describe the factual personal profile and reading paths approved by the JUR-508 version 2 design, superseding the earlier promotional narrative and required activity chart.
 
-JUR-521 updates the approved public copy while retaining this layout and the existing account destinations.
+JUR-705 uses the selected Open Design revision of 2026-10-15 for visible copy and layout, superseding the earlier JUR-521 ordering while retaining public account destinations.
 
 ## Requirements
 
@@ -43,7 +43,7 @@ The About page SHALL preserve visible GitHub, X, LinkedIn and Email links with k
 
 ### Requirement: Story and work reading paths
 
-Story SHALL show the five approved chronological chapters. Existing anchors `gj`, `nidin` and `ai-work` SHALL remain reachable. Work SHALL introduce Nidin first and explain TPI's 20-person project team separately from Nidin's 10 direct reports. TPI SHALL expose architecture, file processing and security remediation responsibilities at `/work#tpi` without adding a case route. Homepage SHALL retain three concise experience entries rather than duplicating Story.
+Story SHALL show the three selected design chapters in GJ, Nidin and AI order. Existing anchors `gj`, `nidin` and `ai-work` SHALL remain reachable. Work SHALL show product, platform and AI categories in that order, with VClass and Channel-T as concise supporting work. Homepage SHALL retain three concise experience entries in the same GJ, Nidin and AI order. Full career details, including TPI, SHALL remain in the bilingual CV. Following the user's separate confirmation, the Nidin case SHALL show `任職期間主導 55 項產品交付；當時平台支援 820 萬會員與每年 1,500 萬筆以上訂單。` as its second delivery evidence row.
 
 #### Scenario: Read experience and supporting work
 
@@ -51,3 +51,14 @@ Story SHALL show the five approved chronological chapters. Existing anchors `gj`
 - **THEN** its Story anchor remains reachable
 - **AND** the related work destination exists
 - **AND** `/work/gj`, `/work/nidin` and `/work/jurislm` remain public
+
+### Requirement: Nidin management responsibilities
+
+Nidin SHALL describe team management as `管理工程部門團隊，協助工作分派與技術決策。`, with the English equivalent `Managed the engineering team and supported work allocation and technical decision-making.`. Its technical-manager role SHALL omit a management headcount. Main-site and bilingual CV views, including Nidin case studies, SHALL omit the former management headcount and its statistic card while preserving other companies' team sizes and the confirmed 55-delivery achievement.
+
+#### Scenario: Read Nidin management responsibilities
+
+- **WHEN** a visitor reads Nidin on Work or either CV locale
+- **THEN** management responsibilities contain no management headcount
+- **AND** the case retains a populated third evidence row with the approved responsibilities
+- **AND** CV highlights contain three populated metrics
