@@ -1,7 +1,7 @@
 {
   "source": {
     "project": "76e33fa9-e2bc-4bf3-b92d-b38f0e5c0ae2",
-    "sha256": "eacf76941bf1678d81ba4a5c37ad08a0109c0e15499d945fd44dcd3216fd2792",
+    "sha256": "7bde014f870d6733da41a2c6fa70a888e0d186033ec02954870734d5a0c2bed6",
     "skillsConfirmedByUser": "2026-10-15"
   },
   "cv": {
@@ -95,7 +95,7 @@
         {
           "company": "雲仲資訊",
           "role": "技術經理",
-          "period": "2021.05–2025.06 · 全職・4 年 2 個月 · 直接管理 10 人",
+          "period": "2021.05–2025.06 · 全職・4 年 2 個月",
           "kind": "",
           "team": "",
           "bullets": [
@@ -105,7 +105,7 @@
             "通過 LINE 技術資格考試與審核，推動公司取得指定技術合作夥伴資格，並帶領團隊推出 LINE Mini App；串接涵蓋逾六成 POS 市場的業者及支付、物流服務。",
             "建立以會員資料為基礎的客戶管理與行銷功能；平台服務品牌的平均回購率達 50% 以上、業績提升 30% 以上。平台支援的 2025 珍奶節觸及逾 100 萬使用者、售出 200 萬杯，參與品牌訂單金額成長 60～100%。",
             "作為資安團隊成員，參與推動 Nidin 通過 ISO／IEC 27001:2022 認證。",
-            "直接管理 10 人工程團隊，導入 Slack、Notion 與敏捷開發流程，集中管理產品文件與技術知識，年均參與約 100 場面試。"
+            "管理工程部門團隊，協助工作分派與技術決策。導入 Slack、Notion 與敏捷開發流程，集中管理產品文件與技術知識，年均參與約 100 場面試。"
           ],
           "projects": []
         },
@@ -400,7 +400,7 @@
         {
           "company": "雲仲資訊",
           "role": "Technical Manager",
-          "period": "2021.05–2025.06 · Full-time · 4 years 2 months · 10 direct reports",
+          "period": "2021.05–2025.06 · Full-time · 4 years 2 months",
           "kind": "",
           "team": "",
           "bullets": [
@@ -410,7 +410,7 @@
             "Passed LINE technical qualification exams and review, helped the company obtain designated technical partner status, and led the launch of a LINE Mini App. Integrated POS providers covering over 60% of the market, plus payment and logistics services.",
             "Built membership-based CRM and marketing features. Brands served by the platform averaged over 50% repeat purchase rates and over 30% sales growth. The 2025 bubble tea festival supported by the platform reached over 1 million users, sold 2 million cups, and increased participating brands’ order value by 60–100%.",
             "Contributed as a security team member to Nidin’s ISO/IEC 27001:2022 certification.",
-            "Directly managed 10 engineers, introduced Slack, Notion, and agile workflows, centralised product documentation and technical knowledge, and participated in about 100 interviews annually."
+            "Managed the engineering team and supported work allocation and technical decision-making. Introduced Slack, Notion, and agile workflows, centralised product documentation and technical knowledge, and participated in about 100 interviews annually."
           ],
           "projects": []
         },

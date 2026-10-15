@@ -4,7 +4,7 @@ Goal: correct JUR-705 visual drift against the explicitly supplied local Open De
 
 Architecture: retain the existing Next.js routes and CV 3D implementation. The user’s 2026-10-15 follow-up makes selected design copy and block order authoritative across all 11 views. Shared editorial primitives and scoped CSS own the repeated reference geometry. Runtime theme tokens remain in globals.css.
 
-Spec: Open Design project `76e33fa9-e2bc-4bf3-b92d-b38f0e5c0ae2` (`index.html`, `design.css`, `design.js`, `design-note.md`, read only), plus existing OpenSpec content and route contracts.
+Spec: Open Design project `76e33fa9-e2bc-4bf3-b92d-b38f0e5c0ae2` (`index.html`, `design.css`, `design.js`, `design-note.md`; ordinary-file edits authorised for the Nidin management follow-up), plus existing OpenSpec content and route contracts.
 
 ## Constraints
 
@@ -54,3 +54,19 @@ Normal Chrome recovered through the same browser tool. Story was captured in lig
 - [ ] Rebuild, regenerate the audit, validate and push this small follow-up to the same PR. Read its own CI terminal state without another full provider review.
 
 Full mobile/keyboard and other previously unverified acceptance remain incomplete. A normal Chrome availability read may support a narrow screenshot check; no stopped or denied browser action may be bypassed.
+
+## User-authorised management rewrite
+
+The latest request supersedes a deletion-only interpretation. Use `管理工程部門團隊，協助工作分派與技術決策。` and the approved English equivalent. Keep the third evidence row populated, retain technical-manager titles without duplicate prose, remove Nidin headcount text and its metric card from website/CV/design, and preserve TPI’s team size and the confirmed 55 deliveries. Do not modify Notion or app-owned project metadata.
+
+- [x] Verify branch/PR head, clean worktree and original design hashes before edits.
+- [x] Capture failing responsibility/headcount/metric regression assertions.
+- [x] Back up and hash-guard writes to the exact project’s HTML, CSS and design note.
+- [x] Synchronise website content, bilingual profile/case studies and the structured design snapshot.
+- [x] Keep three metric cards aligned, and fix inherited case-section auto margins exposed by shorter role copy.
+- [x] Run full lint/typecheck, 103 tests, OpenSpec 10/10 and the 125-page production build.
+- [x] Read normal Chrome screenshots for both updated Nidin case pages and persist the original JPEGs.
+- [x] Regenerate the 11-view copy audit with no missing text, and record the external design patch/fingerprints.
+- [ ] Push this follow-up to PR #110 and read its own CI terminal status. No new provider review, merge or deployment.
+
+The complete mobile/keyboard/reduced-motion acceptance matrix remains incomplete.

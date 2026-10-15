@@ -25,6 +25,18 @@ describe('Approved personal story reading paths', () => {
       '任職期間主導 55 項產品交付；當時平台支援 820 萬會員與每年 1,500 萬筆以上訂單。'
     )
   })
+  it('describes Nidin team responsibilities without a management headcount', async () => {
+    const doc = documentFor(
+      renderToStaticMarkup(await WorkCasePage({ params: Promise.resolve({ slug: 'nidin' }) }))
+    )
+    expect(doc.querySelector('section[aria-labelledby="role-title"]')?.textContent).toContain(
+      '雲仲資訊技術經理'
+    )
+    expect(doc.querySelectorAll('.site-evidence li')[2]?.textContent).toBe(
+      '管理工程部門團隊，協助工作分派與技術決策。'
+    )
+    expect(doc.body.textContent).not.toMatch(/直接管理|10\s*位工程師/)
+  })
   it('renders the three selected design chapters and their work links', () => {
     const doc = documentFor(renderToStaticMarkup(<StoryPage />))
     expect([...doc.querySelectorAll('[data-story-note] h2')].map((n) => n.textContent)).toEqual([

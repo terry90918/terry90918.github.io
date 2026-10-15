@@ -1,0 +1,17 @@
+{
+  "project_id": "76e33fa9-e2bc-4bf3-b92d-b38f0e5c0ae2",
+  "files": {
+    "index.html": {
+      "before": "eacf76941bf1678d81ba4a5c37ad08a0109c0e15499d945fd44dcd3216fd2792",
+      "after": "7bde014f870d6733da41a2c6fa70a888e0d186033ec02954870734d5a0c2bed6"
+    },
+    "design.css": {
+      "before": "ba613c8131c763be6cd65f44e482d19e0c04c981f3cf5835912fe8ebd09be784",
+      "after": "c03209e98e0eebf98f0b4fb035217cbf9eeaf8013d177aca79e883d9b751e6e0"
+    },
+    "design-note.md": {
+      "before": "d719c1a7f07878754922b71b0e82c0db8064c03932b4ece72fffdab0dc32242f",
+      "after": "28e4eb652b98ea3911e0e7d0d73004014dbb2eb5756f4a415a6984218014b6eb"
+    }
+  }
+}

@@ -3,6 +3,8 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import CvHome from '../../components/cv/cv-home'
 import { getCaseStudies } from '../../lib/cv/case-studies'
 import { profiles } from '../../lib/cv/profile'
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
 
 describe('Selected bilingual CV presentation', () => {
   for (const locale of ['zh-TW', 'en'] as const) {
@@ -41,6 +43,31 @@ describe('Selected bilingual CV presentation', () => {
       expect(doc.querySelector('#experience')?.textContent).toContain(
         locale === 'en' ? 'Work history overview' : '經歷一覽'
       )
+      const management =
+        locale === 'en'
+          ? 'Managed the engineering team and supported work allocation and technical decision-making.'
+          : '管理工程部門團隊，協助工作分派與技術決策。'
+      expect(doc.querySelectorAll('.cv-stats-grid > div')).toHaveLength(3)
+      expect(
+        [...doc.querySelectorAll('.cv-stats-grid > div > p:first-child')].map(
+          (value) => value.textContent
+        )
+      ).toEqual(['21.35M', '0.957', '8.2M'])
+      expect(doc.querySelector('#experience')?.textContent).toContain(management)
+      expect(doc.body.textContent).not.toMatch(
+        /直接管理|10\s*(direct reports|engineers)|Engineers directly managed/i
+      )
+      expect(doc.querySelector('#experience')?.textContent).toContain(
+        locale === 'en' ? 'Managed 20 engineers' : '管理 20 人'
+      )
+      const nidin = projects.find((project) => project.slug === 'nidin')
+      expect(nidin?.role).toBe(locale === 'en' ? 'Technical Manager' : '技術經理')
+      const caseSource = readFileSync(
+        join(process.cwd(), 'content/cv/case-studies', locale, 'nidin.mdx'),
+        'utf8'
+      )
+      expect(caseSource).toContain(management)
+      expect(caseSource).not.toMatch(/直接管理|10\s*(direct reports|engineers)/i)
     })
   }
 })

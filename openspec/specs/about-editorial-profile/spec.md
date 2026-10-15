@@ -51,3 +51,14 @@ Story SHALL show the three selected design chapters in GJ, Nidin and AI order. E
 - **THEN** its Story anchor remains reachable
 - **AND** the related work destination exists
 - **AND** `/work/gj`, `/work/nidin` and `/work/jurislm` remain public
+
+### Requirement: Nidin management responsibilities
+
+Nidin SHALL describe team management as `管理工程部門團隊，協助工作分派與技術決策。`, with the English equivalent `Managed the engineering team and supported work allocation and technical decision-making.`. Its technical-manager role SHALL omit a management headcount. Main-site and bilingual CV views, including Nidin case studies, SHALL omit the former management headcount and its statistic card while preserving other companies' team sizes and the confirmed 55-delivery achievement.
+
+#### Scenario: Read Nidin management responsibilities
+
+- **WHEN** a visitor reads Nidin on Work or either CV locale
+- **THEN** management responsibilities contain no management headcount
+- **AND** the case retains a populated third evidence row with the approved responsibilities
+- **AND** CV highlights contain three populated metrics

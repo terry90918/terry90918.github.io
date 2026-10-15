@@ -58,7 +58,7 @@ for (const [view, route] of Object.entries(routes)) {
     return 'main'
   }
   const selectors =
-    'h1,h2,h3,h4,p,li,summary,a,.kicker,.badge,.eyebrow,.portrait-label,.split-index,.timeline-number,.contact-link > span'
+    'h1,h2,h3,h4,p,li,summary,a,.kicker,.badge,.eyebrow,.portrait-label,.split-index,.timeline-number,.contact-link > span,.stat strong'
   const blocks = [
     ...root.querySelectorAll(selectors),
     ...reference.querySelectorAll('header.header a,footer.footer a,footer.footer > span'),
