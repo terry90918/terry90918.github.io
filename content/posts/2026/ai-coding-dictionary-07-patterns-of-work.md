@@ -1,6 +1,6 @@
 ---
 title: "AI Coding 詞典拆解（07）：從 Vibe Coding 到 Software Factory"
-publishedAt: "2026-10-15T08:25:00+08:00"
+publishedAt: "2026-10-15T08:43:06+08:00"
 status: "published"
 slug: "ai-coding-dictionary-07-patterns-of-work"
 excerpt: "AI 工程工作模式的差別，在於人何時介入、用什麼證據檢查，以及任務如何被分派和放大。從原型到工廠，自治程度增加不等於責任消失。"

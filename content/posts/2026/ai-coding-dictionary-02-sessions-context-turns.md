@@ -1,6 +1,6 @@
 ---
 title: "AI Coding 詞典拆解（02）：Session、Turn 與 Context Window 的界線"
-publishedAt: "2026-10-15T08:25:00+08:00"
+publishedAt: "2026-10-15T08:43:01+08:00"
 status: "published"
 slug: "ai-coding-dictionary-02-sessions-context-turns"
 excerpt: "模型本身不保留 Session 狀態；對話的連續性來自 Harness 或 API 保存並按需提供相關脈絡。理解 Session、Turn 和 Context Window，才能看懂代理為什麼會忘記。"

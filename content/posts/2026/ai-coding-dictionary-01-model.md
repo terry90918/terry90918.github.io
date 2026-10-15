@@ -1,6 +1,6 @@
 ---
 title: "AI Coding 詞典拆解（01）：模型、推論與 Harness 如何組成一次工作"
-publishedAt: "2026-10-15T08:25:00+08:00"
+publishedAt: "2026-10-15T08:43:00+08:00"
 status: "published"
 slug: "ai-coding-dictionary-01-model"
 excerpt: "AI 寫程式不只是一個模型在回答問題。模型負責生成，Provider 負責推論服務，Harness 才負責工具、脈絡和執行迴圈。"
