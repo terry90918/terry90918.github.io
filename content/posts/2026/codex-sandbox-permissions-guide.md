@@ -246,7 +246,7 @@ Docker socket 是命令連接 Docker 背景服務的本機通道。開放它可�
 
 檔案規則回答「能碰哪裡」，命令規則則能對特定命令前綴（命令開頭的部分）設定允許、核准或禁止。它不能取代檔案隔離，也不能保證程式只能透過某個命令完成操作。
 
-這裡用一個讀取 GitHub PR（程式碼合併前的審查申請）的操作示範規則語法：讓 `gh pr view` 走核准流程。這不表示每次讀取 PR 都有必要人工確認。建立 `~/.codex/rules/default.rules`，加入：
+這裡用 `gh pr view` 示範命令規則。`prefix_rule` 控制 Codex 要讓命令在沙箱外執行時，是先詢問、直接允許，還是禁止。如果命令已在目前沙箱內獲准執行，這條規則不會再增加一次核准。建立 `~/.codex/rules/default.rules`，加入：
 
 ```python
 prefix_rule(
@@ -257,7 +257,7 @@ prefix_rule(
 )
 ```
 
-副檔名是 `.rules`，使用 Starlark（一種設定規則的程式語言）語法。`prompt` 表示每次符合規則時先詢問；`allow` 會讓命令直接執行。這條規則只匹配命令開頭的 `gh pr view`。`match` 和 `not_match` 是用來確認規則會命中或不會命中的測試案例。這裡沒有另外建立禁止合併 PR 的規則。
+副檔名是 `.rules`，使用 Starlark（一種設定規則的程式語言）語法。`prompt` 表示每次命令要在沙箱外執行時先詢問；`allow` 會讓符合規則的命令在沙箱外直接執行。這條規則只匹配命令開頭的 `gh pr view`。`match` 和 `not_match` 是用來確認規則會命中或不會命中的測試案例。這裡沒有另外建立禁止合併 PR 的規則。
 
 儲存後重新啟動 Codex。也可以先測試規則匹配結果：
 
@@ -267,7 +267,7 @@ codex execpolicy check --pretty --rules ~/.codex/rules/default.rules -- gh pr vi
 
 這個檢查不會執行 `gh pr view`，它會顯示命令匹配哪些規則，以及最終決策。
 
-`allow`（允許）會讓符合規則的命令在沙箱外執行，因此前綴要足夠窄。`["python"]` 或 `["bash"]` 涵蓋的行為太多，不適合作為一般開發的省事設定。多條規則匹配時，採用較嚴格的決策；複合命令與 shell 包裝還有額外處理，不能只看第一段文字。
+`allow`（允許）會讓符合規則的命令在沙箱外執行，因此前綴要足夠窄。Codex 會把格式簡單的串接命令拆開逐段檢查；只有每個命令片段都符合 `allow` 規則時，整組命令才會在沙箱外執行。含變數或重導向的複雜 shell 命令可能會被當成一整條命令處理。先用 `codex execpolicy check` 測試完整命令，再決定規則是否合適。不要用 `["python"]` 或 `["bash"]` 這種寬前綴來省事。
 
 規則仍屬實驗功能，適用範圍與測試方式見 [Rules](https://learn.chatgpt.com/docs/agent-configuration/rules)。
 
@@ -284,7 +284,7 @@ approvals_reviewer = "auto_review"
 
 Auto-review 會替你檢查符合條件的核准請求，再決定是否允許執行。已經在原有權限內直接執行的操作，不會全部重新送審。它也可能判斷錯誤，因此原本的隔離範圍仍有必要。
 
-若某個敏感操作即使在邊界內也需要審查，要另外設定對應的命令規則或工具核准控制。不要假設「開啟 Auto-review」就代表所有行為都多了一次檢查。
+如果某個 MCP 或 app 工具需要額外審查，請設定該工具自己的核准控制。命令規則只處理沙箱外的命令。不要假設「開啟 Auto-review」就代表所有行為都多了一次檢查。
 
 請求被拒絕時，應檢查操作是否超出任務，或能否縮小範圍。改用另一種寫法執行相同動作，並沒有解決權限問題。審查流程見 [Auto-review](https://learn.chatgpt.com/docs/sandboxing/auto-review)。
 
