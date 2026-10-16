@@ -273,6 +273,35 @@ test.describe('Personal site', () => {
 
 // ---- Post detail pages ----
 test.describe('Post detail pages', () => {
+  for (const width of [320, 375]) {
+    test(`[mobile visual] new Harness articles fit the viewport at ${width}px`, async ({
+      page,
+    }) => {
+      await page.setViewportSize({ width, height: 900 })
+      for (const path of [
+        '/posts/2026/openai-harness-engineering-beginner-guide',
+        '/posts/2026/designing-harness-for-codex-app',
+      ]) {
+        await page.goto(path)
+        const article = page.locator('main article')
+        await expect(article.getByRole('heading', { level: 1 })).toBeVisible()
+        await expect(article.locator('.prose h2').first()).toBeVisible()
+        await expect(article.locator('.prose p').first()).toBeVisible()
+        expect(
+          await page.evaluate(
+            () => document.documentElement.scrollWidth <= document.documentElement.clientWidth
+          )
+        ).toBe(true)
+        for (const locator of [article, article.getByRole('heading', { level: 1 })]) {
+          const box = await locator.boundingBox()
+          expect(box).not.toBeNull()
+          expect(box!.x).toBeGreaterThanOrEqual(0)
+          expect(box!.x + box!.width).toBeLessThanOrEqual(width)
+        }
+      }
+    })
+  }
+
   for (const width of [320, 1046]) {
     test(`[anchors] settled article hashes and heading links clear the header at ${width}px`, async ({
       page,
