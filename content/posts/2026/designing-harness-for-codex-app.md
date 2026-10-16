@@ -75,14 +75,28 @@ Codex app 裡的 Local、Worktree 和 Cloud 代表不同的工作位置和執行
 
 對新手而言，先從「可修改目前工作區，超出範圍時詢問」開始，通常比較容易理解和檢查。你可以在輸入任務的區域下方打開權限選單，查看目前這個對話使用的模式。現行 app 可能提供 Ask for approval（詢問後核准）、Approve for me（交給自動審查）、Full access（完整存取）或 Custom（自訂設定）等選項；實際選項會因 app 版本、執行環境和組織管理設定不同。Approve for me 是把符合條件的核准請求交給自動審查，並不等於打開更多檔案或網路存取。Full access 則代表廣泛的本機檔案與網路權限，應只在你了解其範圍時使用。
 
-如果要自訂規則，先列出 Codex 真正需要的路徑和網域，再給最小必要的寫入或網路存取。例如，只讓某個專案工作區可寫，保留 `.env`（通常存放密鑰或環境設定的檔案）不可讀寫；需要上網時，再只開放必要的網域。若使用傳統設定格式，常見的起點是：
+如果要自訂規則，先列出 Codex 真正需要的路徑和網域，再給最小必要的寫入或網路存取。`workspace-write` 允許本機命令讀寫工作區；它不會自動保護 `.env`（通常存放密鑰或環境設定的檔案）。需要上網時，也要另外設定網路存取。
+
+若使用傳統設定格式，常見的起點是：
 
 ```toml
 sandbox_mode = "workspace-write"
 approval_policy = "on-request"
 ```
 
-這表示本機命令可以修改工作區內的檔案，並在需要跨出既定界線時依核准政策處理；網路存取仍應另外設定。你也可以在 Codex app 的 Settings（設定）→ Configuration（組態）開啟 `config.toml`。Codex 的[權限設定文件](https://developers.openai.com/codex/permissions)也提供新版權限 profile（權限設定組合）的配置方式；該文件目前標示 profile 功能仍在 beta（測試版），並說明新版 `default_permissions` 設定與舊式 `sandbox_mode` 設定不能混在同一組有效設定中。第一次調整時，先確認自己使用哪一種格式，再依目前版本文件設定。
+這組設定只允許本機命令修改工作區，並決定哪些動作要先核准；它不會禁止讀取工作區內的 `.env`。若要封鎖符合條件的環境檔，可以改用新版權限 profile（權限設定組合）：
+
+```toml
+default_permissions = "project-edit"
+
+[permissions.project-edit]
+extends = ":workspace"
+
+[permissions.project-edit.filesystem.":workspace_roots"]
+"**/*.env" = "deny"
+```
+
+這個 profile 沿用工作區寫入權限，再拒絕讀取符合 `**/*.env` 的檔案。新版 profile 目前仍在 beta（測試版），不能和上面的舊式 `sandbox_mode` 設定混用；在 Linux、WSL 和 Windows，遞迴 glob 有時需要設定掃描深度，請依專案目錄結構參考[權限文件](https://developers.openai.com/codex/permissions)。如果用 profile 的網域清單限制網路，還要啟用網路 proxy，否則網域規則不會套用。你可以在 Codex app 的 Settings（設定）→ Configuration（組態）開啟 `config.toml`，並確認目前版本和組織政策允許所選模式。
 
 另外，本機命令的沙箱、MCP 連接器、內建瀏覽器和 Cloud 環境各有自己的控制。不要因為某個網站已經允許瀏覽，就以為頁面上的內容可信；也不要把本機命令的網路規則當成整個 Codex app 的所有連線規則。
 
@@ -90,7 +104,7 @@ approval_policy = "on-request"
 
 Harness 必須讓 Codex 拿到真實回饋。對程式碼變更而言，這通常是相關測試、lint（程式碼風格與常見錯誤檢查）、格式檢查或型別檢查。測試只證明它涵蓋的行為通過；如果需求關乎畫面，還要在實際頁面檢查互動和版面。
 
-在支援的 Codex app 版本中，到 Plugins（外掛）裡安裝 Browser 後，內建瀏覽器可以開啟本機網站；Computer Use（電腦操作功能）則能操作頁面。[瀏覽器文件](https://developers.openai.com/codex/app/browser)建議把瀏覽器任務說清楚，例如指定路由、要看的狀態，以及要檢查的元件。完成後，再用 app 的差異檢視（diff review，逐項檢查改了哪些檔案和內容）確認修改符合範圍。
+Codex app 內建 Browser，會自動安裝。你可以在工作要求裡直接寫 `@Browser`，或從工具列開啟瀏覽器檢查本機網站；Computer Use（電腦操作功能）則能操作頁面。[瀏覽器文件](https://developers.openai.com/codex/app/browser)建議把任務說清楚，例如指定路由、要看的狀態，以及要檢查的元件。完成後，再用 app 的差異檢視（diff review，逐項檢查改了哪些檔案和內容）確認修改符合範圍。
 
 以表單驗證任務為例，可以把提示寫成：
 
