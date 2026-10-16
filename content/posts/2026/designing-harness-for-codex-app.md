@@ -104,7 +104,7 @@ extends = ":workspace"
 
 Harness 必須讓 Codex 拿到真實回饋。對程式碼變更而言，這通常是相關測試、lint（程式碼風格與常見錯誤檢查）、格式檢查或型別檢查。測試只證明它涵蓋的行為通過；如果需求關乎畫面，還要在實際頁面檢查互動和版面。
 
-Codex app 內建 Browser，會自動安裝。你可以在工作要求裡直接寫 `@Browser`，或從工具列開啟瀏覽器檢查本機網站；Computer Use（電腦操作功能）則能操作頁面。[瀏覽器文件](https://developers.openai.com/codex/app/browser)建議把任務說清楚，例如指定路由、要看的狀態，以及要檢查的元件。完成後，再用 app 的差異檢視（diff review，逐項檢查改了哪些檔案和內容）確認修改符合範圍。
+Codex app 內建瀏覽器，Browser 功能會隨桌面 app 自動安裝。你可以從工具列開啟本機網站；需要 Codex 操作頁面時，在工作要求中引用 `@Browser`。Computer Use（電腦操作功能）提供點擊、輸入和檢查頁面狀態的能力。[瀏覽器文件](https://developers.openai.com/codex/app/browser)建議把任務說清楚，例如指定路由、要看的狀態，以及要檢查的元件。完成後，再用 app 的差異檢視（diff review，逐項檢查改了哪些檔案和內容）確認修改符合範圍。
 
 以表單驗證任務為例，可以把提示寫成：
 
