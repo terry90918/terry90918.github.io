@@ -286,7 +286,7 @@ test.describe('Post detail pages', () => {
         const article = page.locator('main article')
         await expect(article.getByRole('heading', { level: 1 })).toBeVisible()
         await expect(article.locator('.prose h2').first()).toBeVisible()
-        await expect(article.locator('.prose p').first()).toBeVisible()
+        await expect(article.locator('.prose > div > p').first()).toBeVisible()
         expect(
           await page.evaluate(
             () => document.documentElement.scrollWidth <= document.documentElement.clientWidth
