@@ -369,7 +369,7 @@ test.describe('Post detail pages', () => {
     {
       slug: 'ai-daily-2026-08-20',
       excerpt:
-        'ChatGPT 威脅通報、擴散模型資料歸因、Cursor 與 SpaceX，以及 Vivodyne 的人體組織實驗，呈現 AI 應用在安全、研究與醫療上的新問題。本文區分官方政策、研究結果與尚未獨立確認的事件細節。',
+        'ChatGPT 威脅通報、擴散模型資料歸因、SpaceX 收購 Cursor，以及 Vivodyne 的人體組織實驗，呈現 AI 應用在安全、研究與醫療上的新問題。本文區分官方政策、研究結果與尚未獨立確認的事件細節。',
       rendering: 'standalone',
     },
   ]) {
