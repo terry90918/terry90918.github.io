@@ -329,48 +329,65 @@ test.describe('Post detail pages', () => {
     })
   }
 
-  for (const { slug, excerpt } of [
+  for (const { slug, excerpt, rendering } of [
     {
       slug: 'ai-daily-2026-08-28',
       excerpt:
         'NVIDIA 收購 Hugging Face 的報導尚待確認，PULSE、NVIDIA 財測與客服代理則把同一個問題推到前台：能力擴張之後，誰來驗證來源、成本與責任邊界？',
+      rendering: 'blockquote',
     },
     {
       slug: 'ai-daily-2026-08-27',
       excerpt:
-        'Anthropic 用三十兆美元描繪市場上限，研究、晶片與醫療設備則把焦點拉回可驗證的效能、風險與實際工作流程。',
+        '三十兆美元市場、極端風險模擬、推論晶片與自動採血，分別把 AI 推向金融、研究、運算與醫療現場；測試口徑與可驗證性決定宣稱能走多遠。',
+      rendering: 'standalone',
     },
     {
       slug: 'ai-daily-2026-08-26',
       excerpt:
-        'NVIDIA 把生成速度推向即時互動，Einride 用 500 輛 Tesla Semi 擴張智慧貨運；研究代理與個人助理也同時把管理能力、資料邊界推到產品核心。',
+        'Groq 3 LPX把推論速度推上前台，Einride準備把電動貨運接入AI調度，Faraday則讓研究代理負責挑選實驗。平台產品、資料權限與專用晶片也在改寫各自產業的落地方式。',
+      rendering: 'blockquote',
     },
     {
       slug: 'ai-daily-2026-08-25',
       excerpt:
-        'Hugging Face 的潛在出售、企業轉向較便宜模型，以及創作者資料與自動化決策爭議，都指向同一個轉折：市場開始為分發、成本與控制權重新定價。',
+        '從 Hugging Face 的開放模型平台到企業選模、創作者授權、AI 生技與算力融資，競爭焦點正從模型能力延伸到資料控制、商業化與成本。',
+      rendering: 'standalone',
     },
     {
       slug: 'ai-daily-2026-08-24',
       excerpt:
-        'Target 把生成式搜尋導流寫進財報，越界代理則把供應鏈攻擊延伸到社交工程；另一份大型觀察研究，也讓內容授權與引用分配的關係浮上檯面。',
+        'Target 開始量化生成式 AI 帶來的購物流量；代理越界、工業控制器風險與出版授權研究，則把安全和平台規則推到台前。',
+      rendering: 'standalone',
     },
     {
       slug: 'ai-daily-2026-08-21',
       excerpt:
-        'Merck 與 Moderna 的個人化 mRNA 療法達成三期試驗終點，Cursor 把代理帶進程式碼託管，ChatGPT 的來源分布則突然改變；共同問題是平台如何證明自己的選擇。',
+        'Merck 與 Moderna 公布個人化癌症疫苗三期試驗結果，Cursor 推出程式碼託管平台；OpenAI、NVIDIA 與其他公司文件也呈現搜尋、資料保護和基礎設施的條件與限制。未獲獨立確認的數字會明確標示歸屬。',
+      rendering: 'standalone',
     },
     {
       slug: 'ai-daily-2026-08-20',
       excerpt:
-        'OpenAI 以人工覆核通報暴力威脅，MIT 揭示生成模型的歸因衰減，醫療實驗與運算基礎設施同步擴張；關鍵不再只是能力，而是誰能解釋、覆核並承擔後果。',
+        'ChatGPT 威脅通報、擴散模型資料歸因、Cursor 與 SpaceX，以及 Vivodyne 的人體組織實驗，呈現 AI 應用在安全、研究與醫療上的新問題。本文區分官方政策、研究結果與尚未獨立確認的事件細節。',
+      rendering: 'standalone',
     },
   ]) {
-    test(`${slug} renders its leading excerpt exactly once`, async ({ page }) => {
+    test(`${slug} renders its excerpt exactly once using the current body contract`, async ({
+      page,
+    }) => {
       await page.goto(`/posts/2026/${slug}`)
 
-      await expect(page.locator('article .prose > p.not-prose')).toHaveCount(0)
-      await expect(page.locator('article .prose blockquote').first()).toHaveText(excerpt)
+      if (rendering === 'blockquote') {
+        await expect(page.locator('article .prose > p.not-prose')).toHaveCount(0)
+        await expect(page.locator('article .prose blockquote').first()).toHaveText(excerpt)
+      } else {
+        await expect(page.locator('article .prose > p.not-prose')).toHaveText(excerpt)
+        await expect(
+          page.locator('article .prose blockquote').filter({ hasText: excerpt })
+        ).toHaveCount(0)
+      }
+      await expect(page.getByText(excerpt, { exact: true })).toHaveCount(1)
     })
   }
 
