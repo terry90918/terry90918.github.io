@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.10.1](https://github.com/terry90918/terry90918.github.io/compare/v1.10.0...v1.10.1) (2026-10-17)
+
+
+### Bug Fixes
+
+* address July AI article review findings ([d5d7c19](https://github.com/terry90918/terry90918.github.io/commit/d5d7c1964c448dc513cd480ed8fab636a5e9a4fc))
+* align personal site with selected Open Design reference ([6efe7c7](https://github.com/terry90918/terry90918.github.io/commit/6efe7c7938475cee98b8efa69855c86ea7981ffc))
+* align personal site with specified Open Design source ([39ac129](https://github.com/terry90918/terry90918.github.io/commit/39ac1290fab5982fa8df50ca27866163e0f6e6a3))
+* align Story and Work metadata with displayed sections ([d0c83d8](https://github.com/terry90918/terry90918.github.io/commit/d0c83d8afe39baf5c733ceb0e358de0861192630))
+* align Writing navigation with latest selected design ([a1c5d7b](https://github.com/terry90918/terry90918.github.io/commit/a1c5d7b9d402c7f3cb5e376691251d5fd306fcff))
+* **blog:** clarify 2026-08-26 source claims ([4c0c921](https://github.com/terry90918/terry90918.github.io/commit/4c0c921a01878f33fa6cf2a0a639ed2d40eff16e))
+* **blog:** correct 2026-08-26 article rendering ([0be3fbd](https://github.com/terry90918/terry90918.github.io/commit/0be3fbd7e3e80c3eeb1eb8041de00783731e8a04))
+* **blog:** render 8/26 story headings correctly ([054f3aa](https://github.com/terry90918/terry90918.github.io/commit/054f3aaa90df3212ae7dfc3e66201b630a589679))
+* **blog:** sync excerpt tests and remove retired images ([bb96615](https://github.com/terry90918/terry90918.github.io/commit/bb96615561f2935e3a11e5eb69401066155bea71))
+* **content:** address batch 04 review findings ([b093ac2](https://github.com/terry90918/terry90918.github.io/commit/b093ac2bf525a1399a6b53e97963e4832bb5c5c5))
+* **content:** address review findings in Aug 24-27 ([62ffa8c](https://github.com/terry90918/terry90918.github.io/commit/62ffa8ca442b7e8ee4e6f2bbb9d3937072f86c66))
+* **content:** render Codex Harness bold text ([#120](https://github.com/terry90918/terry90918.github.io/issues/120)) ([514f1d5](https://github.com/terry90918/terry90918.github.io/commit/514f1d5a87bc700fe2dc94e2acfe81698d7cee41))
+* finish reference spacing and review accessibility ([0b68760](https://github.com/terry90918/terry90918.github.io/commit/0b68760bc03f1ebfcdea528c3d7ba105f9405b51))
+* keep contact utility hidden in mobile header ([14b120e](https://github.com/terry90918/terry90918.github.io/commit/14b120e0d642e9d0553f68e1bd0bf8ef05ef0c50))
+* render AI Coding articles 3 and 4 emphasis ([e4e3823](https://github.com/terry90918/terry90918.github.io/commit/e4e3823aa9863e91190ea137ea480534554935f8))
+* render AI Coding emphasis in articles 3 and 4 ([80b257e](https://github.com/terry90918/terry90918.github.io/commit/80b257e218d17e7af8cafabec9672dafc95d7ce6))
+* restore confirmed Nidin delivery statement ([e49899a](https://github.com/terry90918/terry90918.github.io/commit/e49899a06f875205dc99508de0f9559546560d54))
+* rewrite Nidin management responsibilities across site and design ([248626f](https://github.com/terry90918/terry90918.github.io/commit/248626f4d1ef6fd2ce3e128ee3b34552c2b1930c))
+* synchronise all selected design copy and CV sections ([dc123dd](https://github.com/terry90918/terry90918.github.io/commit/dc123dd0f905c3d622028b8d72de3ec7b4a8d3cc))
+
 ## [1.10.0](https://github.com/terry90918/terry90918.github.io/compare/v1.9.1...v1.10.0) (2026-10-15)
 
 
