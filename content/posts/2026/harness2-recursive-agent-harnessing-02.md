@@ -53,7 +53,7 @@ Repo 的 Python 套件把命令列入口、核心流程、benchmark adapter 和 
 4. Proposer 產生 INV 與 DOM 候選，Tree Validator 檢查檔案內容。
 5. BenchmarkAdapter 和 Substrate 執行候選 Probe，Composer 根據執行證據產生後繼 Harness。
 6. 最終 Harness 執行任務；Selector 在需要時選擇一份交付物。
-7. Judge 計分，Experience Reflector 整理可用經驗，Library 留給後續任務。
+7. Experience Reflector 先整理採用結果並更新 Library；之後由獨立的 `harness2-judge` 命令計分。
 
 ## Scheduler 先決定任務順序和基準執行
 
