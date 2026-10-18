@@ -1,6 +1,6 @@
 ---
 title: 'Harness² 深度導讀（中）：沿著原始碼走一遍改進流程'
-publishedAt: '2026-10-19T00:00:14+08:00'
+publishedAt: '2026-10-19T00:00:13+08:00'
 status: 'published'
 slug: 'harness2-recursive-agent-harnessing-02'
 excerpt: '從 BenchSpec、BenchmarkAdapter 和 Substrate 讀懂 Harness² 的模組邊界，再追蹤 evidence context、候選驗證、選擇與經驗庫如何接成一條流程。'

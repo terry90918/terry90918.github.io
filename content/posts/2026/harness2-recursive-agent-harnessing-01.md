@@ -1,6 +1,6 @@
 ---
 title: 'Harness² 深度導讀（上）：Agent 如何改造自己的工作系統'
-publishedAt: '2026-10-19T00:00:14+08:00'
+publishedAt: '2026-10-19T00:00:12+08:00'
 status: 'published'
 slug: 'harness2-recursive-agent-harnessing-01'
 excerpt: '先從研究問題讀懂 Harness²：模型權重固定，系統透過執行證據改進任務用的 Harness，也改進未來改進 Harness 的方式。'
