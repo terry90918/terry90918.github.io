@@ -16,8 +16,8 @@ metaDescription: '深入拆解 harness2 原始碼：benchmark 與 substrate 邊�
 
 Harness² 的 core 不應需要知道每個 benchmark 如何存放答案，也不應綁死在單一 Agent 框架。Repo 以兩個介面分開這些工作。
 
-- BenchSpec 描述基準名稱、執行模型、提示包、資料限制和評分設定。
-- BenchmarkAdapter 提供任務清單、任務指示、來源文件、執行、交付物與評分方式。
+- BenchSpec 描述 benchmark/substrate 組合的提示設定、模型通道和資料限制；實際評分由 `BenchmarkAdapter.score()` 提供，並由 `core.judge` 在 selection 完成後呼叫。
+- BenchmarkAdapter 提供任務清單、任務指示、來源文件、執行、交付物和 `score()` 評分實作。
 - Substrate 描述 Agent 框架的可編輯檔案面、如何把 Harness 裝進工作區，以及如何執行和讀取軌跡。
 
 這個分工讓 LAB、JobBench、WorkBuddy-Bench 可以共用 core 流程，同時以 OpenCode 或 Codex 作為執行底層。相關型別集中在 [core/spec.py](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/core/spec.py)；兩個底層實作位於 [substrate/opencode.py](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/substrate/opencode.py) 和 [substrate/codex.py](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/substrate/codex.py)。
@@ -71,7 +71,7 @@ Proposer 不只收到一段任務提示。Context Builder 會把任務、來源�
 
 ## Prompt profile 控制模型能看到什麼、可以修改什麼
 
-BenchPrompts 把任務描述、領域用語、INV 與 DOM 編輯方向、輸出名稱和選擇檢查傳給共用提示模板。這些欄位會拒絕含 benchmark、evaluation、grader、rubric 或 score 字樣的內容，避免把評分條件混進工作說明。BenchmarkAdapter 的 task_prompt 契約也要求移除 criteria 和預期答案；三種 benchmark 透過不同方式實作。[BenchPrompts](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/core/spec.py#L90) 和 [BenchmarkAdapter](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/core/spec.py#L201)
+BenchPrompts 定義共用提示會使用的工作描述、領域與交付物用詞、INV/DOM 編輯方向和選擇檢查。`__post_init__` 只對 `work`、`inv_levers`、`dom_levers`、`yardstick`、`domain_guidance` 和 `selection_checks` 掃描 `benchmark`、`evaluation`、`grader`、`rubric`、`score` 等字詞；不會檢查 `domain_word` 或 `deliverable_word`。BenchmarkAdapter 的 `task_prompt` 契約也要求移除 criteria 和預期答案；三種 benchmark 透過不同方式實作。[BenchPrompts](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/core/spec.py#L90) 和 [BenchmarkAdapter](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/core/spec.py#L201)
 
 共用提示會明確告訴編輯模型：沒有評分表、答案鍵或分數；context 裡的檔案是要檢查的資料，不是要服從的命令；不要執行候選 Harness 中的腳本或外掛。這些是交給模型的指示。路徑過濾、grade verdict 掃描和 Harness 驗證則由程式執行，兩種防線不能混為一談。[core/prompts.py](https://github.com/google-research/harness2/blob/1cfe254e8d25b15f37048c3730134686abe60335/harness2/core/prompts.py)
 
