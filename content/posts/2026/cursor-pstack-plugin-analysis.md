@@ -12,7 +12,7 @@ tags:
 metaDescription: '以 pstack 0.15.26 原始碼為準，拆解 Cursor 外掛的 manifests、poteto-mode、技能、playbook、代理、腳本與 Claude Code 發行副本。'
 ---
 
-# pstack 上篇：一個工程 Agent 外掛的完整地圖
+## pstack 上篇：一個工程 Agent 外掛的完整地圖
 
 pstack 看起來像一大疊 Markdown，但它實際上是一個有入口、有路由、有工作流程、有輔助程式和發行檢查的 Agent 外掛。讀它時，先不要把每個檔案都叫作「提示詞」。不同檔案負責的工作不同，有些是 Agent 會讀的規則，有些是安裝資料，有些則真的會被執行。
 
@@ -45,18 +45,7 @@ Manifest 是安裝目錄，不是整套工作的流程。主入口和 playbook �
 
 使用者通常只要先描述目標和完成條件。pstack 把路由工作放在 /poteto-mode：
 
-```mermaid
-flowchart TD
-    U["使用者描述目標和完成條件"] --> R["poteto-mode 讀原則索引並判斷任務"]
-    R --> P["選一份 playbook，列出工作步驟"]
-    P --> S["按步驟讀取需要的一般技能、原則和參考資料"]
-    S --> D{"是否適合拆分或需要專門角色？"}
-    D -->|"需要"| A["交給 poteto-agent 或其他子代理"]
-    D -->|"不需要"| W["主 Agent 直接工作"]
-    A --> V["主 Agent 檢查輸出並做驗證"]
-    W --> V
-    V --> O["回報做了什麼、證據是什麼、還有哪些限制"]
-```
+![pstack 任務路徑圖：入口路由到 playbook，再使用技能、原則和委派提示，最後以真實證據驗證；Benny 位於獨立的自動化路徑](/images/cursor-pstack/pstack-task-flow.svg)
 
 這不是每個任務都要走一條固定長管線。只讀調查可能不委派、不改碼；簡單修正可能不需要架構競賽；大型長期工作才需要持久記錄、分層協調和多個驗證者。poteto-mode 的工作是選一個合適流程，不是把所有技能都跑一遍。
 
