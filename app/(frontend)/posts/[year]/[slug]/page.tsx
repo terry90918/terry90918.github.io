@@ -14,12 +14,14 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
   const { slug } = await params
   const post = await getPostBySlug(slug)
   if (!post) return {}
+  const canonicalSlug = post.status === 'alias' ? post.canonicalSlug : post.slug
   const description = post.metaDescription ?? post.excerpt ?? undefined
-  const url = `https://terry90918.github.io/posts/${post.year}/${post.slug}`
+  const url = `https://terry90918.github.io/posts/${post.year}/${canonicalSlug}`
   return {
-    title: post.title,
+    title: post.status === 'alias' ? '文章已合併' : post.title,
     description,
     alternates: { canonical: url },
+    ...(post.status === 'alias' ? { robots: { index: false, follow: true } } : {}),
     openGraph: {
       title: post.title,
       description,
@@ -93,6 +95,24 @@ export default async function PostPage({ params }: PageParams) {
 
   if (!post) {
     notFound()
+  }
+
+  if (post.status === 'alias') {
+    const target = `/posts/${post.year}/${post.canonicalSlug}`
+    return (
+      <main className="mx-auto max-w-3xl px-4 py-8">
+        <h1 className="text-foreground text-2xl leading-tight font-bold">文章已合併</h1>
+        <p className="text-foreground mt-4">正在前往合併後的文章。</p>
+        <p className="mt-4">
+          <Link href={target}>若未自動前往，請點此前往。</Link>
+        </p>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.location.replace(${JSON.stringify(target)})`,
+          }}
+        />
+      </main>
+    )
   }
 
   const { prev, next } = await getAdjacentPosts(slug)

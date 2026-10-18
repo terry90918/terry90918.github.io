@@ -4,12 +4,11 @@ export interface Tag {
   count?: number
 }
 
-export interface Post {
+interface PostFields {
   title: string
   slug: string
   excerpt: string
   publishedAt: string
-  status: 'draft' | 'published'
   tags: Tag[]
   readingTime: number
   html: string
@@ -18,6 +17,23 @@ export interface Post {
   metaDescription?: string
   featureImage?: string
 }
+
+export interface PublishedPost extends PostFields {
+  status: 'published'
+  canonicalSlug?: never
+}
+
+export interface DraftPost extends PostFields {
+  status: 'draft'
+  canonicalSlug?: never
+}
+
+export interface AliasPost extends PostFields {
+  status: 'alias'
+  canonicalSlug: string
+}
+
+export type Post = PublishedPost | DraftPost | AliasPost
 
 export interface PostsByYearMonth {
   year: number

@@ -1,12 +1,14 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { renderToStaticMarkup } from 'react-dom/server'
-import type { Post } from '../../lib/posts/types'
+import type { AliasPost, Post } from '../../lib/posts/types'
 import PostsPage from '../../app/(frontend)/posts/page'
 
 vi.mock('@/lib/posts/queries', () => ({ getPostsByYearMonth: vi.fn() }))
 import { getPostsByYearMonth } from '../../lib/posts/queries'
 
-function post(slug: string, status: Post['status']): Post {
+type ListedPost = Exclude<Post, AliasPost>
+
+function post(slug: string, status: ListedPost['status']): ListedPost {
   return {
     title: slug,
     slug,

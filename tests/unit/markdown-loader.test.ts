@@ -32,6 +32,17 @@ status: draft
 Draft content.
 `
 
+const ALIAS_POST = `---
+title: Merged Post
+publishedAt: "2026-04-22T10:00:00+08:00"
+status: alias
+slug: old-post
+canonicalSlug: test-post
+---
+
+This article has moved.
+`
+
 let tempDir: string
 
 beforeEach(() => {
@@ -136,6 +147,16 @@ describe('loadAllPosts()', () => {
 
     expect(posts.every((p) => p.status === 'published')).toBe(true)
     expect(posts.some((p) => p.status === 'draft')).toBe(false)
+  })
+
+  it('includes aliases in production mode for their redirect pages', async () => {
+    writeFileSync(join(tempDir, '2026', 'test-post.md'), VALID_POST)
+    writeFileSync(join(tempDir, '2026', 'old-post.md'), ALIAS_POST)
+
+    const posts = await loadAllPosts({ dir: tempDir, env: 'production' })
+
+    expect(posts.map((post) => post.status).sort()).toEqual(['alias', 'published'])
+    expect(posts.find((post) => post.status === 'alias')?.canonicalSlug).toBe('test-post')
   })
 
   it('returns empty array when directory is empty', async () => {

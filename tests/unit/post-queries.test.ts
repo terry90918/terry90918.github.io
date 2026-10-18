@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import type { Post } from '../../lib/posts/types'
+import type { AliasPost, Post, PublishedPost } from '../../lib/posts/types'
 
 vi.mock('../../lib/posts/loader', () => ({
   loadAllPosts: vi.fn(),
@@ -17,7 +17,7 @@ import {
   getPosts,
 } from '../../lib/posts/queries'
 
-const mockPost = (overrides: Partial<Post> = {}): Post => ({
+const mockPost = (overrides: Partial<Omit<PublishedPost, 'status'>> = {}): PublishedPost => ({
   title: 'Test Post',
   slug: 'test-post',
   excerpt: 'Test excerpt',
@@ -47,6 +47,12 @@ const POSTS: Post[] = [
   }),
 ]
 
+const ALIAS_POST: AliasPost = {
+  ...mockPost({ title: 'Merged Post', slug: 'oldest-alias' }),
+  status: 'alias',
+  canonicalSlug: 'oldest',
+}
+
 beforeEach(() => {
   vi.mocked(loadAllPosts).mockResolvedValue(POSTS)
 })
@@ -61,6 +67,14 @@ describe('getPosts()', () => {
     vi.mocked(loadAllPosts).mockRejectedValueOnce(new Error('fail'))
     const posts = await getPosts()
     expect(posts).toEqual([])
+  })
+
+  it('keeps alias pages out of article listings', async () => {
+    vi.mocked(loadAllPosts).mockResolvedValueOnce([...POSTS, ALIAS_POST])
+
+    const posts = await getPosts()
+
+    expect(posts).toEqual(POSTS)
   })
 })
 
@@ -99,6 +113,14 @@ describe('getPostBySlug()', () => {
     const post = await getPostBySlug('middle')
     expect(post).toBeNull()
   })
+
+  it('resolves an alias by its original slug', async () => {
+    vi.mocked(loadAllPosts).mockResolvedValueOnce([...POSTS, ALIAS_POST])
+
+    const post = await getPostBySlug('oldest-alias')
+
+    expect(post).toMatchObject({ status: 'alias', canonicalSlug: 'oldest' })
+  })
 })
 
 describe('getAllPostSlugs()', () => {
@@ -106,6 +128,14 @@ describe('getAllPostSlugs()', () => {
     const slugs = await getAllPostSlugs()
     expect(slugs).toHaveLength(3)
     expect(slugs[0]).toMatchObject({ year: expect.any(String), slug: expect.any(String) })
+  })
+
+  it('includes aliases so static export generates their redirect pages', async () => {
+    vi.mocked(loadAllPosts).mockResolvedValueOnce([...POSTS, ALIAS_POST])
+
+    const slugs = await getAllPostSlugs()
+
+    expect(slugs).toContainEqual({ year: '2026', slug: 'oldest-alias' })
   })
 
   it('year matches publishedAt year', async () => {
@@ -143,6 +173,15 @@ describe('getAdjacentPosts()', () => {
   it('returns null/null for unknown slug', async () => {
     const result = await getAdjacentPosts('nonexistent')
     expect(result).toEqual({ prev: null, next: null })
+  })
+
+  it('does not use aliases as adjacent articles', async () => {
+    vi.mocked(loadAllPosts).mockResolvedValueOnce([...POSTS, ALIAS_POST])
+
+    const { prev, next } = await getAdjacentPosts('middle')
+
+    expect(prev?.slug).toBe('oldest')
+    expect(next?.slug).toBe('newest')
   })
 })
 
