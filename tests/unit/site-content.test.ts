@@ -1,8 +1,14 @@
 import { describe, expect, it } from 'vitest'
-import type { Post } from '../../lib/posts/types'
+import type { AliasPost, Post } from '../../lib/posts/types'
 import { classifyPost, getPostHref, getRecentUpdates } from '../../lib/site/writing'
 
-function post(slug: string, publishedAt: string, status: Post['status'] = 'published'): Post {
+type ListedPost = Exclude<Post, AliasPost>
+
+function post(
+  slug: string,
+  publishedAt: string,
+  status: ListedPost['status'] = 'published'
+): ListedPost {
   return {
     title: slug,
     slug,

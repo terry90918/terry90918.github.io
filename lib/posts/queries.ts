@@ -18,7 +18,8 @@ const MONTHS = [
 
 export async function getPosts(): Promise<Post[]> {
   try {
-    return await loadAllPosts()
+    const posts = await loadAllPosts()
+    return posts.filter((post) => post.status !== 'alias')
   } catch {
     return []
   }
@@ -26,7 +27,7 @@ export async function getPosts(): Promise<Post[]> {
 
 export async function getLatestPosts(count = 3): Promise<Post[]> {
   try {
-    const posts = await loadAllPosts()
+    const posts = await getPosts()
     return posts.slice(0, count)
   } catch {
     return []
@@ -44,7 +45,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 
 export async function getPostsByTag(tagSlug: string): Promise<Post[]> {
   try {
-    const posts = await loadAllPosts()
+    const posts = await getPosts()
     return posts.filter((p) => p.tags.some((t) => t.slug === tagSlug))
   } catch {
     return []
@@ -62,7 +63,7 @@ export async function getAllPostSlugs(): Promise<{ year: string; slug: string }[
 
 export async function getAllTags(): Promise<Tag[]> {
   try {
-    const posts = await loadAllPosts()
+    const posts = await getPosts()
     const tagMap = new Map<string, Tag>()
     for (const post of posts) {
       for (const tag of post.tags) {
@@ -117,7 +118,7 @@ export async function getAdjacentPosts(
   currentSlug: string
 ): Promise<{ prev: Post | null; next: Post | null }> {
   try {
-    const posts = await loadAllPosts()
+    const posts = await getPosts()
     const idx = posts.findIndex((p) => p.slug === currentSlug)
     if (idx === -1) return { prev: null, next: null }
     return {

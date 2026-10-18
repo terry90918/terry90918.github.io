@@ -4,7 +4,7 @@ import matter from 'gray-matter'
 import readingTime from 'reading-time'
 import { renderMarkdown } from './markdown'
 import { slugify } from './slugify'
-import type { Post, Tag } from './types'
+import type { AliasPost, Post, Tag } from './types'
 
 interface LoadOptions {
   dir?: string
@@ -43,6 +43,16 @@ function validateFrontmatter(data: Record<string, unknown>, filePath: string): v
   if (!data.status) {
     throw new Error(`Missing required frontmatter field "status" in ${filePath}`)
   }
+  if (data.status === 'alias') {
+    readCanonicalSlug(data.canonicalSlug, filePath)
+  }
+}
+
+function readCanonicalSlug(value: unknown, filePath: string): string {
+  if (typeof value !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value)) {
+    throw new Error(`Invalid required frontmatter field "canonicalSlug" in ${filePath}`)
+  }
+  return value
 }
 
 async function parsePost(filePath: string): Promise<Post> {
@@ -65,12 +75,11 @@ async function parsePost(filePath: string): Promise<Post> {
 
   const html = await renderMarkdown(content)
 
-  return {
+  const postFields = {
     title: String(fm.title),
     slug,
     excerpt: typeof fm.excerpt === 'string' ? fm.excerpt : '',
     publishedAt,
-    status: fm.status === 'published' ? 'published' : 'draft',
     tags,
     readingTime: readingTimeMinutes,
     html,
@@ -78,6 +87,19 @@ async function parsePost(filePath: string): Promise<Post> {
     year,
     metaDescription: typeof fm.metaDescription === 'string' ? fm.metaDescription : undefined,
     featureImage: typeof fm.featureImage === 'string' ? fm.featureImage : undefined,
+  }
+
+  if (fm.status === 'alias') {
+    return {
+      ...postFields,
+      status: 'alias',
+      canonicalSlug: readCanonicalSlug(fm.canonicalSlug, filePath),
+    } satisfies AliasPost
+  }
+
+  return {
+    ...postFields,
+    status: fm.status === 'published' ? 'published' : 'draft',
   }
 }
 
@@ -91,7 +113,22 @@ export async function loadAllPosts(opts: LoadOptions = {}): Promise<Post[]> {
   const filePaths = await scanMarkdownFiles(postsDir)
   const posts = await Promise.all(filePaths.map((fp) => parsePost(fp)))
 
-  const filtered = isProd ? posts.filter((p) => p.status === 'published') : posts
+  for (const post of posts) {
+    if (post.status !== 'alias') continue
+    const targetExists = posts.some(
+      (candidate) =>
+        candidate.status === 'published' &&
+        candidate.year === post.year &&
+        candidate.slug === post.canonicalSlug
+    )
+    if (!targetExists) {
+      throw new Error(
+        `Missing published canonical target "${post.canonicalSlug}" for alias "${post.slug}"`
+      )
+    }
+  }
+
+  const filtered = isProd ? posts.filter((p) => p.status !== 'draft') : posts
 
   const sorted = [...filtered].sort(
     (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
