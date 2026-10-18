@@ -12,8 +12,6 @@ tags:
 metaDescription: 'pstack 下篇逐項介紹 31 個一般技能、子代理提示、Benny 自動化、參考資料、腳本與 CI，區分模型指示和真正的執行檢查。'
 ---
 
-## pstack 下篇：55 個技能、代理提示、自動化與程式檢查
-
 [上篇](/posts/2026/cursor-pstack-plugin-analysis)畫出 repo 的整體結構，[中篇](/posts/2026/cursor-pstack-workflow-design-guide)走過 23 份 playbook 和 24 個原則。這篇逐項看剩下的通用技能，再往下讀代理設定、Benny、自動化提示範本、參考檔和腳本。
 
 研究固定在 [pstack 0.15.26](https://github.com/cursor/plugins/tree/0b8e952052d482ee6de06deebf14d590d77b1b34/pstack)。這個版本共有 55 份 SKILL.md：31 個一般技能和 24 個原則。中篇已逐項分析原則；以下 31 項都說明何時使用、它安排 Agent 做什麼，以及它依賴哪些能力。

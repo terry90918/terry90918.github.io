@@ -12,8 +12,6 @@ tags:
 metaDescription: 'pstack 中篇以實際任務走讀 poteto-mode，分析 23 份 playbook、24 個原則及路由分界，說明流程要求何時需要工具與真實證據。'
 ---
 
-## pstack 中篇：任務如何經過 23 份 Playbook 與 24 個原則
-
 [上篇](/posts/2026/cursor-pstack-plugin-analysis)整理了 pstack repo 的零件。這篇把鏡頭放在工作時的順序：Agent 收到任務後怎麼選流程、何時載入其他技能、最後需要什麼證據。
 
 本文使用 [pstack 0.15.26 固定版本](https://github.com/cursor/plugins/tree/0b8e952052d482ee6de06deebf14d590d77b1b34/pstack)。/poteto-mode 提供一份路由入口，底下有 23 份任務流程。Agent 會挑其中一份，再按步驟需要讀取原則或專門技能。不是 23 份都會在一次任務裡執行。
