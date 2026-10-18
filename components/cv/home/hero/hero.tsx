@@ -21,7 +21,7 @@ export default function Hero({
             src={contact.photo}
             alt={profile.name}
             width={140}
-            height={175}
+            height={210}
             className="cv-mobile-portrait mb-9 rounded-2xl object-contain min-[1024px]:hidden"
           />
           <div className="cv-reference-hero-copy lg:max-w-lg">
