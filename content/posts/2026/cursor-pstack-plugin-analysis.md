@@ -1,6 +1,6 @@
 ---
 title: 'pstack 上篇：一個工程 Agent 外掛的完整地圖'
-publishedAt: '2026-10-18T23:18:33+08:00'
+publishedAt: '2026-10-18T23:18:35+08:00'
 status: 'published'
 slug: 'cursor-pstack-plugin-analysis'
 excerpt: '從 pstack 0.15.26 的 171 個檔案看懂外掛如何分發技能、路由任務、委派工作，以及哪些限制仍由 Cursor 和專案工具負責。'

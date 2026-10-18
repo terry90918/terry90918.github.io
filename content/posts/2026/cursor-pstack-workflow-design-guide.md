@@ -1,6 +1,6 @@
 ---
 title: 'pstack 中篇：任務如何經過 23 份 Playbook 與 24 個原則'
-publishedAt: '2026-10-18T23:18:33+08:00'
+publishedAt: '2026-10-18T23:18:34+08:00'
 status: 'published'
 slug: 'cursor-pstack-workflow-design-guide'
 excerpt: '用一個 bug 和一個功能示範 pstack 如何選流程；再逐項整理 23 份 playbook 的用途，以及 24 個原則如何改變工程決策。'
