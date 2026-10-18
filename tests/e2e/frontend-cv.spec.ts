@@ -158,3 +158,16 @@ test('loads the 3D badge only when its desktop layout is visible', async ({ page
   await expect(page.locator('#top canvas')).toHaveCount(1)
   await expect.poll(() => models.length).toBeGreaterThan(0)
 })
+
+test('mobile CV reserves the selected portrait ratio before image load', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 })
+  await page.route('**/cv-assets/images/profile/tien-yi-chen.webp', (route) => route.abort())
+  await page.goto('/cv/zh-TW')
+
+  const portrait = page.locator('.cv-mobile-portrait')
+  await expect(portrait).toBeVisible()
+  const bounds = await portrait.boundingBox()
+
+  expect(bounds).not.toBeNull()
+  expect(bounds!.height / bounds!.width).toBeCloseTo(1.5)
+})
