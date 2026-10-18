@@ -14,7 +14,7 @@ metaDescription: '用新手聽得懂的方式解析 OpenAI 的 Harness Engineeri
 
 本文依據 OpenAI 工程師 Ryan Lopopolo 在 2026 年 2 月發表的 [Harness 工程：在智慧體優先的世界中善用 Codex](https://openai.com/zh-Hant/index/harness-engineering/)。下文會先說明文章中的實驗，再把做法拆成新手能理解的工程原則。文中數字是 OpenAI 對內部專案的描述與估算，不是獨立驗證的產業基準。
 
-如果你想先了解 Harness Engineering 的整體概念，可以讀我們已發布的 [Agent 不可靠時，先看工作系統：Harness Engineering 的實務拆解](/posts/2026/harness-engineering-agent-reliability)。這篇則聚焦 OpenAI 的 Codex 開發實驗，以及它能教給新手什麼。
+本篇聚焦 OpenAI 的 Codex 開發實驗，以及它能教給新手什麼。
 
 ## 先弄懂 Harness 是什麼
 

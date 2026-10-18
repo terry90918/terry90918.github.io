@@ -33,12 +33,12 @@ export default async function PostsPage() {
     <div className="site-page">
       <SitePageIntro label="文章" title="文章">
         <p className="site-lead">
-          持續整理的 AI 資訊與翻譯，按年份放在這裡。日報是資訊整理；翻譯標明原作者與來源。
+          持續整理的 AI 日報與翻譯，按年份放在這裡。日報是資訊整理；翻譯標明原作者與來源。
         </p>
         {hasDaily && (
           <nav aria-label="文章主題" className="site-topic-nav">
             <Link href="/posts/ai-daily" className="site-button">
-              AI 資訊
+              AI 日報
             </Link>
           </nav>
         )}
