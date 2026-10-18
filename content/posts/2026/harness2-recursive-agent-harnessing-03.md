@@ -10,7 +10,7 @@ metaDescription: '說明 Harness² 的安裝和小型實驗方式，整理三個
 
 > 試跑 Harness² 要分清楚三件事：能安裝、模型能呼叫、以及 benchmark 分數值得相信。
 
-這是三篇系列的下篇。上篇說明 Harness² 的兩層遞迴；中篇沿著原始碼追蹤一次任務；本篇整理如何安全地開始小型實驗，再判讀論文結果可以支持哪些結論。
+這是三篇系列的下篇。[上篇](/posts/2026/harness2-recursive-agent-harnessing-01) 說明 Harness² 的兩層遞迴；[中篇](/posts/2026/harness2-recursive-agent-harnessing-02) 沿著原始碼追蹤一次任務；本篇整理如何安全地開始小型實驗，再判讀論文結果可以支持哪些結論。
 
 本文依據 [repo main commit 1cfe254](https://github.com/google-research/harness2/tree/1cfe254e8d25b15f37048c3730134686abe60335) 的 README、setup、benchmark 和 experiment guide，以及 [arXiv 論文 v1](https://arxiv.org/html/2610.14224v1)。下列分數是論文報告結果，不是本機重跑數字。
 
