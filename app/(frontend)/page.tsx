@@ -9,7 +9,7 @@ import { SiteEyebrow, SitePortrait, SiteSectionHeading } from '@/components/Site
 
 export const metadata = pageMetadata(
   'Terry Chen',
-  '認識 Terry：幾段產品與工程經歷、精選作品，以及最近整理的 AI 資訊。',
+  '認識 Terry：幾段產品與工程經歷、精選作品，以及最近整理的 AI 日報。',
   '/'
 )
 
@@ -32,7 +32,7 @@ export default async function HomePage() {
             嗨，我是 Terry<span className="text-accent">。</span>
           </h1>
           <p className="site-lead">
-            這裡放我做過的產品、幾段經歷，以及最近整理的 AI 資訊。你可以從下面開始認識我。
+            這裡放我做過的產品、幾段經歷，以及最近整理的 AI 日報。你可以從下面開始認識我。
           </p>
           <div className="site-actions">
             <Link href="/about" className="site-button site-button-primary">

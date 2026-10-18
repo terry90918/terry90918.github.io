@@ -22,7 +22,7 @@ export default function AboutPage() {
       <div data-testid="about-profile" className="site-about-profile border-border border-b">
         <SitePortrait />
         <div className="site-about-copy">
-          <p>嗨，我是 Terry。這個網站放我做過的產品、幾段經歷與持續整理的 AI 資訊。</p>
+          <p>嗨，我是 Terry。這個網站放我做過的產品、幾段經歷與持續整理的 AI 日報。</p>
           <p>
             你可以從
             <Link href="/story" className="site-text-link">

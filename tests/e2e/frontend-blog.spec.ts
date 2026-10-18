@@ -156,7 +156,7 @@ test.describe('Personal site', () => {
     await page.goto('/about')
     await expect(page.getByRole('heading', { name: '關於我', exact: true })).toBeVisible()
     await expect(page.getByTestId('about-profile')).toContainText(
-      '嗨，我是 Terry。這個網站放我做過的產品、幾段經歷與持續整理的 AI 資訊。'
+      '嗨，我是 Terry。這個網站放我做過的產品、幾段經歷與持續整理的 AI 日報。'
     )
     await expect(page.locator('main')).not.toContainText(/敬請期待|熱愛旅行|人生使命/)
     for (const href of [
@@ -482,8 +482,8 @@ test.describe('Writing and metadata', () => {
   }) => {
     await page.goto('/posts')
     const nav = page.getByRole('navigation', { name: '文章主題' })
-    await expect(nav.getByRole('link')).toHaveText(['AI 資訊'])
-    await expect(nav.getByRole('link', { name: 'AI 資訊', exact: true })).toHaveAttribute(
+    await expect(nav.getByRole('link')).toHaveText(['AI 日報'])
+    await expect(nav.getByRole('link', { name: 'AI 日報', exact: true })).toHaveAttribute(
       'href',
       '/posts/ai-daily'
     )
@@ -491,7 +491,7 @@ test.describe('Writing and metadata', () => {
     await expect(
       page.locator('#writing-2026-ai-engineering-skills-map-software-engineering-fundamentals')
     ).toHaveCount(1)
-    await nav.getByRole('link', { name: 'AI 資訊', exact: true }).click()
+    await nav.getByRole('link', { name: 'AI 日報', exact: true }).click()
     await expect(page).toHaveURL('/posts/ai-daily')
     await expect(page.getByRole('heading', { name: 'AI 日報', exact: true })).toBeVisible()
   })
