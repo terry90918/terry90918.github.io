@@ -12,8 +12,6 @@ tags:
 metaDescription: '以 pstack 0.15.26 原始碼為準，拆解 Cursor 外掛的 manifests、poteto-mode、技能、playbook、代理、腳本與 Claude Code 發行副本。'
 ---
 
-## pstack 上篇：一個工程 Agent 外掛的完整地圖
-
 pstack 看起來像一大疊 Markdown，但它實際上是一個有入口、有路由、有工作流程、有輔助程式和發行檢查的 Agent 外掛。讀它時，先不要把每個檔案都叫作「提示詞」。不同檔案負責的工作不同，有些是 Agent 會讀的規則，有些是安裝資料，有些則真的會被執行。
 
 本文依 Cursor 官方 plugins repository 的 pstack **0.15.26** 版本撰寫，固定來源是 [2026-10-18 的版本提交](https://github.com/cursor/plugins/commit/0b8e952052d482ee6de06deebf14d590d77b1b34)。這個 pstack 子目錄共有 171 個檔案：55 個技能、23 份 playbook、78 個技能參考與支援檔、兩份代理設定、Benny 自動化素材、使用指南、manifest 和圖片。本文看的是 pstack 子目錄及直接維護其 Claude Code 發行副本的產生器，不把 Cursor plugins repository 中其他外掛算進來。
