@@ -153,4 +153,4 @@ Feature 先要求理解現有報表和呼叫者，再釐清資料形狀、欄位
 
 ---
 
-[下一篇：逐項解析 pstack 的一般技能、代理提示、自動化素材和程式檢查](/posts/2026/cursor-pstack-prompt-analysis)
+[下一篇：pstack 深度導讀（下）](/posts/2026/cursor-pstack-prompt-analysis)
