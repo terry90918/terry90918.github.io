@@ -190,7 +190,7 @@ pstack 值得借鏡的不是檔案數量，而是它把角色分開的方式。�
 ## 三篇的閱讀路徑
 
 - [pstack 深度導讀（上）：一個工程 Agent 外掛的完整地圖](/posts/2026/cursor-pstack-plugin-analysis) 說明 repo 零件與宿主邊界。
-- **pstack 深度導讀（中）**示範任務怎麼流過 playbook、技能與原則。
-- [pstack 深度導讀（下）：55 個技能、代理提示、自動化與程式檢查](/posts/2026/cursor-pstack-prompt-analysis) 逐項拆解可重用材料。
+- [pstack 深度導讀（中）](/posts/2026/cursor-pstack-workflow-design-guide) 示範任務怎麼流過 playbook、技能與原則。
+- **pstack 深度導讀（下）**：逐項拆解可重用材料。
 
 研究範圍是 pstack 0.15.26 的文字、程式和產生器。我沒有執行每一條 playbook，也沒有測量不同模型的成功率；文件寫出的流程是可觀察的設計，不能單靠本文推論它在所有 repo 或模型上都會照樣運作。
