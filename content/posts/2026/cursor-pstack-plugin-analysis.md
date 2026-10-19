@@ -1,6 +1,6 @@
 ---
-title: 'pstack 上篇：一個工程 Agent 外掛的完整地圖'
-publishedAt: '2026-10-18T23:18:35+08:00'
+title: 'pstack 深度導讀（上）：一個工程 Agent 外掛的完整地圖'
+publishedAt: '2026-10-18T23:18:33+08:00'
 status: 'published'
 slug: 'cursor-pstack-plugin-analysis'
 excerpt: '從 pstack 0.15.26 的 171 個檔案看懂外掛如何分發技能、路由任務、委派工作，以及哪些限制仍由 Cursor 和專案工具負責。'
@@ -9,7 +9,7 @@ tags:
   - ai-agent
   - developer-tools
   - agent-workflow
-metaDescription: '以 pstack 0.15.26 原始碼為準，拆解 Cursor 外掛的 manifests、poteto-mode、技能、playbook、代理、腳本與 Claude Code 發行副本。'
+metaDescription: 'pstack 深度導讀（上）以 pstack 0.15.26 原始碼為準，拆解 Cursor 外掛的 manifests、poteto-mode、技能、playbook、代理、腳本與 Claude Code 發行副本。'
 ---
 
 pstack 看起來像一大疊 Markdown，但它實際上是一個有入口、有路由、有工作流程、有輔助程式和發行檢查的 Agent 外掛。讀它時，先不要把每個檔案都叫作「提示詞」。不同檔案負責的工作不同，有些是 Agent 會讀的規則，有些是安裝資料，有些則真的會被執行。
@@ -51,7 +51,7 @@ pstack 的 [新手指南](https://github.com/cursor/plugins/blob/0b8e952052d482e
 
 ## 技能不是 55 個平行入口
 
-pstack 0.15.26 有 55 個 SKILL.md：31 個一般技能和 24 個原則技能。大多數技能設定成需要明確呼叫或由 poteto-mode 載入，並非描述相似就都會自行啟動。唯一的 frontmatter 例外是 setup-pstack；它能依描述被宿主判斷是否適用。完整的技能定位與限制會放在[下篇](/posts/2026/cursor-pstack-prompt-analysis)。
+pstack 0.15.26 有 55 個 SKILL.md：31 個一般技能和 24 個原則技能。大多數技能設定成需要明確呼叫或由 poteto-mode 載入，並非描述相似就都會自行啟動。唯一的 frontmatter 例外是 setup-pstack；它能依描述被宿主判斷是否適用。完整的技能定位與限制會放在[pstack 深度導讀（下）](/posts/2026/cursor-pstack-prompt-analysis)。
 
 playbook 也不是另一批 slash commands。它是 poteto-mode 針對一種任務選取的流程檔。這一點很關鍵：使用者通常從任務開始，不必先知道所有內部零件；路由器再把較大的目標拆成步驟。
 
@@ -78,8 +78,8 @@ pstack 同時有文字流程和少量程式檢查，但它不是一個獨立的�
 
 ## 這三篇如何一起讀
 
-- **上篇**：先看清 repo 裡每一層各自負責什麼，以及 pstack 與 Cursor 的邊界。
-- [**中篇：讓一個 bug 修復和一個功能任務走過 pstack**](/posts/2026/cursor-pstack-workflow-design-guide)：看 playbook 與原則怎樣分流、改變工作順序。
-- [**下篇：逐項解析 55 個技能與整個 repo 的其他提示材料**](/posts/2026/cursor-pstack-prompt-analysis)：按觸發條件、工作方式、依賴和限制拆解每一類提示。
+- **pstack 深度導讀（上）**：先看清 repo 裡每一層各自負責什麼，以及 pstack 與 Cursor 的邊界。
+- [**pstack 深度導讀（中）：任務如何經過 23 份 Playbook 與 24 個原則**](/posts/2026/cursor-pstack-workflow-design-guide)：看 playbook 與原則怎樣分流、改變工作順序。
+- [**pstack 深度導讀（下）：55 個技能、代理提示、自動化與程式檢查**](/posts/2026/cursor-pstack-prompt-analysis)：按觸發條件、工作方式、依賴和限制拆解每一類提示。
 
 本文使用 [pstack 0.15.26 固定版本](https://github.com/cursor/plugins/tree/0b8e952052d482ee6de06deebf14d590d77b1b34/pstack)；上游更新後，技能數量、預設模型和工具支援都可能改變。
