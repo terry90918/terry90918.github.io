@@ -1,6 +1,6 @@
 ---
-title: 'pstack 下篇：55 個技能、代理提示、自動化與程式檢查'
-publishedAt: '2026-10-18T23:18:33+08:00'
+title: 'pstack 深度導讀（下）：55 個技能、代理提示、自動化與程式檢查'
+publishedAt: '2026-10-18T23:18:35+08:00'
 status: 'published'
 slug: 'cursor-pstack-prompt-analysis'
 excerpt: '逐項分析 pstack 0.15.26 的 31 個一般技能與 24 個原則，並讀代理設定、Benny 自動化、輔助腳本和 Claude Code 副本的維護方式。'
@@ -9,10 +9,10 @@ tags:
   - ai-agent
   - developer-tools
   - agent-workflow
-metaDescription: 'pstack 下篇逐項介紹 31 個一般技能、子代理提示、Benny 自動化、參考資料、腳本與 CI，區分模型指示和真正的執行檢查。'
+metaDescription: 'pstack 深度導讀（下）逐項介紹 31 個一般技能、子代理提示、Benny 自動化、參考資料、腳本與 CI，區分模型指示和真正的執行檢查。'
 ---
 
-[上篇](/posts/2026/cursor-pstack-plugin-analysis)畫出 repo 的整體結構，[中篇](/posts/2026/cursor-pstack-workflow-design-guide)走過 23 份 playbook 和 24 個原則。這篇逐項看剩下的通用技能，再往下讀代理設定、Benny、自動化提示範本、參考檔和腳本。
+[pstack 深度導讀（上）](/posts/2026/cursor-pstack-plugin-analysis)畫出 repo 的整體結構，[pstack 深度導讀（中）](/posts/2026/cursor-pstack-workflow-design-guide)走過 23 份 playbook 和 24 個原則。這篇逐項看剩下的通用技能，再往下讀代理設定、Benny、自動化提示範本、參考檔和腳本。
 
 研究固定在 [pstack 0.15.26](https://github.com/cursor/plugins/tree/0b8e952052d482ee6de06deebf14d590d77b1b34/pstack)。這個版本共有 55 份 SKILL.md：31 個一般技能和 24 個原則。中篇已逐項分析原則；以下 31 項都說明何時使用、它安排 Agent 做什麼，以及它依賴哪些能力。
 
@@ -187,10 +187,10 @@ pstack 值得借鏡的不是檔案數量，而是它把角色分開的方式。�
 
 不要一開始就做 55 個技能。先觀察哪個錯誤重複發生，再選最能降低錯誤的結構。pstack 的 /correct 把這條路徑寫成架構、型別、lint、測試、文件的順序；新增加一段提醒通常是最後才選的手段。
 
-## 上中下篇的閱讀路徑
+## 三篇的閱讀路徑
 
-- [上篇：一個工程 Agent 外掛的完整地圖](/posts/2026/cursor-pstack-plugin-analysis) 說明 repo 零件與宿主邊界。
-- **中篇**示範任務怎麼流過 playbook、技能與原則。
-- [下篇：55 個技能、代理提示、自動化與程式檢查](/posts/2026/cursor-pstack-prompt-analysis) 逐項拆解可重用材料。
+- [pstack 深度導讀（上）：一個工程 Agent 外掛的完整地圖](/posts/2026/cursor-pstack-plugin-analysis) 說明 repo 零件與宿主邊界。
+- [pstack 深度導讀（中）](/posts/2026/cursor-pstack-workflow-design-guide) 示範任務怎麼流過 playbook、技能與原則。
+- **pstack 深度導讀（下）**：逐項拆解可重用材料。
 
 研究範圍是 pstack 0.15.26 的文字、程式和產生器。我沒有執行每一條 playbook，也沒有測量不同模型的成功率；文件寫出的流程是可觀察的設計，不能單靠本文推論它在所有 repo 或模型上都會照樣運作。
