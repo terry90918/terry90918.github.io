@@ -1,5 +1,6 @@
 import { Children, isValidElement, type JSX, type ReactNode } from 'react'
 import Image from 'next/image'
+import rehypePrettyCode from 'rehype-pretty-code'
 import { MDXRemote, type MDXRemoteProps } from 'next-mdx-remote-client/rsc'
 import type { Locale } from '@/lib/cv/profile'
 import { generateSlug } from '@/lib/cv/extract-headings'
@@ -27,11 +28,28 @@ const components: MDXRemoteProps['components'] = {
 
 export default function MDXContent({
   locale = 'zh-TW',
+  options,
   ...props
 }: JSX.IntrinsicAttributes & MDXRemoteProps & { locale?: Locale }) {
   return (
     <MDXRemote
       {...props}
+      options={{
+        ...options,
+        mdxOptions: {
+          ...options?.mdxOptions,
+          rehypePlugins: [
+            ...(options?.mdxOptions?.rehypePlugins ?? []),
+            [
+              rehypePrettyCode,
+              {
+                theme: { dark: 'github-dark-dimmed', light: 'github-light' },
+                keepBackground: false,
+              },
+            ],
+          ],
+        },
+      }}
       components={{
         ...components,
         table: ({ children, ...tableProps }) => (
