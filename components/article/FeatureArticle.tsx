@@ -35,7 +35,6 @@ export function FeatureArticle({
           <ArticleOutline headings={headings} />
         </aside>
         <div className="feature-reading-stream">
-          <ArticleOutline headings={headings} mobile />
           {presentation.video && (
             <figure className="feature-video">
               <div className="feature-video-stage">
@@ -57,6 +56,7 @@ export function FeatureArticle({
               </figcaption>
             </figure>
           )}
+          <ArticleOutline headings={headings} mobile />
           <div
             className="feature-body typeset typeset-docs mx-auto max-w-[37em]"
             dangerouslySetInnerHTML={{ __html: post.html }}
