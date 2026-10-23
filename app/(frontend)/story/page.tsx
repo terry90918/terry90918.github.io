@@ -16,7 +16,11 @@ export default function StoryPage() {
       <SitePageIntro label="故事" title="幾段經歷">
         <p className="site-lead">
           從做出一個產品，到平台、團隊與近期的 AI 工作，這裡選了幾段經歷。完整職涯可在{' '}
-          <Link href={CV_URL} prefetch={false} className="text-accent underline underline-offset-4">
+          <Link
+            href={CV_URL}
+            prefetch={false}
+            className="text-accent-ink underline underline-offset-4"
+          >
             CV
           </Link>{' '}
           查看。

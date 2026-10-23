@@ -3,7 +3,7 @@ import type { Locale } from '@/lib/cv/profile'
 import Eyebrow from '@/components/cv/shared/eyebrow/eyebrow'
 import { SiteEyebrow } from '@/components/SitePrimitives'
 import FeaturedWorkCard from './featured-work-card'
-import { cn } from '@/lib/cv/utils'
+import { cn } from '@/lib/utils'
 type FeaturedWorksProps = {
   caseStudies: CaseStudyMetadata[]
   locale: Locale

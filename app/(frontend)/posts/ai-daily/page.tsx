@@ -1,3 +1,4 @@
+import { Card } from '@/components/ui/card'
 import Link from 'next/link'
 import { getPosts } from '@/lib/posts/queries'
 import { classifyPost } from '@/lib/site/writing'
@@ -32,13 +33,15 @@ export default async function AIDailyPage() {
         <p className="mt-2 text-sm opacity-65">共 {posts.length} 篇已發佈日報</p>
       </header>
       <section aria-label="已發佈日報">
-        <div className="site-card site-writing">
-          {posts.length === 0 ? (
-            <p>目前沒有已發佈日報。</p>
-          ) : (
-            posts.map((post) => <WritingPostCard key={post.slug} post={post} />)
-          )}
-        </div>
+        <Card asChild className="gap-0 px-6">
+          <div className="site-card site-writing">
+            {posts.length === 0 ? (
+              <p>目前沒有已發佈日報。</p>
+            ) : (
+              posts.map((post) => <WritingPostCard key={post.slug} post={post} />)
+            )}
+          </div>
+        </Card>
       </section>
     </div>
   )

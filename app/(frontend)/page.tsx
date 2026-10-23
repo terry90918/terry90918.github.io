@@ -1,3 +1,5 @@
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
 import Link from 'next/link'
 import { getPosts } from '@/lib/posts/queries'
 import { EXPERIENCE_NOTES, SITE_EMAIL, WORK_CASES, WORK_CATEGORY_LABELS } from '@/lib/site/content'
@@ -29,18 +31,20 @@ export default async function HomePage() {
             Terry.TY Chen
           </SiteEyebrow>
           <h1 id="homepage-title">
-            嗨，我是 Terry<span className="text-accent">。</span>
+            嗨，我是 Terry<span className="text-accent-ink">。</span>
           </h1>
           <p className="site-lead">
             這裡放我做過的產品、幾段經歷，以及最近整理的 AI 日報。你可以從下面開始認識我。
           </p>
           <div className="site-actions">
-            <Link href="/about" className="site-button site-button-primary">
-              關於我
-            </Link>
-            <Link href={SITE_EMAIL} className="site-button">
-              寫信給我 <span aria-hidden="true">↗</span>
-            </Link>
+            <Button asChild variant="default">
+              <Link href="/about">關於我</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href={SITE_EMAIL}>
+                寫信給我 <span aria-hidden="true">↗</span>
+              </Link>
+            </Button>
           </div>
         </div>
         <SitePortrait priority />
@@ -53,16 +57,18 @@ export default async function HomePage() {
         </SiteSectionHeading>
         <div data-testid="experience-entries" className="site-card-grid">
           {EXPERIENCE_NOTES.map((note) => (
-            <article key={note.id} className="site-card site-note">
-              <p className="site-kicker">經歷紀錄</p>
-              <h3>
-                <Link href={`/story#${note.id}`}>{note.title}</Link>
-              </h3>
-              <p className="site-card-summary">{note.summary}</p>
-              <Link href={`/story#${note.id}`} className="site-text-link">
-                讀這段經歷
-              </Link>
-            </article>
+            <Card key={note.id} asChild className="gap-0 px-6">
+              <article className="site-card site-note">
+                <p className="site-kicker">經歷紀錄</p>
+                <h3>
+                  <Link href={`/story#${note.id}`}>{note.title}</Link>
+                </h3>
+                <p className="site-card-summary">{note.summary}</p>
+                <Link href={`/story#${note.id}`} className="site-text-link">
+                  讀這段經歷
+                </Link>
+              </article>
+            </Card>
           ))}
         </div>
       </section>
@@ -73,11 +79,13 @@ export default async function HomePage() {
               看全部文章
             </Link>
           </SiteSectionHeading>
-          <div data-testid="home-updates" className="site-card site-writing">
-            {updates.map((post) => (
-              <WritingPostCard key={post.slug} post={post} />
-            ))}
-          </div>
+          <Card asChild className="gap-0 px-6">
+            <div data-testid="home-updates" className="site-card site-writing">
+              {updates.map((post) => (
+                <WritingPostCard key={post.slug} post={post} />
+              ))}
+            </div>
+          </Card>
           <Link href="/posts/ai-daily" className="site-text-link mt-3.5">
             AI 日報系列
           </Link>
@@ -91,16 +99,18 @@ export default async function HomePage() {
         </SiteSectionHeading>
         <div className="site-card-grid">
           {WORK_CASES.map((work) => (
-            <article key={work.slug} className="site-card site-work-card">
-              <p className="site-kicker">{WORK_CATEGORY_LABELS[work.category]}</p>
-              <h3>
-                <Link href={`/work/${work.slug}`}>{work.title}</Link>
-              </h3>
-              <p className="site-card-summary">{work.summary}</p>
-              <Link href={`/work/${work.slug}`} className="site-text-link">
-                看作品
-              </Link>
-            </article>
+            <Card key={work.slug} asChild className="gap-0 px-6">
+              <article className="site-card site-work-card">
+                <p className="site-kicker">{WORK_CATEGORY_LABELS[work.category]}</p>
+                <h3>
+                  <Link href={`/work/${work.slug}`}>{work.title}</Link>
+                </h3>
+                <p className="site-card-summary">{work.summary}</p>
+                <Link href={`/work/${work.slug}`} className="site-text-link">
+                  看作品
+                </Link>
+              </article>
+            </Card>
           ))}
         </div>
       </section>

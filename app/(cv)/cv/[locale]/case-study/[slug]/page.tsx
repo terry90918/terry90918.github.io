@@ -1,3 +1,5 @@
+import { Card } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import ReadingProgressPill from '@/components/cv/case-study/reading-progress-pill'
@@ -67,7 +69,7 @@ export default async function CaseStudy({
           {metadata.title}
         </h1>
         <p className="text-muted-foreground mt-6 max-w-2xl text-lg">{metadata.description}</p>
-        <div className="bg-card mt-12 grid gap-8 rounded-3xl border p-6 sm:grid-cols-[1fr_1fr] sm:p-8">
+        <Card className="mt-12 grid gap-8 p-6 sm:grid-cols-[1fr_1fr] sm:p-8">
           <div>
             <p className="text-accent-ink text-5xl font-bold tracking-tight sm:text-6xl">
               {metadata.metric}
@@ -86,16 +88,16 @@ export default async function CaseStudy({
               </div>
             ))}
           </dl>
-        </div>
+        </Card>
         <div className="mt-8 flex flex-wrap gap-2" aria-label={labels.tools}>
           {metadata.tools.map((tool) => (
-            <span key={tool} className="rounded-full border px-3 py-1 text-xs">
+            <Badge key={tool} variant="outline">
               {tool}
-            </span>
+            </Badge>
           ))}
         </div>
-        <div id="case-study-content" className="mt-16">
-          <MDXContent source={content} />
+        <div id="case-study-content" className="typeset typeset-docs mx-auto mt-16 max-w-[37em]">
+          <MDXContent source={content} locale={locale} />
         </div>
       </section>
       <FeaturedWorks

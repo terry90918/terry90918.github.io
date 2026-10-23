@@ -20,3 +20,5 @@ prisma/migrations/
 
 # Assets
 public/
+
+app/(frontend)/typeset.css

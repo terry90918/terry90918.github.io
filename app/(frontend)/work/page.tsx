@@ -1,3 +1,4 @@
+import { Card } from '@/components/ui/card'
 import Link from 'next/link'
 import { WORK_CASES, WORK_CATEGORY_LABELS, SUPPORTING_WORK } from '@/lib/site/content'
 import type { WorkCase } from '@/lib/site/content'
@@ -33,31 +34,31 @@ export default function WorkPage() {
           </div>
           <div className="min-w-0 space-y-4">
             {WORK_CASES.filter((work) => work.category === category).map((work) => (
-              <article key={work.slug} className="site-card site-work-card">
-                <h3 className="text-xl font-bold tracking-tight">
-                  <Link href={`/work/${work.slug}`} className="hover:text-accent">
-                    {work.title}
+              <Card key={work.slug} asChild className="gap-0 px-6">
+                <article className="site-card site-work-card">
+                  <h3 className="text-xl font-bold tracking-tight">
+                    <Link href={`/work/${work.slug}`} className="hover:text-accent-ink">
+                      {work.title}
+                    </Link>
+                  </h3>
+                  <p className="site-card-summary">{work.summary}</p>
+                  <p className="site-work-meta">
+                    {work.period} · {work.role}
+                  </p>
+                  <Link href={`/work/${work.slug}`} className="site-text-link">
+                    看作品
                   </Link>
-                </h3>
-                <p className="site-card-summary">{work.summary}</p>
-                <p className="site-work-meta">
-                  {work.period} · {work.role}
-                </p>
-                <Link href={`/work/${work.slug}`} className="site-text-link">
-                  看作品
-                </Link>
-              </article>
+                </article>
+              </Card>
             ))}
             {SUPPORTING_WORK.filter((work) => work.category === category).map((work) => (
-              <article
-                key={work.id}
-                id={work.id}
-                className="site-card site-supporting scroll-mt-56"
-              >
-                <p className="site-kicker">合作經驗</p>
-                <h3 className="font-bold">{work.title}</h3>
-                <p className="mt-1 text-sm leading-6 opacity-80">{work.summary}</p>
-              </article>
+              <Card key={work.id} asChild className="gap-0 px-6">
+                <article id={work.id} className="site-card site-supporting scroll-mt-56">
+                  <p className="site-kicker">合作經驗</p>
+                  <h3 className="font-bold">{work.title}</h3>
+                  <p className="mt-1 text-sm leading-6 opacity-80">{work.summary}</p>
+                </article>
+              </Card>
             ))}
           </div>
         </section>

@@ -1,3 +1,4 @@
+import { Card } from '@/components/ui/card'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { WORK_CASES, WORK_CATEGORY_LABELS } from '@/lib/site/content'
@@ -27,7 +28,7 @@ export default async function WorkCasePage({ params }: { params: Promise<{ slug:
         <Link href="/work" className="site-text-link mb-5">
           ← 回到精選作品
         </Link>
-        <p className="text-accent mt-6 text-sm font-medium">
+        <p className="text-accent-ink mt-6 text-sm font-medium">
           {WORK_CATEGORY_LABELS[work.category]}
         </p>
         <h1 className="mt-2 text-4xl leading-tight font-bold tracking-tight md:text-5xl">
@@ -36,13 +37,15 @@ export default async function WorkCasePage({ params }: { params: Promise<{ slug:
         <p className="site-lead">{work.summary}</p>
       </header>
       <div className="site-case-body">
-        <section aria-labelledby="role-title" className="site-card self-start">
-          <h2 id="role-title" className="text-lg font-bold">
-            我的角色
-          </h2>
-          <p className="mt-3 leading-7">{work.role}</p>
-          <p className="mt-1 text-sm opacity-65">{work.period}</p>
-        </section>
+        <Card asChild className="gap-0 px-6">
+          <section aria-labelledby="role-title" className="site-card self-start">
+            <h2 id="role-title" className="text-lg font-bold">
+              我的角色
+            </h2>
+            <p className="mt-3 leading-7">{work.role}</p>
+            <p className="mt-1 text-sm opacity-65">{work.period}</p>
+          </section>
+        </Card>
         <section aria-labelledby="delivery-title">
           <h2 id="delivery-title" className="text-lg font-bold">
             做過的工作

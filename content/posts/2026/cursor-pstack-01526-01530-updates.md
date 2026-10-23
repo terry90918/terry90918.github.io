@@ -2,6 +2,16 @@
 title: 'pstack 0.15.26 到 0.15.30：從 Prompt 校準、形式驗證維護到可讀狀態圖'
 publishedAt: '2026-10-22T18:55:20+08:00'
 status: 'published'
+presentation:
+  type: feature
+  category: 開發工具
+  audio:
+    src: /audio/2026/pstack-01526-01530-notebooklm.mp3
+    duration: 1092
+  video:
+    src: /videos/2026/pstack-01526-01530-notebooklm.mp4
+    poster: /videos/2026/pstack-01526-01530-notebooklm.jpg
+    title: 深入解析 pstack 0.15.26–0.15.30
 slug: 'cursor-pstack-01526-01530-updates'
 excerpt: '逐版讀 pstack 0.15.26～0.15.30 的官方差異：sharpen 如何改變工作邊界、形式驗證如何跟上程式，以及 statechart 如何把模型反例帶回產品討論。'
 tags:
@@ -17,28 +27,6 @@ metaDescription: '依官方固定提交介紹 pstack 0.15.26～0.15.30，區分 
 pstack 是一套協助 AI Agent 開發軟體的技能外掛，內容涵蓋任務規劃、實作與驗證。這幾個版本主要有兩個值得關注的變化方向。第一是開工前先釐清任務：`sharpen` 逐步改成專注於改善 Prompt，讓需求、方法與驗收標準更明確。第二是完成後留下驗證依據：形式驗證開始要求持續維護模型，`statechart` 則將模型發現的問題轉成 PM 與工程師都能理解的狀態圖。
 
 即使沒有讀過前面的系列，也可以先用「檔案上傳」理解這些功能的關係：使用者按下取消後，上傳還能不能被標記為完成？這個問題需要先定義預期行為，再實作、驗證，最後確認畫面與程式說的是同一件事。
-
-## 播客與影片摘要
-
-以下是使用 NotebookLM 根據本文製作的語音與影片摘要。
-
-### 用 pstack 控管暴走 AI
-
-語音摘要，約 18 分 12 秒。
-
-<audio controls controlslist="nodownload" preload="none" style="width: 100%;">
-  <source src="/audio/2026/pstack-01526-01530-notebooklm.mp3" type="audio/mpeg" />
-  您的瀏覽器不支援音訊播放。
-</audio>
-
-### 狀態圖如何揪出系統盲點
-
-精簡影片摘要，約 1 分 14 秒。
-
-<video controls controlslist="nodownload" preload="none" playsinline width="360" poster="/videos/2026/pstack-statechart-notebooklm.jpg" style="max-width: 100%; height: auto;">
-  <source src="/videos/2026/pstack-statechart-notebooklm.mp4" type="video/mp4" />
-  您的瀏覽器不支援影片播放。
-</video>
 
 ## 先看這些功能如何接起來
 

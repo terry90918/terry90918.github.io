@@ -1,3 +1,4 @@
+import { Card } from '@/components/ui/card'
 import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
@@ -55,39 +56,42 @@ export default async function Contact({
         <div className="mt-12 grid items-start gap-8 md:grid-cols-[1fr_280px]">
           <div className="grid gap-3">
             {links.map(({ label, value, href, Icon }) => (
-              <a
-                key={label}
-                href={href}
-                target={href.startsWith('https') ? '_blank' : undefined}
-                rel={href.startsWith('https') ? 'noopener noreferrer' : undefined}
-                className="bg-card hover:bg-accent-surface hover:border-accent-ink flex min-w-0 items-center gap-4 rounded-lg border p-5 transition-colors"
-              >
-                <Icon className="text-accent-ink size-5 shrink-0" />
-                <div className="min-w-0 flex-1">
-                  <p className="text-muted-foreground text-xs">{label}</p>
-                  <p className="mt-1 text-sm break-words sm:text-base">{value}</p>
-                </div>
-                <ArrowUpRight className="size-4 shrink-0" />
-              </a>
+              <Card key={label} asChild className="flex-row gap-0 px-6">
+                <a
+                  href={href}
+                  target={href.startsWith('https') ? '_blank' : undefined}
+                  rel={href.startsWith('https') ? 'noopener noreferrer' : undefined}
+                  className="bg-card hover:bg-accent-surface hover:border-accent-ink flex min-w-0 flex-row items-center gap-4 rounded-lg border p-5 transition-colors"
+                >
+                  <Icon className="text-accent-ink size-5 shrink-0" />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-muted-foreground text-xs">{label}</p>
+                    <p className="mt-1 text-sm break-words sm:text-base">{value}</p>
+                  </div>
+                  <ArrowUpRight className="size-4 shrink-0" />
+                </a>
+              </Card>
             ))}
             <div className="flex items-center gap-3 px-2 py-4 text-sm">
               <MapPin className="text-accent-ink size-4 shrink-0" />
               {profile.location}
             </div>
           </div>
-          <div className="bg-card overflow-hidden rounded-lg border p-1.5">
-            <Image
-              src={contact.photo}
-              alt={profile.name}
-              width={560}
-              height={700}
-              className="aspect-4/5 w-full rounded-lg object-cover"
-            />
-            <div className="p-4">
-              <p className="text-xl font-semibold">{profile.name}</p>
-              <p className="text-muted-foreground mt-1 text-sm">{profile.role}</p>
+          <Card asChild className="gap-0 px-6">
+            <div className="bg-card overflow-hidden rounded-lg border p-1.5">
+              <Image
+                src={contact.photo}
+                alt={profile.name}
+                width={560}
+                height={700}
+                className="aspect-4/5 w-full rounded-lg object-cover"
+              />
+              <div className="p-4">
+                <p className="text-xl font-semibold">{profile.name}</p>
+                <p className="text-muted-foreground mt-1 text-sm">{profile.role}</p>
+              </div>
             </div>
-          </div>
+          </Card>
         </div>
       </section>
       <FeaturedWorks

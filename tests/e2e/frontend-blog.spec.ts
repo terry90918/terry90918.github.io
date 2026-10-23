@@ -177,12 +177,12 @@ test.describe('Personal site', () => {
       .getByRole('link', { name: '讀這段經歷' })
       .first()
     const title = page.getByTestId('experience-entries').getByRole('heading').first()
-    await expect(title).toHaveCSS('color', 'rgb(26, 26, 26)')
-    await expect(link).toHaveCSS('color', 'rgb(184, 59, 8)')
+    await expect(title).toHaveCSS('color', 'rgb(20, 20, 19)')
+    await expect(link).toHaveCSS('color', 'rgb(167, 70, 43)')
     await page.getByRole('button', { name: 'Toggle theme' }).click()
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
-    await expect(link).toHaveCSS('color', 'rgb(255, 140, 80)')
-    await expect(title).toHaveCSS('color', 'rgb(250, 250, 250)')
+    await expect(link).toHaveCSS('color', 'rgb(230, 161, 138)')
+    await expect(title).toHaveCSS('color', 'rgb(250, 249, 245)')
   })
 
   test('theme toggle is keyboard reachable, has visible focus and changes the theme', async ({
@@ -285,8 +285,8 @@ test.describe('Post detail pages', () => {
         await page.goto(path)
         const article = page.locator('main article')
         await expect(article.getByRole('heading', { level: 1 })).toBeVisible()
-        await expect(article.locator('.prose h2').first()).toBeVisible()
-        await expect(article.locator('.prose > div > p').first()).toBeVisible()
+        await expect(article.locator('.typeset h2').first()).toBeVisible()
+        await expect(article.locator('.typeset > div > p').first()).toBeVisible()
         expect(
           await page.evaluate(
             () => document.documentElement.scrollWidth <= document.documentElement.clientWidth
@@ -309,7 +309,7 @@ test.describe('Post detail pages', () => {
       const path = '/posts/2026/ai-daily-2026-08-28'
       await page.setViewportSize({ width, height: 900 })
       await page.goto(path)
-      const heading = page.locator('.prose h2[id]').nth(2)
+      const heading = page.locator('.typeset h2[id]').nth(2)
       const id = await heading.getAttribute('id')
       expect(id).toBeTruthy()
       await page.goto(`${path}#${encodeURIComponent(id!)}`)
@@ -379,12 +379,12 @@ test.describe('Post detail pages', () => {
       await page.goto(`/posts/2026/${slug}`)
 
       if (rendering === 'blockquote') {
-        await expect(page.locator('article .prose > p.not-prose')).toHaveCount(0)
-        await expect(page.locator('article .prose blockquote').first()).toHaveText(excerpt)
+        await expect(page.locator('article .typeset > p')).toHaveCount(0)
+        await expect(page.locator('article .typeset blockquote').first()).toHaveText(excerpt)
       } else {
-        await expect(page.locator('article .prose > p.not-prose')).toHaveText(excerpt)
+        await expect(page.locator('article .typeset > p')).toHaveText(excerpt)
         await expect(
-          page.locator('article .prose blockquote').filter({ hasText: excerpt })
+          page.locator('article .typeset blockquote').filter({ hasText: excerpt })
         ).toHaveCount(0)
       }
       await expect(page.getByText(excerpt, { exact: true })).toHaveCount(1)
@@ -400,8 +400,8 @@ test.describe('Post detail pages', () => {
     expect(data.excerpt).toEqual(expect.any(String))
     await page.goto('/posts/2026/ai-daily-2026-07-06')
 
-    await expect(page.locator('article .prose > p.not-prose')).toHaveText(data.excerpt)
-    await expect(page.locator('article .prose blockquote').first()).not.toHaveText(data.excerpt)
+    await expect(page.locator('article .typeset > p')).toHaveText(data.excerpt)
+    await expect(page.locator('article .typeset blockquote').first()).not.toHaveText(data.excerpt)
   })
 })
 

@@ -1,3 +1,4 @@
+import { Card } from '@/components/ui/card'
 import Link from 'next/link'
 import { CV_URL, SITE_EMAIL } from '@/lib/site/content'
 import { pageMetadata } from '@/lib/site/metadata'
@@ -55,12 +56,14 @@ export default function AboutPage() {
         <SiteSectionHeading label="聯絡" title="在這些地方找到我" id="connect-title" />
         <div className="site-contact-links">
           {contacts.map(([label, href, caption]) => (
-            <Link key={label} href={href} className="site-card site-contact-link">
-              <strong>
-                {label} <span aria-hidden="true">↗</span>
-              </strong>
-              <span className="text-muted-foreground text-xs">{caption}</span>
-            </Link>
+            <Card key={label} asChild className="gap-0 px-6">
+              <Link href={href} className="site-card site-contact-link">
+                <strong>
+                  {label} <span aria-hidden="true">↗</span>
+                </strong>
+                <span className="text-muted-foreground text-xs">{caption}</span>
+              </Link>
+            </Card>
           ))}
         </div>
       </section>

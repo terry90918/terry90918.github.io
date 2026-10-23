@@ -6,7 +6,7 @@ import { Globe } from 'lucide-react'
 import { useActiveSection } from '@/hooks/cv/use-active-section'
 import { localeHref } from '@/lib/cv/profile'
 import type { Locale, Profile } from '@/lib/cv/profile'
-import { cn } from '@/lib/cv/utils'
+import { cn } from '@/lib/utils'
 const sectionIds = ['about', 'featured-works', 'experience', 'contact', 'skills']
 export default function NavDock({ locale, labels }: { locale: Locale; labels: Profile['labels'] }) {
   const navigationRef = useRef<HTMLElement>(null)

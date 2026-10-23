@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { isIdCardHover } from '@/lib/cv/id-card-cursor'
-import { cn } from '@/lib/cv/utils'
+import { cn } from '@/lib/utils'
 import { assetPath } from '@/lib/cv/site'
 const CURSOR_INTERACTIVE_SELECTOR =
   'a, button, [role="button"], input, textarea, select, label, summary, [data-cursor="pointer"]'

@@ -22,7 +22,7 @@ test('CV opens inside the main site and shares its navigation and theme', async 
     await page
       .locator('html')
       .evaluate((element) => getComputedStyle(element).getPropertyValue('--brand').trim())
-  ).toBe('#ff5c00')
+  ).toBe('#d97757')
   await expect(page.getByRole('banner')).toHaveCount(1)
   await expect(page.getByRole('contentinfo')).toHaveCount(1)
   await expect(page.getByRole('button', { name: 'Toggle theme', exact: true })).toHaveCount(1)
