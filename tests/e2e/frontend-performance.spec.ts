@@ -60,7 +60,7 @@ test('the main portrait uses WebP and main pages skip unused CV resources', asyn
 test('article images reserve space and use responsive WebP choices', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 })
   await page.goto('/posts/2026/ai-daily-2026-09-04')
-  const images = page.locator('.prose img')
+  const images = page.locator('.typeset img')
   await expect(images.first()).toHaveAttribute('width', '1672')
   await expect(images.first()).toHaveAttribute('height', '941')
   await expect(images.first()).toHaveAttribute('srcset', /768w, .*1440w/)
