@@ -200,7 +200,6 @@ main:has(> .feature-article) {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: var(--muted);
-  border: 1px solid var(--border);
   border-radius: 0.5rem;
 }
 .feature-video-stage video {
@@ -277,15 +276,17 @@ main:has(> .feature-article) {
   .feature-mobile-outline {
     display: block;
     max-width: var(--feature-body-width);
-    margin: 0 auto 1.5rem;
-    border-block: 1px solid var(--border);
+    margin: 0 auto 1.75rem;
     padding: 0;
   }
   .feature-mobile-outline .feature-outline-trigger {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    min-height: 3rem;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding-inline: 0;
+    color: var(--muted-foreground);
     width: 100%;
     cursor: pointer;
     font-size: 0.875rem;
@@ -307,6 +308,9 @@ main:has(> .feature-article) {
   }
   .feature-mobile-outline a[aria-current] {
     color: var(--foreground);
+  }
+  .feature-video {
+    margin-bottom: 1.25rem;
   }
 }
 
@@ -336,14 +340,23 @@ main:has(> .feature-article) {
     font-size: 0.6875rem;
   }
   .feature-audio-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.5rem;
+    min-height: 0;
+    padding-top: 0.75rem;
+  }
+  .feature-share {
+    justify-self: end;
+  }
+  .feature-audio-seek {
+    top: -0.75rem;
+    bottom: auto;
   }
   .feature-video-stage {
     max-height: 40rem;
   }
-  .feature-video {
-    margin-bottom: 3rem;
-  }
+
   .feature-video figcaption {
     font-size: 0.75rem;
   }
