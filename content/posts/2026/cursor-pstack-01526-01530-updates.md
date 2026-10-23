@@ -18,6 +18,28 @@ pstack 是一套協助 AI Agent 開發軟體的技能外掛，內容涵蓋任務
 
 即使沒有讀過前面的系列，也可以先用「檔案上傳」理解這些功能的關係：使用者按下取消後，上傳還能不能被標記為完成？這個問題需要先定義預期行為，再實作、驗證，最後確認畫面與程式說的是同一件事。
 
+## 播客與影片摘要
+
+以下是使用 NotebookLM 根據本文製作的語音與影片摘要。
+
+### 用 pstack 控管暴走 AI
+
+語音摘要，約 18 分 12 秒。
+
+<audio controls controlslist="nodownload" preload="none" style="width: 100%;">
+  <source src="/audio/2026/pstack-01526-01530-notebooklm.mp3" type="audio/mpeg" />
+  您的瀏覽器不支援音訊播放。
+</audio>
+
+### 狀態圖如何揪出系統盲點
+
+精簡影片摘要，約 1 分 14 秒。
+
+<video controls controlslist="nodownload" preload="none" playsinline width="360" poster="/videos/2026/pstack-statechart-notebooklm.jpg" style="max-width: 100%; height: auto;">
+  <source src="/videos/2026/pstack-statechart-notebooklm.mp4" type="video/mp4" />
+  您的瀏覽器不支援影片播放。
+</video>
+
 ## 先看這些功能如何接起來
 
 **釐清任務 → 實作 → 驗證與維護 → 用狀態圖討論行為**
