@@ -16,7 +16,7 @@ import {
 } from '@react-three/rapier'
 import type { RapierRigidBody, RigidBodyProps } from '@react-three/rapier'
 import { setIdCardHover } from '@/lib/cv/id-card-cursor'
-import { cn } from '@/lib/cv/utils'
+import { cn } from '@/lib/utils'
 import { assetPath } from '@/lib/cv/site'
 const CARD_MODEL_URL = assetPath('/models/lanyard/card.glb')
 const ROPE_RADIUS = 0.1

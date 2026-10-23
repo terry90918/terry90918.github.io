@@ -4,6 +4,18 @@ export interface Tag {
   count?: number
 }
 
+export interface ArticleHeading {
+  id: string
+  text: string
+}
+
+export interface FeaturePresentation {
+  type: 'feature'
+  category?: string
+  audio?: { src: string; duration: number }
+  video?: { src: string; poster: string; title: string }
+}
+
 interface PostFields {
   title: string
   slug: string
@@ -16,6 +28,8 @@ interface PostFields {
   year: string
   metaDescription?: string
   featureImage?: string
+  presentation?: FeaturePresentation
+  outline?: ArticleHeading[]
 }
 
 export interface PublishedPost extends PostFields {

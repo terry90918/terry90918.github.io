@@ -8,34 +8,34 @@ The public site and CV share the local Satoshi configuration in `lib/site/fonts.
 
 ## Semantic palette
 
-| Role                  | Runtime token              | Light     | Dark      |
-| --------------------- | -------------------------- | --------- | --------- |
-| Page background       | `--background`             | `#faf9f7` | `#0b0b0b` |
-| Main text             | `--foreground`             | `#3d3d3d` | `#fafafa` |
-| Secondary text        | `--muted-foreground`       | `#696969` | `#b3b3b3` |
-| Card text             | `--card-foreground`        | `#1a1a1a` | `#fafafa` |
-| Primary fill          | `--primary`                | `#1a1a1a` | `#e5e5e5` |
-| Primary text          | `--primary-foreground`     | `#fafafa` | `#1a1a1a` |
-| Card background       | `--card`                   | `#ffffff` | `#141414` |
-| Secondary surface     | `--secondary`              | `#eeebe5` | `#262626` |
-| Muted surface         | `--muted`                  | `#f0ede8` | `#262626` |
-| Accent surface        | `--accent-surface`         | `#fff0e6` | `#3b251b` |
-| Brand accent          | `--brand`                  | `#ff5c00` | `#ff5c00` |
-| Accent text and links | `--accent`, `--accent-ink` | `#b83b08` | `#ff8c50` |
-| Borders               | `--border`                 | `#d6d0c8` | `#303030` |
-| Focus ring            | `--ring`                   | `#b83b08` | `#ff8c50` |
+On 2026-10-23 the user selected shadcn/ui standard components for the entire site, then explicitly changed the palette to Anthropic. This supersedes both the earlier orange site palette and the intermediate Neutral preview. The canonical runtime source is app/(frontend)/globals.css, consumed through Tailwind aliases and components/ui.
 
-Tailwind color aliases consume the corresponding runtime tokens. `brand` is the orange brand fill; `brand-foreground` uses `#0b0b0b` for readable text on that fill. `accent` and `accent-ink` provide readable link text; `accent-surface` provides pale filled surfaces. `accent-foreground` is white in light mode and `#0b0b0b` in dark mode for text on an accent fill. Card text and primary colors use the reference values above. Popover and secondary foregrounds use the main text token; inputs use borders. CV sidebar aliases inherit the same roles and chart aliases consume the shared surfaces and accents.
+The Anthropic homepage https://www.anthropic.com was inspected in the browser on 2026-10-23. Observed tokens: ivory-light #faf9f5, slate-dark #141413, clay #d97757, clay-interactive #c6613f, ivory-medium #f0eee6, ivory-dark #e8e6dc and slate-300 #d1cfc5. These describe the observed website, not a claimed published brand standard.
 
-Theme switching uses `next-themes` and the existing `html[data-theme]` contract. Both roots use the same tokens; CV has no separate palette or dotted page background.
+| Role               | Light   | Dark    |
+| ------------------ | ------- | ------- |
+| Background         | #faf9f5 | #1f1e1d |
+| Foreground         | #141413 | #faf9f5 |
+| Card               | #ffffff | #262624 |
+| Primary / brand    | #d97757 | #d97757 |
+| Primary foreground | #141413 | #141413 |
+| Secondary / muted  | #f0eee6 | #30302e |
+| Muted foreground   | #5e5d59 | #b0aea5 |
+| Accent surface     | #e8e6dc | #3d3d3a |
+| Border             | #d1cfc5 | #4d4c48 |
+| Link / accent-ink  | #a7462b | #e6a18a |
+
+Dark mapping and the link shades are application choices. The darker light-mode link shade preserves small-text contrast (5.61:1 on ivory); clay buttons use dark text (5.90:1) instead of white. Accent is a surface role; text consumers use accent-ink. The standard radius is 0.625rem. Satoshi and the existing CJK fallbacks stay unchanged.
+
+Theme switching retains next-themes and html[data-theme]. components.json uses new-york and components/ui. Button, Card, Badge, Collapsible, Accordion and Slider are installed from the official registry, then themed with the site's semantic variables. Card supports asChild for article, section and link semantics. Shared cn lives in lib/utils.ts; the former CV-only Card and cn are removed. Content links remain semantic anchors; HTML audio/video and React Three retain their specialized implementations.
 
 ## Layout and shape
 
-Use a 1120px (`70rem`, `--editorial-width`) outer desktop maximum, including 32px padding on each side. Header, page, CV section navigation and footer align on that padded content edge. The shared header is 76px above 700px and 64px at or below it, with centered navigation, a separate contact utility and 44px icon buttons. The header marks the active route with an orange underline.
+Use a 1120px (`70rem`, `--editorial-width`) outer desktop maximum, including 32px padding on each side. Header, page, CV section navigation and footer align on that padded content edge. The shared header is 76px above 700px and 64px at or below it, with centered navigation, a separate contact utility and 44px icon buttons. The header marks the active route with a clay underline.
 
 Runtime editorial geometry lives in `styles/editorial.css`; shared repeated markup lives in `components/SitePrimitives.tsx`. The source palette and font remain in `globals.css` and `lib/site/fonts.ts`. CV home geometry lives in `styles/cv.css` and reuses the editorial card/button roles.
 
-Standard buttons and chips use the 10px (`--radius`) radius. Reference cards use 14px and contact panels use 16px. Card and article headings are neutral; eyebrows, explicit reading links and small accents carry orange. The home hero uses a 1.4:1 grid with 70px gap, a 252px square portrait, an offset fine border and a name label. At 900px the portrait is 210px and three-card grids stack; at 700px the hero stacks with a 100px portrait, hidden frame/label and 20px page padding. About retains a 236px portrait on desktop and 140px on mobile. Story/work/case content uses a 1:2 split, switching to one column at 700px.
+Buttons and badges use shadcn/ui variants. Cards use its standard border, radius and shadow. Card and article headings are neutral; eyebrows, explicit reading links and small accents use the shared ink and clay roles. The home hero uses a 1.4:1 grid with 70px gap, a 252px square portrait, an offset fine border and a name label. At 900px the portrait is 210px and three-card grids stack; at 700px the hero stacks with a 100px portrait, hidden frame/label and 20px page padding. About retains a 236px portrait on desktop and 140px on mobile. Story/work/case content uses a 1:2 split, switching to one column at 700px.
 
 CV home uses a horizontal, scrollable section rail, three statistic cards (two columns below 900px), two columns of plain project cards (one below 700px), and a fine-line chronology with circular indices. The order is hero, about, projects, experience, education, contact and skills. Use the selected six concise project summaries and the 31 confirmed skill categories in each language. Main-site experiences and work follow GJ, Nidin and AI order; Story has three chapters. Full career details remain in CV. Keep the existing desktop React Three ID-card implementation; use the existing portrait as the mobile fallback. Keep CV case studies and full contact pages in their existing structures.
 
@@ -50,3 +50,19 @@ Keep visible keyboard focus and theme persistence. Respect `prefers-reduced-moti
 The user authorised ordinary-file edits in the selected Open Design project for this follow-up. Nidin management copy uses `管理工程部門團隊，協助工作分派與技術決策。` and `Managed the engineering team and supported work allocation and technical decision-making.`. Role panels retain the technical-manager title without repeating that sentence. Nidin’s management headcount and its statistic card are removed from main Work, the case, both CV homes and both CV case studies. Three career metric cards remain. Other companies’ team sizes and the confirmed 55-delivery statement stay unchanged. The local design source uses matching three-column metrics, with two columns below 900px.
 
 Writing navigation shows the AI 日報 series entry. Keep the year-grouped archive, `all-posts`/article anchors and active public article URLs.
+
+## Feature article preview
+
+The pstack 0.15.26–0.15.30 article opts into a feature presentation through its frontmatter. This preview follows the layout of https://openai.com/index/decisions-api/ observed on 2026-10-23: centered title, compact audio/share row, sticky desktop outline, wide video and narrow reading column. Keep existing brand colors and font roles; do not force the reference's dark background.
+
+Runtime geometry is scoped in `styles/article-feature.css`: `--feature-body-width` is 44rem and `--feature-media-width` is 60rem. The display title is at most 3.375rem with a 1.3 line height; body text now follows the shared Typeset docs preset. At 1150px and below the outline becomes an expandable block; the replacement video keeps its 16:9 ratio at every width. Native video uses contain, never crop. Audio has no download link or menu, and video retains controlsList=nodownload. Existing article presentation stays the default.
+
+Audio status feedback appears only when there is a message. Do not render an empty status paragraph or reserve its height while idle.
+
+The feature template uses a Traditional Chinese publication date. Keep the share label and control dimensions unchanged during copying and success; show confirmation only in the conditional status region. The seek control has a 24px hit area positioned within the audio row's existing spacing and reserves no additional idle height. Desktop outline links use a reserved 2px location marker; mobile links provide at least 44px touch targets, collapse the shadcn/ui Collapsible on normal selection and focus the target heading. Modified clicks retain browser-native behavior. Feature geometry remains owned by `styles/article-feature.css`, using the existing runtime color and type tokens.
+
+## Rendered content
+
+All blog article bodies (including the pstack feature) and bilingual CV case-study MDX use typeset typeset-docs with max-w-[37em]. The user approved removal of prose/prose-sm, global .prose and feature-body typography, and styled MDX headings, lists, check icons and quotes. Official app/(frontend)/typeset.css is downloaded unchanged from https://ui.shadcn.com/typeset.css. The docs preset is 15px / 1.75 / 1.25em and uses Geist and Geist Mono variables loaded by both root layouts. Satoshi remains the site shell font. Semantic theme tokens preserve the Anthropic palette. Layout, heading IDs and scroll offsets, media controls, and Shiki dual-theme syntax colors remain functional owners; no typography classes are attached to plain markdown elements. Embedded components can opt out with not-typeset or data-not-typeset. Other presets are left untouched.
+
+Wide tables use Typeset scroll wrappers with a named, keyboard-focusable region. The wrapper owns overflow while each child remains a semantic table. CV labels follow locale. The upstream stylesheet remains byte-identical and is excluded from automatic formatting.

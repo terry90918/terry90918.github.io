@@ -1,4 +1,4 @@
-import { cn } from '@/lib/cv/utils'
+import { cn } from '@/lib/utils'
 type EyebrowProps = {
   children: string
   className?: string

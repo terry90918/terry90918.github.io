@@ -1,3 +1,5 @@
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
 import Link from 'next/link'
 import { getPostsByYearMonth } from '@/lib/posts/queries'
 import { classifyPost } from '@/lib/site/writing'
@@ -37,9 +39,9 @@ export default async function PostsPage() {
         </p>
         {hasDaily && (
           <nav aria-label="文章主題" className="site-topic-nav">
-            <Link href="/posts/ai-daily" className="site-button">
-              AI 日報
-            </Link>
+            <Button asChild variant="outline">
+              <Link href="/posts/ai-daily">AI 日報</Link>
+            </Button>
           </nav>
         )}
       </SitePageIntro>
@@ -56,17 +58,19 @@ export default async function PostsPage() {
                     <h3 className="site-month-head">
                       {month} 月 <span>{posts.length} 篇</span>
                     </h3>
-                    <div className="site-card site-writing">
-                      {posts.map((post) => (
-                        <div
-                          key={post.slug}
-                          id={`writing-${post.year}-${post.slug}`}
-                          data-writing-entry
-                        >
-                          <WritingPostCard post={post} />
-                        </div>
-                      ))}
-                    </div>
+                    <Card asChild className="gap-0 px-6">
+                      <div className="site-card site-writing">
+                        {posts.map((post) => (
+                          <div
+                            key={post.slug}
+                            id={`writing-${post.year}-${post.slug}`}
+                            data-writing-entry
+                          >
+                            <WritingPostCard post={post} />
+                          </div>
+                        ))}
+                      </div>
+                    </Card>
                   </div>
                 ))}
               </div>

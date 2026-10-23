@@ -177,12 +177,12 @@ test.describe('Personal site', () => {
       .getByRole('link', { name: '讀這段經歷' })
       .first()
     const title = page.getByTestId('experience-entries').getByRole('heading').first()
-    await expect(title).toHaveCSS('color', 'rgb(26, 26, 26)')
-    await expect(link).toHaveCSS('color', 'rgb(184, 59, 8)')
+    await expect(title).toHaveCSS('color', 'rgb(20, 20, 19)')
+    await expect(link).toHaveCSS('color', 'rgb(167, 70, 43)')
     await page.getByRole('button', { name: 'Toggle theme' }).click()
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
-    await expect(link).toHaveCSS('color', 'rgb(255, 140, 80)')
-    await expect(title).toHaveCSS('color', 'rgb(250, 250, 250)')
+    await expect(link).toHaveCSS('color', 'rgb(230, 161, 138)')
+    await expect(title).toHaveCSS('color', 'rgb(250, 249, 245)')
   })
 
   test('theme toggle is keyboard reachable, has visible focus and changes the theme', async ({

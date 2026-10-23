@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
-import { Card } from '@/components/cv/ui/card'
+import { Card } from '@/components/ui/card'
 import type { CaseStudyMetadata } from '@/lib/cv/case-studies'
 import type { Locale } from '@/lib/cv/profile'
-import { cn } from '@/lib/cv/utils'
+import { cn } from '@/lib/utils'
 export default function FeaturedWorkCard({
   caseStudy,
   locale,
@@ -17,17 +17,19 @@ export default function FeaturedWorkCard({
 }) {
   if (variant === 'reference') {
     return (
-      <Link
-        href={`/cv/${locale}/case-study/${caseStudy.slug}#case-study-top`}
-        className="site-card site-work-card h-full"
-      >
-        <p className="site-kicker">{caseStudy.organisation}</p>
-        <h3>{caseStudy.title}</h3>
-        <p className="site-card-summary">{caseStudy.description}</p>
-        <span className="site-text-link">
-          {locale === 'en' ? 'Read case study' : '閱讀案例'} <ArrowUpRight className="size-4" />
-        </span>
-      </Link>
+      <Card asChild className="gap-0 px-6">
+        <Link
+          href={`/cv/${locale}/case-study/${caseStudy.slug}#case-study-top`}
+          className="site-card site-work-card h-full"
+        >
+          <p className="site-kicker">{caseStudy.organisation}</p>
+          <h3>{caseStudy.title}</h3>
+          <p className="site-card-summary">{caseStudy.description}</p>
+          <span className="site-text-link">
+            {locale === 'en' ? 'Read case study' : '閱讀案例'} <ArrowUpRight className="size-4" />
+          </span>
+        </Link>
+      </Card>
     )
   }
   const isHero = variant === 'hero'

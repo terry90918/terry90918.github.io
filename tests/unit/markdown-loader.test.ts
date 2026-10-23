@@ -55,6 +55,50 @@ afterEach(() => {
 })
 
 describe('loadAllPosts()', () => {
+  it('loads an opt-in feature presentation and the article outline', async () => {
+    const feature = VALID_POST.replace(
+      'status: published',
+      `status: published
+presentation:
+  type: feature
+  audio:
+    src: /audio/2026/example.mp3
+    duration: 1092
+  video:
+    src: /videos/2026/example.mp4
+    poster: /videos/2026/example.jpg
+    title: 影片摘要`
+    )
+    writeFileSync(join(tempDir, '2026', 'test-post.md'), feature)
+    const [post] = await loadAllPosts({ dir: tempDir })
+    expect(post.presentation).toEqual({
+      type: 'feature',
+      audio: { src: '/audio/2026/example.mp3', duration: 1092 },
+      video: {
+        src: '/videos/2026/example.mp4',
+        poster: '/videos/2026/example.jpg',
+        title: '影片摘要',
+      },
+    })
+    expect(post.outline).toEqual([{ id: 'section-two', text: 'Section Two' }])
+  })
+
+  it('rejects an unsafe feature media source at the frontmatter boundary', async () => {
+    writeFileSync(
+      join(tempDir, '2026', 'test-post.md'),
+      VALID_POST.replace(
+        'status: published',
+        `status: published
+presentation:
+  type: feature
+  audio:
+    src: javascript:alert(1)
+    duration: 1092`
+      )
+    )
+    await expect(loadAllPosts({ dir: tempDir })).rejects.toThrow('presentation.audio.src')
+  })
+
   it('loads a valid post from the filesystem', async () => {
     writeFileSync(join(tempDir, '2026', 'test-post.md'), VALID_POST)
 

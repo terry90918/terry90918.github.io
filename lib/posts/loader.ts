@@ -2,7 +2,8 @@ import { readdir, readFile } from 'fs/promises'
 import { join, basename, extname } from 'path'
 import matter from 'gray-matter'
 import readingTime from 'reading-time'
-import { renderMarkdown } from './markdown'
+import { renderMarkdownWithOutline } from './markdown'
+import { readPresentation } from './presentation'
 import { slugify } from './slugify'
 import type { AliasPost, Post, Tag } from './types'
 
@@ -73,7 +74,8 @@ async function parsePost(filePath: string): Promise<Post> {
   const rtResult = readingTime(content)
   const readingTimeMinutes = Math.max(1, Math.ceil(rtResult.minutes))
 
-  const html = await renderMarkdown(content)
+  const presentation = readPresentation(fm.presentation)
+  const { html, outline } = await renderMarkdownWithOutline(content)
 
   const postFields = {
     title: String(fm.title),
@@ -87,6 +89,8 @@ async function parsePost(filePath: string): Promise<Post> {
     year,
     metaDescription: typeof fm.metaDescription === 'string' ? fm.metaDescription : undefined,
     featureImage: typeof fm.featureImage === 'string' ? fm.featureImage : undefined,
+    presentation,
+    outline,
   }
 
   if (fm.status === 'alias') {

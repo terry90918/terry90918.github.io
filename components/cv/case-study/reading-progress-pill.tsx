@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { CheckIcon } from 'lucide-react'
 import { AnimatePresence, motion, useMotionValue, useSpring } from 'motion/react'
-import { cn } from '@/lib/cv/utils'
+import { cn } from '@/lib/utils'
 type ReadingProgressPillProps = {
   headings: {
     slug: string

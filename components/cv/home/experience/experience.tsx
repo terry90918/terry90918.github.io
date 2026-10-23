@@ -1,3 +1,4 @@
+import { Card } from '@/components/ui/card'
 import { SiteEyebrow as Eyebrow } from '@/components/SitePrimitives'
 import Timeline from '@/components/cv/ui/timeline'
 import type { Profile } from '@/lib/cv/profile'
@@ -35,17 +36,19 @@ export default function Experience({ profile }: { profile: Profile }) {
                 ))}
               </ul>
               {experience.projects.map((project) => (
-                <div key={project.name} className="bg-card rounded-lg border p-4 sm:p-5">
-                  <h4 className="text-base font-medium">{project.name}</h4>
-                  <p className="text-muted-foreground mt-2 text-xs">{project.period}</p>
-                  <ul className="mt-4 space-y-3">
-                    {project.bullets.map((bullet) => (
-                      <li key={bullet} className="text-muted-foreground text-sm leading-relaxed">
-                        {bullet}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <Card key={project.name} asChild className="gap-0 px-6">
+                  <div className="bg-card rounded-lg border p-4 sm:p-5">
+                    <h4 className="text-base font-medium">{project.name}</h4>
+                    <p className="text-muted-foreground mt-2 text-xs">{project.period}</p>
+                    <ul className="mt-4 space-y-3">
+                      {project.bullets.map((bullet) => (
+                        <li key={bullet} className="text-muted-foreground text-sm leading-relaxed">
+                          {bullet}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Card>
               ))}
             </article>
           ),

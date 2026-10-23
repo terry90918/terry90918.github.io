@@ -1,7 +1,19 @@
 import { describe, it, expect } from 'vitest'
-import { renderMarkdown } from '../../lib/posts/markdown'
+import { renderMarkdown, renderMarkdownWithOutline } from '../../lib/posts/markdown'
 
 describe('renderMarkdown()', () => {
+  it('returns an outline matching rendered heading IDs and readable text', async () => {
+    const rendered = await renderMarkdownWithOutline(
+      '## 同步與 **取消**\n\n## 同步與 **取消**\n\n### 細節\n\n## A & B'
+    )
+    expect(rendered.outline).toEqual([
+      { id: '同步與-取消', text: '同步與 取消' },
+      { id: '同步與-取消-1', text: '同步與 取消' },
+      { id: 'a--b', text: 'A & B' },
+    ])
+    for (const item of rendered.outline) expect(rendered.html).toContain(`id="${item.id}"`)
+  })
+
   it('prioritizes only the first image and defers later images without changing their text', async () => {
     const html = await renderMarkdown(
       '![First](https://example.com/first.webp)\n\n![Second](https://example.com/second.webp)'
@@ -123,4 +135,14 @@ describe('renderMarkdown()', () => {
     const html = await renderMarkdown('<script>alert(1)</script>\n\nHello')
     expect(html).not.toContain('<script')
   })
+})
+
+it('keeps wide markdown tables in a keyboard-accessible scroll region', async () => {
+  const html = await renderMarkdown('| Name | Value |\n| --- | --- |\n| One | Two |')
+  const doc = new DOMParser().parseFromString(html, 'text/html')
+  const table = doc.querySelector('table')!
+  expect(table.parentElement?.className).toBe('typeset-scroll')
+  expect(table.parentElement?.getAttribute('role')).toBe('region')
+  expect(table.parentElement?.getAttribute('tabindex')).toBe('0')
+  expect(table.getAttribute('class')).toBeNull()
 })

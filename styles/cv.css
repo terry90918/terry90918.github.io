@@ -46,7 +46,6 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
   --font-mono: ui-monospace, 'SFMono-Regular', monospace;
-  --destructive: var(--accent);
   --chart-1: var(--muted);
   --chart-2: var(--secondary);
   --chart-3: var(--accent-surface);

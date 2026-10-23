@@ -1,6 +1,8 @@
 'use client'
 
 import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/ui/collapsible'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
@@ -23,7 +25,9 @@ function ThemeToggle() {
   }
 
   return (
-    <button
+    <Button
+      variant="outline"
+      size="icon"
       aria-label="Toggle theme"
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
       className="site-icon-button"
@@ -67,7 +71,7 @@ function ThemeToggle() {
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
       )}
-    </button>
+    </Button>
   )
 }
 
@@ -105,81 +109,88 @@ export function BlogHeader() {
   ]
   return (
     <header className="site-header border-border bg-background/95 sticky top-0 z-50 border-b backdrop-blur-sm">
-      <div data-testid="header-inner" className="site-header-inner">
-        <div className="site-header-row">
-          <Link
-            href="/"
-            prefetch={inCv ? false : undefined}
-            className="site-wordmark hover:text-accent shrink-0 rounded-sm font-bold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]"
-          >
-            Terry.TY Chen
-          </Link>
-          <nav aria-label="主要導覽" className="site-header-nav">
-            {links.map(([label, href]) => (
-              <Link
-                key={label}
-                href={href}
-                prefetch={inCv || href === CV_URL ? false : undefined}
-                aria-current={isCurrentRoute(href) ? 'page' : undefined}
-                className="hover:text-accent flex min-h-11 items-center rounded-sm text-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]"
-              >
-                {label}
-              </Link>
-            ))}
-          </nav>
-          <div className="site-header-utilities">
-            <Link href={SITE_EMAIL} className="site-header-contact site-text-link">
-              聯絡 <span aria-hidden="true">↗</span>
-            </Link>
-            <ThemeToggle />
-            <button
-              ref={menuButton}
-              type="button"
-              aria-label="導覽選單"
-              aria-expanded={menuOpen}
-              aria-controls="mobile-navigation"
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="site-icon-button site-menu-toggle"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                aria-hidden="true"
-              >
-                {menuOpen ? (
-                  <path d="m6 6 12 12M6 18 18 6" />
-                ) : (
-                  <path d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-          </div>
-        </div>
-        <nav
-          id="mobile-navigation"
-          aria-label="手機導覽"
-          hidden={!menuOpen}
-          className="site-mobile-navigation"
-        >
-          {[...links, ['聯絡', SITE_EMAIL]].map(([label, href]) => (
+      <Collapsible open={menuOpen} onOpenChange={setMenuOpen} asChild>
+        <div data-testid="header-inner" className="site-header-inner">
+          <div className="site-header-row">
             <Link
-              key={label}
-              href={href}
-              prefetch={inCv || href === CV_URL ? false : undefined}
-              onClick={closeMenu}
-              aria-current={isCurrentRoute(href) ? 'page' : undefined}
-              className="hover:text-accent flex min-h-11 items-center rounded-sm text-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]"
+              href="/"
+              prefetch={inCv ? false : undefined}
+              className="site-wordmark hover:text-accent-ink shrink-0 rounded-sm font-bold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]"
             >
-              {label}
+              Terry.TY Chen
             </Link>
-          ))}
-        </nav>
-      </div>
+            <nav aria-label="主要導覽" className="site-header-nav">
+              {links.map(([label, href]) => (
+                <Link
+                  key={label}
+                  href={href}
+                  prefetch={inCv || href === CV_URL ? false : undefined}
+                  aria-current={isCurrentRoute(href) ? 'page' : undefined}
+                  className="hover:text-accent-ink flex min-h-11 items-center rounded-sm text-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]"
+                >
+                  {label}
+                </Link>
+              ))}
+            </nav>
+            <div className="site-header-utilities">
+              <Link href={SITE_EMAIL} className="site-header-contact site-text-link">
+                聯絡 <span aria-hidden="true">↗</span>
+              </Link>
+              <ThemeToggle />
+              <CollapsibleTrigger asChild>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  ref={menuButton}
+                  type="button"
+                  aria-label="導覽選單"
+                  aria-expanded={menuOpen}
+                  aria-controls="mobile-navigation"
+                  className="site-icon-button site-menu-toggle"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    aria-hidden="true"
+                  >
+                    {menuOpen ? (
+                      <path d="m6 6 12 12M6 18 18 6" />
+                    ) : (
+                      <path d="M4 6h16M4 12h16M4 18h16" />
+                    )}
+                  </svg>
+                </Button>
+              </CollapsibleTrigger>
+            </div>
+          </div>
+          <CollapsibleContent asChild forceMount>
+            <nav
+              id="mobile-navigation"
+              aria-label="手機導覽"
+              hidden={!menuOpen}
+              className="site-mobile-navigation"
+            >
+              {[...links, ['聯絡', SITE_EMAIL]].map(([label, href]) => (
+                <Link
+                  key={label}
+                  href={href}
+                  prefetch={inCv || href === CV_URL ? false : undefined}
+                  onClick={closeMenu}
+                  aria-current={isCurrentRoute(href) ? 'page' : undefined}
+                  className="hover:text-accent-ink flex min-h-11 items-center rounded-sm text-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]"
+                >
+                  {label}
+                </Link>
+              ))}
+            </nav>
+          </CollapsibleContent>
+        </div>
+      </Collapsible>
     </header>
   )
 }

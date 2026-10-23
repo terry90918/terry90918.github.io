@@ -1,4 +1,5 @@
 import { satoshi } from '@/lib/site/fonts'
+import { geist, geistMono } from '@/lib/site/typeset-fonts'
 import { SiteShell } from '@/components/SiteShell'
 import NavDock from '@/components/cv/layout/nav-dock'
 import CustomCursor from '@/components/cv/layout/custom-cursor'
@@ -16,7 +17,7 @@ export default function CvLayout({
   return (
     <html
       lang={locale}
-      className={`${satoshi.variable} min-h-full scroll-smooth antialiased`}
+      className={`${satoshi.variable} ${geist.variable} ${geistMono.variable} min-h-full scroll-smooth antialiased`}
       suppressHydrationWarning
     >
       <body className="cv-site">

@@ -1,3 +1,4 @@
+import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
 import type { Post } from '@/lib/posts/types'
 import { formatPublishedDate } from '@/lib/date'
@@ -9,7 +10,7 @@ export function WritingPostCard({ post }: { post: Post }) {
   return (
     <article data-writing-kind={kind} className="site-writing-row">
       <p className="site-writing-meta">
-        <span className="site-badge">{WRITING_LABELS[kind]}</span>
+        <Badge variant="outline">{WRITING_LABELS[kind]}</Badge>
         <span>
           {formatPublishedDate(post.publishedAt, 'zh-TW')}
           {post.status === 'draft' && ' · 草稿（開發預覽）'}

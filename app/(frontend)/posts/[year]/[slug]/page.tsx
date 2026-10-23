@@ -1,3 +1,5 @@
+import { Badge } from '@/components/ui/badge'
+import { FeatureArticle } from '@/components/article/FeatureArticle'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import type { Metadata } from 'next'
@@ -41,11 +43,7 @@ export async function generateStaticParams() {
 }
 
 function TagBadge({ tag }: { tag: Tag }) {
-  return (
-    <span className="bg-muted text-foreground inline-block rounded px-2 py-0.5 text-xs opacity-70">
-      {tag.name}
-    </span>
-  )
+  return <Badge variant="secondary">{tag.name}</Badge>
 }
 
 function ShareLinks({ post, siteUrl }: { post: Post; siteUrl: string }) {
@@ -117,6 +115,17 @@ export default async function PostPage({ params }: PageParams) {
 
   const { prev, next } = await getAdjacentPosts(slug)
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://terry90918.github.io'
+  if (post.presentation?.type === 'feature') {
+    return (
+      <FeatureArticle
+        post={post}
+        presentation={post.presentation}
+        prev={prev}
+        next={next}
+        url={`${siteUrl}/posts/${post.year}/${post.slug}`}
+      />
+    )
+  }
   const githubEditUrl = `https://github.com/terry90918/terry90918.github.io/edit/main/content/posts/${post.year}/${post.slug}.md`
   const renderStandaloneExcerpt = post.excerpt && !hasLeadingExcerptBlockquote(post)
 
@@ -140,12 +149,8 @@ export default async function PostPage({ params }: PageParams) {
       </header>
 
       {/* Content */}
-      <div className="prose prose-sm max-w-none">
-        {renderStandaloneExcerpt && (
-          <p className="text-foreground border-brand not-prose mb-6 border-l-2 pl-4 text-base opacity-70">
-            {post.excerpt}
-          </p>
-        )}
+      <div className="typeset typeset-docs mx-auto max-w-[37em]">
+        {renderStandaloneExcerpt && <p>{post.excerpt}</p>}
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>
 

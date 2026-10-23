@@ -22,8 +22,10 @@ describe('Selected bilingual CV presentation', () => {
       expect(doc.querySelector('.cv-reference-role')?.textContent).toBe(
         locale === 'en' ? 'Freelancer' : '自由工作者'
       )
-      expect(doc.querySelectorAll('#skills details')).toHaveLength(31)
-      expect(doc.querySelectorAll('#skills details[open]')).toHaveLength(1)
+      expect(doc.querySelectorAll('#skills [data-slot=accordion-item]')).toHaveLength(31)
+      expect(
+        doc.querySelectorAll('#skills [data-slot=accordion-item][data-state=open]')
+      ).toHaveLength(1)
       for (const tool of ['Haystack', 'Semantic Kernel', 'CrewAI', 'Ragas']) {
         expect(doc.querySelector('#skills')?.textContent).toContain(tool)
       }

@@ -1,3 +1,5 @@
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
@@ -25,10 +27,12 @@ export default function Hero({
             className="cv-mobile-portrait mb-9 rounded-2xl object-contain min-[1024px]:hidden"
           />
           <div className="cv-reference-hero-copy lg:max-w-lg">
-            <span className="bg-card inline-flex h-7 w-fit items-center gap-2 rounded-md border px-3 py-1 text-xs">
-              <span className="bg-brand size-1.5 rounded-full" />
-              {profile.location}
-            </span>
+            <Badge asChild variant="outline">
+              <span className="bg-card inline-flex h-7 w-fit items-center gap-2 rounded-md border px-3 py-1 text-xs">
+                <span className="bg-brand size-1.5 rounded-full" />
+                {profile.location}
+              </span>
+            </Badge>
             <p className="cv-reference-greeting text-muted-foreground text-xl font-normal tracking-normal">
               {profile.greeting}
             </p>
@@ -38,14 +42,18 @@ export default function Hero({
             </h1>
             <p className="cv-reference-role text-muted-foreground">{role}</p>
             <div className="flex flex-wrap items-center gap-3 pt-2">
-              <Link href={`/cv/${locale}/#experience`} className="site-button site-button-primary">
-                {profile.labels.viewExperience}{' '}
-                <ArrowUpRight aria-hidden="true" className="size-4" />
-              </Link>
-              <Link href={`/cv/${locale}/#contact`} className="site-button">
-                {locale === 'en' ? 'Contact' : '聯絡方式'}
-                <ArrowUpRight aria-hidden="true" className="size-4" />
-              </Link>
+              <Button asChild variant="default">
+                <Link href={`/cv/${locale}/#experience`}>
+                  {profile.labels.viewExperience}{' '}
+                  <ArrowUpRight aria-hidden="true" className="size-4" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href={`/cv/${locale}/#contact`}>
+                  {locale === 'en' ? 'Contact' : '聯絡方式'}
+                  <ArrowUpRight aria-hidden="true" className="size-4" />
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
