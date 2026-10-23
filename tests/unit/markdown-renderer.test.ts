@@ -92,10 +92,31 @@ describe('renderMarkdown()', () => {
 
   it('preserves <audio>/<source> tags used for podcast embeds', async () => {
     const markdown =
-      '<audio controls preload="none">\n  <source src="/audio/2026/example.mp3" type="audio/mpeg">\n</audio>'
+      '<audio controls controlslist="nodownload" preload="none">\n  <source src="/audio/2026/example.mp3" type="audio/mpeg">\n</audio>'
     const html = await renderMarkdown(markdown)
     expect(html).toContain('<audio')
+    expect(html).toContain('controlslist="nodownload"')
     expect(html).toContain('<source src="/audio/2026/example.mp3" type="audio/mpeg">')
+  })
+
+  it('preserves video playback controls while removing executable attributes', async () => {
+    const html = await renderMarkdown(
+      '<video controls controlslist="nodownload" preload="none" playsinline width="360" poster="/video/poster.jpg" style="max-width: 100%; height: auto;" onplay="alert(1)"><source src="/video/example.mp4" type="video/mp4"></video>'
+    )
+    expect(html).toContain('<video')
+    expect(html).toContain('controlslist="nodownload"')
+    expect(html).toContain('controls')
+    expect(html).toContain('preload="none"')
+    expect(html).toContain('playsinline')
+    expect(html).toContain('width="360"')
+    expect(html).toContain('poster="/video/poster.jpg"')
+    expect(html).toContain('<source src="/video/example.mp4" type="video/mp4">')
+    expect(html).not.toContain('onplay')
+    expect(html).not.toContain('alert(1)')
+    const unsafe = await renderMarkdown(
+      '<video poster="javascript:alert(1)" src="javascript:alert(2)"></video>'
+    )
+    expect(unsafe).not.toContain('javascript:')
   })
 
   it('strips disallowed raw HTML such as <script>', async () => {
