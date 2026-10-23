@@ -361,7 +361,7 @@ main:has(> .feature-article) {
   }
 }
 
-.feature-audio-seek:disabled {
+.feature-audio-seek[data-disabled] {
   cursor: default;
   opacity: 0;
 }
@@ -376,12 +376,9 @@ main:has(> .feature-article) {
 .feature-adjacent a:only-child {
   max-width: 100%;
 }
-.feature-mobile-outline .feature-outline-trigger::-webkit-details-marker {
-  display: none;
-}
 .feature-mobile-outline .feature-outline-trigger svg {
   transition: transform 160ms ease;
 }
-.feature-mobile-outline[open] summary svg {
+.feature-mobile-outline[data-state='open'] .feature-outline-trigger svg {
   transform: rotate(180deg);
 }
