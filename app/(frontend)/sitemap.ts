@@ -16,6 +16,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/work',
     '/posts',
     '/posts/ai-daily',
+    '/posts/pstack',
+    '/posts/harness2',
     '/cv',
     ...WORK_CASES.map((work) => `/work/${work.slug}`),
   ]

@@ -3,13 +3,14 @@ import { Card } from '@/components/ui/card'
 import Link from 'next/link'
 import { getPostsByYearMonth } from '@/lib/posts/queries'
 import { classifyPost } from '@/lib/site/writing'
+import { getSeriesPosts, WRITING_SERIES, type WritingSeries } from '@/lib/site/writing-series'
 import { pageMetadata } from '@/lib/site/metadata'
 import { WritingPostCard } from '@/components/WritingPostCard'
 import { SitePageIntro } from '@/components/SitePrimitives'
 
 export const metadata = pageMetadata(
   '文章',
-  '按年份閱讀 Terry 的文章，探索 AI 日報系列與翻譯文章；內容標明類型與原文來源。',
+  '按年份閱讀 Terry 的文章，探索 pstack、Harness²、AI 日報與翻譯文章；內容標明類型與原文來源。',
   '/posts'
 )
 
@@ -30,18 +31,27 @@ export default async function PostsPage() {
   const publishedCount = posts.filter((post) => post.status === 'published').length
   const draftCount = posts.length - publishedCount
   const hasDaily = posts.some((post) => classifyPost(post) === 'ai-daily')
+  const seriesIds: WritingSeries[] = ['pstack', 'harness2']
+  const series = seriesIds.filter((id) => getSeriesPosts(posts, id).length > 0)
 
   return (
     <div className="site-page">
       <SitePageIntro label="文章" title="文章">
         <p className="site-lead">
-          持續整理的 AI 日報與翻譯，按年份放在這裡。日報是資訊整理；翻譯標明原作者與來源。
+          AI 開發工具、技術解讀、AI 日報與翻譯，按年份整理。翻譯標明原作者與來源。
         </p>
-        {hasDaily && (
+        {(hasDaily || series.length > 0) && (
           <nav aria-label="文章主題" className="site-topic-nav">
-            <Button asChild variant="outline">
-              <Link href="/posts/ai-daily">AI 日報</Link>
-            </Button>
+            {hasDaily && (
+              <Button asChild variant="outline">
+                <Link href="/posts/ai-daily">AI 日報</Link>
+              </Button>
+            )}
+            {series.map((id) => (
+              <Button asChild variant="outline" key={id}>
+                <Link href={`/posts/${id}`}>{WRITING_SERIES[id].title}</Link>
+              </Button>
+            ))}
           </nav>
         )}
       </SitePageIntro>

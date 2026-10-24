@@ -3,6 +3,16 @@ title: 'pstack 深度導讀（上）：一個工程 Agent 外掛的完整地圖'
 publishedAt: '2026-10-18T23:18:33+08:00'
 status: 'published'
 slug: 'cursor-pstack-plugin-analysis'
+presentation:
+  type: feature
+  category: 開發工具
+  audio:
+    src: /audio/2026/pstack-plugin-analysis-notebooklm.mp3
+    duration: 1156.237642
+  video:
+    src: /videos/2026/pstack-plugin-analysis-notebooklm.mp4
+    poster: /videos/2026/pstack-plugin-analysis-notebooklm.jpg
+    title: '解密 pstack：工程 Agent 外掛'
 excerpt: '從 pstack 0.15.26 的 171 個檔案看懂外掛如何分發技能、路由任務、委派工作，以及哪些限制仍由 Cursor 和專案工具負責。'
 tags:
   - cursor
