@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { CV_URL, SITE_EMAIL } from '@/lib/site/content'
+import { CHATGPT_URL, CV_URL, SITE_EMAIL } from '@/lib/site/content'
 
 export function BlogFooter() {
   return (
@@ -27,6 +27,9 @@ export function BlogFooter() {
           rel="noopener noreferrer"
         >
           LinkedIn
+        </Link>
+        <Link href={CHATGPT_URL} target="_blank" rel="noopener noreferrer">
+          ChatGPT @terrytychen
         </Link>
         <Link href={CV_URL} prefetch={false}>
           CV

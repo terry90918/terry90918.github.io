@@ -1,5 +1,6 @@
 export const SITE_EMAIL = 'mailto:zxtw17985321@gmail.com'
 export const CV_URL = '/cv'
+export const CHATGPT_URL = 'https://chatgpt.com/u/terrytychen'
 
 export interface ExperienceNote {
   id: 'gj' | 'nidin' | 'ai-work'

@@ -1,3 +1,4 @@
+import { CHATGPT_URL } from '@/lib/site/content'
 import { assetPath, basePath } from './site'
 export const locales = ['zh-TW', 'en'] as const
 export type Locale = (typeof locales)[number]
@@ -16,6 +17,7 @@ export const contact = {
   phone: '+886 931206500',
   phoneHref: 'tel:+886931206500',
   github: 'https://github.com/terry90918',
+  chatgpt: CHATGPT_URL,
   linkedin: 'https://www.linkedin.com/in/%E5%A4%A9%E4%B8%80-%E9%99%B3-98812812a/',
   photo: assetPath('/images/profile/tien-yi-chen.webp'),
 }
