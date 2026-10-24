@@ -67,3 +67,35 @@ describe('Writing index authoring visibility', () => {
     expect(html).toContain('共 1 篇已發佈文章')
   })
 })
+
+describe('Writing topic navigation', () => {
+  it('links to AI Daily, pstack and Harness² when their published articles exist', async () => {
+    vi.stubEnv('NODE_ENV', 'production')
+    vi.mocked(getPostsByYearMonth).mockResolvedValue([
+      {
+        year: 2026,
+        months: [
+          {
+            month: 10,
+            monthName: 'October',
+            posts: [
+              post('ai-daily-2026-10-01', 'published'),
+              post('cursor-pstack-plugin-analysis', 'published'),
+              post('harness2-recursive-agent-harnessing-01', 'published'),
+            ],
+          },
+        ],
+      },
+    ])
+    const doc = new DOMParser().parseFromString(
+      renderToStaticMarkup(await PostsPage()),
+      'text/html'
+    )
+    const links = [...doc.querySelectorAll('nav[aria-label="文章主題"] a')]
+    expect(links.map((link) => [link.textContent, link.getAttribute('href')])).toEqual([
+      ['AI 日報', '/posts/ai-daily'],
+      ['pstack', '/posts/pstack'],
+      ['Harness²', '/posts/harness2'],
+    ])
+  })
+})
