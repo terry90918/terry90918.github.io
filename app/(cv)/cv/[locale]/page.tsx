@@ -21,7 +21,7 @@ export default async function Home({
     alternateName: locale === 'en' ? '陳天一' : 'Tien Yi Chen',
     url: `${siteUrl}/${locale}`,
     image: new URL(contact.photo, siteUrl).href,
-    sameAs: [contact.github, contact.linkedin],
+    sameAs: [contact.github, contact.linkedin, contact.chatgpt],
     knowsAbout: profile.skills.map((skill) => skill.title),
   }
   return (

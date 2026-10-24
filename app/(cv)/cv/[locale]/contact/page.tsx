@@ -2,7 +2,7 @@ import { Card } from '@/components/ui/card'
 import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { ArrowUpRight, Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
+import { ArrowUpRight, Github, Linkedin, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
 import FeaturedWorks from '@/components/cv/shared/featured-works/featured-works'
 import Eyebrow from '@/components/cv/shared/eyebrow/eyebrow'
 import { getCaseStudies } from '@/lib/cv/case-studies'
@@ -33,6 +33,7 @@ export default async function Contact({
   const links = [
     { label: labels.email, value: contact.email, href: `mailto:${contact.email}`, Icon: Mail },
     { label: labels.phone, value: contact.phone, href: contact.phoneHref, Icon: Phone },
+    { label: 'ChatGPT', value: '@terrytychen', href: contact.chatgpt, Icon: MessageCircle },
     { label: 'GitHub', value: 'terry90918', href: contact.github, Icon: Github },
     { label: 'LinkedIn', value: 'Tien Yi Chen', href: contact.linkedin, Icon: Linkedin },
   ]
