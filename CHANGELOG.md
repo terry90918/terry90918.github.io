@@ -1,5 +1,57 @@
 # Changelog
 
+## [1.11.0](https://github.com/terry90918/terry90918.github.io/compare/v1.10.0...v1.11.0) (2026-10-24)
+
+
+### Features
+
+* add ChatGPT profile to CV contacts and site footer ([#151](https://github.com/terry90918/terry90918.github.io/issues/151)) ([b8e8f99](https://github.com/terry90918/terry90918.github.io/commit/b8e8f992b4092caa06e5dfa13cdab8d4badc5a9a))
+* **blog:** embed pstack NotebookLM podcast and video ([#145](https://github.com/terry90918/terry90918.github.io/issues/145)) ([6057f35](https://github.com/terry90918/terry90918.github.io/commit/6057f35929ff42ae9938b9307c8e6be5d018ad77))
+* enable Shiki for bilingual CV MDX ([#150](https://github.com/terry90918/terry90918.github.io/issues/150)) ([43080bd](https://github.com/terry90918/terry90918.github.io/commit/43080bd956cc0484fc1fafca65e089e827605f1a))
+* **ui:** unify shadcn theme and Typeset reading ([#146](https://github.com/terry90918/terry90918.github.io/issues/146)) ([add6a11](https://github.com/terry90918/terry90918.github.io/commit/add6a1124600cffe1249b628c54c649d3d9b6f45))
+
+
+### Bug Fixes
+
+* address July AI article review findings ([d5d7c19](https://github.com/terry90918/terry90918.github.io/commit/d5d7c1964c448dc513cd480ed8fab636a5e9a4fc))
+* align personal site with selected Open Design reference ([6efe7c7](https://github.com/terry90918/terry90918.github.io/commit/6efe7c7938475cee98b8efa69855c86ea7981ffc))
+* align personal site with specified Open Design source ([39ac129](https://github.com/terry90918/terry90918.github.io/commit/39ac1290fab5982fa8df50ca27866163e0f6e6a3))
+* align Story and Work metadata with displayed sections ([d0c83d8](https://github.com/terry90918/terry90918.github.io/commit/d0c83d8afe39baf5c733ceb0e358de0861192630))
+* align Writing navigation with latest selected design ([a1c5d7b](https://github.com/terry90918/terry90918.github.io/commit/a1c5d7b9d402c7f3cb5e376691251d5fd306fcff))
+* **blog:** add shared short-news headings ([cfa8093](https://github.com/terry90918/terry90918.github.io/commit/cfa809350e814c7b743a4080b676f29b48a6a467))
+* **blog:** address July AI Daily review findings ([d376110](https://github.com/terry90918/terry90918.github.io/commit/d376110419a821caa97968b31e92c23a6daeb29f))
+* **blog:** clarify 2026-08-26 source claims ([4c0c921](https://github.com/terry90918/terry90918.github.io/commit/4c0c921a01878f33fa6cf2a0a639ed2d40eff16e))
+* **blog:** correct 2026-08-26 article rendering ([0be3fbd](https://github.com/terry90918/terry90918.github.io/commit/0be3fbd7e3e80c3eeb1eb8041de00783731e8a04))
+* **blog:** order Harness² series by publication time ([edcfddc](https://github.com/terry90918/terry90918.github.io/commit/edcfddc21bc5a4a22f50c438468bc49d40e6e671))
+* **blog:** preserve July 9 digest for requalification ([e4a9e72](https://github.com/terry90918/terry90918.github.io/commit/e4a9e7294beec6a58a5e13abc8986b0ad14805f1))
+* **blog:** remove agent release pipeline article ([f843a15](https://github.com/terry90918/terry90918.github.io/commit/f843a150d58fee9e2eeb823097081d8d8d08e621))
+* **blog:** remove agent release pipeline article ([a871002](https://github.com/terry90918/terry90918.github.io/commit/a87100229d0538c1943316d56d3bf67ab650b117))
+* **blog:** remove Grok Bot shared-computer article ([5daa9f2](https://github.com/terry90918/terry90918.github.io/commit/5daa9f2c22663b1505258fcb9fd4d8452f93076c))
+* **blog:** remove Grok Bot shared-computer article ([63f8116](https://github.com/terry90918/terry90918.github.io/commit/63f811692a8c6800dfaaf131ec2e149698ab0647))
+* **blog:** remove harness article and rename AI series label ([e5fe526](https://github.com/terry90918/terry90918.github.io/commit/e5fe526ede11d786927dd52cc4175e6cfbba6079))
+* **blog:** remove Harness article and rename AI series label ([592eae3](https://github.com/terry90918/terry90918.github.io/commit/592eae33bb638b7da52113aedf194af70604d24e))
+* **blog:** render 8/26 story headings correctly ([054f3aa](https://github.com/terry90918/terry90918.github.io/commit/054f3aaa90df3212ae7dfc3e66201b630a589679))
+* **blog:** simplify feature separators and mobile reading flow ([#147](https://github.com/terry90918/terry90918.github.io/issues/147)) ([759b7a8](https://github.com/terry90918/terry90918.github.io/commit/759b7a8938ffb573998e7fb14966a2fcf5e2869d))
+* **blog:** sync excerpt tests and remove retired images ([bb96615](https://github.com/terry90918/terry90918.github.io/commit/bb96615561f2935e3a11e5eb69401066155bea71))
+* **content:** address batch 04 review findings ([b093ac2](https://github.com/terry90918/terry90918.github.io/commit/b093ac2bf525a1399a6b53e97963e4832bb5c5c5))
+* **content:** address review findings in Aug 24-27 ([62ffa8c](https://github.com/terry90918/terry90918.github.io/commit/62ffa8ca442b7e8ee4e6f2bbb9d3937072f86c66))
+* **content:** correct source claims in Aug 6-10 articles ([#130](https://github.com/terry90918/terry90918.github.io/issues/130)) ([ed7daf6](https://github.com/terry90918/terry90918.github.io/commit/ed7daf6cfa86080784709c6eda0b772f3176880a))
+* **content:** order pstack trilogy chronologically ([19e193c](https://github.com/terry90918/terry90918.github.io/commit/19e193cf6efc710e7bd56b235e3dc7421707c6cc))
+* **content:** render Codex Harness bold text ([#120](https://github.com/terry90918/terry90918.github.io/issues/120)) ([514f1d5](https://github.com/terry90918/terry90918.github.io/commit/514f1d5a87bc700fe2dc94e2acfe81698d7cee41))
+* **cv:** reserve the selected portrait ratio on mobile ([6acb967](https://github.com/terry90918/terry90918.github.io/commit/6acb9675ebdc47b5b1abf325f4a6eb5d2a8391f9))
+* **docs:** remove duplicate pstack article headings ([bfff782](https://github.com/terry90918/terry90918.github.io/commit/bfff7821d7d9781d054cb2195dd1e5afbe5c35f4))
+* **docs:** remove duplicate pstack article headings ([bfff782](https://github.com/terry90918/terry90918.github.io/commit/bfff7821d7d9781d054cb2195dd1e5afbe5c35f4))
+* finish reference spacing and review accessibility ([0b68760](https://github.com/terry90918/terry90918.github.io/commit/0b68760bc03f1ebfcdea528c3d7ba105f9405b51))
+* keep article playback and sharing on one row ([#148](https://github.com/terry90918/terry90918.github.io/issues/148)) ([e882bf3](https://github.com/terry90918/terry90918.github.io/commit/e882bf3970f381d129be84269dc28d2872b053e0))
+* keep contact utility hidden in mobile header ([14b120e](https://github.com/terry90918/terry90918.github.io/commit/14b120e0d642e9d0553f68e1bd0bf8ef05ef0c50))
+* render AI Coding articles 3 and 4 emphasis ([e4e3823](https://github.com/terry90918/terry90918.github.io/commit/e4e3823aa9863e91190ea137ea480534554935f8))
+* render AI Coding emphasis in articles 3 and 4 ([80b257e](https://github.com/terry90918/terry90918.github.io/commit/80b257e218d17e7af8cafabec9672dafc95d7ce6))
+* restore confirmed Nidin delivery statement ([e49899a](https://github.com/terry90918/terry90918.github.io/commit/e49899a06f875205dc99508de0f9559546560d54))
+* rewrite Nidin management responsibilities across site and design ([248626f](https://github.com/terry90918/terry90918.github.io/commit/248626f4d1ef6fd2ce3e128ee3b34552c2b1930c))
+* **site:** sync profile portraits with latest design ([132aa0a](https://github.com/terry90918/terry90918.github.io/commit/132aa0ae1d0e112a5b925b8e0bca0c6d7fac1c47))
+* synchronise all selected design copy and CV sections ([dc123dd](https://github.com/terry90918/terry90918.github.io/commit/dc123dd0f905c3d622028b8d72de3ec7b4a8d3cc))
+* use Typeset backgrounds for highlighted code ([#149](https://github.com/terry90918/terry90918.github.io/issues/149)) ([e71c1c7](https://github.com/terry90918/terry90918.github.io/commit/e71c1c7eb9f9aaf2a2d734ff876d2e277b6878d8))
+
 ## [1.10.0](https://github.com/terry90918/terry90918.github.io/compare/v1.9.1...v1.10.0) (2026-10-15)
 
 
