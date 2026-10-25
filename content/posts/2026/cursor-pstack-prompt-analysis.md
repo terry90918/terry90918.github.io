@@ -3,6 +3,16 @@ title: 'pstack 深度導讀（下）：55 個技能、代理提示、自動化�
 publishedAt: '2026-10-18T23:18:35+08:00'
 status: 'published'
 slug: 'cursor-pstack-prompt-analysis'
+presentation:
+  type: feature
+  category: 開發工具
+  audio:
+    src: /audio/2026/pstack-prompt-analysis-notebooklm.mp3
+    duration: 1312.298957
+  video:
+    src: /videos/2026/pstack-prompt-analysis-notebooklm.mp4
+    poster: /videos/2026/pstack-prompt-analysis-notebooklm.jpg
+    title: 'Pstack 深度導讀（下）：技能與限制'
 excerpt: '逐項分析 pstack 0.15.26 的 31 個一般技能與 24 個原則，並讀代理設定、Benny 自動化、輔助腳本和 Claude Code 副本的維護方式。'
 tags:
   - cursor
