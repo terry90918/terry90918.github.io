@@ -49,7 +49,7 @@ Keep visible keyboard focus and theme persistence. Respect `prefers-reduced-moti
 
 The user authorised ordinary-file edits in the selected Open Design project for this follow-up. Nidin management copy uses `管理工程部門團隊，協助工作分派與技術決策。` and `Managed the engineering team and supported work allocation and technical decision-making.`. Role panels retain the technical-manager title without repeating that sentence. Nidin’s management headcount and its statistic card are removed from main Work, the case, both CV homes and both CV case studies. Three career metric cards remain. Other companies’ team sizes and the confirmed 55-delivery statement stay unchanged. The local design source uses matching three-column metrics, with two columns below 900px.
 
-Writing navigation shows the AI 日報 series entry. Keep the year-grouped archive, `all-posts`/article anchors and active public article URLs.
+Writing navigation shows AI 日報, pstack and Harness² topic entries. The pstack and Harness² archives live at /posts/pstack and /posts/harness2, list only published canonical series members in reverse publication order, and reuse the shared writing cards and outline buttons. Keep the year-grouped archive, `all-posts`/article anchors and active public article URLs.
 
 ## Feature article preview
 
