@@ -84,7 +84,7 @@ describe('Approved personal story reading paths', () => {
     expect(doc.querySelector('h1')?.textContent).toBe('關於我')
     for (const [text, href] of [
       ['幾段經歷', '/story'],
-      ['作品頁', '/work'],
+      ['作品頁', 'https://chatgpt.com/u/terrytychen'],
       ['文章索引', '/posts'],
       ['CV', '/cv'],
     ]) {
@@ -102,8 +102,8 @@ describe('Approved personal story reading paths', () => {
     expect(entries.querySelectorAll('article')).toHaveLength(3)
     expect(entries.querySelector('a')?.getAttribute('href')).toBe('/story#gj')
     expect(entries.textContent).not.toContain('材料工程畢業後')
-    expect(doc.querySelector('[data-home-section="work"] article a')?.getAttribute('href')).toBe(
-      '/work/gj'
+    expect(doc.querySelector('[data-home-section="work"] a')?.getAttribute('href')).toBe(
+      'https://chatgpt.com/u/terrytychen'
     )
   })
 })

@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import Link from 'next/link'
 import { getPosts } from '@/lib/posts/queries'
-import { EXPERIENCE_NOTES, SITE_EMAIL, WORK_CASES, WORK_CATEGORY_LABELS } from '@/lib/site/content'
+import { EXPERIENCE_NOTES, SITE_EMAIL, CHATGPT_URL } from '@/lib/site/content'
 import { getRecentUpdates } from '@/lib/site/writing'
 import { pageMetadata } from '@/lib/site/metadata'
 import { WritingPostCard } from '@/components/WritingPostCard'
@@ -93,26 +93,10 @@ export default async function HomePage() {
       )}
       <section data-home-section="work" aria-labelledby="work-title">
         <SiteSectionHeading label="作品" title="做過的作品" id="work-title">
-          <Link href="/work" className="site-text-link">
-            看精選作品
+          <Link href={CHATGPT_URL} className="site-text-link">
+            到 ChatGPT 看作品
           </Link>
         </SiteSectionHeading>
-        <div className="site-card-grid">
-          {WORK_CASES.map((work) => (
-            <Card key={work.slug} asChild className="gap-0 px-6">
-              <article className="site-card site-work-card">
-                <p className="site-kicker">{WORK_CATEGORY_LABELS[work.category]}</p>
-                <h3>
-                  <Link href={`/work/${work.slug}`}>{work.title}</Link>
-                </h3>
-                <p className="site-card-summary">{work.summary}</p>
-                <Link href={`/work/${work.slug}`} className="site-text-link">
-                  看作品
-                </Link>
-              </article>
-            </Card>
-          ))}
-        </div>
       </section>
       <SiteContact home />
     </div>

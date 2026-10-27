@@ -60,7 +60,7 @@ test.describe('Personal site', () => {
     for (const [name, href] of [
       ['關於我', '/about'],
       ['故事', '/story'],
-      ['作品', '/work'],
+      ['作品', 'https://chatgpt.com/u/terrytychen'],
       ['文章', '/posts'],
       ['CV', cv],
     ]) {
@@ -95,7 +95,7 @@ test.describe('Personal site', () => {
     for (const [name, href] of [
       ['關於我', '/about'],
       ['故事', '/story'],
-      ['作品', '/work'],
+      ['作品', 'https://chatgpt.com/u/terrytychen'],
       ['文章', '/posts'],
       ['CV', cv],
       ['聯絡', email],
