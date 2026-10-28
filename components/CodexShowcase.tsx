@@ -139,7 +139,7 @@ export function CodexActivity({
   const sectionId = embedded ? 'cv-codex-activity' : 'codex-activity'
   const titleId = embedded ? 'cv-activity-title' : 'activity-title'
   const summaryId = embedded ? 'cv-activity-summary' : 'activity-summary'
-  const Heading = embedded ? 'h4' : 'h2'
+  const Heading = embedded ? 'h3' : 'h2'
   const levels = [...snapshot[mode]]
   const distribution = [0, 1, 2, 3, 4]
     .map(
@@ -231,7 +231,7 @@ export function CodexProfile({ locale }: { locale: Locale }) {
   return (
     <section id="codex-profile" className="codex-profile" aria-labelledby="codex-profile-title">
       <header className="codex-profile-heading">
-        <h3 id="codex-profile-title">{copy.title}</h3>
+        <h2 id="codex-profile-title">{copy.title}</h2>
         <p>
           Terry.TY Chen{' '}
           <a href={snapshot.source} target="_blank" rel="noopener noreferrer">
@@ -249,7 +249,7 @@ export function CodexProfile({ locale }: { locale: Locale }) {
       </dl>
       <CodexActivity locale={locale} placement="cv" />
       <div className="codex-plugins">
-        <h4>{copy.plugins}</h4>
+        <h3>{copy.plugins}</h3>
         <ul>
           {['Superpowers', 'Linear', 'dot', 'GitHub'].map((name, index) => (
             <li key={name} data-codex-plugin>
@@ -272,7 +272,7 @@ export function CodexProfile({ locale }: { locale: Locale }) {
         </ul>
       </div>
       <div className="codex-insights">
-        <h4>{copy.insights}</h4>
+        <h3>{copy.insights}</h3>
         <dl>
           {copy.rows.map(([label, value]) => (
             <div key={label} data-codex-insight>

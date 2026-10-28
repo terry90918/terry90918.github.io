@@ -5,8 +5,11 @@ test('the default Chinese CV highlights its current section', async ({ page }) =
   await expect(
     page
       .getByRole('navigation', { name: '履歷章節', exact: true })
-      .getByRole('link', { name: '履歷重點', exact: true })
+      .getByRole('link', { name: 'OpenAI', exact: true })
   ).toHaveAttribute('aria-current', 'location')
+  await expect(
+    page.locator('#about').getByRole('heading', { name: 'OpenAI', exact: true })
+  ).toBeInViewport()
 })
 
 test('CV opens inside the main site and shares its navigation and theme', async ({ page }) => {

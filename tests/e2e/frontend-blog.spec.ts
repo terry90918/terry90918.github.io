@@ -189,7 +189,18 @@ test.describe('Personal site', () => {
       await expect(page.locator('[data-codex-insight]')).toHaveCount(4)
       await expect(page.locator('[data-codex-plugin]')).toHaveCount(4)
       const profile = page.locator('#codex-profile')
-      await expect(profile.getByRole('heading', { level: 3 })).toHaveText('OpenAI')
+      await expect(profile.getByRole('heading', { level: 2 })).toHaveText('OpenAI')
+      await expect(
+        page
+          .getByRole('navigation', {
+            name: locale === 'en' ? 'CV sections' : '履歷章節',
+            exact: true,
+          })
+          .getByRole('link', { name: 'OpenAI', exact: true })
+      ).toHaveAttribute('href', `/cv/${locale}#about`)
+      await expect(page.locator('#about #codex-profile')).toHaveCount(1)
+      await expect(page.locator('#skills #codex-profile')).toHaveCount(0)
+      await expect(page.locator('.cv-stats-grid')).toHaveCount(0)
       await expect(profile.locator('.codex-source')).toHaveCount(0)
       await expect(profile.locator('a[href="/work"]')).toHaveCount(0)
       const icon = profile.locator('[data-codex-plugin] img')

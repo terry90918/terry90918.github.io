@@ -184,12 +184,6 @@
   width: 140px;
   height: auto;
 }
-.cv-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 26px;
-}
 .cv-reference-work-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -216,9 +210,6 @@
   padding: 24px;
 }
 @media (max-width: 900px) {
-  .cv-stats-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
   .cv-reference-name {
     font-size: 44px;
   }
@@ -249,18 +240,6 @@
   }
   .cv-reference-work-grid {
     grid-template-columns: 1fr;
-  }
-  .cv-stats-grid {
-    gap: 12px;
-  }
-  .cv-stats-grid > div {
-    padding: 20px;
-  }
-  .cv-stats-grid > div > p:first-child {
-    font-size: 28px;
-  }
-  .cv-stats-grid > div > p + p {
-    font-size: 11px;
   }
   .cv-home-reference > .cv-contact-reference {
     margin: 38px 0;
