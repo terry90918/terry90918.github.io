@@ -1,11 +1,11 @@
 ---
-title: "AI Coding 詞典拆解（03）：工具、環境與 Agent 的權限邊界"
-publishedAt: "2026-10-15T08:43:02+08:00"
-status: "published"
-slug: "ai-coding-dictionary-03-tools-environment"
-excerpt: "模型本身不會讀檔或執行命令。Agent 的行動來自 Harness 提供的工具，而工具真正能影響什麼，則取決於環境、權限和隔離方式。"
-tags: ["人工智慧", "AI工程", "軟體開發", "資安"]
-metaDescription: "說明 Tool、Tool Call、Tool Result、MCP、Filesystem、Sandbox 和 Permission Mode 的分工，建立可預期的 AI Agent 執行邊界。"
+title: 'AI Coding 詞典拆解（03）：工具、環境與 Agent 的權限邊界'
+publishedAt: '2026-10-15T08:43:02+08:00'
+status: 'published'
+slug: 'ai-coding-dictionary-03-tools-environment'
+excerpt: '模型本身不會讀檔或執行命令。Agent 的行動來自 Harness 提供的工具，而工具真正能影響什麼，則取決於環境、權限和隔離方式。'
+tags: ['人工智慧', 'AI工程', '軟體開發', '資安']
+metaDescription: '說明 Tool、Tool Call、Tool Result、MCP、Filesystem、Sandbox 和 Permission Mode 的分工，建立可預期的 AI Agent 執行邊界。'
 ---
 
 AI 程式代理讀取程式碼、執行測試、修改檔案時，我們常把整段流程都說成「模型做了」。這種說法方便，卻不利於除錯。模型提出下一步，執行環境決定要不要採納，工具才真的讀取或改動外部狀態。三層出現的錯誤不同，補救方法也不同。

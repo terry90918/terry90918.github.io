@@ -10,9 +10,13 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:e2e": "playwright test",
+    "test:e2e": "playwright test --project=frontend",
     "prepare": "husky",
-    "images:prepare": "node scripts/prepare-images.mjs"
+    "images:prepare": "node scripts/prepare-images.mjs",
+    "format:check": "prettier --check .",
+    "test:unit": "vitest run tests/unit",
+    "test:integration": "vitest run tests/integration",
+    "verify": "node scripts/verify.mjs"
   },
   "dependencies": {
     "@react-three/drei": "10.7.8",

@@ -48,10 +48,13 @@ test('case study progress stays below section navigation on mobile', async ({ pa
   for (const width of [375, 320]) {
     await page.setViewportSize({ width, height: 812 })
     await page.goto('/cv/en/case-study/jurislm')
-    const navigation = await page.getByRole('navigation', { name: 'CV sections' }).boundingBox()
-    const progress = await page.locator('main > div.fixed.inset-x-0').boundingBox()
-
-    expect(progress!.y - (navigation!.y + navigation!.height)).toBeGreaterThanOrEqual(8)
+    await expect
+      .poll(async () => {
+        const navigation = await page.getByRole('navigation', { name: 'CV sections' }).boundingBox()
+        const progress = await page.locator('main > div.fixed.inset-x-0').boundingBox()
+        return progress!.y - (navigation!.y + navigation!.height)
+      })
+      .toBeGreaterThanOrEqual(8)
     expect(
       await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
     ).toBe(true)
@@ -138,7 +141,14 @@ test('section navigation remains below the header at narrow widths', async ({ pa
 test('CV styles preserve the main-site link shape', async ({ page }) => {
   await page.goto('/')
   const brand = page.getByRole('link', { name: 'Terry.TY Chen', exact: true })
-  expect(await brand.evaluate((element) => getComputedStyle(element).borderRadius)).toBe('4px')
+  const radius = await brand.evaluate((element) => getComputedStyle(element).borderRadius)
+  expect(Number.parseFloat(radius)).toBeGreaterThan(0)
+  await page.goto('/cv/en')
+  await expect(page.getByRole('button', { name: 'Toggle theme', exact: true })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Terry.TY Chen', exact: true })).toHaveCSS(
+    'border-radius',
+    radius
+  )
 })
 
 test('loads the 3D badge only when its desktop layout is visible', async ({ page }) => {

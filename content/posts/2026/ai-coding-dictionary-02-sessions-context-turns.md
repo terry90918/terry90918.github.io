@@ -1,11 +1,11 @@
 ---
-title: "AI Coding 詞典拆解（02）：Session、Turn 與 Context Window 的界線"
-publishedAt: "2026-10-15T08:43:01+08:00"
-status: "published"
-slug: "ai-coding-dictionary-02-sessions-context-turns"
-excerpt: "模型本身不保留 Session 狀態；對話的連續性來自 Harness 或 API 保存並按需提供相關脈絡。理解 Session、Turn 和 Context Window，才能看懂代理為什麼會忘記。"
-tags: ["人工智慧", "AI工程", "軟體開發", "Agent"]
-metaDescription: "拆解模型請求、Turn、Session、Context 和 Context Window，說明工具循環如何增加請求、脈絡如何累積，以及為什麼長對話不是可靠記憶。"
+title: 'AI Coding 詞典拆解（02）：Session、Turn 與 Context Window 的界線'
+publishedAt: '2026-10-15T08:43:01+08:00'
+status: 'published'
+slug: 'ai-coding-dictionary-02-sessions-context-turns'
+excerpt: '模型本身不保留 Session 狀態；對話的連續性來自 Harness 或 API 保存並按需提供相關脈絡。理解 Session、Turn 和 Context Window，才能看懂代理為什麼會忘記。'
+tags: ['人工智慧', 'AI工程', '軟體開發', 'Agent']
+metaDescription: '拆解模型請求、Turn、Session、Context 和 Context Window，說明工具循環如何增加請求、脈絡如何累積，以及為什麼長對話不是可靠記憶。'
 ---
 
 「我前面明明交代過，怎麼它又問一次？」這種情況不一定是模型突然失憶。資訊可能還留在對話紀錄，卻沒有放進這次請求；也可能摘要遺漏了細節，或產品把不同工作分到不同 Session。要找原因，先分清楚資訊放在哪一層，以及它跨過了哪個邊界。

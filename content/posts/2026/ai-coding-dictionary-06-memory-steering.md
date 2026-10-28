@@ -1,11 +1,11 @@
 ---
-title: "AI Coding 詞典拆解（06）：用 Memory、AGENTS.md 和 Skills 引導 Agent"
-publishedAt: "2026-10-15T08:43:05+08:00"
-status: "published"
-slug: "ai-coding-dictionary-06-memory-steering"
-excerpt: "把所有規則塞進一個檔案，未必能讓 Agent 更聽話。記憶、專案指令、Skills 和 Context Pointer 有不同載入時機，應放在對的層級。"
-tags: ["人工智慧", "AI工程", "軟體開發", "Agent"]
-metaDescription: "拆解 Memory System、AGENTS.md、Progressive Disclosure、Context Pointer、Skill 與 Subagent 的作用，設計可維護的 Agent 脈絡分層。"
+title: 'AI Coding 詞典拆解（06）：用 Memory、AGENTS.md 和 Skills 引導 Agent'
+publishedAt: '2026-10-15T08:43:05+08:00'
+status: 'published'
+slug: 'ai-coding-dictionary-06-memory-steering'
+excerpt: '把所有規則塞進一個檔案，未必能讓 Agent 更聽話。記憶、專案指令、Skills 和 Context Pointer 有不同載入時機，應放在對的層級。'
+tags: ['人工智慧', 'AI工程', '軟體開發', 'Agent']
+metaDescription: '拆解 Memory System、AGENTS.md、Progressive Disclosure、Context Pointer、Skill 與 Subagent 的作用，設計可維護的 Agent 脈絡分層。'
 ---
 
 每次開始新 Session，都要重講一次「這個專案用 PostgreSQL」或「修改後請先跑哪個檢查」，很快就會讓人想寫一份更長的指令檔。可是，如果一份檔案載入了每個專案規則、發版流程、設計細節和歷史決策，Agent 每次修一個小錯也要面對整包資訊。重要規則變多，不代表它們更容易被找到。
@@ -60,13 +60,13 @@ Agent Skills 已有公開規格，定義 `SKILL.md` 及可選的支援資源格�
 
 可以把全 repo 通用的檢查命令放在 AGENTS.md，把登入模組的架構說明寫在專門文件，再於 AGENTS.md 加上一個觸發條件明確的 Context Pointer。若要進行特定安全審查，就載入對應 Skill。穩定的使用者偏好可以進入 Memory；這次修復的驗收條件、目前狀態和下一步則記在 Ticket。Agent 要調查搜尋路徑時，可委派 Subagent，並要求它回報相關程式位置和證據。
 
-| 資訊 | 常見位置 | 使用時要確認什麼 |
-| --- | --- | --- |
-| 每個任務都適用的短規則 | AGENTS.md 或工具的專案指令 | 目前 Harness 是否真的載入，以及其他層級是否覆蓋它 |
-| 特定工作才需要的操作流程 | Skill 或專門文件 | 觸發描述是否清楚，流程和支援資源是否仍有效 |
-| 跨 Session 仍穩定的偏好或事實 | Memory System | 是否仍正確，是否有讀取入口 |
-| 跨多個 Session 的目標與進度 | Spec、Ticket 或 Handoff Artifact | 對照目前程式碼、檢查結果和決策來源 |
-| 子任務的探索結果 | Subagent 報告 | 重要主張是否能回到原始程式碼或文件驗證 |
+| 資訊                          | 常見位置                         | 使用時要確認什麼                                  |
+| ----------------------------- | -------------------------------- | ------------------------------------------------- |
+| 每個任務都適用的短規則        | AGENTS.md 或工具的專案指令       | 目前 Harness 是否真的載入，以及其他層級是否覆蓋它 |
+| 特定工作才需要的操作流程      | Skill 或專門文件                 | 觸發描述是否清楚，流程和支援資源是否仍有效        |
+| 跨 Session 仍穩定的偏好或事實 | Memory System                    | 是否仍正確，是否有讀取入口                        |
+| 跨多個 Session 的目標與進度   | Spec、Ticket 或 Handoff Artifact | 對照目前程式碼、檢查結果和決策來源                |
+| 子任務的探索結果              | Subagent 報告                    | 重要主張是否能回到原始程式碼或文件驗證            |
 
 這些位置不是互斥的。有時 AGENTS.md 會指向 Skill，Ticket 會連到 Spec，Memory 也會保存專案慣例。關鍵是不要把摘要誤認為現況，也不要把所有細節放進永遠載入的層級。每新增一條指令，都要確認它由誰讀取、在什麼工作載入，以及資訊改變時由誰更新。
 
