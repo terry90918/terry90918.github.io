@@ -30,7 +30,7 @@ const profileCopy = {
       ['技能使用總次數', '15,487'],
     ],
     note: 'ChatGPT 個人頁的統計快照；技能數量指 Codex skills。連續紀錄以擷取當日為準。',
-    activity: '查看完整 Token 活動圖',
+    activity: '瀏覽互動作品',
   },
   en: {
     title: 'Codex usage record',
@@ -52,7 +52,7 @@ const profileCopy = {
       ['Total skill uses', '15,487'],
     ],
     note: 'A snapshot of the ChatGPT profile. Skills refers to Codex skills. Streaks are as of the capture date.',
-    activity: 'View the full token activity chart',
+    activity: 'Browse interactive works',
   },
 }
 
@@ -108,24 +108,77 @@ export function WorkGallery() {
   )
 }
 
-export function CodexActivity() {
+const activityCopy = {
+  'zh-TW': {
+    title: 'Token 活動',
+    modes: { daily: '每日', weekly: '每週', cumulative: '累計' },
+    views: '活動檢視',
+    region: 'Token 活動圖，可水平捲動',
+    chart: 'Token 活動，原頁色階快照，擷取日期',
+    captured: '擷取日期',
+    level: '色階',
+    cells: '格',
+    note: '色階表示來源圖的相對強度，不是逐日 Token 數值。',
+    sourceNote: '保留來源圖表的實際色階，並非即時同步或逐日 Token 數值。',
+    profile: '查看完整使用統計與工具紀錄',
+  },
+  en: {
+    title: 'Token activity',
+    modes: { daily: 'Daily', weekly: 'Weekly', cumulative: 'Cumulative' },
+    views: 'Activity view',
+    region: 'Token activity chart, horizontally scrollable',
+    chart: 'token activity, captured source levels, capture date',
+    captured: 'Captured',
+    level: 'Level',
+    cells: 'cells',
+    note: 'Levels show relative intensity in the source chart, not daily token counts.',
+    sourceNote: 'Captured source levels, not a live feed or daily token counts.',
+    profile: 'View the full usage statistics and tool record',
+  },
+}
+
+export function CodexActivity({
+  locale = 'zh-TW',
+  placement = 'work',
+}: { locale?: Locale; placement?: 'work' | 'cv' } = {}) {
   const [mode, setMode] = useState<'daily' | 'weekly' | 'cumulative'>('daily')
+  const copy = activityCopy[locale]
+  const embedded = placement === 'cv'
+  const sectionId = embedded ? 'cv-codex-activity' : 'codex-activity'
+  const titleId = embedded ? 'cv-activity-title' : 'activity-title'
+  const summaryId = embedded ? 'cv-activity-summary' : 'activity-summary'
+  const Heading = embedded ? 'h4' : 'h2'
   const levels = [...snapshot[mode]]
   const distribution = [0, 1, 2, 3, 4]
-    .map((level) => `色階 ${level}：${levels.filter((value) => value === String(level)).length} 格`)
-    .join('；')
+    .map(
+      (level) =>
+        `${copy.level} ${level}: ${levels.filter((value) => value === String(level)).length} ${copy.cells}`
+    )
+    .join(locale === 'en' ? '; ' : '；')
+  const total =
+    locale === 'en'
+      ? `${levels.length} cells; ${levels.filter((value) => value !== '0').length} have a non-zero level. `
+      : `${levels.length} 個方格，${levels.filter((value) => value !== '0').length} 個為非零色階。`
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ]
   return (
-    <section id="codex-activity" className="codex-activity" aria-labelledby="activity-title">
+    <section id={sectionId} className="codex-activity" aria-labelledby={titleId}>
       <div className="codex-section-header">
-        <h2 id="activity-title">Token 活動</h2>
-        <div className="codex-view-controls" role="group" aria-label="活動檢視">
-          {(
-            [
-              ['daily', '每日'],
-              ['weekly', '每週'],
-              ['cumulative', '累計'],
-            ] as const
-          ).map(([value, label]) => (
+        <Heading id={titleId}>{copy.title}</Heading>
+        <div className="codex-view-controls" role="group" aria-label={copy.views}>
+          {(['daily', 'weekly', 'cumulative'] as const).map((value) => (
             <Button
               key={value}
               variant="ghost"
@@ -133,49 +186,50 @@ export function CodexActivity() {
               aria-pressed={mode === value}
               onClick={() => setMode(value)}
             >
-              {label}
+              {copy.modes[value]}
             </Button>
           ))}
         </div>
       </div>
-      <div
-        className="codex-chart-scroll"
-        tabIndex={0}
-        role="region"
-        aria-label="Token 活動圖，可水平捲動"
-      >
+      <div className="codex-chart-scroll" tabIndex={0} role="region" aria-label={copy.region}>
         <div
           className="codex-chart"
           role="img"
-          aria-describedby="activity-summary"
-          aria-label={`${{ daily: '每日', weekly: '每週', cumulative: '累計' }[mode]} Token 活動，原頁色階快照，擷取日期 ${snapshot.capturedAt}`}
+          aria-describedby={summaryId}
+          aria-label={`${copy.modes[mode]} ${copy.chart} ${snapshot.capturedAt}`}
         >
-          <div className="codex-chart-grid">
+          <div className="codex-chart-grid" data-activity-mode={mode}>
             {levels.map((level, index) => (
               <span key={index} data-activity-level={level} />
             ))}
           </div>
           <div className="codex-chart-months" aria-hidden="true">
             {snapshot.months.map((month) => (
-              <span key={month}>{month}月</span>
+              <span key={month}>{locale === 'en' ? months[month - 1] : `${month}月`}</span>
             ))}
           </div>
         </div>
       </div>
-      <p id="activity-summary" className="sr-only" aria-live="polite">
-        {levels.length} 個方格，{levels.filter((value) => value !== '0').length} 個為非零色階。
-        {distribution}。色階表示來源圖的相對強度，不是逐日 Token 數值。
+      <p id={summaryId} className="sr-only" aria-live="polite">
+        {total}
+        {distribution}
+        {locale === 'en' ? '. ' : '。'}
+        {copy.note}
       </p>
-      <p className="codex-source">
-        擷取日期 <time dateTime={snapshot.capturedAt}>{snapshot.capturedAt}</time> ·{' '}
-        <a href={snapshot.source} target="_blank" rel="noopener noreferrer">
-          ChatGPT @terrytychen ↗
-        </a>
-      </p>
-      <p className="codex-source">保留來源圖表的實際色階，並非即時同步或逐日 Token 數值。</p>
-      <Link href="/cv/zh-TW#codex-profile" className="site-text-link">
-        查看完整使用統計與工具紀錄
-      </Link>
+      {!embedded && (
+        <>
+          <p className="codex-source">
+            {copy.captured} <time dateTime={snapshot.capturedAt}>{snapshot.capturedAt}</time> ·{' '}
+            <a href={snapshot.source} target="_blank" rel="noopener noreferrer">
+              ChatGPT @terrytychen ↗
+            </a>
+          </p>
+          <p className="codex-source">{copy.sourceNote}</p>
+          <Link href={`/cv/${locale}#codex-profile`} className="site-text-link">
+            {copy.profile}
+          </Link>
+        </>
+      )}
     </section>
   )
 }
@@ -201,6 +255,7 @@ export function CodexProfile({ locale }: { locale: Locale }) {
           </div>
         ))}
       </dl>
+      <CodexActivity locale={locale} placement="cv" />
       <div className="codex-plugins">
         <h4>{copy.plugins}</h4>
         <ul>
@@ -233,7 +288,7 @@ export function CodexProfile({ locale }: { locale: Locale }) {
         </a>
       </p>
       <p className="codex-source">{copy.note}</p>
-      <Link href="/work#codex-activity" className="site-text-link">
+      <Link href="/work" className="site-text-link">
         {copy.activity}
       </Link>
     </section>

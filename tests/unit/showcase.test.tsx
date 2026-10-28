@@ -51,7 +51,15 @@ describe('Public profile information split', () => {
       }
       expect(doc.body.textContent).toContain(locale === 'en' ? '153.38B' : '1533.8 億')
       expect(doc.body.textContent).toContain(locale === 'en' ? '8.44B' : '84.4 億')
-      expect(doc.querySelector('a[href="/work#codex-activity"]')).not.toBeNull()
+      expect(doc.querySelector('a[href="/work"]')).not.toBeNull()
+      const activity = doc.getElementById('cv-codex-activity')
+      expect(activity).not.toBeNull()
+      expect([...activity!.querySelectorAll('button')].map((button) => button.textContent)).toEqual(
+        locale === 'en' ? ['Daily', 'Weekly', 'Cumulative'] : ['每日', '每週', '累計']
+      )
+      expect(activity!.querySelectorAll('[data-activity-level]')).toHaveLength(
+        snapshot.daily.length
+      )
       expect(doc.querySelector('a[href="https://chatgpt.com/u/terrytychen"]')).not.toBeNull()
     })
   }
