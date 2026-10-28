@@ -23,7 +23,7 @@ export default defineConfig({
   webServer: externalURL
     ? undefined
     : {
-        command: `bun dev --hostname 127.0.0.1 --port ${port}`,
+        command: `bun dev --webpack --hostname 127.0.0.1 --port ${port}`,
         url: `${localURL}/work`,
         reuseExistingServer: false,
         timeout: 300000,
