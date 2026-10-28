@@ -285,7 +285,6 @@ main:has(> .feature-article) {
     justify-content: flex-start;
     gap: 0.5rem;
     min-height: 2.75rem;
-    padding-inline: 0;
     color: var(--muted-foreground);
     width: 100%;
     cursor: pointer;
