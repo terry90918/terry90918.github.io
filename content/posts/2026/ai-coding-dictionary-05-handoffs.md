@@ -1,11 +1,11 @@
 ---
-title: "AI Coding 詞典拆解（05）：用 Handoff 讓工程工作跨 Session 延續"
-publishedAt: "2026-10-15T08:43:04+08:00"
-status: "published"
-slug: "ai-coding-dictionary-05-handoffs"
-excerpt: "模型和 Session 都可能結束，專案工作卻會跨天、跨人和跨代理。可靠交接要把目標、決策和未完成事項寫到環境中，再讓下一個 Session 回到一手證據確認。"
-tags: ["人工智慧", "AI工程", "軟體開發", "團隊協作"]
-metaDescription: "拆解 Clearing、Handoff、Compaction 和 Autocompact，說明 Primary Source、Secondary Source、Spec、Ticket 如何保存可接手的工程狀態。"
+title: 'AI Coding 詞典拆解（05）：用 Handoff 讓工程工作跨 Session 延續'
+publishedAt: '2026-10-15T08:43:04+08:00'
+status: 'published'
+slug: 'ai-coding-dictionary-05-handoffs'
+excerpt: '模型和 Session 都可能結束，專案工作卻會跨天、跨人和跨代理。可靠交接要把目標、決策和未完成事項寫到環境中，再讓下一個 Session 回到一手證據確認。'
+tags: ['人工智慧', 'AI工程', '軟體開發', '團隊協作']
+metaDescription: '拆解 Clearing、Handoff、Compaction 和 Autocompact，說明 Primary Source、Secondary Source、Spec、Ticket 如何保存可接手的工程狀態。'
 ---
 
 工程工作常比一段對話長。今天的 Session 可能找到問題、比較方案並改了一半程式，明天才有人有空接著做。若下一個 Session 只收到「延續昨天的工作」，它其實沒有昨天的脈絡，只能重新探索，或根據零碎線索猜測原本的決定。
