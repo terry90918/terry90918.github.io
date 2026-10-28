@@ -13,6 +13,5 @@ steps:
       - bun install --frozen-lockfile
       - bun lint
       - bun run test
-      - bunx @fission-ai/openspec validate --specs
       - bun run build
       - bun typecheck

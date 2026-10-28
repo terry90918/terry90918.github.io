@@ -143,6 +143,8 @@ test.describe('Personal site', () => {
     await expect(page.locator('.work-showcase-card')).toHaveCount(5)
     await expect(page.locator('.work-showcase-card img')).toHaveCount(5)
     await expect(page.getByText('體驗需登入 ChatGPT。')).toBeVisible()
+    await page.getByRole('button', { name: 'Toggle theme', exact: true }).click()
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
     const chart = page.locator('.codex-chart')
     const views = []
     for (const mode of ['每日', '每週', '累計']) {
@@ -150,6 +152,18 @@ test.describe('Personal site', () => {
       await control.focus()
       await page.keyboard.press('Enter')
       await expect(control).toHaveAttribute('aria-pressed', 'true')
+      await expect(chart.locator('[data-activity-level="0"]').first()).toHaveCSS(
+        'background-color',
+        mode === '每日' ? 'rgb(48, 48, 48)' : 'rgb(53, 53, 51)'
+      )
+      await expect(chart.locator('[data-activity-level="4"]').first()).toHaveCSS(
+        'background-color',
+        mode === '每日' ? 'rgb(255, 158, 108)' : 'rgb(252, 106, 33)'
+      )
+      await expect(chart.locator('[data-activity-level="4"]').first()).toHaveCSS(
+        'box-shadow',
+        'none'
+      )
       views.push(
         await chart
           .locator('[data-activity-level]')
@@ -160,12 +174,6 @@ test.describe('Personal site', () => {
     }
     expect(new Set(views).size).toBe(3)
     await expect(page.locator('#activity-summary')).toContainText('364 個方格')
-    expect(
-      await chart
-        .locator('[data-activity-level="4"]')
-        .first()
-        .evaluate((cell) => getComputedStyle(cell).boxShadow)
-    ).not.toBe('none')
     await expect(chart.locator('[data-activity-level="0"]').first()).toHaveCSS('box-shadow', 'none')
     await page.setViewportSize({ width: 375, height: 900 })
     expect(
@@ -181,6 +189,25 @@ test.describe('Personal site', () => {
       await expect(page.locator('[data-codex-insight]')).toHaveCount(4)
       await expect(page.locator('[data-codex-plugin]')).toHaveCount(4)
       await expect(page.locator('#codex-profile')).toContainText('2026-10-28')
+      const cvChart = page.locator('#cv-codex-activity')
+      for (const name of locale === 'en'
+        ? ['Daily', 'Weekly', 'Cumulative']
+        : ['每日', '每週', '累計']) {
+        const view = cvChart.getByRole('button', { name, exact: true })
+        await view.click()
+        await expect(view).toHaveAttribute('aria-pressed', 'true')
+        await expect(cvChart.locator('.codex-chart')).toBeVisible()
+      }
+      expect(
+        await page
+          .locator('[id]')
+          .evaluateAll((nodes) =>
+            nodes
+              .map((node) => node.id)
+              .filter((id) => id === 'activity-summary' || id === 'cv-activity-summary')
+          )
+      ).toEqual(['cv-activity-summary'])
+
       expect(
         await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
       ).toBe(true)

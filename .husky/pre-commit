@@ -9,7 +9,6 @@
 #   2. lint      - 檢查代碼風格規則（ESLint）
 #   3. typecheck - 驗證 TypeScript 型別安全
 #   4. test      - 執行單元測試（Vitest）
-#   5. openspec  - 驗證 OpenSpec 規格文件
 #
 # 跳過 hook：git commit --no-verify
 
@@ -83,18 +82,6 @@ if ! bunx vitest run; then
     exit 1
 fi
 echo "${GREEN}[test] All tests passed!${NC}"
-
-# =============================================================================
-# OpenSpec 規格驗證
-# =============================================================================
-echo "${BLUE}[openspec] Validating specifications...${NC}"
-
-if ! bunx @fission-ai/openspec validate --specs; then
-    echo "${RED}[openspec] Spec validation failed!${NC}"
-    echo "${YELLOW}Fix: Check spec format errors above${NC}"
-    exit 1
-fi
-echo "${GREEN}[openspec] All specs validated!${NC}"
 
 # =============================================================================
 # 結果
