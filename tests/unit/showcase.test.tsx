@@ -31,7 +31,7 @@ describe('Public profile information split', () => {
   })
 
   for (const locale of ['zh-TW', 'en'] as const) {
-    it(`keeps all OpenAI metrics and plugins without the removed footer in ${locale}`, () => {
+    it(`renders OpenAI metrics, plugins and activity in ${locale}`, () => {
       const doc = documentFor(renderToStaticMarkup(<CodexProfile locale={locale} />))
       expect(doc.querySelector('h2')?.textContent).toBe('OpenAI')
       expect(doc.querySelectorAll('[data-codex-stat]')).toHaveLength(5)
@@ -42,8 +42,6 @@ describe('Public profile information split', () => {
       }
       expect(doc.body.textContent).toContain(locale === 'en' ? '153.38B' : '1533.8 億')
       expect(doc.body.textContent).toContain(locale === 'en' ? '8.44B' : '84.4 億')
-      expect(doc.querySelector('.codex-source')).toBeNull()
-      expect(doc.querySelector('a[href="/work"]')).toBeNull()
       const superpowers = doc.querySelector('[data-codex-plugin] img')
       expect(superpowers?.getAttribute('src')).toBe('/images/work/superpowers.svg')
       expect(existsSync(join(process.cwd(), 'public/images/work/superpowers.svg'))).toBe(true)

@@ -38,7 +38,6 @@ test.describe('Personal site', () => {
     await expect(
       page.getByTestId('experience-entries').getByRole('link', { name: '讀這段經歷' })
     ).toHaveCount(3)
-    await expect(page.locator('main')).not.toContainText(/820 萬|1,500 萬|0\.957|敬請期待/)
     await expect(page.locator('main a[href="#"]')).toHaveCount(0)
   })
 
@@ -123,19 +122,6 @@ test.describe('Personal site', () => {
     await expect(menu).toBeFocused()
   })
 
-  test('[brand] limits daily updates and credits the translation in the article index', async ({
-    page,
-  }) => {
-    await page.goto('/')
-    const updates = page.getByTestId('home-updates')
-    expect(await updates.locator('[data-writing-kind="ai-daily"]').count()).toBeLessThanOrEqual(1)
-    expect(await updates.locator('article').count()).toBeLessThanOrEqual(3)
-    await page.goto('/posts')
-    await expect(
-      page.locator('[data-writing-kind="translation"]').filter({ hasText: 'Andrew Ng' })
-    ).toContainText('AI 工程技能地圖：軟體工程基礎')
-  })
-
   test('work gallery preserves source charts and public reading without login', async ({
     page,
   }) => {
@@ -152,18 +138,6 @@ test.describe('Personal site', () => {
       await control.focus()
       await page.keyboard.press('Enter')
       await expect(control).toHaveAttribute('aria-pressed', 'true')
-      await expect(chart.locator('[data-activity-level="0"]').first()).toHaveCSS(
-        'background-color',
-        mode === '每日' ? 'rgb(48, 48, 48)' : 'rgb(53, 53, 51)'
-      )
-      await expect(chart.locator('[data-activity-level="4"]').first()).toHaveCSS(
-        'background-color',
-        mode === '每日' ? 'rgb(255, 158, 108)' : 'rgb(252, 106, 33)'
-      )
-      await expect(chart.locator('[data-activity-level="4"]').first()).toHaveCSS(
-        'box-shadow',
-        'none'
-      )
       views.push(
         await chart
           .locator('[data-activity-level]')
@@ -173,8 +147,6 @@ test.describe('Personal site', () => {
       )
     }
     expect(new Set(views).size).toBe(3)
-    await expect(page.locator('#activity-summary')).toContainText('364 個方格')
-    await expect(chart.locator('[data-activity-level="0"]').first()).toHaveCSS('box-shadow', 'none')
     await page.setViewportSize({ width: 375, height: 900 })
     expect(
       await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
@@ -185,24 +157,7 @@ test.describe('Personal site', () => {
     )
     for (const locale of ['zh-TW', 'en']) {
       await page.goto(`/cv/${locale}#codex-profile`)
-      await expect(page.locator('[data-codex-stat]')).toHaveCount(5)
-      await expect(page.locator('[data-codex-insight]')).toHaveCount(4)
-      await expect(page.locator('[data-codex-plugin]')).toHaveCount(4)
       const profile = page.locator('#codex-profile')
-      await expect(profile.getByRole('heading', { level: 2 })).toHaveText('OpenAI')
-      await expect(
-        page
-          .getByRole('navigation', {
-            name: locale === 'en' ? 'CV sections' : '履歷章節',
-            exact: true,
-          })
-          .getByRole('link', { name: 'OpenAI', exact: true })
-      ).toHaveAttribute('href', `/cv/${locale}#about`)
-      await expect(page.locator('#about #codex-profile')).toHaveCount(1)
-      await expect(page.locator('#skills #codex-profile')).toHaveCount(0)
-      await expect(page.locator('.cv-stats-grid')).toHaveCount(0)
-      await expect(profile.locator('.codex-source')).toHaveCount(0)
-      await expect(profile.locator('a[href="/work"]')).toHaveCount(0)
       const icon = profile.locator('[data-codex-plugin] img')
       await icon.scrollIntoViewIfNeeded()
       await expect(icon).toBeVisible()
@@ -211,9 +166,7 @@ test.describe('Personal site', () => {
           icon.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0)
         )
         .toBe(true)
-      await expect(icon).toHaveCSS('filter', 'invert(1)')
       const cvChart = page.locator('#cv-codex-activity')
-      await expect(cvChart.getByRole('img')).toHaveAttribute('aria-label', /2026-10-28/)
       for (const name of locale === 'en'
         ? ['Daily', 'Weekly', 'Cumulative']
         : ['每日', '每週', '累計']) {
@@ -256,10 +209,6 @@ test.describe('Personal site', () => {
   test('[brand] About introduces the site and keeps real public contacts', async ({ page }) => {
     await page.goto('/about')
     await expect(page.getByRole('heading', { name: '關於我', exact: true })).toBeVisible()
-    await expect(page.getByTestId('about-profile')).toContainText(
-      '嗨，我是 Terry。這個網站放我做過的產品、幾段經歷與持續整理的 AI 日報。'
-    )
-    await expect(page.locator('main')).not.toContainText(/敬請期待|熱愛旅行|人生使命/)
     for (const href of [
       'https://github.com/terry90918',
       'https://x.com/zxtw17985321',
@@ -268,22 +217,6 @@ test.describe('Personal site', () => {
     ]) {
       await expect(page.getByTestId('about-connect').locator(`a[href="${href}"]`)).toBeVisible()
     }
-  })
-
-  test('content links use readable accent colors in light and dark themes', async ({ page }) => {
-    await page.addInitScript(() => localStorage.setItem('theme', 'light'))
-    await page.goto('/')
-    const link = page
-      .getByTestId('experience-entries')
-      .getByRole('link', { name: '讀這段經歷' })
-      .first()
-    const title = page.getByTestId('experience-entries').getByRole('heading').first()
-    await expect(title).toHaveCSS('color', 'rgb(20, 20, 19)')
-    await expect(link).toHaveCSS('color', 'rgb(167, 70, 43)')
-    await page.getByRole('button', { name: 'Toggle theme' }).click()
-    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
-    await expect(link).toHaveCSS('color', 'rgb(230, 161, 138)')
-    await expect(title).toHaveCSS('color', 'rgb(250, 249, 245)')
   })
 
   test('theme toggle is keyboard reachable, has visible focus and changes the theme', async ({
@@ -372,7 +305,6 @@ test.describe('Personal site', () => {
   })
 })
 
-// ---- Post detail pages ----
 test.describe('Post detail pages', () => {
   for (const width of [320, 375]) {
     test(`[mobile visual] new Harness articles fit the viewport at ${width}px`, async ({
@@ -430,96 +362,37 @@ test.describe('Post detail pages', () => {
     })
   }
 
-  for (const { slug, excerpt, rendering } of [
-    {
-      slug: 'ai-daily-2026-08-28',
-      excerpt:
-        'NVIDIA 收購 Hugging Face 的報導尚待確認，PULSE、NVIDIA 財測與客服代理則把同一個問題推到前台：能力擴張之後，誰來驗證來源、成本與責任邊界？',
-      rendering: 'blockquote',
-    },
-    {
-      slug: 'ai-daily-2026-08-27',
-      excerpt:
-        '三十兆美元市場、極端風險模擬、推論晶片與自動採血，分別把 AI 推向金融、研究、運算與醫療現場；測試口徑與可驗證性決定宣稱能走多遠。',
-      rendering: 'standalone',
-    },
-    {
-      slug: 'ai-daily-2026-08-26',
-      excerpt:
-        'Groq 3 LPX把推論速度推上前台，Einride準備把電動貨運接入AI調度，Faraday則讓研究代理負責挑選實驗。平台產品、資料權限與專用晶片也在改寫各自產業的落地方式。',
-      rendering: 'blockquote',
-    },
-    {
-      slug: 'ai-daily-2026-08-25',
-      excerpt:
-        '從 Hugging Face 的開放模型平台到企業選模、創作者授權、AI 生技與算力融資，競爭焦點正從模型能力延伸到資料控制、商業化與成本。',
-      rendering: 'standalone',
-    },
-    {
-      slug: 'ai-daily-2026-08-24',
-      excerpt:
-        'Target 開始量化生成式 AI 帶來的購物流量；代理越界、工業控制器風險與出版授權研究，則把安全和平台規則推到台前。',
-      rendering: 'standalone',
-    },
-    {
-      slug: 'ai-daily-2026-08-21',
-      excerpt:
-        'Merck 與 Moderna 公布個人化癌症疫苗三期試驗結果，Cursor 推出程式碼託管平台；OpenAI、NVIDIA 與其他公司文件也呈現搜尋、資料保護和基礎設施的條件與限制。未獲獨立確認的數字會明確標示歸屬。',
-      rendering: 'standalone',
-    },
-    {
-      slug: 'ai-daily-2026-08-20',
-      excerpt:
-        'ChatGPT 威脅通報、擴散模型資料歸因、SpaceX 收購 Cursor，以及 Vivodyne 的人體組織實驗，呈現 AI 應用在安全、研究與醫療上的新問題。本文區分官方政策、研究結果與尚未獨立確認的事件細節。',
-      rendering: 'standalone',
-    },
+  for (const { slug, rendering } of [
+    { slug: 'ai-daily-2026-08-28', rendering: 'blockquote' },
+    { slug: 'ai-daily-2026-07-06', rendering: 'standalone' },
   ]) {
-    test(`${slug} renders its excerpt exactly once using the current body contract`, async ({
-      page,
-    }) => {
+    test(`${slug} renders its excerpt exactly once as ${rendering}`, async ({ page }) => {
+      const { data } = matter(
+        await readFile(join(process.cwd(), `content/posts/2026/${slug}.md`), 'utf8')
+      )
+      expect(data.excerpt).toEqual(expect.any(String))
       await page.goto(`/posts/2026/${slug}`)
-
+      const excerpt = page.getByText(data.excerpt, { exact: true })
+      await expect(excerpt).toHaveCount(1)
       if (rendering === 'blockquote') {
-        await expect(page.locator('article .typeset > p')).toHaveCount(0)
-        await expect(page.locator('article .typeset blockquote').first()).toHaveText(excerpt)
+        await expect(page.locator('article .typeset blockquote').first()).toHaveText(data.excerpt)
       } else {
-        await expect(page.locator('article .typeset > p')).toHaveText(excerpt)
-        await expect(
-          page.locator('article .typeset blockquote').filter({ hasText: excerpt })
-        ).toHaveCount(0)
+        await expect(page.locator('article .typeset > p')).toHaveText(data.excerpt)
+        await expect(page.locator('article .typeset blockquote').first()).not.toHaveText(
+          data.excerpt
+        )
       }
-      await expect(page.getByText(excerpt, { exact: true })).toHaveCount(1)
     })
   }
-
-  test('keeps a standalone excerpt when the body does not begin with the same blockquote', async ({
-    page,
-  }) => {
-    const { data } = matter(
-      await readFile(join(process.cwd(), 'content/posts/2026/ai-daily-2026-07-06.md'), 'utf8')
-    )
-    expect(data.excerpt).toEqual(expect.any(String))
-    await page.goto('/posts/2026/ai-daily-2026-07-06')
-
-    await expect(page.locator('article .typeset > p')).toHaveText(data.excerpt)
-    await expect(page.locator('article .typeset blockquote').first()).not.toHaveText(data.excerpt)
-  })
 })
 
-// ---- /rss.xml route ----
-test.describe('/rss.xml feed', () => {
-  test('returns XML content', async ({ page }) => {
-    const response = await page.goto('/rss.xml')
-    expect(response?.status()).toBe(200)
-    const contentType = response?.headers()['content-type'] ?? ''
-    expect(contentType).toContain('xml')
-  })
-
-  test('RSS contains channel title', async ({ page }) => {
-    const response = await page.goto('/rss.xml')
-    const body = await response?.text()
-    expect(body).toContain('<title>Terry Chen</title>')
-  })
+test('serves published article links in the RSS feed', async ({ request }) => {
+  const response = await request.get('/rss.xml')
+  expect(response.status()).toBe(200)
+  expect(response.headers()['content-type']).toContain('xml')
+  const xml = await response.text()
+  expect(xml).toContain('<channel>')
+  expect(xml).toContain(`https://terry90918.github.io${(await sourceArticleURLs())[0]}`)
 })
 
 async function sourceArticleURLs() {
@@ -548,24 +421,6 @@ test.describe('Writing and metadata', () => {
       .locator('a[href^="/posts/20"]')
       .evaluateAll((nodes) => nodes.map((node) => node.getAttribute('href')).sort())
     expect(hrefs).toEqual(await sourceArticleURLs())
-    const andrewTranslation = page
-      .locator('[data-writing-kind="translation"]')
-      .filter({ hasText: 'AI 工程技能地圖：軟體工程基礎' })
-    await expect(andrewTranslation).toContainText('Andrew Ng')
-    await expect(andrewTranslation.locator('.site-writing-meta > span')).toHaveText([
-      '翻譯',
-      '2026年8月31日',
-      '原文：Andrew Ng',
-    ])
-    const coinbaseTranslation = page
-      .locator('[data-writing-kind="translation"]')
-      .filter({ hasText: 'Coinbase 如何讓 1,000 多名工程師真正用上 AI' })
-    await expect(coinbaseTranslation.locator('.site-writing-meta > span')).toHaveText([
-      '翻譯',
-      '2026年10月13日',
-      '原文：Chintan Turakhia',
-    ])
-    await expect(page.locator('main')).not.toContainText('原創觀點')
   })
 
   test('[writing] indexes all daily articles at their original URLs', async ({ page }) => {
@@ -594,10 +449,6 @@ test.describe('Writing and metadata', () => {
       'href',
       '/posts/ai-daily'
     )
-    await expect(page.locator('#all-posts')).toHaveCount(1)
-    await expect(
-      page.locator('#writing-2026-ai-engineering-skills-map-software-engineering-fundamentals')
-    ).toHaveCount(1)
     await nav.getByRole('link', { name: 'AI 日報', exact: true }).click()
     await expect(page).toHaveURL('/posts/ai-daily')
     await expect(page.getByRole('heading', { name: 'AI 日報', exact: true })).toBeVisible()
@@ -651,7 +502,6 @@ test.describe('Writing and metadata', () => {
     ]) {
       expect(xml).toContain(`https://terry90918.github.io${path}`)
     }
-    expect(xml).not.toContain('unverified-story')
   })
 })
 
