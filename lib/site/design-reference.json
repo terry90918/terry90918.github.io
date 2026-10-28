@@ -8,8 +8,7 @@
     "zh-TW": {
       "role": "自由工作者",
       "labels": {
-        "about": "履歷重點",
-        "aboutTitle": "經歷數據",
+        "about": "OpenAI",
         "work": "專案經歷",
         "workTitle": "履歷中的專案",
         "experience": "工作經歷",
@@ -313,8 +312,7 @@
     "en": {
       "role": "Freelancer",
       "labels": {
-        "about": "Career highlights",
-        "aboutTitle": "Experience metrics",
+        "about": "OpenAI",
         "work": "Projects",
         "workTitle": "Projects from my résumé",
         "experience": "Experience",

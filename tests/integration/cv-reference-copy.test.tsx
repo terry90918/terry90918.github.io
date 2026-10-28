@@ -51,12 +51,11 @@ describe('Selected bilingual CV presentation', () => {
           : '管理工程部門團隊，協助工作分派與技術決策。'
       expect(doc.querySelectorAll('#codex-profile [data-codex-stat]')).toHaveLength(5)
       expect(doc.querySelectorAll('#codex-profile [data-codex-insight]')).toHaveLength(4)
-      expect(doc.querySelectorAll('.cv-stats-grid > div')).toHaveLength(3)
-      expect(
-        [...doc.querySelectorAll('.cv-stats-grid > div > p:first-child')].map(
-          (value) => value.textContent
-        )
-      ).toEqual(['21.35M', '0.957', '8.2M'])
+      expect(doc.querySelectorAll('#codex-profile')).toHaveLength(1)
+      expect(doc.querySelector('#about #codex-profile')).not.toBeNull()
+      expect(doc.querySelector('#about h2')?.textContent).toBe('OpenAI')
+      expect(doc.querySelector('#skills #codex-profile')).toBeNull()
+      expect(doc.querySelector('.cv-stats-grid')).toBeNull()
       expect(doc.querySelector('#experience')?.textContent).toContain(management)
       expect(doc.body.textContent).not.toMatch(
         /直接管理|10\s*(direct reports|engineers)|Engineers directly managed/i

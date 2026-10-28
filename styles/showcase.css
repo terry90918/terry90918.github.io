@@ -47,17 +47,10 @@
 .codex-activity {
   scroll-margin-top: 150px;
 }
-.codex-profile {
-  margin-top: 72px;
-  padding-top: 48px;
-  border-top: 1px solid var(--border);
-}
 .codex-profile-heading {
   margin-bottom: 32px;
 }
-.codex-profile-heading h3 {
-  font-size: 24px;
-  font-weight: 600;
+.codex-profile-heading h2 {
   margin-bottom: 12px;
 }
 .codex-profile-heading p,
@@ -101,9 +94,9 @@
 .codex-insights {
   margin-top: 48px;
 }
-.codex-plugins h4,
-.codex-insights h4,
-.codex-section-header :is(h2, h4) {
+.codex-plugins h3,
+.codex-insights h3,
+.codex-section-header :is(h2, h3) {
   font-size: 16px;
   font-weight: 500;
 }

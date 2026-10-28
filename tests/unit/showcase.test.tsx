@@ -33,7 +33,7 @@ describe('Public profile information split', () => {
   for (const locale of ['zh-TW', 'en'] as const) {
     it(`keeps all OpenAI metrics and plugins without the removed footer in ${locale}`, () => {
       const doc = documentFor(renderToStaticMarkup(<CodexProfile locale={locale} />))
-      expect(doc.querySelector('h3')?.textContent).toBe('OpenAI')
+      expect(doc.querySelector('h2')?.textContent).toBe('OpenAI')
       expect(doc.querySelectorAll('[data-codex-stat]')).toHaveLength(5)
       expect(doc.querySelectorAll('[data-codex-insight]')).toHaveLength(4)
       expect(doc.querySelectorAll('[data-codex-plugin]')).toHaveLength(4)

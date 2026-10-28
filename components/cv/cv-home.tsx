@@ -33,20 +33,7 @@ export default function CvHome({
     <div className="cv-home-reference">
       <Hero locale={locale} profile={profile} role={copy.role} />
       <section id="about" className="border-b px-4 py-14 sm:px-6 sm:py-20 lg:px-10.5 lg:py-24">
-        <Eyebrow>{labels.about}</Eyebrow>
-        <h2 className="leading-snug font-bold">{labels.aboutTitle}</h2>
-        <div className="cv-stats-grid">
-          {profile.stats.map((stat) => (
-            <Card key={stat.label} asChild className="gap-0 px-6">
-              <div className="site-card">
-                <p className="text-accent-ink text-[32px] leading-snug font-bold tracking-tight">
-                  {stat.value}
-                </p>
-                <p className="text-muted-foreground mt-2 text-xs">{stat.label}</p>
-              </div>
-            </Card>
-          ))}
-        </div>
+        <CodexProfile locale={locale} />
       </section>
       <FeaturedWorks
         locale={locale}
@@ -127,7 +114,6 @@ export default function CvHome({
             ))}
           </Accordion>
         </Card>
-        <CodexProfile locale={locale} />
       </section>
     </div>
   )
