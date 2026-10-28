@@ -28,6 +28,21 @@ afterEach(() => {
   vi.resetAllMocks()
 })
 
+it.each([
+  ['ai-engineering-skills-map-software-engineering-fundamentals', 'Andrew Ng'],
+  ['coinbase-ai-engineering-adoption', 'Chintan Turakhia'],
+])('credits the original author of %s in the writing index', async (slug, author) => {
+  vi.mocked(getPostsByYearMonth).mockResolvedValue([
+    {
+      year: 2026,
+      months: [{ month: 10, monthName: 'October', posts: [post(slug, 'published')] }],
+    },
+  ])
+  const doc = new DOMParser().parseFromString(renderToStaticMarkup(await PostsPage()), 'text/html')
+  expect(doc.querySelector('article')?.textContent).toContain(`原文：${author}`)
+  expect(doc.querySelector('h3 a')?.getAttribute('href')).toBe(`/posts/2026/${slug}`)
+})
+
 describe('Writing index authoring visibility', () => {
   it('keeps a draft returned by the development loader discoverable', async () => {
     vi.stubEnv('NODE_ENV', 'development')

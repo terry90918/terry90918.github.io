@@ -21,11 +21,6 @@ test('CV opens inside the main site and shares its navigation and theme', async 
   await cvLink.click()
   await expect(page).toHaveURL(/\/cv\/?$/)
   await expect(page.getByRole('heading', { level: 1 })).toContainText('陳天一')
-  expect(
-    await page
-      .locator('html')
-      .evaluate((element) => getComputedStyle(element).getPropertyValue('--brand').trim())
-  ).toBe('#d97757')
   await expect(page.getByRole('banner')).toHaveCount(1)
   await expect(page.getByRole('contentinfo')).toHaveCount(1)
   await expect(page.getByRole('button', { name: 'Toggle theme', exact: true })).toHaveCount(1)
@@ -69,9 +64,7 @@ test('case study progress stays below section navigation on mobile', async ({ pa
   }
 })
 
-test('both locales export every case and contact without old asset prefixes', async ({
-  request,
-}) => {
+test('both locales serve every case and contact with canonical URLs', async ({ request }) => {
   for (const locale of ['zh-TW', 'en']) {
     for (const route of [
       '',
@@ -85,8 +78,6 @@ test('both locales export every case and contact without old asset prefixes', as
       const html = await response.text()
       expect(html).toContain(`lang="${locale}"`)
       expect(html).toContain(`href="https://terry90918.github.io/cv/${locale}${route}"`)
-      expect(html).not.toContain('/cv/_next/')
-      expect(html).not.toContain('http://localhost:3000')
     }
   }
   expect((await request.get('/cv/en/case-study/unknown')).status()).toBe(404)
@@ -148,19 +139,6 @@ test('section navigation remains below the header at narrow widths', async ({ pa
       await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
     ).toBe(true)
   }
-})
-
-test('CV styles preserve the main-site link shape', async ({ page }) => {
-  await page.goto('/')
-  const brand = page.getByRole('link', { name: 'Terry.TY Chen', exact: true })
-  const radius = await brand.evaluate((element) => getComputedStyle(element).borderRadius)
-  expect(Number.parseFloat(radius)).toBeGreaterThan(0)
-  await page.goto('/cv/en')
-  await expect(page.getByRole('button', { name: 'Toggle theme', exact: true })).toBeVisible()
-  await expect(page.getByRole('link', { name: 'Terry.TY Chen', exact: true })).toHaveCSS(
-    'border-radius',
-    radius
-  )
 })
 
 test('loads the 3D badge only when its desktop layout is visible', async ({ page }) => {

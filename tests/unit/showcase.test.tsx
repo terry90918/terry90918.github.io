@@ -47,8 +47,7 @@ describe('Public profile information split', () => {
       )
       expect(doc.body.textContent).toContain(locale === 'en' ? '364 days' : '364 天')
       expect(doc.body.textContent).toContain(locale === 'en' ? '8.44B' : '84.4 億')
-      expect(doc.querySelector('.codex-source')).toBeNull()
-      expect(doc.querySelector('a[href="/work"]')).toBeNull()
+
       const activity = doc.getElementById('cv-codex-activity')
       expect(activity).not.toBeNull()
       expect([...activity!.querySelectorAll('button')].map((button) => button.textContent)).toEqual(

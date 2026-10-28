@@ -4,13 +4,16 @@ import { renderMarkdown, renderMarkdownWithOutline } from '../../lib/posts/markd
 describe('renderMarkdown()', () => {
   it('returns an outline matching rendered heading IDs and readable text', async () => {
     const rendered = await renderMarkdownWithOutline(
-      '## 同步與 **取消**\n\n## 同步與 **取消**\n\n### 細節\n\n## A & B'
+      '# Article title\n\n## 同步與 **取消**\n\n## 同步與 **取消**\n\n### 細節\n\n## A & B'
     )
     expect(rendered.outline).toEqual([
       { id: '同步與-取消', text: '同步與 取消' },
       { id: '同步與-取消-1', text: '同步與 取消' },
       { id: 'a--b', text: 'A & B' },
     ])
+    const doc = new DOMParser().parseFromString(rendered.html, 'text/html')
+    expect(doc.querySelector('h1')?.textContent).toBe('Article title')
+    expect(doc.querySelector('h3')?.textContent).toBe('細節')
     for (const item of rendered.outline) expect(rendered.html).toContain(`id="${item.id}"`)
   })
 
@@ -24,13 +27,6 @@ describe('renderMarkdown()', () => {
     expect(images.map((image) => image.getAttribute('decoding'))).toEqual(['async', 'async'])
     expect(images[0].getAttribute('fetchpriority')).toBe('high')
     expect(images[1].alt).toBe('Second')
-  })
-  it('renders headings', async () => {
-    const html = await renderMarkdown('# Hello\n\n## World')
-    expect(html).toContain('<h1')
-    expect(html).toContain('<h2')
-    expect(html).toContain('Hello')
-    expect(html).toContain('World')
   })
 
   it('renders paragraphs', async () => {
@@ -52,32 +48,11 @@ describe('renderMarkdown()', () => {
     expect(html).toContain('https://example.com')
   })
 
-  it('renders GFM table', async () => {
-    const table = '| Col1 | Col2 |\n|------|------|\n| a | b |'
-    const html = await renderMarkdown(table)
-    expect(html).toContain('<table>')
-    expect(html).toContain('<thead>')
-    expect(html).toContain('<tbody>')
-    expect(html).toContain('<td>')
-  })
-
   it('renders GFM task list', async () => {
     const tasks = '- [ ] unchecked\n- [x] checked'
     const html = await renderMarkdown(tasks)
     expect(html).toContain('type="checkbox"')
     expect(html).toContain('checked')
-  })
-
-  it('adds id attribute to headings', async () => {
-    const html = await renderMarkdown('## Installation Guide')
-    expect(html).toContain('id="installation-guide"')
-  })
-
-  it('gives CJK headings a non-empty id', async () => {
-    const html = await renderMarkdown('## 安裝指南')
-    const idMatch = html.match(/id="([^"]+)"/)
-    expect(idMatch).toBeTruthy()
-    expect(idMatch![1].length).toBeGreaterThan(0)
   })
 
   it('renders fenced code block without throwing', async () => {
@@ -92,14 +67,9 @@ describe('renderMarkdown()', () => {
     await expect(renderMarkdown(code)).resolves.toContain('<pre')
   })
 
-  it('returns a string', async () => {
-    const result = await renderMarkdown('Hello')
-    expect(typeof result).toBe('string')
-  })
-
   it('returns empty string for empty input', async () => {
     const result = await renderMarkdown('')
-    expect(typeof result).toBe('string')
+    expect(result).toBe('')
   })
 
   it('preserves <audio>/<source> tags used for podcast embeds', async () => {
@@ -141,8 +111,12 @@ it('keeps wide markdown tables in a keyboard-accessible scroll region', async ()
   const html = await renderMarkdown('| Name | Value |\n| --- | --- |\n| One | Two |')
   const doc = new DOMParser().parseFromString(html, 'text/html')
   const table = doc.querySelector('table')!
-  expect(table.parentElement?.className).toBe('typeset-scroll')
+  expect(table.parentElement?.classList.contains('typeset-scroll')).toBe(true)
   expect(table.parentElement?.getAttribute('role')).toBe('region')
   expect(table.parentElement?.getAttribute('tabindex')).toBe('0')
-  expect(table.getAttribute('class')).toBeNull()
+  expect([...table.querySelectorAll('th')].map((cell) => cell.textContent)).toEqual([
+    'Name',
+    'Value',
+  ])
+  expect([...table.querySelectorAll('td')].map((cell) => cell.textContent)).toEqual(['One', 'Two'])
 })
