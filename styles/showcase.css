@@ -137,6 +137,9 @@
   background-size: 256px 40px;
   background-repeat: no-repeat;
 }
+.codex-superpowers-icon {
+  filter: invert(1);
+}
 .codex-insights dl {
   margin-top: 18px;
 }
@@ -158,7 +161,6 @@
 .codex-source {
   margin: 16px 0 0;
 }
-.codex-profile > .site-text-link,
 .codex-activity > .site-text-link {
   margin-top: 16px;
 }

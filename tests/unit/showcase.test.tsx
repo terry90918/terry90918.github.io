@@ -31,27 +31,22 @@ describe('Public profile information split', () => {
   })
 
   for (const locale of ['zh-TW', 'en'] as const) {
-    it(`keeps all five metrics, four insights, four plugin names and source date in ${locale}`, () => {
+    it(`keeps all OpenAI metrics and plugins without the removed footer in ${locale}`, () => {
       const doc = documentFor(renderToStaticMarkup(<CodexProfile locale={locale} />))
+      expect(doc.querySelector('h3')?.textContent).toBe('OpenAI')
       expect(doc.querySelectorAll('[data-codex-stat]')).toHaveLength(5)
       expect(doc.querySelectorAll('[data-codex-insight]')).toHaveLength(4)
       expect(doc.querySelectorAll('[data-codex-plugin]')).toHaveLength(4)
-      for (const text of [
-        '2026-10-28',
-        '295',
-        '15,487',
-        '33%',
-        '0%',
-        'Superpowers',
-        'Linear',
-        'dot',
-        'GitHub',
-      ]) {
+      for (const text of ['295', '15,487', '33%', '0%', 'Superpowers', 'Linear', 'dot', 'GitHub']) {
         expect(doc.body.textContent).toContain(text)
       }
       expect(doc.body.textContent).toContain(locale === 'en' ? '153.38B' : '1533.8 億')
       expect(doc.body.textContent).toContain(locale === 'en' ? '8.44B' : '84.4 億')
-      expect(doc.querySelector('a[href="/work"]')).not.toBeNull()
+      expect(doc.querySelector('.codex-source')).toBeNull()
+      expect(doc.querySelector('a[href="/work"]')).toBeNull()
+      const superpowers = doc.querySelector('[data-codex-plugin] img')
+      expect(superpowers?.getAttribute('src')).toBe('/images/work/superpowers.svg')
+      expect(existsSync(join(process.cwd(), 'public/images/work/superpowers.svg'))).toBe(true)
       const activity = doc.getElementById('cv-codex-activity')
       expect(activity).not.toBeNull()
       expect([...activity!.querySelectorAll('button')].map((button) => button.textContent)).toEqual(
@@ -59,6 +54,9 @@ describe('Public profile information split', () => {
       )
       expect(activity!.querySelectorAll('[data-activity-level]')).toHaveLength(
         snapshot.daily.length
+      )
+      expect(activity!.querySelector('[role="img"]')?.getAttribute('aria-label')).toContain(
+        snapshot.capturedAt
       )
       expect(doc.querySelector('a[href="https://chatgpt.com/u/terrytychen"]')).not.toBeNull()
     })

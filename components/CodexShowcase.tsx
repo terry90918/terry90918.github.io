@@ -11,9 +11,7 @@ import '@/styles/showcase.css'
 
 const profileCopy = {
   'zh-TW': {
-    title: 'Codex 使用紀錄',
-    source: '資料來源',
-    captured: '擷取日期',
+    title: 'OpenAI',
     stats: [
       ['1533.8 億', '累計 Token 數'],
       ['84.4 億', '單日最高 Token 數'],
@@ -29,13 +27,9 @@ const profileCopy = {
       ['已探索的技能', '295'],
       ['技能使用總次數', '15,487'],
     ],
-    note: 'ChatGPT 個人頁的統計快照；技能數量指 Codex skills。連續紀錄以擷取當日為準。',
-    activity: '瀏覽互動作品',
   },
   en: {
-    title: 'Codex usage record',
-    source: 'Source',
-    captured: 'Captured',
+    title: 'OpenAI',
     stats: [
       ['153.38B', 'Total tokens'],
       ['8.44B', 'Highest daily tokens'],
@@ -51,8 +45,6 @@ const profileCopy = {
       ['Skills explored', '295'],
       ['Total skill uses', '15,487'],
     ],
-    note: 'A snapshot of the ChatGPT profile. Skills refers to Codex skills. Streaks are as of the capture date.',
-    activity: 'Browse interactive works',
   },
 }
 
@@ -262,7 +254,17 @@ export function CodexProfile({ locale }: { locale: Locale }) {
           {['Superpowers', 'Linear', 'dot', 'GitHub'].map((name, index) => (
             <li key={name} data-codex-plugin>
               <span className="codex-plugin-icon" aria-hidden="true">
-                <span style={{ backgroundPositionX: `${-index * 72}px` }} />
+                {name === 'Superpowers' ? (
+                  <Image
+                    src="/images/work/superpowers.svg"
+                    alt=""
+                    width={40}
+                    height={40}
+                    className="codex-superpowers-icon"
+                  />
+                ) : (
+                  <span style={{ backgroundPositionX: `${-index * 72}px` }} />
+                )}
               </span>
               <span>{name}</span>
             </li>
@@ -280,17 +282,6 @@ export function CodexProfile({ locale }: { locale: Locale }) {
           ))}
         </dl>
       </div>
-      <p className="codex-source">
-        {copy.captured} <time dateTime={snapshot.capturedAt}>{snapshot.capturedAt}</time> ·{' '}
-        {copy.source}{' '}
-        <a href={snapshot.source} target="_blank" rel="noopener noreferrer">
-          ChatGPT @terrytychen ↗
-        </a>
-      </p>
-      <p className="codex-source">{copy.note}</p>
-      <Link href="/work" className="site-text-link">
-        {copy.activity}
-      </Link>
     </section>
   )
 }

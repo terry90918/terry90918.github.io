@@ -188,8 +188,21 @@ test.describe('Personal site', () => {
       await expect(page.locator('[data-codex-stat]')).toHaveCount(5)
       await expect(page.locator('[data-codex-insight]')).toHaveCount(4)
       await expect(page.locator('[data-codex-plugin]')).toHaveCount(4)
-      await expect(page.locator('#codex-profile')).toContainText('2026-10-28')
+      const profile = page.locator('#codex-profile')
+      await expect(profile.getByRole('heading', { level: 3 })).toHaveText('OpenAI')
+      await expect(profile.locator('.codex-source')).toHaveCount(0)
+      await expect(profile.locator('a[href="/work"]')).toHaveCount(0)
+      const icon = profile.locator('[data-codex-plugin] img')
+      await icon.scrollIntoViewIfNeeded()
+      await expect(icon).toBeVisible()
+      await expect
+        .poll(() =>
+          icon.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0)
+        )
+        .toBe(true)
+      await expect(icon).toHaveCSS('filter', 'invert(1)')
       const cvChart = page.locator('#cv-codex-activity')
+      await expect(cvChart.getByRole('img')).toHaveAttribute('aria-label', /2026-10-28/)
       for (const name of locale === 'en'
         ? ['Daily', 'Weekly', 'Cumulative']
         : ['每日', '每週', '累計']) {
