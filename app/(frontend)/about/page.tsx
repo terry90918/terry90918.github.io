@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/card'
 import Link from 'next/link'
-import { CV_URL, SITE_EMAIL } from '@/lib/site/content'
+import { CV_URL, SITE_EMAIL, CHATGPT_URL } from '@/lib/site/content'
 import { pageMetadata } from '@/lib/site/metadata'
 import { SitePageIntro, SitePortrait, SiteSectionHeading } from '@/components/SitePrimitives'
 
@@ -30,7 +30,7 @@ export default function AboutPage() {
               幾段經歷
             </Link>
             認識我，到
-            <Link href="/work" className="site-text-link">
+            <Link href={CHATGPT_URL} className="site-text-link">
               作品頁
             </Link>
             看具體工作，或在
