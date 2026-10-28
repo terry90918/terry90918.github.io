@@ -50,7 +50,8 @@ describe('Selected bilingual CV presentation', () => {
           ? 'Managed the engineering team and supported work allocation and technical decision-making.'
           : '管理工程部門團隊，協助工作分派與技術決策。'
       expect(doc.querySelectorAll('#codex-profile [data-codex-stat]')).toHaveLength(5)
-      expect(doc.querySelectorAll('#codex-profile [data-codex-insight]')).toHaveLength(4)
+      expect(doc.querySelectorAll('#codex-profile [data-codex-insight]')).toHaveLength(0)
+      expect(doc.querySelectorAll('#codex-profile [data-codex-plugin]')).toHaveLength(0)
       expect(doc.querySelectorAll('#codex-profile')).toHaveLength(1)
       expect(doc.querySelector('#about #codex-profile')).not.toBeNull()
       expect(doc.querySelector('#about h2')?.textContent).toBe('OpenAI')

@@ -7,43 +7,33 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import type { Locale } from '@/lib/cv/profile'
 import snapshot from '@/lib/site/codex-activity.json'
+import {
+  estimatedTotalTokens,
+  illustrationDays,
+  getIllustrationCells,
+  type ActivityMode,
+} from '@/lib/site/openai-illustration'
 import '@/styles/showcase.css'
 
 const profileCopy = {
   'zh-TW': {
     title: 'OpenAI',
     stats: [
-      ['1533.8 億', '累計 Token 數'],
+      [`${estimatedTotalTokens / 1_000_000_000_000} 兆`, '推估累計 Token'],
       ['84.4 億', '單日最高 Token 數'],
       ['22 小時 57 分', '最長任務時間'],
-      ['81 天', '最長連續紀錄'],
-      ['81 天', '目前連續紀錄'],
-    ],
-    plugins: '熱門外掛程式',
-    insights: '深入分析',
-    rows: [
-      ['快速模式', '0% 的執行使用快速模式'],
-      ['最常用的推理', '中 · 33%'],
-      ['已探索的技能', '295'],
-      ['技能使用總次數', '15,487'],
+      [`${illustrationDays} 天`, '模擬最長連續紀錄'],
+      [`${illustrationDays} 天`, '模擬目前連續紀錄'],
     ],
   },
   en: {
     title: 'OpenAI',
     stats: [
-      ['153.38B', 'Total tokens'],
+      [`${estimatedTotalTokens / 1_000_000_000_000}T`, 'Estimated total tokens'],
       ['8.44B', 'Highest daily tokens'],
       ['22 h 57 min', 'Longest task'],
-      ['81 days', 'Longest streak'],
-      ['81 days', 'Current streak'],
-    ],
-    plugins: 'Top plugins',
-    insights: 'Insights',
-    rows: [
-      ['Fast mode', '0% of runs use fast mode'],
-      ['Most used reasoning', 'Medium · 33%'],
-      ['Skills explored', '295'],
-      ['Total skill uses', '15,487'],
+      [`${illustrationDays} days`, 'Simulated longest streak'],
+      [`${illustrationDays} days`, 'Simulated current streak'],
     ],
   },
 }
@@ -103,6 +93,8 @@ export function WorkGallery() {
 const activityCopy = {
   'zh-TW': {
     title: 'Token 活動',
+    illustrationTitle: 'Token 活動示意',
+    illustrationNote: '364 個色塊的隨機配色示意，不代表實際 Token 使用紀錄。',
     modes: { daily: '每日', weekly: '每週', cumulative: '累計' },
     views: '活動檢視',
     region: 'Token 活動圖，可水平捲動',
@@ -112,10 +104,12 @@ const activityCopy = {
     cells: '格',
     note: '色階表示來源圖的相對強度，不是逐日 Token 數值。',
     sourceNote: '保留來源圖表的實際色階，並非即時同步或逐日 Token 數值。',
-    profile: '查看完整使用統計與工具紀錄',
+    profile: '查看履歷中的使用規模推估',
   },
   en: {
     title: 'Token activity',
+    illustrationTitle: 'Token activity illustration',
+    illustrationNote: '364 cells of a random-color illustration, not actual token usage records.',
     modes: { daily: 'Daily', weekly: 'Weekly', cumulative: 'Cumulative' },
     views: 'Activity view',
     region: 'Token activity chart, horizontally scrollable',
@@ -125,7 +119,7 @@ const activityCopy = {
     cells: 'cells',
     note: 'Levels show relative intensity in the source chart, not daily token counts.',
     sourceNote: 'Captured source levels, not a live feed or daily token counts.',
-    profile: 'View the full usage statistics and tool record',
+    profile: 'View the usage estimate in the CV',
   },
 }
 
@@ -133,14 +127,15 @@ export function CodexActivity({
   locale = 'zh-TW',
   placement = 'work',
 }: { locale?: Locale; placement?: 'work' | 'cv' } = {}) {
-  const [mode, setMode] = useState<'daily' | 'weekly' | 'cumulative'>('daily')
+  const [mode, setMode] = useState<ActivityMode>('daily')
   const copy = activityCopy[locale]
   const embedded = placement === 'cv'
   const sectionId = embedded ? 'cv-codex-activity' : 'codex-activity'
   const titleId = embedded ? 'cv-activity-title' : 'activity-title'
   const summaryId = embedded ? 'cv-activity-summary' : 'activity-summary'
   const Heading = embedded ? 'h3' : 'h2'
-  const levels = [...snapshot[mode]]
+  const illustration = embedded ? getIllustrationCells(mode) : []
+  const levels = embedded ? illustration.map((cell) => String(cell.level)) : [...snapshot[mode]]
   const distribution = [0, 1, 2, 3, 4]
     .map(
       (level) =>
@@ -168,7 +163,7 @@ export function CodexActivity({
   return (
     <section id={sectionId} className="codex-activity" aria-labelledby={titleId}>
       <div className="codex-section-header">
-        <Heading id={titleId}>{copy.title}</Heading>
+        <Heading id={titleId}>{embedded ? copy.illustrationTitle : copy.title}</Heading>
         <div className="codex-view-controls" role="group" aria-label={copy.views}>
           {(['daily', 'weekly', 'cumulative'] as const).map((value) => (
             <Button
@@ -188,12 +183,28 @@ export function CodexActivity({
           className="codex-chart"
           role="img"
           aria-describedby={summaryId}
-          aria-label={`${copy.modes[mode]} ${copy.chart} ${snapshot.capturedAt}`}
+          aria-label={
+            embedded
+              ? `${copy.modes[mode]} ${copy.illustrationNote}`
+              : `${copy.modes[mode]} ${copy.chart} ${snapshot.capturedAt}`
+          }
         >
-          <div className="codex-chart-grid" data-activity-mode={mode}>
-            {levels.map((level, index) => (
-              <span key={index} data-activity-level={level} />
-            ))}
+          <div
+            className="codex-chart-grid"
+            data-activity-mode={mode}
+            data-activity-kind={embedded ? 'illustration' : 'snapshot'}
+          >
+            {levels.map((level, index) => {
+              const cell = illustration[index]
+              return (
+                <span
+                  key={index}
+                  data-activity-level={level}
+                  data-activity-month={cell?.month}
+                  style={cell ? { backgroundColor: cell.color } : undefined}
+                />
+              )
+            })}
           </div>
           <div className="codex-chart-months" aria-hidden="true">
             {snapshot.months.map((month) => (
@@ -206,7 +217,7 @@ export function CodexActivity({
         {total}
         {distribution}
         {locale === 'en' ? '. ' : '。'}
-        {copy.note}
+        {embedded ? copy.illustrationNote : copy.note}
       </p>
       {!embedded && (
         <>
@@ -232,12 +243,6 @@ export function CodexProfile({ locale }: { locale: Locale }) {
     <section id="codex-profile" className="codex-profile" aria-labelledby="codex-profile-title">
       <header className="codex-profile-heading">
         <h2 id="codex-profile-title">{copy.title}</h2>
-        <p>
-          Terry.TY Chen{' '}
-          <a href={snapshot.source} target="_blank" rel="noopener noreferrer">
-            @terrytychen ↗
-          </a>
-        </p>
       </header>
       <dl className="codex-stat-strip">
         {copy.stats.map(([value, label]) => (
@@ -248,40 +253,6 @@ export function CodexProfile({ locale }: { locale: Locale }) {
         ))}
       </dl>
       <CodexActivity locale={locale} placement="cv" />
-      <div className="codex-plugins">
-        <h3>{copy.plugins}</h3>
-        <ul>
-          {['Superpowers', 'Linear', 'dot', 'GitHub'].map((name, index) => (
-            <li key={name} data-codex-plugin>
-              <span className="codex-plugin-icon" aria-hidden="true">
-                {name === 'Superpowers' ? (
-                  <Image
-                    src="/images/work/superpowers.svg"
-                    alt=""
-                    width={40}
-                    height={40}
-                    className="codex-superpowers-icon"
-                  />
-                ) : (
-                  <span style={{ backgroundPositionX: `${-index * 72}px` }} />
-                )}
-              </span>
-              <span>{name}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="codex-insights">
-        <h3>{copy.insights}</h3>
-        <dl>
-          {copy.rows.map(([label, value]) => (
-            <div key={label} data-codex-insight>
-              <dt>{label}</dt>
-              <dd>{value}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
     </section>
   )
 }

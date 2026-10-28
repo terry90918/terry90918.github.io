@@ -186,8 +186,8 @@ test.describe('Personal site', () => {
     for (const locale of ['zh-TW', 'en']) {
       await page.goto(`/cv/${locale}#codex-profile`)
       await expect(page.locator('[data-codex-stat]')).toHaveCount(5)
-      await expect(page.locator('[data-codex-insight]')).toHaveCount(4)
-      await expect(page.locator('[data-codex-plugin]')).toHaveCount(4)
+      await expect(page.locator('[data-codex-insight]')).toHaveCount(0)
+      await expect(page.locator('[data-codex-plugin]')).toHaveCount(0)
       const profile = page.locator('#codex-profile')
       await expect(profile.getByRole('heading', { level: 2 })).toHaveText('OpenAI')
       await expect(
@@ -203,17 +203,24 @@ test.describe('Personal site', () => {
       await expect(page.locator('.cv-stats-grid')).toHaveCount(0)
       await expect(profile.locator('.codex-source')).toHaveCount(0)
       await expect(profile.locator('a[href="/work"]')).toHaveCount(0)
-      const icon = profile.locator('[data-codex-plugin] img')
-      await icon.scrollIntoViewIfNeeded()
-      await expect(icon).toBeVisible()
-      await expect
-        .poll(() =>
-          icon.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0)
-        )
-        .toBe(true)
-      await expect(icon).toHaveCSS('filter', 'invert(1)')
+      await expect(profile.locator('.codex-profile-heading p')).toHaveCount(0)
+      await expect(profile).toContainText(locale === 'en' ? '2.73T' : '2.73 兆')
+      await expect(profile).toContainText(
+        locale === 'en' ? 'Estimated total tokens' : '推估累計 Token'
+      )
+      await expect(profile).toContainText(
+        locale === 'en' ? 'Simulated longest streak' : '模擬最長連續紀錄'
+      )
+      await expect(profile).toContainText(locale === 'en' ? '364 days' : '364 天')
+      await expect(profile).toContainText(locale === 'en' ? '8.44B' : '84.4 億')
       const cvChart = page.locator('#cv-codex-activity')
-      await expect(cvChart.getByRole('img')).toHaveAttribute('aria-label', /2026-10-28/)
+      await expect(cvChart.getByRole('heading')).toContainText(
+        locale === 'en' ? 'illustration' : '示意'
+      )
+      await expect(cvChart.getByRole('img')).toHaveAttribute(
+        'aria-label',
+        locale === 'en' ? /not actual token/ : /不代表實際/
+      )
       for (const name of locale === 'en'
         ? ['Daily', 'Weekly', 'Cumulative']
         : ['每日', '每週', '累計']) {
@@ -221,6 +228,15 @@ test.describe('Personal site', () => {
         await view.click()
         await expect(view).toHaveAttribute('aria-pressed', 'true')
         await expect(cvChart.locator('.codex-chart')).toBeVisible()
+        await expect(cvChart.locator('[data-activity-level]')).toHaveCount(364)
+        await expect(cvChart.locator('[data-activity-level="0"]')).toHaveCount(0)
+        expect(
+          await cvChart
+            .locator('[data-activity-month]')
+            .evaluateAll(
+              (cells) => new Set(cells.map((cell) => cell.getAttribute('data-activity-month'))).size
+            )
+        ).toBe(12)
       }
       expect(
         await page
