@@ -58,11 +58,6 @@ beforeEach(() => {
 })
 
 describe('getPosts()', () => {
-  it('returns all posts', async () => {
-    const posts = await getPosts()
-    expect(posts).toHaveLength(3)
-  })
-
   it('returns empty array on error', async () => {
     vi.mocked(loadAllPosts).mockRejectedValueOnce(new Error('fail'))
     const posts = await getPosts()
@@ -124,10 +119,12 @@ describe('getPostBySlug()', () => {
 })
 
 describe('getAllPostSlugs()', () => {
-  it('returns year and slug pairs for all posts', async () => {
-    const slugs = await getAllPostSlugs()
-    expect(slugs).toHaveLength(3)
-    expect(slugs[0]).toMatchObject({ year: expect.any(String), slug: expect.any(String) })
+  it('returns the stored year and slug for every article', async () => {
+    expect(await getAllPostSlugs()).toEqual([
+      { year: '2026', slug: 'newest' },
+      { year: '2026', slug: 'middle' },
+      { year: '2025', slug: 'oldest' },
+    ])
   })
 
   it('includes aliases so static export generates their redirect pages', async () => {
@@ -136,14 +133,6 @@ describe('getAllPostSlugs()', () => {
     const slugs = await getAllPostSlugs()
 
     expect(slugs).toContainEqual({ year: '2026', slug: 'oldest-alias' })
-  })
-
-  it('year matches publishedAt year', async () => {
-    const slugs = await getAllPostSlugs()
-    const newestEntry = slugs.find((s) => s.slug === 'newest')
-    expect(newestEntry?.year).toBe('2026')
-    const oldestEntry = slugs.find((s) => s.slug === 'oldest')
-    expect(oldestEntry?.year).toBe('2025')
   })
 
   it('returns empty array on error', async () => {
@@ -186,28 +175,20 @@ describe('getAdjacentPosts()', () => {
 })
 
 describe('getPostsByYearMonth()', () => {
-  it('groups posts by year', async () => {
-    const groups = await getPostsByYearMonth()
-    const years = groups.map((g) => g.year)
-    expect(years).toContain(2026)
-    expect(years).toContain(2025)
-  })
-
-  it('sorts years newest first', async () => {
-    const groups = await getPostsByYearMonth()
-    expect(groups[0].year).toBeGreaterThan(groups[1].year)
-  })
-
-  it('each year contains months array', async () => {
-    const groups = await getPostsByYearMonth()
-    for (const group of groups) {
-      expect(Array.isArray(group.months)).toBe(true)
-      for (const month of group.months) {
-        expect(month).toHaveProperty('month')
-        expect(month).toHaveProperty('monthName')
-        expect(month).toHaveProperty('posts')
-      }
-    }
+  it('groups articles into descending years and months with readable month names', async () => {
+    expect(await getPostsByYearMonth()).toEqual([
+      {
+        year: 2026,
+        months: [
+          { month: 4, monthName: 'April', posts: [POSTS[0]] },
+          { month: 3, monthName: 'March', posts: [POSTS[1]] },
+        ],
+      },
+      {
+        year: 2025,
+        months: [{ month: 12, monthName: 'December', posts: [POSTS[2]] }],
+      },
+    ])
   })
 
   it('returns empty array on error', async () => {
@@ -218,25 +199,11 @@ describe('getPostsByYearMonth()', () => {
 })
 
 describe('getAllTags()', () => {
-  it('returns deduplicated tags', async () => {
-    const tags = await getAllTags()
-    const slugs = tags.map((t) => t.slug)
-    const uniqueSlugs = [...new Set(slugs)]
-    expect(slugs).toHaveLength(uniqueSlugs.length)
-  })
-
-  it('returns TypeScript tag with count 2', async () => {
-    const tags = await getAllTags()
-    const ts = tags.find((t) => t.slug === 'typescript')
-    expect(ts).toBeDefined()
-    expect(ts!.count).toBe(2)
-  })
-
-  it('returns React tag with count 1', async () => {
-    const tags = await getAllTags()
-    const react = tags.find((t) => t.slug === 'react')
-    expect(react).toBeDefined()
-    expect(react!.count).toBe(1)
+  it('returns deduplicated tags in alphabetical order with article counts', async () => {
+    expect(await getAllTags()).toEqual([
+      { name: 'React', slug: 'react', count: 1 },
+      { name: 'TypeScript', slug: 'typescript', count: 2 },
+    ])
   })
 
   it('returns empty array on error', async () => {

@@ -1,9 +1,3 @@
-/**
- * Unit tests for RSS feed generation
- *
- * TDD - RED phase: These tests define the expected RSS 2.0 XML structure.
- */
-
 import { describe, it, expect } from 'vitest'
 import { buildRssFeed } from '../../lib/rss'
 
@@ -37,67 +31,44 @@ describe('buildRssFeed()', () => {
     },
   ]
 
-  it('returns a string', () => {
+  it('renders the channel and published article fields as valid RSS XML', () => {
     const xml = buildRssFeed(posts, siteUrl)
-    expect(typeof xml).toBe('string')
-  })
-
-  it('is valid XML starting with xml declaration', () => {
-    const xml = buildRssFeed(posts, siteUrl)
-    expect(xml.startsWith('<?xml')).toBe(true)
-  })
-
-  it('contains rss version 2.0', () => {
-    const xml = buildRssFeed(posts, siteUrl)
-    expect(xml).toContain('version="2.0"')
-  })
-
-  it('contains channel title', () => {
-    const xml = buildRssFeed(posts, siteUrl)
-    expect(xml).toContain('<title>Terry Chen</title>')
-  })
-
-  it('contains channel link', () => {
-    const xml = buildRssFeed(posts, siteUrl)
-    expect(xml).toContain(`<link>${siteUrl}</link>`)
-  })
-
-  it('contains channel description', () => {
-    const xml = buildRssFeed(posts, siteUrl)
-    expect(xml).toContain('<description>')
-  })
-
-  it('contains an item for each post', () => {
-    const xml = buildRssFeed(posts, siteUrl)
-    const itemCount = (xml.match(/<item>/g) || []).length
-    expect(itemCount).toBe(posts.length)
-  })
-
-  it('each item contains the post title', () => {
-    const xml = buildRssFeed(posts, siteUrl)
-    expect(xml).toContain('<title>Hello World</title>')
-    expect(xml).toContain('<title>Second Post</title>')
-  })
-
-  it('each item contains a link with year and slug', () => {
-    const xml = buildRssFeed(posts, siteUrl)
-    expect(xml).toContain(`${siteUrl}/posts/2026/hello-world`)
-    expect(xml).toContain(`${siteUrl}/posts/2026/second-post`)
-  })
-
-  it('includes pubDate for posts with publishedAt', () => {
-    const xml = buildRssFeed(posts, siteUrl)
-    expect(xml).toContain('<pubDate>')
+    const doc = new DOMParser().parseFromString(xml, 'application/xml')
+    expect(doc.querySelector('parsererror')).toBeNull()
+    expect(doc.documentElement.tagName).toBe('rss')
+    expect(doc.documentElement.getAttribute('version')).toBe('2.0')
+    expect(doc.querySelector('channel > title')?.textContent).toBe('Terry Chen')
+    expect(doc.querySelector('channel > link')?.textContent).toBe(siteUrl)
+    expect(doc.querySelector('channel > description')?.textContent).toBeTruthy()
+    expect(
+      [...doc.querySelectorAll('item')].map((item) => ({
+        title: item.querySelector('title')?.textContent,
+        link: item.querySelector('link')?.textContent,
+        guid: item.querySelector('guid')?.textContent,
+        description: item.querySelector('description')?.textContent,
+        publishedAt: item.querySelector('pubDate')?.textContent,
+      }))
+    ).toEqual([
+      {
+        title: 'Hello World',
+        link: `${siteUrl}/posts/2026/hello-world`,
+        guid: `${siteUrl}/posts/2026/hello-world`,
+        description: 'A test post',
+        publishedAt: 'Wed, 01 Apr 2026 00:00:00 GMT',
+      },
+      {
+        title: 'Second Post',
+        link: `${siteUrl}/posts/2026/second-post`,
+        guid: `${siteUrl}/posts/2026/second-post`,
+        description: '',
+        publishedAt: 'Sun, 15 Mar 2026 00:00:00 GMT',
+      },
+    ])
   })
 
   it('handles empty posts array', () => {
     const xml = buildRssFeed([], siteUrl)
     expect(xml).not.toContain('<item>')
     expect(xml).toContain('<channel>')
-  })
-
-  it('includes excerpt as description when available', () => {
-    const xml = buildRssFeed(posts, siteUrl)
-    expect(xml).toContain('<description>A test post</description>')
   })
 })

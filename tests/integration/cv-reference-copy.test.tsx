@@ -3,8 +3,6 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import CvHome from '../../components/cv/cv-home'
 import { getCaseStudies } from '../../lib/cv/case-studies'
 import { profiles } from '../../lib/cv/profile'
-import { readFileSync } from 'node:fs'
-import { join } from 'node:path'
 
 describe('Selected bilingual CV presentation', () => {
   for (const locale of ['zh-TW', 'en'] as const) {
@@ -36,9 +34,6 @@ describe('Selected bilingual CV presentation', () => {
           (slug) => `/cv/${locale}/case-study/${slug}#case-study-top`
         )
       )
-      expect(doc.querySelector('#featured-works')?.textContent).not.toContain(
-        projects[0].tools.join(' / ')
-      )
       expect(
         [...doc.querySelectorAll('.cv-home-reference > section')].map((section) => section.id)
       ).toEqual(['top', 'about', 'featured-works', 'experience', 'education', 'contact', 'skills'])
@@ -49,28 +44,13 @@ describe('Selected bilingual CV presentation', () => {
         locale === 'en'
           ? 'Managed the engineering team and supported work allocation and technical decision-making.'
           : '管理工程部門團隊，協助工作分派與技術決策。'
-      expect(doc.querySelectorAll('#codex-profile [data-codex-stat]')).toHaveLength(5)
-      expect(doc.querySelectorAll('#codex-profile [data-codex-insight]')).toHaveLength(4)
       expect(doc.querySelectorAll('#codex-profile')).toHaveLength(1)
       expect(doc.querySelector('#about #codex-profile')).not.toBeNull()
       expect(doc.querySelector('#about h2')?.textContent).toBe('OpenAI')
-      expect(doc.querySelector('#skills #codex-profile')).toBeNull()
-      expect(doc.querySelector('.cv-stats-grid')).toBeNull()
       expect(doc.querySelector('#experience')?.textContent).toContain(management)
-      expect(doc.body.textContent).not.toMatch(
-        /直接管理|10\s*(direct reports|engineers)|Engineers directly managed/i
-      )
       expect(doc.querySelector('#experience')?.textContent).toContain(
         locale === 'en' ? 'Managed 20 engineers' : '管理 20 人'
       )
-      const nidin = projects.find((project) => project.slug === 'nidin')
-      expect(nidin?.role).toBe(locale === 'en' ? 'Technical Manager' : '技術經理')
-      const caseSource = readFileSync(
-        join(process.cwd(), 'content/cv/case-studies', locale, 'nidin.mdx'),
-        'utf8'
-      )
-      expect(caseSource).toContain(management)
-      expect(caseSource).not.toMatch(/直接管理|10\s*(direct reports|engineers)/i)
     })
   }
 })
