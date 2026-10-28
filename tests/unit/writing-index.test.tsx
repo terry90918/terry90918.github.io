@@ -2,7 +2,6 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { renderToStaticMarkup } from 'react-dom/server'
 import type { AliasPost, Post } from '../../lib/posts/types'
 import PostsPage from '../../app/(frontend)/posts/page'
-import { WritingPostCard } from '../../components/WritingPostCard'
 
 vi.mock('@/lib/posts/queries', () => ({ getPostsByYearMonth: vi.fn() }))
 import { getPostsByYearMonth } from '../../lib/posts/queries'
@@ -32,11 +31,14 @@ afterEach(() => {
 it.each([
   ['ai-engineering-skills-map-software-engineering-fundamentals', 'Andrew Ng'],
   ['coinbase-ai-engineering-adoption', 'Chintan Turakhia'],
-])('credits the original author of %s', (slug, author) => {
-  const doc = new DOMParser().parseFromString(
-    renderToStaticMarkup(<WritingPostCard post={post(slug, 'published')} />),
-    'text/html'
-  )
+])('credits the original author of %s in the writing index', async (slug, author) => {
+  vi.mocked(getPostsByYearMonth).mockResolvedValue([
+    {
+      year: 2026,
+      months: [{ month: 10, monthName: 'October', posts: [post(slug, 'published')] }],
+    },
+  ])
+  const doc = new DOMParser().parseFromString(renderToStaticMarkup(await PostsPage()), 'text/html')
   expect(doc.querySelector('article')?.textContent).toContain(`原文：${author}`)
   expect(doc.querySelector('h3 a')?.getAttribute('href')).toBe(`/posts/2026/${slug}`)
 })

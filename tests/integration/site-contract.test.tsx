@@ -17,6 +17,7 @@ function documentFor(html: string) {
 describe('Approved personal story reading paths', () => {
   it('keeps search and social descriptions consistent', () => {
     for (const metadata of [storyMetadata, workMetadata]) {
+      expect(metadata.description).toBeTruthy()
       expect(metadata.openGraph?.description).toBe(metadata.description)
       expect(metadata.twitter?.description).toBe(metadata.description)
     }
