@@ -48,10 +48,13 @@ test('case study progress stays below section navigation on mobile', async ({ pa
   for (const width of [375, 320]) {
     await page.setViewportSize({ width, height: 812 })
     await page.goto('/cv/en/case-study/jurislm')
-    const navigation = await page.getByRole('navigation', { name: 'CV sections' }).boundingBox()
-    const progress = await page.locator('main > div.fixed.inset-x-0').boundingBox()
-
-    expect(progress!.y - (navigation!.y + navigation!.height)).toBeGreaterThanOrEqual(8)
+    await expect
+      .poll(async () => {
+        const navigation = await page.getByRole('navigation', { name: 'CV sections' }).boundingBox()
+        const progress = await page.locator('main > div.fixed.inset-x-0').boundingBox()
+        return progress!.y - (navigation!.y + navigation!.height)
+      })
+      .toBeGreaterThanOrEqual(8)
     expect(
       await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
     ).toBe(true)

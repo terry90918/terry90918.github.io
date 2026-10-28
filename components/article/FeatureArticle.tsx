@@ -1,6 +1,7 @@
 import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
 import { formatPublishedDate } from '@/lib/date'
+import { hasLeadingExcerptBlockquote } from '@/lib/posts/excerpt'
 import type { FeaturePresentation, Post } from '@/lib/posts/types'
 import { ArticleAudioBar } from './ArticleAudioBar'
 import { ArticleOutline } from './ArticleOutline'
@@ -27,7 +28,7 @@ export function FeatureArticle({
           <span>{presentation.category ?? '文章'}</span>
         </div>
         <h1>{post.title}</h1>
-        <p className="feature-subtitle">{post.excerpt}</p>
+        {!hasLeadingExcerptBlockquote(post) && <p className="feature-subtitle">{post.excerpt}</p>}
         <ArticleAudioBar audio={presentation.audio} url={url} />
       </header>
       <div className="feature-reading-grid">
