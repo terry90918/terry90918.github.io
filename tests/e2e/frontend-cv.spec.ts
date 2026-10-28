@@ -136,6 +136,15 @@ test('section navigation remains below the header at narrow widths', async ({ pa
     expect(offset).toBeGreaterThanOrEqual(0)
     expect(offset).toBeLessThanOrEqual(120)
     expect(
+      await page.locator('#cv-codex-activity .codex-section-header').evaluate((element) => {
+        const bounds = element.getBoundingClientRect()
+        return [...element.children].every((child) => {
+          const rect = child.getBoundingClientRect()
+          return rect.left >= bounds.left - 1 && rect.right <= bounds.right + 1
+        })
+      })
+    ).toBe(true)
+    expect(
       await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
     ).toBe(true)
   }
