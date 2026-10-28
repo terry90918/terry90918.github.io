@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
+import { CodexProfile } from '@/components/CodexShowcase'
 import Hero from '@/components/cv/home/hero/hero'
 import Experience from '@/components/cv/home/experience/experience'
 import FeaturedWorks from '@/components/cv/shared/featured-works/featured-works'
@@ -126,6 +127,7 @@ export default function CvHome({
             ))}
           </Accordion>
         </Card>
+        <CodexProfile locale={locale} />
       </section>
     </div>
   )

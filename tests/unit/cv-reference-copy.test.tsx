@@ -49,6 +49,8 @@ describe('Selected bilingual CV presentation', () => {
         locale === 'en'
           ? 'Managed the engineering team and supported work allocation and technical decision-making.'
           : '管理工程部門團隊，協助工作分派與技術決策。'
+      expect(doc.querySelectorAll('#codex-profile [data-codex-stat]')).toHaveLength(5)
+      expect(doc.querySelectorAll('#codex-profile [data-codex-insight]')).toHaveLength(4)
       expect(doc.querySelectorAll('.cv-stats-grid > div')).toHaveLength(3)
       expect(
         [...doc.querySelectorAll('.cv-stats-grid > div > p:first-child')].map(

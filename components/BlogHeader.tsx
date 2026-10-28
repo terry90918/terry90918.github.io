@@ -6,7 +6,7 @@ import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/component
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
-import { CV_URL, SITE_EMAIL, CHATGPT_URL } from '@/lib/site/content'
+import { CV_URL, SITE_EMAIL } from '@/lib/site/content'
 
 function useIsClient() {
   return useSyncExternalStore(
@@ -100,10 +100,10 @@ export function BlogHeader() {
   function isCurrentRoute(href: string) {
     return href.startsWith('/') && (pathname === href || pathname.startsWith(`${href}/`))
   }
-  const links = [
+  const links: [string, string][] = [
     ['關於我', '/about'],
     ['故事', '/story'],
-    ['作品', CHATGPT_URL],
+    ['作品', '/work'],
     ['文章', '/posts'],
     ['CV', CV_URL],
   ]

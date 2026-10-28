@@ -60,7 +60,7 @@ test.describe('Personal site', () => {
     for (const [name, href] of [
       ['關於我', '/about'],
       ['故事', '/story'],
-      ['作品', 'https://chatgpt.com/u/terrytychen'],
+      ['作品', '/work'],
       ['文章', '/posts'],
       ['CV', cv],
     ]) {
@@ -95,7 +95,7 @@ test.describe('Personal site', () => {
     for (const [name, href] of [
       ['關於我', '/about'],
       ['故事', '/story'],
-      ['作品', 'https://chatgpt.com/u/terrytychen'],
+      ['作品', '/work'],
       ['文章', '/posts'],
       ['CV', cv],
       ['聯絡', email],
@@ -136,12 +136,54 @@ test.describe('Personal site', () => {
     ).toContainText('AI 工程技能地圖：軟體工程基礎')
   })
 
+  test('work gallery preserves source charts and public reading without login', async ({
+    page,
+  }) => {
+    await page.goto('/work')
+    await expect(page.locator('.work-showcase-card')).toHaveCount(5)
+    await expect(page.locator('.work-showcase-card img')).toHaveCount(5)
+    await expect(page.getByText('體驗需登入 ChatGPT。')).toBeVisible()
+    const chart = page.locator('.codex-chart')
+    const views = []
+    for (const mode of ['每日', '每週', '累計']) {
+      const control = page.getByRole('button', { name: mode, exact: true })
+      await control.focus()
+      await page.keyboard.press('Enter')
+      await expect(control).toHaveAttribute('aria-pressed', 'true')
+      views.push(
+        await chart
+          .locator('[data-activity-level]')
+          .evaluateAll((cells) =>
+            cells.map((cell) => cell.getAttribute('data-activity-level')).join('')
+          )
+      )
+    }
+    expect(new Set(views).size).toBe(3)
+    await page.setViewportSize({ width: 375, height: 900 })
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
+    ).toBe(true)
+    await expect(page.getByRole('region', { name: 'Token 活動圖，可水平捲動' })).toHaveAttribute(
+      'tabindex',
+      '0'
+    )
+    for (const locale of ['zh-TW', 'en']) {
+      await page.goto(`/cv/${locale}#codex-profile`)
+      await expect(page.locator('[data-codex-stat]')).toHaveCount(5)
+      await expect(page.locator('[data-codex-insight]')).toHaveCount(4)
+      await expect(page.locator('[data-codex-plugin]')).toHaveCount(4)
+      await expect(page.locator('#codex-profile')).toContainText('2026-10-28')
+      expect(
+        await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
+      ).toBe(true)
+    }
+  })
+
   test('[brand] publishes only the selected work cases and returns 404 for others', async ({
     page,
   }) => {
     await page.goto('/work')
     for (const slug of ['gj', 'nidin', 'jurislm']) {
-      await expect(page.locator(`main a[href="/work/${slug}"]`).first()).toBeVisible()
       const response = await page.goto(`/work/${slug}`)
       expect(response?.status()).toBe(200)
       await expect(page.locator('main h1')).toBeVisible()
@@ -477,12 +519,18 @@ test.describe('Writing and metadata', () => {
     await expect(page.locator('[data-writing-kind="translation"]')).toHaveCount(0)
   })
 
-  test('[writing] matches the selected design with only the AI series entry point', async ({
-    page,
-  }) => {
+  test('[writing] exposes the published AI, pstack and Harness series', async ({ page }) => {
     await page.goto('/posts')
     const nav = page.getByRole('navigation', { name: '文章主題' })
-    await expect(nav.getByRole('link')).toHaveText(['AI 日報'])
+    await expect(nav.getByRole('link')).toHaveText(['AI 日報', 'pstack', 'Harness²'])
+    await expect(nav.getByRole('link', { name: 'pstack', exact: true })).toHaveAttribute(
+      'href',
+      '/posts/pstack'
+    )
+    await expect(nav.getByRole('link', { name: 'Harness²', exact: true })).toHaveAttribute(
+      'href',
+      '/posts/harness2'
+    )
     await expect(nav.getByRole('link', { name: 'AI 日報', exact: true })).toHaveAttribute(
       'href',
       '/posts/ai-daily'

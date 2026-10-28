@@ -16,7 +16,7 @@ describe('Approved personal story reading paths', () => {
       '從 GJ 共同創辦、Nidin 的系統與團隊工作，到近期法律與旅遊 AI 合作的幾段經歷。'
     )
     expect(workMetadata.description).toBe(
-      'GJ、Nidin 你訂與 JurisLM 的產品、平台與 AI 工作案例，以及 VClass、Channel-T 合作經驗。'
+      'Terry 的五項互動作品：Block Out!、BLUEWAKE、DefectHunter AI、ASCII Sharks 與 Ochre Chess，以及 Codex Token 活動紀錄。'
     )
     for (const metadata of [storyMetadata, workMetadata]) {
       expect(metadata.openGraph?.description).toBe(metadata.description)
@@ -66,16 +66,12 @@ describe('Approved personal story reading paths', () => {
     )
   })
 
-  it('follows the selected product, platform and AI order with concise supporting work', () => {
+  it('shows five interactive works and links career details through CV', () => {
     const doc = documentFor(renderToStaticMarkup(<WorkPage />))
-    expect(doc.querySelector('article h3')?.textContent).toBe('GJ')
-    expect(doc.getElementById('vclass')?.textContent).toContain(
-      '核心負責從零建置並推出線上課程平台'
-    )
-    expect(doc.getElementById('channel-t')?.textContent).toContain('旅行產品平台')
-    expect(
-      [...doc.querySelectorAll('article h3 a[href^="/work/"]')].map((n) => n.getAttribute('href'))
-    ).toEqual(['/work/gj', '/work/nidin', '/work/jurislm'])
+    expect(doc.querySelectorAll('article')).toHaveLength(5)
+    expect(doc.querySelector('article h3')?.textContent).toBe('Block Out! 彩虹方塊大逃脫')
+    expect(doc.querySelector('a[href="/cv"]')).not.toBeNull()
+    expect(doc.querySelector('#codex-activity')).not.toBeNull()
     expect(doc.body.textContent).not.toContain('55 項')
   })
 
@@ -84,7 +80,7 @@ describe('Approved personal story reading paths', () => {
     expect(doc.querySelector('h1')?.textContent).toBe('關於我')
     for (const [text, href] of [
       ['幾段經歷', '/story'],
-      ['作品頁', 'https://chatgpt.com/u/terrytychen'],
+      ['作品頁', '/work'],
       ['文章索引', '/posts'],
       ['CV', '/cv'],
     ]) {
@@ -102,8 +98,6 @@ describe('Approved personal story reading paths', () => {
     expect(entries.querySelectorAll('article')).toHaveLength(3)
     expect(entries.querySelector('a')?.getAttribute('href')).toBe('/story#gj')
     expect(entries.textContent).not.toContain('材料工程畢業後')
-    expect(doc.querySelector('[data-home-section="work"] a')?.getAttribute('href')).toBe(
-      'https://chatgpt.com/u/terrytychen'
-    )
+    expect(doc.querySelector('[data-home-section="work"] a')?.getAttribute('href')).toBe('/work')
   })
 })
