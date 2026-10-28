@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import Link from 'next/link'
 import { getPosts } from '@/lib/posts/queries'
-import { EXPERIENCE_NOTES, SITE_EMAIL, CHATGPT_URL } from '@/lib/site/content'
+import { EXPERIENCE_NOTES, SITE_EMAIL } from '@/lib/site/content'
 import { getRecentUpdates } from '@/lib/site/writing'
 import { pageMetadata } from '@/lib/site/metadata'
 import { WritingPostCard } from '@/components/WritingPostCard'
@@ -93,8 +93,8 @@ export default async function HomePage() {
       )}
       <section data-home-section="work" aria-labelledby="work-title">
         <SiteSectionHeading label="作品" title="做過的作品" id="work-title">
-          <Link href={CHATGPT_URL} className="site-text-link">
-            到 ChatGPT 看作品
+          <Link href="/work" className="site-text-link">
+            看互動作品
           </Link>
         </SiteSectionHeading>
       </section>
