@@ -1,4 +1,8 @@
 import { describe, expect, it } from 'vitest'
+import { mkdtempSync, writeFileSync, readFileSync, rmSync, chmodSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join, delimiter } from 'node:path'
+import { spawnSync } from 'node:child_process'
 import { renderToStaticMarkup } from 'react-dom/server'
 import StoryPage, { metadata as storyMetadata } from '../../app/(frontend)/story/page'
 import WorkPage, { metadata as workMetadata } from '../../app/(frontend)/work/page'
@@ -99,5 +103,62 @@ describe('Approved personal story reading paths', () => {
     expect(entries.querySelector('a')?.getAttribute('href')).toBe('/story#gj')
     expect(entries.textContent).not.toContain('材料工程畢業後')
     expect(doc.querySelector('[data-home-section="work"] a')?.getAttribute('href')).toBe('/work')
+  })
+})
+
+function runVerification(failStage = '') {
+  const directory = mkdtempSync(join(tmpdir(), 'site-verification-'))
+  try {
+    const executable = join(directory, 'bun')
+    const log = join(directory, 'stages.log')
+    writeFileSync(log, '')
+    writeFileSync(
+      executable,
+      '#!/bin/sh\nprintf "%s\\n" "$2" >> "$VERIFY_TEST_LOG"\nif [ "$2" = "$VERIFY_TEST_FAIL_STAGE" ]; then exit 7; fi\n'
+    )
+    chmodSync(executable, 0o755)
+    const result = spawnSync(process.execPath, [join(process.cwd(), 'scripts/verify.mjs')], {
+      encoding: 'utf8',
+      env: {
+        ...process.env,
+        PATH: `${directory}${delimiter}${process.env.PATH}`,
+        VERIFY_TEST_LOG: log,
+        VERIFY_TEST_FAIL_STAGE: failStage,
+      },
+    })
+    return {
+      status: result.status,
+      stderr: result.stderr,
+      stages: readFileSync(log, 'utf8').trim().split('\n').filter(Boolean),
+    }
+  } finally {
+    rmSync(directory, { recursive: true, force: true })
+  }
+}
+
+describe('Shared verification process', () => {
+  it('runs all seven requested stages with the production build last', () => {
+    const result = runVerification()
+    expect(result.status, result.stderr).toBe(0)
+    expect(result.stages).toEqual([
+      'format:check',
+      'lint',
+      'typecheck',
+      'test:unit',
+      'test:integration',
+      'test:e2e',
+      'build',
+    ])
+  })
+  it('stops on an integration failure before E2E or build', () => {
+    const result = runVerification('test:integration')
+    expect(result.status, result.stderr).toBe(7)
+    expect(result.stages).toEqual([
+      'format:check',
+      'lint',
+      'typecheck',
+      'test:unit',
+      'test:integration',
+    ])
   })
 })

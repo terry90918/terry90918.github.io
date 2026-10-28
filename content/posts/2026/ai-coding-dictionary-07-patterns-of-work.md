@@ -1,11 +1,11 @@
 ---
-title: "AI Coding 詞典拆解（07）：從 Vibe Coding 到 Software Factory"
-publishedAt: "2026-10-15T08:43:06+08:00"
-status: "published"
-slug: "ai-coding-dictionary-07-patterns-of-work"
-excerpt: "AI 工程工作模式的差別，在於人何時介入、用什麼證據檢查，以及任務如何被分派和放大。從原型到工廠，自治程度增加不等於責任消失。"
-tags: ["人工智慧", "AI工程", "軟體開發", "工程管理"]
-metaDescription: "比較 Human-in-the-loop、AFK、Automated Check、Review、Vibe Coding、Prototyping、DX、AX、Software Factory 和 Dark Factory 的工作情境與風險邊界。"
+title: 'AI Coding 詞典拆解（07）：從 Vibe Coding 到 Software Factory'
+publishedAt: '2026-10-15T08:43:06+08:00'
+status: 'published'
+slug: 'ai-coding-dictionary-07-patterns-of-work'
+excerpt: 'AI 工程工作模式的差別，在於人何時介入、用什麼證據檢查，以及任務如何被分派和放大。從原型到工廠，自治程度增加不等於責任消失。'
+tags: ['人工智慧', 'AI工程', '軟體開發', '工程管理']
+metaDescription: '比較 Human-in-the-loop、AFK、Automated Check、Review、Vibe Coding、Prototyping、DX、AX、Software Factory 和 Dark Factory 的工作情境與風險邊界。'
 ---
 
 談 AI 寫程式時，常有人把工作模式排成「先協作，再全自動」的單一路線。實際上，工作模式至少有幾個不同問題：人要在什麼時候參與，成果由誰檢查，Agent 是否會自行啟動，以及人是否會讀取產生的程式碼。這些選擇可以組合，也會因工作風險而改變。

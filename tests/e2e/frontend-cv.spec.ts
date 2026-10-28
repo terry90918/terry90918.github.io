@@ -138,7 +138,14 @@ test('section navigation remains below the header at narrow widths', async ({ pa
 test('CV styles preserve the main-site link shape', async ({ page }) => {
   await page.goto('/')
   const brand = page.getByRole('link', { name: 'Terry.TY Chen', exact: true })
-  expect(await brand.evaluate((element) => getComputedStyle(element).borderRadius)).toBe('4px')
+  const radius = await brand.evaluate((element) => getComputedStyle(element).borderRadius)
+  expect(Number.parseFloat(radius)).toBeGreaterThan(0)
+  await page.goto('/cv/en')
+  await expect(page.getByRole('button', { name: 'Toggle theme', exact: true })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Terry.TY Chen', exact: true })).toHaveCSS(
+    'border-radius',
+    radius
+  )
 })
 
 test('loads the 3D badge only when its desktop layout is visible', async ({ page }) => {

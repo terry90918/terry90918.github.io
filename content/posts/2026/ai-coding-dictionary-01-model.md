@@ -1,11 +1,11 @@
 ---
-title: "AI Coding 詞典拆解（01）：模型、推論與 Harness 如何組成一次工作"
-publishedAt: "2026-10-15T08:43:00+08:00"
-status: "published"
-slug: "ai-coding-dictionary-01-model"
-excerpt: "AI 寫程式不只是一個模型在回答問題。模型負責生成，Provider 負責推論服務，Harness 才負責工具、脈絡和執行迴圈。"
-tags: ["人工智慧", "AI工程", "軟體開發", "Agent"]
-metaDescription: "從參數、訓練與推論，理解 Token 和 next-token prediction 如何產生文字，再分清模型、Provider、Harness 與 Agent 的責任。"
+title: 'AI Coding 詞典拆解（01）：模型、推論與 Harness 如何組成一次工作'
+publishedAt: '2026-10-15T08:43:00+08:00'
+status: 'published'
+slug: 'ai-coding-dictionary-01-model'
+excerpt: 'AI 寫程式不只是一個模型在回答問題。模型負責生成，Provider 負責推論服務，Harness 才負責工具、脈絡和執行迴圈。'
+tags: ['人工智慧', 'AI工程', '軟體開發', 'Agent']
+metaDescription: '從參數、訓練與推論，理解 Token 和 next-token prediction 如何產生文字，再分清模型、Provider、Harness 與 Agent 的責任。'
 ---
 
 「AI 幫我改好了」描述的是一段體驗，還不是技術上的解釋。一次程式修改可能經過模型生成、服務端推論、工具執行、檔案讀取和測試驗證。若把整段過程都叫作「模型在做」，故障時便很難知道該改提示、換模型、修工具，還是檢查服務狀態。

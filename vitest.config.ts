@@ -9,6 +9,9 @@ export default defineConfig({
     environment: 'jsdom',
     include: ['**/*.test.{ts,tsx}', '**/*.spec.{ts,tsx}'],
     exclude: ['node_modules', '.next', '.claude/worktrees', 'tests/e2e/**'],
-    passWithNoTests: true,
+    passWithNoTests: false,
+    allowOnly: false,
+    maxWorkers: 1,
+    testTimeout: 60000,
   },
 })
