@@ -31,32 +31,35 @@ describe('Public profile information split', () => {
   })
 
   for (const locale of ['zh-TW', 'en'] as const) {
-    it(`renders OpenAI metrics, plugins and activity in ${locale}`, () => {
+    it(`shows labeled estimates without identity, plugins or insights in ${locale}`, () => {
       const doc = documentFor(renderToStaticMarkup(<CodexProfile locale={locale} />))
       expect(doc.querySelector('h2')?.textContent).toBe('OpenAI')
       expect(doc.querySelectorAll('[data-codex-stat]')).toHaveLength(5)
-      expect(doc.querySelectorAll('[data-codex-insight]')).toHaveLength(4)
-      expect(doc.querySelectorAll('[data-codex-plugin]')).toHaveLength(4)
-      for (const text of ['295', '15,487', '33%', '0%', 'Superpowers', 'Linear', 'dot', 'GitHub']) {
-        expect(doc.body.textContent).toContain(text)
-      }
-      expect(doc.body.textContent).toContain(locale === 'en' ? '153.38B' : '1533.8 億')
+      expect(doc.querySelectorAll('[data-codex-insight]')).toHaveLength(0)
+      expect(doc.querySelectorAll('[data-codex-plugin]')).toHaveLength(0)
+      expect(doc.querySelector('.codex-profile-heading p')).toBeNull()
+      expect(doc.body.textContent).toContain(locale === 'en' ? '2.73T' : '2.73 兆')
+      expect(doc.body.textContent).toContain(
+        locale === 'en' ? 'Estimated total tokens' : '推估累計 Token'
+      )
+      expect(doc.body.textContent).toContain(
+        locale === 'en' ? 'Simulated longest streak' : '模擬最長連續紀錄'
+      )
+      expect(doc.body.textContent).toContain(locale === 'en' ? '364 days' : '364 天')
       expect(doc.body.textContent).toContain(locale === 'en' ? '8.44B' : '84.4 億')
-      const superpowers = doc.querySelector('[data-codex-plugin] img')
-      expect(superpowers?.getAttribute('src')).toBe('/images/work/superpowers.svg')
-      expect(existsSync(join(process.cwd(), 'public/images/work/superpowers.svg'))).toBe(true)
+
       const activity = doc.getElementById('cv-codex-activity')
       expect(activity).not.toBeNull()
       expect([...activity!.querySelectorAll('button')].map((button) => button.textContent)).toEqual(
         locale === 'en' ? ['Daily', 'Weekly', 'Cumulative'] : ['每日', '每週', '累計']
       )
-      expect(activity!.querySelectorAll('[data-activity-level]')).toHaveLength(
-        snapshot.daily.length
-      )
+      expect(activity!.querySelectorAll('[data-activity-level]')).toHaveLength(364)
+      expect(activity!.querySelectorAll('[data-activity-level="0"]')).toHaveLength(0)
+      expect(activity!.querySelectorAll('[data-activity-month]')).toHaveLength(364)
       expect(activity!.querySelector('[role="img"]')?.getAttribute('aria-label')).toContain(
-        snapshot.capturedAt
+        locale === 'en' ? 'illustration' : '示意'
       )
-      expect(doc.querySelector('a[href="https://chatgpt.com/u/terrytychen"]')).not.toBeNull()
+      expect(doc.querySelector('a[href="https://chatgpt.com/u/terrytychen"]')).toBeNull()
     })
   }
 

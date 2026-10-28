@@ -68,3 +68,9 @@ All blog article bodies (including the pstack feature) and bilingual CV case-stu
 Wide tables use Typeset scroll wrappers with a named, keyboard-focusable region. The wrapper owns overflow while each child remains a semantic table. CV labels follow locale. The upstream stylesheet remains byte-identical and is excluded from automatic formatting.
 
 The reference was rechecked against the user's mobile screenshot on 2026-10-23. Use only one thin rule above the audio utility. Do not add borders above/below the mobile outline or around the video stage. Space, sequence and typography group the hero, audio, video and body; the desktop outline and data-table separators keep their roles.
+
+## OpenAI usage illustration
+
+On 2026-10-28 the user removed the identity line, plugin list and insights from the CV OpenAI section. CV now uses a full 364-cell decorative heatmap with all twelve months filled using the reference orange palette (#6d2e10, #b9480e, #fc6a21, #ff9e6c) and seeded random intensity in each view; the title and accessible description identify it as an illustration, not measured activity. The user explicitly rejected rainbow colors; month-to-month variation stays within these four orange shades. Seeded colors stay stable between server rendering, hydration and refresh. Work keeps the original captured heatmap and source data unchanged.
+
+The user supplied an approximate rate of 7.5 billion tokens per day. CV labels the 364-day extrapolation as estimated total tokens (2.73 trillion) and both 364-day streaks as simulated, assuming activity every day. Keep the captured highest day (8.44 billion) and longest task (22 hours 57 minutes) unchanged. No reconstructed cell is a real event or daily token measurement.

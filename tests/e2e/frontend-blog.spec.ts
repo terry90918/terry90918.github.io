@@ -157,15 +157,6 @@ test.describe('Personal site', () => {
     )
     for (const locale of ['zh-TW', 'en']) {
       await page.goto(`/cv/${locale}#codex-profile`)
-      const profile = page.locator('#codex-profile')
-      const icon = profile.locator('[data-codex-plugin] img')
-      await icon.scrollIntoViewIfNeeded()
-      await expect(icon).toBeVisible()
-      await expect
-        .poll(() =>
-          icon.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0)
-        )
-        .toBe(true)
       const cvChart = page.locator('#cv-codex-activity')
       for (const name of locale === 'en'
         ? ['Daily', 'Weekly', 'Cumulative']
@@ -174,6 +165,31 @@ test.describe('Personal site', () => {
         await view.click()
         await expect(view).toHaveAttribute('aria-pressed', 'true')
         await expect(cvChart.locator('.codex-chart')).toBeVisible()
+        await expect(cvChart.locator('[data-activity-level]')).toHaveCount(364)
+        await expect(cvChart.locator('[data-activity-level="0"]')).toHaveCount(0)
+        const colors = await cvChart
+          .locator('[data-activity-level]')
+          .evaluateAll((cells) => [
+            ...new Set(cells.map((cell) => getComputedStyle(cell).backgroundColor)),
+          ])
+        expect(colors).toHaveLength(4)
+        expect(
+          colors.every((color) =>
+            [
+              'rgb(109, 46, 16)',
+              'rgb(185, 72, 14)',
+              'rgb(252, 106, 33)',
+              'rgb(255, 158, 108)',
+            ].includes(color)
+          )
+        ).toBe(true)
+        expect(
+          await cvChart
+            .locator('[data-activity-month]')
+            .evaluateAll(
+              (cells) => new Set(cells.map((cell) => cell.getAttribute('data-activity-month'))).size
+            )
+        ).toBe(12)
       }
       expect(
         await page

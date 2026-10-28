@@ -16,7 +16,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     permissions:
       contents: read
       pages: read
@@ -29,7 +29,7 @@ jobs:
         with:
           script: |
             const expected = 'ci/woodpecker/push/validate';
-            for (let attempt = 0; attempt < 120; attempt++) {
+            for (let attempt = 0; attempt < 180; attempt++) {
               const { data } = await github.rest.repos.getCombinedStatusForRef({
                 ...context.repo,
                 ref: context.sha,
