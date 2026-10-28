@@ -110,6 +110,10 @@ export function WorkGallery() {
 
 export function CodexActivity() {
   const [mode, setMode] = useState<'daily' | 'weekly' | 'cumulative'>('daily')
+  const levels = [...snapshot[mode]]
+  const distribution = [0, 1, 2, 3, 4]
+    .map((level) => `色階 ${level}：${levels.filter((value) => value === String(level)).length} 格`)
+    .join('；')
   return (
     <section id="codex-activity" className="codex-activity" aria-labelledby="activity-title">
       <div className="codex-section-header">
@@ -143,10 +147,11 @@ export function CodexActivity() {
         <div
           className="codex-chart"
           role="img"
+          aria-describedby="activity-summary"
           aria-label={`${{ daily: '每日', weekly: '每週', cumulative: '累計' }[mode]} Token 活動，原頁色階快照，擷取日期 ${snapshot.capturedAt}`}
         >
           <div className="codex-chart-grid">
-            {[...snapshot[mode]].map((level, index) => (
+            {levels.map((level, index) => (
               <span key={index} data-activity-level={level} />
             ))}
           </div>
@@ -157,6 +162,10 @@ export function CodexActivity() {
           </div>
         </div>
       </div>
+      <p id="activity-summary" className="sr-only" aria-live="polite">
+        {levels.length} 個方格，{levels.filter((value) => value !== '0').length} 個為非零色階。
+        {distribution}。色階表示來源圖的相對強度，不是逐日 Token 數值。
+      </p>
       <p className="codex-source">
         擷取日期 <time dateTime={snapshot.capturedAt}>{snapshot.capturedAt}</time> ·{' '}
         <a href={snapshot.source} target="_blank" rel="noopener noreferrer">

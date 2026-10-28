@@ -73,6 +73,12 @@ describe('Public profile information split', () => {
       '累計',
     ])
     expect(doc.querySelectorAll('[data-activity-level]')).toHaveLength(snapshot.daily.length)
+    expect(doc.querySelector('.codex-chart')?.getAttribute('aria-describedby')).toBe(
+      'activity-summary'
+    )
+    expect(doc.querySelector('#activity-summary')?.textContent).toContain('361 個方格')
+    expect(doc.querySelector('#activity-summary')?.textContent).toContain('137 個為非零色階')
+    expect(doc.querySelector('#activity-summary')?.textContent).toContain('色階 4')
     expect(doc.body.textContent).toContain('2026-10-28')
     expect(doc.querySelector('a[href="/cv/zh-TW#codex-profile"]')).not.toBeNull()
   })

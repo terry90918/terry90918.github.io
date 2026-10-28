@@ -159,6 +159,14 @@ test.describe('Personal site', () => {
       )
     }
     expect(new Set(views).size).toBe(3)
+    await expect(page.locator('#activity-summary')).toContainText('364 個方格')
+    expect(
+      await chart
+        .locator('[data-activity-level="4"]')
+        .first()
+        .evaluate((cell) => getComputedStyle(cell).boxShadow)
+    ).not.toBe('none')
+    await expect(chart.locator('[data-activity-level="0"]').first()).toHaveCSS('box-shadow', 'none')
     await page.setViewportSize({ width: 375, height: 900 })
     expect(
       await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
