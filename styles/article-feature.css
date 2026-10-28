@@ -299,7 +299,7 @@ main:has(> .feature-article) {
   .feature-mobile-outline a {
     display: block;
     min-height: 2.75rem;
-    padding: 0.6rem 0.125rem;
+    padding: 0.6rem 0.75rem;
     color: var(--muted-foreground);
     font-size: 0.8125rem;
     line-height: 1.7;
