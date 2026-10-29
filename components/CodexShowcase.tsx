@@ -181,7 +181,12 @@ export function CodexActivity({
           ))}
         </div>
       </div>
-      <div className="codex-chart-scroll" tabIndex={0} role="region" aria-label={copy.region}>
+      <div
+        className="codex-chart-scroll"
+        tabIndex={embedded ? -1 : 0}
+        role="region"
+        aria-label={copy.region}
+      >
         <div
           className="codex-chart"
           role={embedded ? 'group' : 'img'}

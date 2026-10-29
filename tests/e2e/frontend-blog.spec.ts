@@ -179,7 +179,20 @@ test.describe('Personal site', () => {
         await expect(tooltip).toBeHidden()
         await trigger.focus()
         await expect(tooltip).toBeVisible()
-        await trigger.press('Escape')
+        if (name === 'Daily' || name === '每日') {
+          for (let step = 0; step < 6; step++) await page.keyboard.press('ArrowDown')
+          const sunday = cvChart.locator('[data-activity-trigger]').nth(6)
+          await expect(sunday).toBeFocused()
+          await page.keyboard.press('ArrowDown')
+          await expect(sunday).toBeFocused()
+          await page.keyboard.press('End')
+          for (let step = 0; step < 6; step++) await page.keyboard.press('ArrowUp')
+          const lastMonday = cvChart.locator('[data-activity-trigger]').nth(357)
+          await expect(lastMonday).toBeFocused()
+          await page.keyboard.press('ArrowRight')
+          await expect(lastMonday).toBeFocused()
+        }
+        await page.keyboard.press('Escape')
         await expect(tooltip).toBeHidden()
 
         await expect(cvChart.locator('[data-activity-level]')).toHaveCount(364)

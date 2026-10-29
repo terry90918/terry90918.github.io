@@ -50,6 +50,7 @@ describe('Public profile information split', () => {
 
       const activity = doc.getElementById('cv-codex-activity')
       expect(activity).not.toBeNull()
+      expect(activity!.querySelectorAll('[tabindex="0"]')).toHaveLength(1)
       expect([...activity!.querySelectorAll('button')].map((button) => button.textContent)).toEqual(
         locale === 'en' ? ['Daily', 'Weekly', 'Cumulative'] : ['每日', '每週', '累計']
       )

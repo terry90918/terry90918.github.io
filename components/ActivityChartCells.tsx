@@ -26,21 +26,28 @@ export function ActivityChartCells({
     ? cells.map((cell) => [cell])
     : Array.from({ length: cells.length / 7 }, (_, week) => cells.slice(week * 7, week * 7 + 7))
   const moveFocus = (event: KeyboardEvent<HTMLElement>, index: number) => {
-    const offsets: Record<string, number> = {
-      ArrowRight: daily ? 7 : 1,
-      ArrowLeft: daily ? -7 : -1,
-      ArrowDown: 1,
-      ArrowUp: -1,
+    const directions: Partial<Record<string, readonly [number, number]>> = {
+      ArrowRight: [0, 1],
+      ArrowLeft: [0, -1],
+      ArrowDown: [1, 0],
+      ArrowUp: [-1, 0],
     }
-    const offset = offsets[event.key]
-    if (offset === undefined && event.key !== 'Home' && event.key !== 'End') return
+    const direction = directions[event.key]
+    let next: number
+    if (event.key === 'Home') next = 0
+    else if (event.key === 'End') next = groups.length - 1
+    else {
+      if (direction === undefined) return
+      if (daily) {
+        const row = Math.max(0, Math.min(6, (index % 7) + direction[0]))
+        const column = Math.max(
+          0,
+          Math.min(groups.length / 7 - 1, Math.floor(index / 7) + direction[1])
+        )
+        next = column * 7 + row
+      } else next = Math.max(0, Math.min(groups.length - 1, index + direction[0] + direction[1]))
+    }
     event.preventDefault()
-    const next =
-      event.key === 'Home'
-        ? 0
-        : event.key === 'End'
-          ? groups.length - 1
-          : Math.max(0, Math.min(groups.length - 1, index + offset))
     const targets = event.currentTarget
       .closest('[data-activity-mode]')
       ?.querySelectorAll<HTMLElement>('[data-activity-trigger]')

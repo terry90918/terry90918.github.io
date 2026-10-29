@@ -218,7 +218,7 @@ html[data-theme='dark']
   outline: 2px solid var(--ring);
   outline-offset: 2px;
 }
-.codex-chart-grid > [data-activity-trigger][data-state$='open'],
+.codex-chart-grid[data-activity-mode='daily'] > [data-activity-trigger][data-state$='open'],
 .codex-chart-column[data-state$='open'] [data-activity-level]:not([data-activity-level='0']) {
   filter: brightness(1.25);
 }
