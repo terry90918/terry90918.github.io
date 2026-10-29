@@ -32,10 +32,12 @@ test('CV opens inside the main site and shares its navigation and theme', async 
 
 test('language switching stays on the corresponding case and chapter', async ({ page }) => {
   await page.goto('/cv/zh-TW/case-study/jurislm#我的角色')
+  await expect(page.locator('body')).toHaveAttribute('style', /--cv-section-nav-height:/)
   await page.getByRole('link', { name: 'Switch to English', exact: true }).click()
   await expect(page).toHaveURL(/\/cv\/en\/case-study\/jurislm#my-role$/)
   await expect(page.locator('html')).toHaveAttribute('lang', 'en')
   await expect(page.locator('#my-role')).toBeInViewport()
+  await expect(page.locator('body')).toHaveAttribute('style', /--cv-section-nav-height:/)
   await page.getByRole('link', { name: '切換至繁體中文', exact: true }).click()
   await expect(page).toHaveURL(
     /\/cv\/zh-TW\/case-study\/jurislm#(%E6%88%91%E7%9A%84%E8%A7%92%E8%89%B2|我的角色)$/
