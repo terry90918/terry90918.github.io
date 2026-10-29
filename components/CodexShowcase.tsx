@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { ActivityChartCells } from '@/components/ActivityChartCells'
 import type { Locale } from '@/lib/cv/profile'
 import snapshot from '@/lib/site/codex-activity.json'
 import {
@@ -183,7 +184,7 @@ export function CodexActivity({
       <div className="codex-chart-scroll" tabIndex={0} role="region" aria-label={copy.region}>
         <div
           className="codex-chart"
-          role="img"
+          role={embedded ? 'group' : 'img'}
           aria-describedby={summaryId}
           aria-label={
             embedded
@@ -196,17 +197,11 @@ export function CodexActivity({
             data-activity-mode={mode}
             data-activity-kind={embedded ? 'illustration' : 'snapshot'}
           >
-            {levels.map((level, index) => {
-              const cell = illustration[index]
-              return (
-                <span
-                  key={index}
-                  data-activity-level={level}
-                  data-activity-month={cell?.month}
-                  style={cell ? { backgroundColor: cell.color } : undefined}
-                />
-              )
-            })}
+            {embedded ? (
+              <ActivityChartCells key={mode} cells={illustration} mode={mode} locale={locale} />
+            ) : (
+              levels.map((level, index) => <span key={index} data-activity-level={level} />)
+            )}
           </div>
           <div className="codex-chart-months" aria-hidden="true">
             {snapshot.months.map((month) => (

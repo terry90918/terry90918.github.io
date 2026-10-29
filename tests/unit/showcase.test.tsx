@@ -56,7 +56,8 @@ describe('Public profile information split', () => {
       expect(activity!.querySelectorAll('[data-activity-level]')).toHaveLength(364)
       expect(activity!.querySelectorAll('[data-activity-level="0"]')).toHaveLength(0)
       expect(activity!.querySelectorAll('[data-activity-month]')).toHaveLength(364)
-      expect(activity!.querySelector('[role="img"]')?.getAttribute('aria-label')).toContain(
+      expect(activity!.querySelector('.codex-chart')?.getAttribute('role')).toBe('group')
+      expect(activity!.querySelector('.codex-chart')?.getAttribute('aria-label')).toContain(
         locale === 'en' ? 'illustration' : '示意'
       )
       expect(doc.querySelector('a[href="https://chatgpt.com/u/terrytychen"]')).toBeNull()

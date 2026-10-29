@@ -165,6 +165,23 @@ test.describe('Personal site', () => {
         await view.click()
         await expect(view).toHaveAttribute('aria-pressed', 'true')
         await expect(cvChart.locator('.codex-chart')).toBeVisible()
+        const trigger = cvChart.locator('[data-activity-trigger]').first()
+        await trigger.hover()
+        const tooltip = page.getByRole('tooltip')
+        await expect(tooltip).toBeVisible()
+        await expect(tooltip).toContainText(locale === 'en' ? 'Estimated' : '推估')
+        const tooltipBounds = await tooltip.boundingBox()
+        expect(tooltipBounds!.x).toBeGreaterThanOrEqual(0)
+        expect(tooltipBounds!.x + tooltipBounds!.width).toBeLessThanOrEqual(
+          page.viewportSize()!.width
+        )
+        await page.mouse.move(0, 0)
+        await expect(tooltip).toBeHidden()
+        await trigger.focus()
+        await expect(tooltip).toBeVisible()
+        await trigger.press('Escape')
+        await expect(tooltip).toBeHidden()
+
         await expect(cvChart.locator('[data-activity-level]')).toHaveCount(364)
         const daily = name === 'Daily' || name === '每日'
         const colors = await cvChart
