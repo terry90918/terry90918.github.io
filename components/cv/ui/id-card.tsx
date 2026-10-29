@@ -15,7 +15,6 @@ import {
   useSphericalJoint,
 } from '@react-three/rapier'
 import type { RapierRigidBody, RigidBodyProps } from '@react-three/rapier'
-import { setIdCardHover } from '@/lib/cv/id-card-cursor'
 import { cn } from '@/lib/utils'
 import { assetPath } from '@/lib/cv/site'
 const CARD_MODEL_URL = assetPath('/models/lanyard/card.glb')
@@ -280,8 +279,6 @@ const Band = ({ frontImage, isMobile }: BandProps) => {
               drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current!.translation())))
               document.body.style.userSelect = 'none'
             }}
-            onPointerOver={() => setIdCardHover(true)}
-            onPointerOut={() => setIdCardHover(false)}
           >
             <mesh geometry={nodes.card.geometry}>
               <meshBasicMaterial map={cardMap} toneMapped={false} />
@@ -369,7 +366,6 @@ const IdCard = ({ frontImage, className }: IdCardProps) => {
   useEffect(
     () => () => {
       document.body.style.userSelect = ''
-      setIdCardHover(false)
     },
     []
   )
