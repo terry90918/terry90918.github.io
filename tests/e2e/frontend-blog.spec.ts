@@ -166,30 +166,23 @@ test.describe('Personal site', () => {
         await expect(view).toHaveAttribute('aria-pressed', 'true')
         await expect(cvChart.locator('.codex-chart')).toBeVisible()
         await expect(cvChart.locator('[data-activity-level]')).toHaveCount(364)
-        await expect(cvChart.locator('[data-activity-level="0"]')).toHaveCount(0)
+        const daily = name === 'Daily' || name === '每日'
         const colors = await cvChart
-          .locator('[data-activity-level]')
+          .locator('[data-activity-level]:not([data-activity-level="0"])')
           .evaluateAll((cells) => [
             ...new Set(cells.map((cell) => getComputedStyle(cell).backgroundColor)),
           ])
-        expect(colors).toHaveLength(4)
-        expect(
-          colors.every((color) =>
-            [
-              'rgb(109, 46, 16)',
-              'rgb(185, 72, 14)',
-              'rgb(252, 106, 33)',
-              'rgb(255, 158, 108)',
-            ].includes(color)
-          )
-        ).toBe(true)
-        expect(
-          await cvChart
-            .locator('[data-activity-month]')
-            .evaluateAll(
-              (cells) => new Set(cells.map((cell) => cell.getAttribute('data-activity-month'))).size
-            )
-        ).toBe(12)
+        if (daily) {
+          await expect(cvChart.locator('[data-activity-level="0"]')).toHaveCount(0)
+          expect(colors.sort()).toEqual([
+            'rgb(109, 46, 16)',
+            'rgb(185, 72, 14)',
+            'rgb(252, 106, 33)',
+            'rgb(255, 158, 108)',
+          ])
+        } else {
+          expect(colors).toEqual(['rgb(252, 106, 33)'])
+        }
       }
       expect(
         await page

@@ -94,7 +94,8 @@ const activityCopy = {
   'zh-TW': {
     title: 'Token 活動',
     illustrationTitle: 'Token 活動示意',
-    illustrationNote: '364 個色塊的隨機配色示意，不代表實際 Token 使用紀錄。',
+    illustrationNote:
+      '模擬每日相對用量的示意圖；每週加總每日數值，累計加總至各週，不代表實際 Token 使用紀錄。',
     modes: { daily: '每日', weekly: '每週', cumulative: '累計' },
     views: '活動檢視',
     region: 'Token 活動圖，可水平捲動',
@@ -109,7 +110,8 @@ const activityCopy = {
   en: {
     title: 'Token activity',
     illustrationTitle: 'Token activity illustration',
-    illustrationNote: '364 cells of a random-color illustration, not actual token usage records.',
+    illustrationNote:
+      'An illustration of simulated daily relative usage; weekly totals sum daily values and cumulative totals sum through each week. Not actual token usage records.',
     modes: { daily: 'Daily', weekly: 'Weekly', cumulative: 'Cumulative' },
     views: 'Activity view',
     region: 'Token activity chart, horizontally scrollable',
