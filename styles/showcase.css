@@ -53,15 +53,6 @@
 .codex-profile-heading h2 {
   margin-bottom: 12px;
 }
-.codex-source {
-  color: var(--muted-foreground);
-  font-size: 12px;
-  line-height: 1.8;
-}
-.codex-source a {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
 .codex-stat-strip {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -92,12 +83,6 @@
 .codex-section-header :is(h2, h3) {
   font-size: 16px;
   font-weight: 500;
-}
-.codex-source {
-  margin: 16px 0 0;
-}
-.codex-activity > .site-text-link {
-  margin-top: 16px;
 }
 .codex-section-header {
   display: flex;

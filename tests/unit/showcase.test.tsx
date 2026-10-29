@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { renderToStaticMarkup } from 'react-dom/server'
-import { CodexActivity, CodexProfile, WorkGallery } from '../../components/CodexShowcase'
-import snapshot from '../../lib/site/codex-activity.json'
+import { CodexProfile, WorkGallery } from '../../components/CodexShowcase'
 import { existsSync } from 'node:fs'
 import { join } from 'node:path'
 
@@ -64,31 +63,4 @@ describe('Public profile information split', () => {
       expect(doc.querySelector('a[href="https://chatgpt.com/u/terrytychen"]')).toBeNull()
     })
   }
-
-  it('uses captured source cell levels and keeps all three activity views available', () => {
-    expect([snapshot.daily.length, snapshot.weekly.length, snapshot.cumulative.length]).toEqual([
-      361, 364, 364,
-    ])
-    for (const levels of [snapshot.daily, snapshot.weekly, snapshot.cumulative]) {
-      expect(levels.length).toBeGreaterThan(350)
-      expect(levels.length).toBeLessThanOrEqual(364)
-      expect(levels).toMatch(/^[0-4]+$/)
-    }
-    expect(new Set([snapshot.daily, snapshot.weekly, snapshot.cumulative]).size).toBe(3)
-    const doc = documentFor(renderToStaticMarkup(<CodexActivity />))
-    expect([...doc.querySelectorAll('button')].map((b) => b.textContent)).toEqual([
-      '每日',
-      '每週',
-      '累計',
-    ])
-    expect(doc.querySelectorAll('[data-activity-level]')).toHaveLength(snapshot.daily.length)
-    expect(doc.querySelector('.codex-chart')?.getAttribute('aria-describedby')).toBe(
-      'activity-summary'
-    )
-    expect(doc.querySelector('#activity-summary')?.textContent).toContain('361 個方格')
-    expect(doc.querySelector('#activity-summary')?.textContent).toContain('137 個為非零色階')
-    expect(doc.querySelector('#activity-summary')?.textContent).toContain('色階 4')
-    expect(doc.body.textContent).toContain('2026-10-28')
-    expect(doc.querySelector('a[href="/cv/zh-TW#codex-profile"]')).not.toBeNull()
-  })
 })
