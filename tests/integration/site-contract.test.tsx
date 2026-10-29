@@ -63,10 +63,9 @@ describe('Approved personal story reading paths', () => {
     )
   })
 
-  it('connects the work gallery to CV and activity reading paths', () => {
+  it('connects the work gallery to CV reading paths', () => {
     const doc = documentFor(renderToStaticMarkup(<WorkPage />))
     expect(doc.querySelector('a[href="/cv"]')).not.toBeNull()
-    expect(doc.querySelector('#codex-activity')).not.toBeNull()
   })
 
   it('provides the approved About greeting, reading paths and integrated CV', () => {

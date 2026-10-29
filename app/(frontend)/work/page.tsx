@@ -1,12 +1,12 @@
 import Link from 'next/link'
-import { WorkGallery, CodexActivity } from '@/components/CodexShowcase'
+import { WorkGallery } from '@/components/CodexShowcase'
 import { pageMetadata } from '@/lib/site/metadata'
 import { SiteContact } from '@/components/SiteContact'
 import { SitePageIntro } from '@/components/SitePrimitives'
 
 export const metadata = pageMetadata(
   '作品',
-  'Terry 的五項互動作品：Block Out!、BLUEWAKE、DefectHunter AI、ASCII Sharks 與 Ochre Chess，以及 Codex Token 活動紀錄。',
+  'Terry 的五項互動作品：Block Out!、BLUEWAKE、DefectHunter AI、ASCII Sharks 與 Ochre Chess。',
   '/work'
 )
 
@@ -24,7 +24,6 @@ export default function WorkPage() {
         </h2>
         <WorkGallery />
       </section>
-      <CodexActivity />
       <p className="text-muted-foreground text-sm">
         產品與工程的職涯案例可在{' '}
         <Link href="/cv" className="site-text-link" prefetch={false}>

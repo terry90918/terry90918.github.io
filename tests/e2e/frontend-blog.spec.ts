@@ -122,39 +122,15 @@ test.describe('Personal site', () => {
     await expect(menu).toBeFocused()
   })
 
-  test('work gallery preserves source charts and public reading without login', async ({
-    page,
-  }) => {
+  test('work gallery and CV activity remain publicly readable', async ({ page }) => {
     await page.goto('/work')
     await expect(page.locator('.work-showcase-card')).toHaveCount(5)
     await expect(page.locator('.work-showcase-card img')).toHaveCount(5)
     await expect(page.getByText('體驗需登入 ChatGPT。')).toBeVisible()
-    await page.getByRole('button', { name: 'Toggle theme', exact: true }).click()
-    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
-    const chart = page.locator('.codex-chart')
-    const views = []
-    for (const mode of ['每日', '每週', '累計']) {
-      const control = page.getByRole('button', { name: mode, exact: true })
-      await control.focus()
-      await page.keyboard.press('Enter')
-      await expect(control).toHaveAttribute('aria-pressed', 'true')
-      views.push(
-        await chart
-          .locator('[data-activity-level]')
-          .evaluateAll((cells) =>
-            cells.map((cell) => cell.getAttribute('data-activity-level')).join('')
-          )
-      )
-    }
-    expect(new Set(views).size).toBe(3)
     await page.setViewportSize({ width: 375, height: 900 })
     expect(
       await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
     ).toBe(true)
-    await expect(page.getByRole('region', { name: 'Token 活動圖，可水平捲動' })).toHaveAttribute(
-      'tabindex',
-      '0'
-    )
     for (const locale of ['zh-TW', 'en']) {
       await page.goto(`/cv/${locale}#codex-profile`)
       const cvChart = page.locator('#cv-codex-activity')
