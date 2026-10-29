@@ -165,6 +165,36 @@ test.describe('Personal site', () => {
         await view.click()
         await expect(view).toHaveAttribute('aria-pressed', 'true')
         await expect(cvChart.locator('.codex-chart')).toBeVisible()
+        const trigger = cvChart.locator('[data-activity-trigger]').first()
+        await trigger.hover()
+        const tooltip = page.getByRole('tooltip')
+        await expect(tooltip).toBeVisible()
+        await expect(tooltip).toContainText(locale === 'en' ? 'Estimated' : '推估')
+        const tooltipBounds = await tooltip.boundingBox()
+        expect(tooltipBounds!.x).toBeGreaterThanOrEqual(0)
+        expect(tooltipBounds!.x + tooltipBounds!.width).toBeLessThanOrEqual(
+          page.viewportSize()!.width
+        )
+        await page.mouse.move(0, 0)
+        await expect(tooltip).toBeHidden()
+        await trigger.focus()
+        await expect(tooltip).toBeVisible()
+        if (name === 'Daily' || name === '每日') {
+          for (let step = 0; step < 6; step++) await page.keyboard.press('ArrowDown')
+          const sunday = cvChart.locator('[data-activity-trigger]').nth(6)
+          await expect(sunday).toBeFocused()
+          await page.keyboard.press('ArrowDown')
+          await expect(sunday).toBeFocused()
+          await page.keyboard.press('End')
+          for (let step = 0; step < 6; step++) await page.keyboard.press('ArrowUp')
+          const lastMonday = cvChart.locator('[data-activity-trigger]').nth(357)
+          await expect(lastMonday).toBeFocused()
+          await page.keyboard.press('ArrowRight')
+          await expect(lastMonday).toBeFocused()
+        }
+        await page.keyboard.press('Escape')
+        await expect(tooltip).toBeHidden()
+
         await expect(cvChart.locator('[data-activity-level]')).toHaveCount(364)
         const daily = name === 'Daily' || name === '每日'
         const colors = await cvChart
