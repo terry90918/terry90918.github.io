@@ -3,7 +3,7 @@ title: 'Genie 4 的兩分鐘世界、Oracle 引進 TPU，以及 Grok 的七分�
 excerpt: 'Google 展示兩分鐘的互動世界，馬斯克承諾史詩長片，卻先交出七分鐘作品。原作者打趣：未來還是有時間限制。Oracle 的 TPU 計畫與 GPT-4o 新訴訟，也讓產品承諾及責任受到檢視。'
 slug: ai-daily-2026-10-28-evening
 status: published
-publishedAt: '2026-10-28T22:48:44+08:00'
+publishedAt: '2026-10-29T22:48:44+08:00'
 tags: [人工智慧, 科技新聞, 產業觀察]
 presentation:
   type: feature
