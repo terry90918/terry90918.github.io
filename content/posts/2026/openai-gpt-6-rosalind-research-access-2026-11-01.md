@@ -19,13 +19,13 @@ presentation:
 
 OpenAI 於 10 月 30 日公布 GPT-6 Rosalind Research，將這個模型加入生命科學研究產品 Rosalind。公告同時列出一項實際限制：獲得一般 ChatGPT 或 Codex 使用權，不代表研究人員可以直接選用它。機構與使用者都必須符合 Research 核准條件，模型也只在指定工作入口提供。
 
-這次更新適合從「誰能使用、在哪裡使用、還需要什麼核准」來理解。官方資料沒有把模型定位為一般 ChatGPT 對話功能，也沒有公布這次更新的效能數據或價格。
+這次更新適合從「誰能使用、在哪裡使用、還需要什麼核准」來理解。官方資料沒有把模型定位為一般 ChatGPT 對話功能；本文聚焦存取條件，不展開效能數據與價格。
 
-## Rosalind Research 是生命科學研究用途的模型系列
+## GPT-Rosalind 模型家族與 Research 存取層級
 
 OpenAI 的 [API changelog](https://developers.openai.com/api/docs/changelog) 將 GPT-6 Rosalind Research 列為 10 月 30 日發布的模型，並以 `gpt-6-rosalind` 作為 API model identifier。公告將它描述為結合專門生物推理與科學工具使用、用於複雜生命科學研究的模型；API changelog 說，存取限於經 Rosalind Research 核准的組織，供獲授權使用者進行內部研究。
 
-GPT-Rosalind 是一組生命科學研究模型。官方說明列出的用途包括綜合研究文獻、分析生物資料、基因體與序列分析、藥物化學、實驗規劃，以及透過 Codex 的 Life Sciences Research 外掛連接科學工具與資料來源。這些是產品定位與工作流程說明，不是對醫療效益或研究成果的保證。
+GPT-Rosalind 是生命科學研究模型家族；Research 與 Discovery 則是兩種存取層級。GPT-6 Rosalind Research 屬於 Research 層級。官方說明列出的用途包括綜合研究文獻、分析生物資料、基因體與序列分析、藥物化學、實驗規劃，以及透過 Codex 的 Life Sciences Research 外掛連接科學工具與資料來源。這些是產品定位與工作流程說明，不是對醫療效益或研究成果的保證。
 
 ## Research 核准需要對上機構與使用者
 
