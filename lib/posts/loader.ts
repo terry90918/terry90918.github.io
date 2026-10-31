@@ -2,6 +2,7 @@ import { readdir, readFile } from 'fs/promises'
 import { join, basename, extname } from 'path'
 import matter from 'gray-matter'
 import readingTime from 'reading-time'
+import { cache as reactCache } from 'react'
 import { renderMarkdownWithOutline } from './markdown'
 import { readPresentation } from './presentation'
 import { slugify } from './slugify'
@@ -107,7 +108,7 @@ async function parsePost(filePath: string): Promise<Post> {
   }
 }
 
-export async function loadAllPosts(opts: LoadOptions = {}): Promise<Post[]> {
+export const loadAllPosts = reactCache(async (opts: LoadOptions = {}): Promise<Post[]> => {
   const postsDir = opts.dir ?? join(process.cwd(), 'content/posts')
   const env = opts.env ?? process.env.NODE_ENV ?? 'development'
   const isProd = env === 'production'
@@ -140,4 +141,4 @@ export async function loadAllPosts(opts: LoadOptions = {}): Promise<Post[]> {
 
   if (isProd && !opts.dir) cache = sorted
   return sorted
-}
+})
