@@ -62,3 +62,5 @@ media/
 
 # Claude Code (settings.json is shared; settings.local.json is per-machine, never commit)
 .claude/settings.local.json
+
+.worktree/
