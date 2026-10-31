@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { WorkGallery } from '@/components/CodexShowcase'
 import { pageMetadata } from '@/lib/site/metadata'
 import { SiteContact } from '@/components/SiteContact'
@@ -24,13 +23,6 @@ export default function WorkPage() {
         </h2>
         <WorkGallery />
       </section>
-      <p className="text-muted-foreground text-sm">
-        產品與工程的職涯案例可在{' '}
-        <Link href="/cv" className="site-text-link" prefetch={false}>
-          完整 CV
-        </Link>{' '}
-        閱讀。
-      </p>
       <SiteContact />
     </div>
   )
