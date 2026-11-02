@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, expect, it } from 'vitest'
-import { spawn, type ChildProcess } from 'node:child_process'
+import { spawn, spawnSync, type ChildProcess } from 'node:child_process'
 import { mkdtemp, mkdir, writeFile, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
@@ -14,6 +14,8 @@ beforeAll(async () => {
   await writeFile(path.join(directory, 'article.html'), '<h1>Published article</h1>')
   await writeFile(path.join(directory, 'article', '__next.txt'), 'route data')
   await writeFile(path.join(directory, '404.html'), '<h1>Missing</h1>')
+  await writeFile(path.join(directory, 'index.html'), '<h1>Home</h1>')
+  await writeFile(`${directory}.html`, 'outside export')
   await writeFile(path.join(directory, 'clip.mp4'), '0123456789')
   await writeFile(path.join(directory, 'rss.xml'), '<rss><channel /></rss>')
   server = spawn(process.execPath, ['scripts/serve-export.mjs', '--root', directory, '--port', '0'])
@@ -34,6 +36,7 @@ afterAll(async () => {
     await stopped
   }
   if (directory) await rm(directory, { recursive: true, force: true })
+  if (directory) await rm(`${directory}.html`, { force: true })
 })
 
 it('serves clean HTML routes before sibling route-data directories', async () => {
@@ -42,6 +45,20 @@ it('serves clean HTML routes before sibling route-data directories', async () =>
   expect(response.headers.get('content-type')).toContain('text/html')
   expect(await response.text()).toBe('<h1>Published article</h1>')
   expect(await (await fetch(`${origin}/article/__next.txt`)).text()).toBe('route data')
+})
+
+it('serves the root index without reading a sibling HTML file outside the export', async () => {
+  expect(await (await fetch(`${origin}/`)).text()).toBe('<h1>Home</h1>')
+})
+
+it('explains that a production build is required when the export is missing', () => {
+  const result = spawnSync(
+    process.execPath,
+    ['scripts/serve-export.mjs', '--root', path.join(directory, 'missing')],
+    { encoding: 'utf8' }
+  )
+  expect(result.status).not.toBe(0)
+  expect(result.stderr).toContain('Build the site first')
 })
 
 it('returns a real 404 instead of serving the application for unknown routes', async () => {

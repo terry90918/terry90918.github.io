@@ -56,9 +56,17 @@
 
 ## 第一階段實作與本機結果
 
-- E2E 使用受 Playwright 管理的 loopback 靜態伺服器測試本次 build 的 out；保留全部 39 項 E2E 和原有互動斷言，僅新增使用者可見的 hydration 就緒條件。
+- E2E 使用受 Playwright 管理的 loopback 靜態伺服器測試本次 build 的 out；保留全部 39 項 E2E 和原有互動斷言，圖表先捲入畫面並等平滑捲動穩定再 hover。
 - 完整 verify 改為快速檢查、一次正式 build、E2E；新增各階段秒數。pre-commit 只執行 verify:quick，CI 保留完整 verify。
 - Woodpecker 使用與現有 lockfile 一致的 Playwright 1.59.1 官方映像，移除逐次安裝 Chromium／系統依賴；鎖定測試套件版本，沒有升級瀏覽器套件。
 - 靜態伺服器新增四項 HTTP 整合測試：clean URL 與 RSC 同名目錄、真實 404、RSS XML MIME、媒體 Range 與 HEAD。首次紅燈確認缺少伺服器及 XML MIME，修正後通過。
 - 首次完整執行：格式 5.2 秒、lint 4.7 秒、型別 4.0 秒、單元 13.1 秒、整合 5.3 秒、build 80.3 秒。首次 E2E 37/39，失敗是 XML MIME 與圖表 tooltip；修正後完整 E2E 39/39，36.5 秒。這是本機數據，不能與遠端 11.4 分鐘直接當作同條件加速比。
 - 既有 Pages workflow 沒有修改。遠端 PR 與 main 的完整驗證仍保留。尚待遠端實跑量測，未宣稱遠端優化完成。
+
+## 修正與遠端初測
+
+Woodpecker #430 與基線 #429 使用同一 agent。#430 為新映像第一次冷啟動，總時間 498 秒，其中 clone 72 秒、validate 419 秒；E2E 約 1.4 分鐘，38/39 通過。這個失敗執行只能當診斷數據，不能當完成證據。
+
+Tooltip 問題已在本機五次重跑中重現兩次。Trace 顯示 hover 落點先被 sticky header 遮擋，隨後落在 y=896；平滑捲動結束後圖表移至畫面中段，滑鼠已不在觸發點上。修正為先將觸發點捲入畫面、等待既有 scroll-settle 條件，再 hover，不提高 timeout、不重試斷言、不刪測試。修正後五次均通過；完整 39 項再跑通過，38.2 秒。
+
+審查發現根目錄的衍生 HTML 候選可能讀到 export 之外的同名檔，以及缺少 404.html 時未能顯示 build-first 提示。新增兩個重現測試，確認紅燈後修正；HTTP 伺服器測試共六項通過。

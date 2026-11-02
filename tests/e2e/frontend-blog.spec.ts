@@ -133,7 +133,6 @@ test.describe('Personal site', () => {
     ).toBe(true)
     for (const locale of ['zh-TW', 'en']) {
       await page.goto(`/cv/${locale}#codex-profile`)
-      await expect(page.getByRole('button', { name: 'Toggle theme', exact: true })).toBeVisible()
       const cvChart = page.locator('#cv-codex-activity')
       for (const name of locale === 'en'
         ? ['Daily', 'Weekly', 'Cumulative']
@@ -143,6 +142,8 @@ test.describe('Personal site', () => {
         await expect(view).toHaveAttribute('aria-pressed', 'true')
         await expect(cvChart.locator('.codex-chart')).toBeVisible()
         const trigger = cvChart.locator('[data-activity-trigger]').first()
+        await trigger.scrollIntoViewIfNeeded()
+        await waitForScrollToSettle(page)
         await trigger.hover()
         const tooltip = page.getByRole('tooltip')
         await expect(tooltip).toBeVisible()

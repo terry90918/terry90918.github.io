@@ -10,7 +10,11 @@ const { values } = parseArgs({
 const root = path.resolve(values.root)
 const port = Number(values.port)
 if (!Number.isInteger(port) || port < 0 || port > 65535) throw new Error('Invalid port')
-if (!(await stat(path.join(root, '404.html'))).isFile()) throw new Error('Build the site first')
+const notFound = await stat(path.join(root, '404.html')).catch((error) => {
+  if (['ENOENT', 'ENOTDIR'].includes(error.code)) return null
+  throw error
+})
+if (!notFound?.isFile()) throw new Error('Build the site first')
 const types = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -38,6 +42,7 @@ async function findFile(url) {
     `${file.replace(/\/$/, '')}.html`,
     path.join(file, 'index.html'),
   ]) {
+    if (!candidate.startsWith(`${root}${path.sep}`)) continue
     try {
       const metadata = await stat(candidate)
       if (metadata.isFile()) return { file: candidate, size: metadata.size }
