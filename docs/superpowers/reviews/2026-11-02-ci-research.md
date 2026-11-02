@@ -70,3 +70,7 @@ Woodpecker #430 與基線 #429 使用同一 agent。#430 為新映像第一次�
 Tooltip 問題已在本機五次重跑中重現兩次。Trace 顯示 hover 落點先被 sticky header 遮擋，隨後落在 y=896；平滑捲動結束後圖表移至畫面中段，滑鼠已不在觸發點上。修正為先將觸發點捲入畫面、等待既有 scroll-settle 條件，再 hover，不提高 timeout、不重試斷言、不刪測試。修正後五次均通過；完整 39 項再跑通過，38.2 秒。
 
 審查發現根目錄的衍生 HTML 候選可能讀到 export 之外的同名檔，以及缺少 404.html 時未能顯示 build-first 提示。新增兩個重現測試，確認紅燈後修正；HTTP 伺服器測試共六項通過。
+
+後續 #431 仍在同一 tooltip 斷言失敗（總時間 416 秒），證明只等頁面垂直捲動穩定並不足夠。以相同版本 Playwright 的 Linux Docker 環境重現後，發現鍵盤 End 操作留下橫向捲動位置；切換到每週模式再自動定位第一個點時，scrollLeft 為 2，tooltip 的 state 已 delayed-open，但浮層父節點因參考點裁切而 visibility:hidden。這不是提高 timeout 可以解決的問題。
+
+最終測試準備改為將觸發點立即置中並將圖表橫向回到最左，再等既有 scroll-settle 條件。仍測試原本 hover、focus、鍵盤移動與邊界行為，沒有修改產品 tooltip 或放寬斷言。Linux 連續五次通過，44.6 秒；完整 39 項也全部通過，48.3 秒。臨時診斷碼已移除，重現用的臨時容器與依賴 volume 已清理。
