@@ -16,7 +16,8 @@
     "format:check": "prettier --check .",
     "test:unit": "vitest run tests/unit",
     "test:integration": "vitest run tests/integration",
-    "verify": "node scripts/verify.mjs"
+    "verify": "node scripts/verify.mjs",
+    "verify:quick": "node scripts/verify.mjs --quick"
   },
   "dependencies": {
     "@react-three/drei": "10.7.8",
@@ -60,7 +61,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.3",
     "@fission-ai/openspec": "^1.1.1",
-    "@playwright/test": "^1.58.2",
+    "@playwright/test": "1.59.1",
     "@types/jsdom": "^27.0.0",
     "@vitejs/plugin-react": "^5.1.3",
     "eslint": "^9.39.2",

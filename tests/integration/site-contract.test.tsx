@@ -94,7 +94,7 @@ describe('Approved personal story reading paths', () => {
   })
 })
 
-function runVerification(failStage = '') {
+function runVerification(failStage = '', quick = false) {
   const directory = mkdtempSync(join(tmpdir(), 'site-verification-'))
   try {
     const executable = join(directory, 'bun')
@@ -105,15 +105,19 @@ function runVerification(failStage = '') {
       '#!/bin/sh\nprintf "%s\\n" "$2" >> "$VERIFY_TEST_LOG"\nif [ "$2" = "$VERIFY_TEST_FAIL_STAGE" ]; then exit 7; fi\n'
     )
     chmodSync(executable, 0o755)
-    const result = spawnSync(process.execPath, [join(process.cwd(), 'scripts/verify.mjs')], {
-      encoding: 'utf8',
-      env: {
-        ...process.env,
-        PATH: `${directory}${delimiter}${process.env.PATH}`,
-        VERIFY_TEST_LOG: log,
-        VERIFY_TEST_FAIL_STAGE: failStage,
-      },
-    })
+    const result = spawnSync(
+      process.execPath,
+      [join(process.cwd(), 'scripts/verify.mjs'), ...(quick ? ['--quick'] : [])],
+      {
+        encoding: 'utf8',
+        env: {
+          ...process.env,
+          PATH: `${directory}${delimiter}${process.env.PATH}`,
+          VERIFY_TEST_LOG: log,
+          VERIFY_TEST_FAIL_STAGE: failStage,
+        },
+      }
+    )
     return {
       status: result.status,
       stderr: result.stderr,
@@ -125,7 +129,7 @@ function runVerification(failStage = '') {
 }
 
 describe('Shared verification process', () => {
-  it('runs all seven requested stages with the production build last', () => {
+  it('builds the production site before browser acceptance tests', () => {
     const result = runVerification()
     expect(result.status, result.stderr).toBe(0)
     expect(result.stages).toEqual([
@@ -134,8 +138,19 @@ describe('Shared verification process', () => {
       'typecheck',
       'test:unit',
       'test:integration',
-      'test:e2e',
       'build',
+      'test:e2e',
+    ])
+  })
+  it('keeps commit feedback fast without building or starting browsers', () => {
+    const result = runVerification('', true)
+    expect(result.status, result.stderr).toBe(0)
+    expect(result.stages).toEqual([
+      'format:check',
+      'lint',
+      'typecheck',
+      'test:unit',
+      'test:integration',
     ])
   })
   it('stops on an integration failure before E2E or build', () => {

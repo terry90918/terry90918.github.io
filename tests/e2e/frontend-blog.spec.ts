@@ -133,6 +133,7 @@ test.describe('Personal site', () => {
     ).toBe(true)
     for (const locale of ['zh-TW', 'en']) {
       await page.goto(`/cv/${locale}#codex-profile`)
+      await expect(page.getByRole('button', { name: 'Toggle theme', exact: true })).toBeVisible()
       const cvChart = page.locator('#cv-codex-activity')
       for (const name of locale === 'en'
         ? ['Daily', 'Weekly', 'Cumulative']
