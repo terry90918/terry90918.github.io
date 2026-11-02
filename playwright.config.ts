@@ -14,6 +14,7 @@ export default defineConfig({
   workers: 1,
   reporter: 'line',
   timeout: 120000,
+  globalTimeout: 600000,
   expect: { timeout: 15000 },
   use: {
     baseURL: externalURL ?? localURL,
@@ -23,7 +24,7 @@ export default defineConfig({
   webServer: externalURL
     ? undefined
     : {
-        command: `bun dev --webpack --hostname 127.0.0.1 --port ${port}`,
+        command: `node scripts/serve-export.mjs --port ${port}`,
         url: `${localURL}/work`,
         reuseExistingServer: false,
         timeout: 300000,

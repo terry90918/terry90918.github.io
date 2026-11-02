@@ -20,12 +20,12 @@
 
 ## Verification and delivery
 
-- pre-commit 與 CI 都執行 `bun run verify`；順序的唯一來源為 `scripts/verify.mjs`。格式不符時先執行 `bun format` 修正。
+- pre-commit 執行 `bun run verify:quick`（格式、lint、型別、單元與整合）；CI 執行 `bun run verify`，接著正式 build，再對當次 `out/` 執行 E2E。順序的唯一來源為 `scripts/verify.mjs`。格式不符時先執行 `bun format` 修正。
 - 本機驗證包括全專案 lint、TypeScript、單元測試、正式 build，以及變更涉及的瀏覽器流程。
 - 首頁測試會讀取全部文章；資源競爭造成逾時時，以 `bun run test --maxWorkers=1 --testTimeout=60000` 重跑並保留原斷言，記錄執行方式。
 - 測試對應目前可觀察的行為與重要契約；單元涵蓋邏輯分支、整合涵蓋模組接合、E2E 涵蓋使用者流程。同一行為以最直接的層級驗證，跨層重複需有不同風險依據。
 - 修改測試時移除失效、重複、只鎖定實作細節或只驗收歷史功能已刪除的案例；保留仍有效的安全、草稿隱私、錯誤與相容性契約。頁面整合測試使用真實內容與元件。
-- E2E 由 Playwright 管理當前 checkout 的專用開發伺服器；CI 先安裝 Chromium 與系統依賴。`E2E_PORT` 可指定空閒埠；`verify` 不沿用外部 `BASE_URL` 或舊匯出。
+- E2E 由 Playwright 管理當前 checkout 的靜態匯出伺服器，單獨執行前先 `bun run build`。CI 使用與 lockfile 的 Playwright 版本一致的官方映像，預裝瀏覽器與系統依賴。`E2E_PORT` 可指定空閒埠；`verify` 先重建 `out/` 且不沿用外部 `BASE_URL`。
 - 格式檢查涵蓋維護的 repo 檔案；自動產生的 CHANGELOG、框架型別與測試報告依 `.prettierignore` 排除。
 - 發布流程以 `.github/workflows/deploy-pages.yml` 為準：主線提交通過同一 SHA 的 Woodpecker push 驗證後，GitHub Pages 才建置與部署。
 - 分別確認本機、審查、CI、合併、部署與公開頁面。完成部署後以實際公開 URL 讀回變更，再宣稱發布完成。
