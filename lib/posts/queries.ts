@@ -118,7 +118,10 @@ export async function getAdjacentPosts(
   currentSlug: string
 ): Promise<{ prev: Post | null; next: Post | null }> {
   try {
-    const posts = await getPosts()
+    const allPosts = await getPosts()
+    const posts = currentSlug.startsWith('ai-daily-')
+      ? allPosts.filter((post) => post.status === 'published' && post.slug.startsWith('ai-daily-'))
+      : allPosts
     const idx = posts.findIndex((p) => p.slug === currentSlug)
     if (idx === -1) return { prev: null, next: null }
     return {

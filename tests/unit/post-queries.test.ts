@@ -143,6 +143,24 @@ describe('getAllPostSlugs()', () => {
 })
 
 describe('getAdjacentPosts()', () => {
+  it.each([
+    ['ai-daily-2026-11-04', 'ai-daily-2026-11-03', null],
+    ['ai-daily-2026-11-03', null, 'ai-daily-2026-11-04'],
+  ])('keeps %s navigation within published AI dailies', async (slug, prevSlug, nextSlug) => {
+    vi.mocked(loadAllPosts).mockResolvedValueOnce([
+      mockPost({ slug: 'openai-update', publishedAt: '2026-11-04T06:00:00+08:00' }),
+      mockPost({ slug: 'ai-daily-2026-11-04', publishedAt: '2026-11-04T05:00:00+08:00' }),
+      { ...mockPost({ slug: 'ai-daily-2026-11-03-draft' }), status: 'draft' },
+      mockPost({ slug: 'another-update', publishedAt: '2026-11-03T06:00:00+08:00' }),
+      mockPost({ slug: 'ai-daily-2026-11-03', publishedAt: '2026-11-03T05:00:00+08:00' }),
+    ])
+
+    const { prev, next } = await getAdjacentPosts(slug)
+
+    expect(prev?.slug ?? null).toBe(prevSlug)
+    expect(next?.slug ?? null).toBe(nextSlug)
+  })
+
   it('newest post has no next', async () => {
     const { next } = await getAdjacentPosts('newest')
     expect(next).toBeNull()
