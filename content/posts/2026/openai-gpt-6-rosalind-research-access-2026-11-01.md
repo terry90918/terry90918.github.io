@@ -7,7 +7,7 @@ status: 'published'
 tags: [OpenAI, GPT-6, 生命科學, Codex]
 presentation:
   type: feature
-  category: AI 產業
+  category: OpenAI
   audio:
     src: /audio/2026/openai-gpt-6-rosalind-research-access-2026-11-01-notebooklm.mp3
     duration: 879.734422
