@@ -7,7 +7,7 @@ publishedAt: '2026-10-31T13:49:00+08:00'
 tags: [OpenAI, ChatGPT, Codex, AI代理]
 presentation:
   type: feature
-  category: AI 產業
+  category: OpenAI
   audio:
     src: /audio/2026/openai-pro-work-codex-limits-dots-2026-10-31-notebooklm.mp3
     duration: 784.370068

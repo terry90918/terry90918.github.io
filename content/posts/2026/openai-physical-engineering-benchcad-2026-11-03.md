@@ -7,7 +7,7 @@ publishedAt: '2026-11-04T05:34:18+08:00'
 tags: [OpenAI, AI工程, CAD]
 presentation:
   type: feature
-  category: AI 產業
+  category: OpenAI
   audio:
     src: /audio/2026/openai-physical-engineering-benchcad-2026-11-03-notebooklm.mp3
     duration: 621.528526

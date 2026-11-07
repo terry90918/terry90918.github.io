@@ -7,7 +7,7 @@ publishedAt: '2026-11-03T06:34:09+08:00'
 tags: [OpenAI, AI代理, AI評測]
 presentation:
   type: feature
-  category: AI 產業
+  category: OpenAI
   audio:
     src: /audio/2026/openai-lifeval-everyday-agent-evaluation-2026-11-02-notebooklm.mp3
     duration: 782.767891
