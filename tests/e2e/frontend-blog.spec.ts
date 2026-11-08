@@ -415,7 +415,7 @@ test('serves published article links in the RSS feed', async ({ request }) => {
   expect(xml).toContain(`https://terry90918.github.io${(await sourceArticleURLs())[0]}`)
 })
 
-async function sourceArticleURLs() {
+async function sourceArticleURLs(category?: string) {
   const root = join(process.cwd(), 'content/posts')
   const paths: string[] = []
   for (const year of await readdir(root, { withFileTypes: true })) {
@@ -423,7 +423,8 @@ async function sourceArticleURLs() {
     for (const file of await readdir(join(root, year.name))) {
       if (!file.endsWith('.md')) continue
       const { data } = matter(await readFile(join(root, year.name, file), 'utf8'))
-      if (data.status !== 'published') continue
+      if (data.status !== 'published' || (category && data.presentation?.category !== category))
+        continue
       paths.push(
         `/posts/${new Date(data.publishedAt).getUTCFullYear()}/${data.slug ?? basename(file, '.md')}`
       )
@@ -453,10 +454,12 @@ test.describe('Writing and metadata', () => {
     await expect(page.locator('[data-writing-kind="translation"]')).toHaveCount(0)
   })
 
-  test('[writing] exposes the published AI, pstack and Harness series', async ({ page }) => {
+  test('[writing] exposes the published AI, OpenAI, pstack and Harness series', async ({
+    page,
+  }) => {
     await page.goto('/posts')
     const nav = page.getByRole('navigation', { name: '文章主題' })
-    await expect(nav.getByRole('link')).toHaveText(['AI 日報', 'pstack', 'Harness²'])
+    await expect(nav.getByRole('link')).toHaveText(['AI 日報', 'OpenAI', 'pstack', 'Harness²'])
     await expect(nav.getByRole('link', { name: 'pstack', exact: true })).toHaveAttribute(
       'href',
       '/posts/pstack'
@@ -469,10 +472,48 @@ test.describe('Writing and metadata', () => {
       'href',
       '/posts/ai-daily'
     )
+    await nav.getByRole('link', { name: 'OpenAI', exact: true }).click()
+    await expect(page).toHaveURL('/posts/openai')
+    await expect(page.getByRole('heading', { name: 'OpenAI', exact: true })).toBeVisible()
+    const articles = page.getByRole('region', { name: 'OpenAI 系列文章' })
+    const sourceURLs = await sourceArticleURLs('OpenAI')
+    expect(sourceURLs.length).toBeGreaterThan(0)
+    expect(
+      await articles
+        .getByRole('link')
+        .evaluateAll((nodes) => nodes.map((node) => node.getAttribute('href')).sort())
+    ).toEqual(sourceURLs)
+    const firstArticle = articles.getByRole('link').first()
+    const firstTitle = await firstArticle.innerText()
+    await firstArticle.click()
+    await expect(page.locator('h1')).toHaveText(firstTitle)
+    await page.goBack()
+    await expect(page).toHaveURL('/posts/openai')
+    await page.getByRole('link', { name: '← 回到全部文章' }).click()
+    await expect(page).toHaveURL('/posts')
     await nav.getByRole('link', { name: 'AI 日報', exact: true }).click()
     await expect(page).toHaveURL('/posts/ai-daily')
     await expect(page.getByRole('heading', { name: 'AI 日報', exact: true })).toBeVisible()
   })
+
+  for (const width of [320, 375]) {
+    test(`[writing] OpenAI topic navigation fits the viewport at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 })
+      await page.goto('/posts')
+      const link = page
+        .getByRole('navigation', { name: '文章主題' })
+        .getByRole('link', { name: 'OpenAI', exact: true })
+      await expect(link).toBeVisible()
+      expect(
+        await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
+      ).toBe(true)
+      await link.click()
+      await expect(page.getByRole('heading', { name: 'OpenAI', exact: true })).toBeVisible()
+      expect(
+        await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
+      ).toBe(true)
+    })
+  }
 
   test('[writing] gives new pages public canonical URLs and page-specific metadata', async ({
     page,
@@ -487,6 +528,7 @@ test.describe('Writing and metadata', () => {
       '/work/jurislm',
       '/posts',
       '/posts/ai-daily',
+      '/posts/openai',
     ]) {
       await page.goto(path)
       await expect(page.locator('html')).toHaveAttribute('lang', 'zh-TW')
@@ -519,6 +561,7 @@ test.describe('Writing and metadata', () => {
       '/work/nidin',
       '/work/jurislm',
       '/posts/ai-daily',
+      '/posts/openai',
     ]) {
       expect(xml).toContain(`https://terry90918.github.io${path}`)
     }
