@@ -31,7 +31,7 @@ export default async function PostsPage() {
   const publishedCount = posts.filter((post) => post.status === 'published').length
   const draftCount = posts.length - publishedCount
   const hasDaily = posts.some((post) => classifyPost(post) === 'ai-daily')
-  const seriesIds: WritingSeries[] = ['pstack', 'harness2']
+  const seriesIds: WritingSeries[] = ['openai', 'pstack', 'harness2']
   const series = seriesIds.filter((id) => getSeriesPosts(posts, id).length > 0)
 
   return (

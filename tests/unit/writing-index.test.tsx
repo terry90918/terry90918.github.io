@@ -84,7 +84,7 @@ describe('Writing index authoring visibility', () => {
 })
 
 describe('Writing topic navigation', () => {
-  it('links to AI Daily, pstack and Harness² when their published articles exist', async () => {
+  it('links to AI Daily, OpenAI, pstack and Harness² when their published articles exist', async () => {
     vi.stubEnv('NODE_ENV', 'production')
     vi.mocked(getPostsByYearMonth).mockResolvedValue([
       {
@@ -95,6 +95,10 @@ describe('Writing topic navigation', () => {
             monthName: 'October',
             posts: [
               post('ai-daily-2026-10-01', 'published'),
+              {
+                ...post('openai-news', 'published'),
+                presentation: { type: 'feature', category: 'OpenAI' },
+              },
               post('cursor-pstack-plugin-analysis', 'published'),
               post('harness2-recursive-agent-harnessing-01', 'published'),
             ],
@@ -109,6 +113,7 @@ describe('Writing topic navigation', () => {
     const links = [...doc.querySelectorAll('nav[aria-label="文章主題"] a')]
     expect(links.map((link) => [link.textContent, link.getAttribute('href')])).toEqual([
       ['AI 日報', '/posts/ai-daily'],
+      ['OpenAI', '/posts/openai'],
       ['pstack', '/posts/pstack'],
       ['Harness²', '/posts/harness2'],
     ])

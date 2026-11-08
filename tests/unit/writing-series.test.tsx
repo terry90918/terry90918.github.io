@@ -29,7 +29,24 @@ const posts: Post[] = [
   { ...post('cursor-pstack-future'), status: 'draft' },
   { ...post('cursor-pstack-old'), status: 'alias', canonicalSlug: 'cursor-pstack-plugin-analysis' },
   post('harness-engineering-agent-reliability'),
-  post('ai-daily-2026-10-19'),
+  { ...post('ai-daily-2026-10-19'), tags: [{ name: 'OpenAI', slug: 'openai' }] },
+  { ...post('openai-news'), presentation: { type: 'feature', category: 'OpenAI' } },
+  {
+    ...post('new-openai-news', '2026-11-07T00:00:00Z'),
+    presentation: { type: 'feature', category: 'OpenAI' },
+  },
+  {
+    ...post('openai-draft'),
+    status: 'draft',
+    presentation: { type: 'feature', category: 'OpenAI' },
+  },
+  {
+    ...post('openai-alias'),
+    status: 'alias',
+    canonicalSlug: 'openai-news',
+    presentation: { type: 'feature', category: 'OpenAI' },
+  },
+  post('openai-harness-engineering-beginner-guide'),
 ]
 
 afterEach(() => vi.resetAllMocks())
@@ -43,11 +60,16 @@ describe('Writing series', () => {
     expect(getSeriesPosts(posts, 'harness2').map((post) => post.slug)).toEqual([
       'harness2-recursive-agent-harnessing-01',
     ])
+    expect(getSeriesPosts(posts, 'openai').map((post) => post.slug)).toEqual([
+      'new-openai-news',
+      'openai-news',
+    ])
     expect(posts[0].slug).toBe('cursor-pstack-plugin-analysis')
   })
   for (const [series, title, count] of [
     ['pstack', 'pstack', 2],
     ['harness2', 'Harness²', 1],
+    ['openai', 'OpenAI', 2],
   ] as const) {
     it(`renders the ${title} archive with canonical article links`, async () => {
       vi.mocked(getPosts).mockResolvedValue(posts)

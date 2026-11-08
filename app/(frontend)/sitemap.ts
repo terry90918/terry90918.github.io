@@ -16,6 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/work',
     '/posts',
     '/posts/ai-daily',
+    '/posts/openai',
     '/posts/pstack',
     '/posts/harness2',
     '/cv',
