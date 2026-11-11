@@ -32,7 +32,7 @@ presentation:
 
 官方更新說明指出，認領核准後可進入 Business Hub；Persona 身分驗證也通過後，才能發布資訊更新、連接商品資料與查看洞察。符合資格者仍須檢查並發布代理，顧客才可開始聊天。[ChatGPT 發布說明，11 月 10 日](https://help.openai.com/en/articles/6825453-chatgpt-release-notes)
 
-若透過 Persona 建立新商家頁，OpenAI 核准後會自動發布；商家代理則須另行檢查並發布。[官方設定指南](https://help.openai.com/en/articles/20001635-setting-up-your-business-on-chatgpt)
+若透過 Persona 建立新商家頁，OpenAI 核准後會自動發布；商家代理則須另行檢查並發布。提交前也要確認公開內容：只有尚未發布的草稿商家頁可刪除，OpenAI Support 無法在商家設定或所有權申請流程中刪除、取消發布或隱藏已發布的商家頁。[官方設定指南](https://help.openai.com/en/articles/20001635-setting-up-your-business-on-chatgpt)
 
 實務上，我會先整理一份可公開的商品與政策清單，再找熟悉客服的人測試容易誤解的問題，例如折扣品退貨、配送範圍及額外費用。這是本文的驗收建議，不是官方已替個別商家完成的檢查。
 
