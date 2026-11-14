@@ -1,16 +1,21 @@
 ---
 title: 'ChatGPT Wallet 讓 dot 代為結帳：付款核准之後，還要確認訂單成立'
 publishedAt: '2026-11-14T05:00:00+08:00'
-status: draft
+status: published
 excerpt: 'ChatGPT Wallet 開始支援 dot 代理結帳。整理首波使用資格、逐筆付款授權，以及付款核准與商家訂單確認的差異。'
 tags:
   - OpenAI
 presentation:
   type: feature
   category: OpenAI
+  audio:
+    src: /audio/2026/openai-wallet-payment-approval-2026-11-14-notebooklm.mp3
+    duration: 1408.85
+  video:
+    src: /videos/2026/openai-wallet-payment-approval-2026-11-14-notebooklm.mp4
+    poster: /videos/2026/openai-wallet-payment-approval-2026-11-14-notebooklm.jpg
+    title: ChatGPT Wallet 期待與現實
 ---
-
-# ChatGPT Wallet 讓 dot 代為結帳：付款核准之後，還要確認訂單成立
 
 作者：Terry Chen。本文為官方資料整理與作者觀察；未進行綁卡或交易測試。
 
