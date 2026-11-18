@@ -1,5 +1,5 @@
 {
-  "origin": "https://terry90918-public-media.nbg1.your-objectstorage.com",
+  "origin": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com",
   "verificationDate": "2026-11-18",
   "assets": {
     "openai-healthcare-2026-11-17-notebooklm.mp4": {
@@ -27,7 +27,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/152d7b3283f01b91838f45c0286abaa478e3c1930cb3e229ad53255eae2f87d4.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/152d7b3283f01b91838f45c0286abaa478e3c1930cb3e229ad53255eae2f87d4.mp4",
         "sha256": "152d7b3283f01b91838f45c0286abaa478e3c1930cb3e229ad53255eae2f87d4",
         "bytes": 13372621,
         "contentType": "video/mp4",
@@ -36,7 +36,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/a0660dcef851ca63890ca90317808449cf65155b5caeba9b32120cb4d03a46a6.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/a0660dcef851ca63890ca90317808449cf65155b5caeba9b32120cb4d03a46a6.jpg",
         "sha256": "a0660dcef851ca63890ca90317808449cf65155b5caeba9b32120cb4d03a46a6",
         "bytes": 141534,
         "contentType": "image/jpeg",
@@ -70,7 +70,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/ba70eadc4dfea41b9f7176985ad0de8af8f93e979c150897d0b6eec5d163704a.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/ba70eadc4dfea41b9f7176985ad0de8af8f93e979c150897d0b6eec5d163704a.mp4",
         "sha256": "ba70eadc4dfea41b9f7176985ad0de8af8f93e979c150897d0b6eec5d163704a",
         "bytes": 15021708,
         "contentType": "video/mp4",
@@ -79,7 +79,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/03fd153b6200f1951421121c045993d0128c615f894b7bb6e78aa24246798a9e.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/03fd153b6200f1951421121c045993d0128c615f894b7bb6e78aa24246798a9e.jpg",
         "sha256": "03fd153b6200f1951421121c045993d0128c615f894b7bb6e78aa24246798a9e",
         "bytes": 66960,
         "contentType": "image/jpeg",
@@ -113,7 +113,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/48504c887973952b05fde0e81efcc3fc55d6e5903b0d7de26d3df14324f35fcb.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/48504c887973952b05fde0e81efcc3fc55d6e5903b0d7de26d3df14324f35fcb.mp4",
         "sha256": "48504c887973952b05fde0e81efcc3fc55d6e5903b0d7de26d3df14324f35fcb",
         "bytes": 12809600,
         "contentType": "video/mp4",
@@ -122,7 +122,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/24224651eb8a1370de581888860394ac5ec32c53e5fd3960a04dd6559f027866.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/24224651eb8a1370de581888860394ac5ec32c53e5fd3960a04dd6559f027866.jpg",
         "sha256": "24224651eb8a1370de581888860394ac5ec32c53e5fd3960a04dd6559f027866",
         "bytes": 57422,
         "contentType": "image/jpeg",
@@ -156,7 +156,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/a552cdf128549629c2bab8595262f78522ddb40ac2d4e21ca6fddd22cad6905f.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/a552cdf128549629c2bab8595262f78522ddb40ac2d4e21ca6fddd22cad6905f.mp4",
         "sha256": "a552cdf128549629c2bab8595262f78522ddb40ac2d4e21ca6fddd22cad6905f",
         "bytes": 13773175,
         "contentType": "video/mp4",
@@ -165,7 +165,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/82eaaa20e3825f992d5abab65b87d4b30576dac77d8f15b8a76e18cf4f7894c3.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/82eaaa20e3825f992d5abab65b87d4b30576dac77d8f15b8a76e18cf4f7894c3.jpg",
         "sha256": "82eaaa20e3825f992d5abab65b87d4b30576dac77d8f15b8a76e18cf4f7894c3",
         "bytes": 87056,
         "contentType": "image/jpeg",
@@ -199,7 +199,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/73cafb56e62897f14b7bc356c3fc325d87e3485f1a48bbfcd3b66eb027a0f137.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/73cafb56e62897f14b7bc356c3fc325d87e3485f1a48bbfcd3b66eb027a0f137.mp4",
         "sha256": "73cafb56e62897f14b7bc356c3fc325d87e3485f1a48bbfcd3b66eb027a0f137",
         "bytes": 10251770,
         "contentType": "video/mp4",
@@ -208,7 +208,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/f137ed29831ed6bfc0b7ab01390c93050499672e96b042bf29e24aaafdb9f941.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/f137ed29831ed6bfc0b7ab01390c93050499672e96b042bf29e24aaafdb9f941.jpg",
         "sha256": "f137ed29831ed6bfc0b7ab01390c93050499672e96b042bf29e24aaafdb9f941",
         "bytes": 81378,
         "contentType": "image/jpeg",
@@ -242,7 +242,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/f520f01bac827c485aa6c96ee2c0178b8ab4bb41731f3ffb0d87ff497377c78f.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/f520f01bac827c485aa6c96ee2c0178b8ab4bb41731f3ffb0d87ff497377c78f.mp4",
         "sha256": "f520f01bac827c485aa6c96ee2c0178b8ab4bb41731f3ffb0d87ff497377c78f",
         "bytes": 12220728,
         "contentType": "video/mp4",
@@ -251,7 +251,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/96d764514e4d2883e141098864d23e5f04119044dacc1720e74f00ddd4cdcd6b.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/96d764514e4d2883e141098864d23e5f04119044dacc1720e74f00ddd4cdcd6b.jpg",
         "sha256": "96d764514e4d2883e141098864d23e5f04119044dacc1720e74f00ddd4cdcd6b",
         "bytes": 78189,
         "contentType": "image/jpeg",
@@ -285,7 +285,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/0a8ef7c43f29ebf36c123a029c0f8b32950d5795c0fd87d093c71a1130caf4b7.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/0a8ef7c43f29ebf36c123a029c0f8b32950d5795c0fd87d093c71a1130caf4b7.mp4",
         "sha256": "0a8ef7c43f29ebf36c123a029c0f8b32950d5795c0fd87d093c71a1130caf4b7",
         "bytes": 13479830,
         "contentType": "video/mp4",
@@ -294,7 +294,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/85538f4fb64eeba4027f79b56bbdf4e0039625a5b80203ad0177ca96d6d2e5a6.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/85538f4fb64eeba4027f79b56bbdf4e0039625a5b80203ad0177ca96d6d2e5a6.jpg",
         "sha256": "85538f4fb64eeba4027f79b56bbdf4e0039625a5b80203ad0177ca96d6d2e5a6",
         "bytes": 73905,
         "contentType": "image/jpeg",
@@ -328,7 +328,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/e3a822d7b6b5abdef28514047596794aba7808194d90073293077a60be887e23.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/e3a822d7b6b5abdef28514047596794aba7808194d90073293077a60be887e23.mp4",
         "sha256": "e3a822d7b6b5abdef28514047596794aba7808194d90073293077a60be887e23",
         "bytes": 12290348,
         "contentType": "video/mp4",
@@ -337,7 +337,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/b9d6cc56f75054ded503d0832f5ef7056aa39b5ee6c5f168e093298662843e35.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/b9d6cc56f75054ded503d0832f5ef7056aa39b5ee6c5f168e093298662843e35.jpg",
         "sha256": "b9d6cc56f75054ded503d0832f5ef7056aa39b5ee6c5f168e093298662843e35",
         "bytes": 141552,
         "contentType": "image/jpeg",
@@ -371,7 +371,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/5da95a7ced92e665a3df71b14dbc6aa128f795b8534ed58317c0851866f3f437.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/5da95a7ced92e665a3df71b14dbc6aa128f795b8534ed58317c0851866f3f437.mp4",
         "sha256": "5da95a7ced92e665a3df71b14dbc6aa128f795b8534ed58317c0851866f3f437",
         "bytes": 14481792,
         "contentType": "video/mp4",
@@ -380,7 +380,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/c2d798e244d0d2a24b78478a4b6c82ef735ee52c56f13ccb52f4d67ace05a652.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/c2d798e244d0d2a24b78478a4b6c82ef735ee52c56f13ccb52f4d67ace05a652.jpg",
         "sha256": "c2d798e244d0d2a24b78478a4b6c82ef735ee52c56f13ccb52f4d67ace05a652",
         "bytes": 82822,
         "contentType": "image/jpeg",
@@ -414,7 +414,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/3cab4bec2fe7a415697d979752512dce469174b0a0fa2ae89078e240f576b9f4.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/3cab4bec2fe7a415697d979752512dce469174b0a0fa2ae89078e240f576b9f4.mp4",
         "sha256": "3cab4bec2fe7a415697d979752512dce469174b0a0fa2ae89078e240f576b9f4",
         "bytes": 11116676,
         "contentType": "video/mp4",
@@ -423,7 +423,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/5f51f183d1e849507d96b24a57a9ea2c61792d0bd8f3107f2e0de50a3639accc.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/5f51f183d1e849507d96b24a57a9ea2c61792d0bd8f3107f2e0de50a3639accc.jpg",
         "sha256": "5f51f183d1e849507d96b24a57a9ea2c61792d0bd8f3107f2e0de50a3639accc",
         "bytes": 63280,
         "contentType": "image/jpeg",
@@ -457,7 +457,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/a7fab2b7d97ef6f107dc7a444a3a4721af308fa09d9719703347acd42dbf9090.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/a7fab2b7d97ef6f107dc7a444a3a4721af308fa09d9719703347acd42dbf9090.mp4",
         "sha256": "a7fab2b7d97ef6f107dc7a444a3a4721af308fa09d9719703347acd42dbf9090",
         "bytes": 9300004,
         "contentType": "video/mp4",
@@ -466,7 +466,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/a2a86ce8f68bb575b16e3be07c060f26887274f94f38c8a039b18ea766237c81.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/a2a86ce8f68bb575b16e3be07c060f26887274f94f38c8a039b18ea766237c81.jpg",
         "sha256": "a2a86ce8f68bb575b16e3be07c060f26887274f94f38c8a039b18ea766237c81",
         "bytes": 70269,
         "contentType": "image/jpeg",
@@ -500,7 +500,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/a4236a09fd957ca1429837aab2ec5f0827d98ee693b1e564f7c5091c86809d61.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/a4236a09fd957ca1429837aab2ec5f0827d98ee693b1e564f7c5091c86809d61.mp4",
         "sha256": "a4236a09fd957ca1429837aab2ec5f0827d98ee693b1e564f7c5091c86809d61",
         "bytes": 10804173,
         "contentType": "video/mp4",
@@ -509,7 +509,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/65737df15ba89e05b86642605f02c26bf51eb4cb7c0f17075441e7c3b32f9009.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/65737df15ba89e05b86642605f02c26bf51eb4cb7c0f17075441e7c3b32f9009.jpg",
         "sha256": "65737df15ba89e05b86642605f02c26bf51eb4cb7c0f17075441e7c3b32f9009",
         "bytes": 72296,
         "contentType": "image/jpeg",
@@ -543,7 +543,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/65d1f88b8f71f858131b05210bbd8b7c0e4691345250ebe1df4ecf009f501040.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/65d1f88b8f71f858131b05210bbd8b7c0e4691345250ebe1df4ecf009f501040.mp4",
         "sha256": "65d1f88b8f71f858131b05210bbd8b7c0e4691345250ebe1df4ecf009f501040",
         "bytes": 8247168,
         "contentType": "video/mp4",
@@ -552,7 +552,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/edf2f83855745e0967a3dc01d10b70b68f0470c7a83573470f1721144cd853e9.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/edf2f83855745e0967a3dc01d10b70b68f0470c7a83573470f1721144cd853e9.jpg",
         "sha256": "edf2f83855745e0967a3dc01d10b70b68f0470c7a83573470f1721144cd853e9",
         "bytes": 168246,
         "contentType": "image/jpeg",
@@ -586,7 +586,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/f1c013592a8fbb6d1c913c7b452389626a96947598cb0970433c76cfdc6eb372.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/f1c013592a8fbb6d1c913c7b452389626a96947598cb0970433c76cfdc6eb372.mp4",
         "sha256": "f1c013592a8fbb6d1c913c7b452389626a96947598cb0970433c76cfdc6eb372",
         "bytes": 11338186,
         "contentType": "video/mp4",
@@ -595,7 +595,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/39dd022ab76e4b4d3b24983f61be1de8a86048d71f2fa643b7bc55798e704a1c.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/39dd022ab76e4b4d3b24983f61be1de8a86048d71f2fa643b7bc55798e704a1c.jpg",
         "sha256": "39dd022ab76e4b4d3b24983f61be1de8a86048d71f2fa643b7bc55798e704a1c",
         "bytes": 136756,
         "contentType": "image/jpeg",
@@ -629,7 +629,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/9d38959677764912f77304a80acbcd93c4c64d30b0ccd3c03898af1bdd114ed4.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/9d38959677764912f77304a80acbcd93c4c64d30b0ccd3c03898af1bdd114ed4.mp4",
         "sha256": "9d38959677764912f77304a80acbcd93c4c64d30b0ccd3c03898af1bdd114ed4",
         "bytes": 10951714,
         "contentType": "video/mp4",
@@ -638,7 +638,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/01f37f7fc04c2fd49c0eebbfbfc1a98bdc147e57968a96cda2a82859a240201a.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/01f37f7fc04c2fd49c0eebbfbfc1a98bdc147e57968a96cda2a82859a240201a.jpg",
         "sha256": "01f37f7fc04c2fd49c0eebbfbfc1a98bdc147e57968a96cda2a82859a240201a",
         "bytes": 132465,
         "contentType": "image/jpeg",
@@ -672,7 +672,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/4362ddb1503c8b73f59fa98d64253d6de1b349568e1abc6d550d40cb4e53bdfd.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/4362ddb1503c8b73f59fa98d64253d6de1b349568e1abc6d550d40cb4e53bdfd.mp4",
         "sha256": "4362ddb1503c8b73f59fa98d64253d6de1b349568e1abc6d550d40cb4e53bdfd",
         "bytes": 9979815,
         "contentType": "video/mp4",
@@ -681,7 +681,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/878f8834b5301c654a8dce6293e26109011cbc48aa634bb23a7c20bedda3328a.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/878f8834b5301c654a8dce6293e26109011cbc48aa634bb23a7c20bedda3328a.jpg",
         "sha256": "878f8834b5301c654a8dce6293e26109011cbc48aa634bb23a7c20bedda3328a",
         "bytes": 60406,
         "contentType": "image/jpeg",
@@ -715,7 +715,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/5a1002dd0b69fc6e7abe287bd30ae9df1946f83767fceb9510abea7277252c2c.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/5a1002dd0b69fc6e7abe287bd30ae9df1946f83767fceb9510abea7277252c2c.mp4",
         "sha256": "5a1002dd0b69fc6e7abe287bd30ae9df1946f83767fceb9510abea7277252c2c",
         "bytes": 10523056,
         "contentType": "video/mp4",
@@ -724,7 +724,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/93eba079ebb991e4d8c8097ecfd146000cee702c945f985acc13eb0cced8866c.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/93eba079ebb991e4d8c8097ecfd146000cee702c945f985acc13eb0cced8866c.jpg",
         "sha256": "93eba079ebb991e4d8c8097ecfd146000cee702c945f985acc13eb0cced8866c",
         "bytes": 129573,
         "contentType": "image/jpeg",
@@ -758,7 +758,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/07ca488af660b82905843a53caa82d2977619ddaece0124d135e26dfb6beb0f9.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/07ca488af660b82905843a53caa82d2977619ddaece0124d135e26dfb6beb0f9.mp4",
         "sha256": "07ca488af660b82905843a53caa82d2977619ddaece0124d135e26dfb6beb0f9",
         "bytes": 13951096,
         "contentType": "video/mp4",
@@ -767,7 +767,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/ec86c3121f36ece9e6b11e96b594a52a9ab8aa9a50401697a231fa03789e736e.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/ec86c3121f36ece9e6b11e96b594a52a9ab8aa9a50401697a231fa03789e736e.jpg",
         "sha256": "ec86c3121f36ece9e6b11e96b594a52a9ab8aa9a50401697a231fa03789e736e",
         "bytes": 139436,
         "contentType": "image/jpeg",
@@ -801,7 +801,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/07df5ef2385fcef9d1a58f2ac7bce0d979b57a91da5e0dc6d625d9d42901ed27.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/07df5ef2385fcef9d1a58f2ac7bce0d979b57a91da5e0dc6d625d9d42901ed27.mp4",
         "sha256": "07df5ef2385fcef9d1a58f2ac7bce0d979b57a91da5e0dc6d625d9d42901ed27",
         "bytes": 11097817,
         "contentType": "video/mp4",
@@ -810,7 +810,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/d2d21e1fba2e1fe3b98bec086dff0d577df15e7face05196af52570b407bfb3c.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/d2d21e1fba2e1fe3b98bec086dff0d577df15e7face05196af52570b407bfb3c.jpg",
         "sha256": "d2d21e1fba2e1fe3b98bec086dff0d577df15e7face05196af52570b407bfb3c",
         "bytes": 140557,
         "contentType": "image/jpeg",
@@ -844,7 +844,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/30ac1fd255d9137f4756d7b090a713d78e0eff16a92b8a5808efcf338b041163.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/30ac1fd255d9137f4756d7b090a713d78e0eff16a92b8a5808efcf338b041163.mp4",
         "sha256": "30ac1fd255d9137f4756d7b090a713d78e0eff16a92b8a5808efcf338b041163",
         "bytes": 11271984,
         "contentType": "video/mp4",
@@ -853,7 +853,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/5cbc4da934fd3d07d52da39845de544b0a6bf94870c2d11128f412c86c0d8617.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/5cbc4da934fd3d07d52da39845de544b0a6bf94870c2d11128f412c86c0d8617.jpg",
         "sha256": "5cbc4da934fd3d07d52da39845de544b0a6bf94870c2d11128f412c86c0d8617",
         "bytes": 61013,
         "contentType": "image/jpeg",
@@ -887,7 +887,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/9f98e451061c93c818623cabe5dd91d83523d2a361ad2ed6c24a06fce3b6d73e.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/9f98e451061c93c818623cabe5dd91d83523d2a361ad2ed6c24a06fce3b6d73e.mp4",
         "sha256": "9f98e451061c93c818623cabe5dd91d83523d2a361ad2ed6c24a06fce3b6d73e",
         "bytes": 10911509,
         "contentType": "video/mp4",
@@ -896,7 +896,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/f44c1adec73fabaa02abb79618d311213088df862870a75a65fd061afb6e31d0.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/f44c1adec73fabaa02abb79618d311213088df862870a75a65fd061afb6e31d0.jpg",
         "sha256": "f44c1adec73fabaa02abb79618d311213088df862870a75a65fd061afb6e31d0",
         "bytes": 105420,
         "contentType": "image/jpeg",
@@ -930,7 +930,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/f36317d84be0fde820ca3a325298519a5ca00338f525292546eaba003ca755e1.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/f36317d84be0fde820ca3a325298519a5ca00338f525292546eaba003ca755e1.mp4",
         "sha256": "f36317d84be0fde820ca3a325298519a5ca00338f525292546eaba003ca755e1",
         "bytes": 11562950,
         "contentType": "video/mp4",
@@ -939,7 +939,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/c91fe0686854c6783876943088a06479e50a5704166740cf5d17513da129a775.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/c91fe0686854c6783876943088a06479e50a5704166740cf5d17513da129a775.jpg",
         "sha256": "c91fe0686854c6783876943088a06479e50a5704166740cf5d17513da129a775",
         "bytes": 75095,
         "contentType": "image/jpeg",
@@ -973,7 +973,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/d37d7887267141900d40c38be4ba3484c9b086fe93cd781ae3741827c40b875a.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/d37d7887267141900d40c38be4ba3484c9b086fe93cd781ae3741827c40b875a.mp4",
         "sha256": "d37d7887267141900d40c38be4ba3484c9b086fe93cd781ae3741827c40b875a",
         "bytes": 13663697,
         "contentType": "video/mp4",
@@ -982,7 +982,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/9113576af3dc2eb73e21ca223616ee019038a683a5b0e10ef885c71328e148bb.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/9113576af3dc2eb73e21ca223616ee019038a683a5b0e10ef885c71328e148bb.jpg",
         "sha256": "9113576af3dc2eb73e21ca223616ee019038a683a5b0e10ef885c71328e148bb",
         "bytes": 70497,
         "contentType": "image/jpeg",
@@ -1016,7 +1016,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/912397ac6a05b7a29e3dc937398ba24f7bd5139ac089f40c2fabe17e6c9952bd.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/912397ac6a05b7a29e3dc937398ba24f7bd5139ac089f40c2fabe17e6c9952bd.mp4",
         "sha256": "912397ac6a05b7a29e3dc937398ba24f7bd5139ac089f40c2fabe17e6c9952bd",
         "bytes": 10493630,
         "contentType": "video/mp4",
@@ -1025,7 +1025,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/8409ee88f5b7ea74c4f695bdfd1500c8d9303fcedef0a2b9905afbd517000f18.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/8409ee88f5b7ea74c4f695bdfd1500c8d9303fcedef0a2b9905afbd517000f18.jpg",
         "sha256": "8409ee88f5b7ea74c4f695bdfd1500c8d9303fcedef0a2b9905afbd517000f18",
         "bytes": 64802,
         "contentType": "image/jpeg",
@@ -1057,7 +1057,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/dae7997ba64ab0dc3bd2382e1084aeff1c1f16da2bcbfd951d10949cff2f5cab.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/dae7997ba64ab0dc3bd2382e1084aeff1c1f16da2bcbfd951d10949cff2f5cab.mp4",
         "sha256": "dae7997ba64ab0dc3bd2382e1084aeff1c1f16da2bcbfd951d10949cff2f5cab",
         "bytes": 13150352,
         "contentType": "video/mp4",
@@ -1066,7 +1066,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/ecb7a1b19d8416f354c3e2a71ab375ae8b703dc5b276789997f9f8bf5692faab.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/ecb7a1b19d8416f354c3e2a71ab375ae8b703dc5b276789997f9f8bf5692faab.jpg",
         "sha256": "ecb7a1b19d8416f354c3e2a71ab375ae8b703dc5b276789997f9f8bf5692faab",
         "bytes": 108547,
         "contentType": "image/jpeg",
@@ -1098,7 +1098,7 @@
         "+faststart"
       ],
       "video": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/1a91dd85b7e02108384f8454ae1890260247b8e8e1128a8bf46f524b6fdb8736.mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/1a91dd85b7e02108384f8454ae1890260247b8e8e1128a8bf46f524b6fdb8736.mp4",
         "sha256": "1a91dd85b7e02108384f8454ae1890260247b8e8e1128a8bf46f524b6fdb8736",
         "bytes": 14222762,
         "contentType": "video/mp4",
@@ -1107,7 +1107,7 @@
         "corsVerified": true
       },
       "poster": {
-        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/4f9cda6b7703751139aec1968142be23755431020cacf3e929fca6e0e56410a4.jpg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/4f9cda6b7703751139aec1968142be23755431020cacf3e929fca6e0e56410a4.jpg",
         "sha256": "4f9cda6b7703751139aec1968142be23755431020cacf3e929fca6e0e56410a4",
         "bytes": 127699,
         "contentType": "image/jpeg",

@@ -10,8 +10,8 @@ presentation:
     src: /audio/2026/harness2-recursive-agent-harnessing-01-notebooklm.mp3
     duration: 1158.118458
   video:
-    src: https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/3cab4bec2fe7a415697d979752512dce469174b0a0fa2ae89078e240f576b9f4.mp4
-    poster: https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/5f51f183d1e849507d96b24a57a9ea2c61792d0bd8f3107f2e0de50a3639accc.jpg
+    src: https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/3cab4bec2fe7a415697d979752512dce469174b0a0fa2ae89078e240f576b9f4.mp4
+    poster: https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/5f51f183d1e849507d96b24a57a9ea2c61792d0bd8f3107f2e0de50a3639accc.jpg
     title: 'Harness² 深度導讀'
 excerpt: '先從研究問題讀懂 Harness²：模型權重固定，系統透過執行證據改進任務用的 Harness，也改進未來改進 Harness 的方式。'
 tags: ['Harness', 'AI Agent', 'AI 工程', 'GitHub']

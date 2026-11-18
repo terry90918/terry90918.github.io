@@ -51,12 +51,12 @@ export function readPresentation(value: unknown): FeaturePresentation | undefine
       src: mediaPath(
         video.src,
         'presentation.video.src',
-        /^https:\/\/terry90918-public-media\.nbg1\.your-objectstorage\.com\/videos\/\d{4}\/[a-f0-9]{64}\.mp4$/
+        /^https:\/\/terry-blog-prod-public-media\.nbg1\.your-objectstorage\.com\/videos\/\d{4}\/[a-f0-9]{64}\.mp4$/
       ),
       poster: mediaPath(
         video.poster,
         'presentation.video.poster',
-        /^https:\/\/terry90918-public-media\.nbg1\.your-objectstorage\.com\/posters\/\d{4}\/[a-f0-9]{64}\.(?:jpg|webp|png)$/
+        /^https:\/\/terry-blog-prod-public-media\.nbg1\.your-objectstorage\.com\/posters\/\d{4}\/[a-f0-9]{64}\.(?:jpg|webp|png)$/
       ),
       title: video.title,
     }
