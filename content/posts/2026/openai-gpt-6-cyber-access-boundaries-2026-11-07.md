@@ -13,8 +13,8 @@ presentation:
     src: /audio/2026/openai-gpt-6-cyber-access-boundaries-2026-11-07-notebooklm.mp3
     duration: 1164.689705
   video:
-    src: /videos/2026/openai-gpt-6-cyber-access-boundaries-2026-11-07-notebooklm.mp4
-    poster: /videos/2026/openai-gpt-6-cyber-access-boundaries-2026-11-07-notebooklm.jpg
+    src: https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/9d38959677764912f77304a80acbcd93c4c64d30b0ccd3c03898af1bdd114ed4.mp4
+    poster: https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/01f37f7fc04c2fd49c0eebbfbfc1a98bdc147e57968a96cda2a82859a240201a.jpg
     title: 'GPT-6 Cyber：解碼發布公告'
 ---
 

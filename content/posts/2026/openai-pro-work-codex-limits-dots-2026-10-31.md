@@ -12,8 +12,8 @@ presentation:
     src: /audio/2026/openai-pro-work-codex-limits-dots-2026-10-31-notebooklm.mp3
     duration: 784.370068
   video:
-    src: /videos/2026/openai-pro-work-codex-limits-dots-2026-10-31-notebooklm.mp4
-    poster: /videos/2026/openai-pro-work-codex-limits-dots-2026-10-31-notebooklm.jpg
+    src: https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/07df5ef2385fcef9d1a58f2ac7bce0d979b57a91da5e0dc6d625d9d42901ed27.mp4
+    poster: https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/d2d21e1fba2e1fe3b98bec086dff0d577df15e7face05196af52570b407bfb3c.jpg
     title: '揭開 OpenAI Pro 額度更新神秘面紗'
 ---
 

@@ -10,8 +10,8 @@ presentation:
     src: /audio/2026/pstack-prompt-analysis-notebooklm.mp3
     duration: 1312.298957
   video:
-    src: /videos/2026/pstack-prompt-analysis-notebooklm.mp4
-    poster: /videos/2026/pstack-prompt-analysis-notebooklm.jpg
+    src: https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/d37d7887267141900d40c38be4ba3484c9b086fe93cd781ae3741827c40b875a.mp4
+    poster: https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/9113576af3dc2eb73e21ca223616ee019038a683a5b0e10ef885c71328e148bb.jpg
     title: 'Pstack 深度導讀（下）：技能與限制'
 excerpt: '逐項分析 pstack 0.15.26 的 31 個一般技能與 24 個原則，並讀代理設定、Benny 自動化、輔助腳本和 Claude Code 副本的維護方式。'
 tags:

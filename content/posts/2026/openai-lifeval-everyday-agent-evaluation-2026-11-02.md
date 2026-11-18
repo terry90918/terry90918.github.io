@@ -12,8 +12,8 @@ presentation:
     src: /audio/2026/openai-lifeval-everyday-agent-evaluation-2026-11-02-notebooklm.mp3
     duration: 782.767891
   video:
-    src: /videos/2026/openai-lifeval-everyday-agent-evaluation-2026-11-02-notebooklm.mp4
-    poster: /videos/2026/openai-lifeval-everyday-agent-evaluation-2026-11-02-notebooklm.jpg
+    src: https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/5a1002dd0b69fc6e7abe287bd30ae9df1946f83767fceb9510abea7277252c2c.mp4
+    poster: https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/93eba079ebb991e4d8c8097ecfd146000cee702c945f985acc13eb0cced8866c.jpg
     title: 'LifeVal: 日常 AI 任務中高分之外的意義'
 ---
 

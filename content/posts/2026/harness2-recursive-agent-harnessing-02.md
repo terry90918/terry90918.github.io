@@ -10,8 +10,8 @@ presentation:
     src: /audio/2026/harness2-recursive-agent-harnessing-02-notebooklm.mp3
     duration: 1651.844354
   video:
-    src: /videos/2026/harness2-recursive-agent-harnessing-02-notebooklm.mp4
-    poster: /videos/2026/harness2-recursive-agent-harnessing-02-notebooklm.jpg
+    src: https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/a7fab2b7d97ef6f107dc7a444a3a4721af308fa09d9719703347acd42dbf9090.mp4
+    poster: https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/a2a86ce8f68bb575b16e3be07c060f26887274f94f38c8a039b18ea766237c81.jpg
     title: 'Harness² 原始碼深度導讀'
 excerpt: '從 BenchSpec、BenchmarkAdapter 和 Substrate 讀懂 Harness² 的模組邊界，再追蹤 evidence context、候選驗證、選擇與經驗庫如何接成一條流程。'
 tags: ['Harness', 'AI Agent', 'AI 工程', 'Python']
