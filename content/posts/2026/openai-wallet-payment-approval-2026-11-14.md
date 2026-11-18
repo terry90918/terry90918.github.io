@@ -11,6 +11,10 @@ presentation:
   audio:
     src: /audio/2026/openai-wallet-payment-approval-2026-11-14-notebooklm.mp3
     duration: 1408.85
+  video:
+    src: /videos/2026/openai-wallet-payment-approval-2026-11-14-notebooklm.mp4
+    poster: /videos/2026/openai-wallet-payment-approval-2026-11-14-notebooklm.jpg
+    title: ChatGPT Wallet 期待與現實
 ---
 
 作者：Terry Chen。本文為官方資料整理與作者觀察；未進行綁卡或交易測試。

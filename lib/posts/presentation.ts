@@ -42,5 +42,24 @@ export function readPresentation(value: unknown): FeaturePresentation | undefine
       duration: audio.duration,
     }
   }
+  if (input.video !== undefined) {
+    const video = record(input.video, 'presentation.video')
+    if (typeof video.title !== 'string' || !video.title.trim()) {
+      throw new Error('Invalid presentation.video.title')
+    }
+    presentation.video = {
+      src: mediaPath(
+        video.src,
+        'presentation.video.src',
+        /^\/videos\/(?:[a-z0-9-]+\/)*[a-z0-9-]+\.mp4$/
+      ),
+      poster: mediaPath(
+        video.poster,
+        'presentation.video.poster',
+        /^\/videos\/(?:[a-z0-9-]+\/)*[a-z0-9-]+\.(?:jpg|webp|png)$/
+      ),
+      title: video.title,
+    }
+  }
   return presentation
 }

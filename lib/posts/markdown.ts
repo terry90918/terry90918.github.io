@@ -15,11 +15,25 @@ import type { ArticleHeading } from './types'
 
 const sanitizeSchema = {
   ...defaultSchema,
-  tagNames: [...(defaultSchema.tagNames ?? []), 'audio', 'source'],
+  tagNames: [...(defaultSchema.tagNames ?? []), 'audio', 'video', 'source'],
   attributes: {
     ...defaultSchema.attributes,
     audio: ['controls', 'controlsList', 'preload', 'style', 'src'],
+    video: [
+      'controls',
+      'controlsList',
+      'preload',
+      'playsInline',
+      'width',
+      'style',
+      'poster',
+      'src',
+    ],
     source: ['src', 'type'],
+  },
+  protocols: {
+    ...defaultSchema.protocols,
+    poster: ['http', 'https'],
   },
 }
 

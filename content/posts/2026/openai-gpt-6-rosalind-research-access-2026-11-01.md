@@ -11,6 +11,10 @@ presentation:
   audio:
     src: /audio/2026/openai-gpt-6-rosalind-research-access-2026-11-01-notebooklm.mp3
     duration: 879.734422
+  video:
+    src: /videos/2026/openai-gpt-6-rosalind-research-access-2026-11-01-notebooklm.mp4
+    poster: /videos/2026/openai-gpt-6-rosalind-research-access-2026-11-01-notebooklm.jpg
+    title: 'GPT-6 Rosalind 完全指南'
 ---
 
 OpenAI 於 10 月 30 日公布 GPT-6 Rosalind Research，將這個模型加入生命科學研究產品 Rosalind。公告同時列出一項實際限制：獲得一般 ChatGPT 或 Codex 使用權，不代表研究人員可以直接選用它。機構與使用者都必須符合 Research 核准條件，模型也只在指定工作入口提供。

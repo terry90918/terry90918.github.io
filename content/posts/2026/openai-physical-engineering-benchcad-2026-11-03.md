@@ -11,6 +11,10 @@ presentation:
   audio:
     src: /audio/2026/openai-physical-engineering-benchcad-2026-11-03-notebooklm.mp3
     duration: 621.528526
+  video:
+    src: /videos/2026/openai-physical-engineering-benchcad-2026-11-03-notebooklm.mp4
+    poster: /videos/2026/openai-physical-engineering-benchcad-2026-11-03-notebooklm.jpg
+    title: '從 CAD 圖到能製造的零件：解析 OpenAI 工程進展'
 ---
 
 一個零件的立體圖看起來完整，並不代表它能裝進機器；一張電路板元件齊全，也不代表接線正確。對工程助手而言，畫面只是交付的一部分，後面還有尺寸、組裝與製造條件需要驗證。
