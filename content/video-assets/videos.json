@@ -1238,6 +1238,47 @@
         "range206Verified": true,
         "corsVerified": true
       }
+    },
+    "ai-daily-2026-11-11-notebooklm.mp4": {
+      "sourceSHA256": "11640ac1f6086a5c12c8f0dab99f328e93a424dc0fad987c6d94b2f25d82a4f3",
+      "sourceBytes": 39267451,
+      "sourceNotebook": "https://notebook.google.com/notebook/60d38aeb-89a2-407b-bc04-6d7b2a25d5f8",
+      "duration": 477.727347,
+      "audioPacketHash": "SHA256=676c82ad7db2be28d8b9055da1165174352deeaf877456a877f33d9702239d6e",
+      "parameters": [
+        "-vf",
+        "scale=1280:720,fps=24",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "fast",
+        "-crf",
+        "23",
+        "-pix_fmt",
+        "yuv420p",
+        "-c:a",
+        "copy",
+        "-movflags",
+        "+faststart"
+      ],
+      "video": {
+        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/f9fbdbb59c0262ac858ab0ca7d8700d09bf49a296aaa436935f0fa5744fff8b8.mp4",
+        "sha256": "f9fbdbb59c0262ac858ab0ca7d8700d09bf49a296aaa436935f0fa5744fff8b8",
+        "bytes": 12169735,
+        "contentType": "video/mp4",
+        "publicHashVerified": true,
+        "range206Verified": true,
+        "corsVerified": true
+      },
+      "poster": {
+        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/5aba0f1fef48a1a8f0f94aa1fb86b3aaef22eb0cfd2315972ddad989ed127c2c.jpg",
+        "sha256": "5aba0f1fef48a1a8f0f94aa1fb86b3aaef22eb0cfd2315972ddad989ed127c2c",
+        "bytes": 119943,
+        "contentType": "image/jpeg",
+        "publicHashVerified": true,
+        "range206Verified": true,
+        "corsVerified": true
+      }
     }
   }
 }
