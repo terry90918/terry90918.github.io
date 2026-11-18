@@ -1,13 +1,20 @@
 ---
 title: 'ChatGPT 醫療更新：代理開始跨系統辦事，人工審查與資料邊界仍要逐步確認'
 publishedAt: '2026-11-17T05:00:00+08:00'
-status: draft
+status: published
 excerpt: 'OpenAI 更新醫療電腦操作代理、臨床搜尋與二十多個外掛。整理使用資格、評測範圍，以及從病歷草稿到實際送出之間的審查與資料限制。'
 tags:
   - OpenAI
 presentation:
   type: feature
   category: OpenAI
+  audio:
+    src: /audio/2026/openai-healthcare-2026-11-17-notebooklm.mp3
+    duration: 1394.34
+  video:
+    src: /videos/2026/openai-healthcare-2026-11-17-notebooklm.mp4
+    poster: /videos/2026/openai-healthcare-2026-11-17-notebooklm.jpg
+    title: ChatGPT醫療更新：代理與限制
 ---
 
 作者：Terry Chen。本文為官方資料整理與作者觀察，未使用真實病歷，也未實測醫療系統或臨床流程。
@@ -44,11 +51,13 @@ Help Center 說明，回覆會附標題、期刊、作者與出版日期等引�
 
 外掛列在清單上，還需要管理員開放、相應帳號、供應商設定與使用權限。Metriport 需要供應商導入程序；Elation Health 與 TriZetto 要求 HIPAA-enabled 工作區。Photon 能草擬、審查及送出處方，但處方簽署與送出需要醫療人員驗證，每張處方都要由開方者審查授權，且不支援管制藥物。[各外掛的設定與限制](https://help.openai.com/en/articles/20001046-chatgpt-for-healthcare)
 
-也要分清公開資料與病歷連線。Healthcare Public Data 的應用程式唯讀搜尋公開醫療來源，不讀取病患病歷；Epic 外掛則供獲准機構連接經授權的病歷資料，遵守既有權限，同樣是唯讀，而且不提供給個人的 ChatGPT for Clinicians 帳號。不能把電腦操作代理在示範中的寫入能力，套到每個病歷外掛上。[公開資料與 Epic 的不同範圍](https://help.openai.com/en/articles/20001046-chatgpt-for-healthcare)
+也要分清公開資料與病歷連線。Healthcare Public Data 的應用程式唯讀搜尋公開醫療來源，不讀取病患病歷；查詢這些公開來源時，也不應輸入病患姓名、病歷號碼或其他 PHI。[公開資料的 PHI 限制](https://help.openai.com/en/articles/20001202-chatgpt-for-clinicians)
+
+Epic 外掛則供獲准機構連接經授權的病歷資料，遵守既有權限，同樣是唯讀，而且不提供給個人的 ChatGPT for Clinicians 帳號。不能把電腦操作代理在示範中的寫入能力，套到每個病歷外掛上。[公開資料與 Epic 的不同範圍](https://help.openai.com/en/articles/20001046-chatgpt-for-healthcare)
 
 ## 個人免費資格、機構採購與 BAA，分開確認
 
-ChatGPT for Clinicians 免費提供給符合資格、完成驗證的美國臨床人員，目前列有醫師、進階執業護理師、醫師助理與藥師。申請需要有效 NPI 及可驗證執照。這不是一般 Plus 或 Pro 帳號自動新增的醫療方案，也不能由公告推論台灣醫療人員已符合資格。[Clinicians 資格與驗證](https://help.openai.com/en/articles/20001202-chatgpt-for-clinicians)
+ChatGPT for Clinicians 免費提供給符合資格、完成驗證的美國臨床人員，目前列有醫師、專科護理師（nurse practitioner，NP）、醫師助理與藥師。申請需要有效 NPI 及可驗證執照。這不是一般 Plus 或 Pro 帳號自動新增的醫療方案，也不能由公告推論台灣醫療人員已符合資格。[Clinicians 資格與驗證](https://help.openai.com/en/articles/20001202-chatgpt-for-clinicians)
 
 機構集中部署則使用 ChatGPT for Healthcare，由組織管理功能與存取；符合資格的機構也可以透過 AWS Marketplace 採購，實際資格與報價需聯絡 OpenAI 或 AWS。官方說明 Work、Codex 的電腦操作及改進的臨床搜尋已可使用，但仍受工作區設定影響；個人 Clinicians 只提供其中適用的外掛。這次公告沒有公布一個適用所有機構的固定價格。[開放範圍與採購](https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare/)
 
@@ -62,4 +71,4 @@ ChatGPT for Clinicians 免費提供給符合資格、完成驗證的美國臨床
 
 我會把實際導入的重點放在每個交接點：引用能否追到原文、讀到的是不是正確病歷、草稿是否經過授權人員確認、提交後系統是否真的接受，以及能否留下稽核紀錄。這是本文對官方資料的觀察，未以公告或示範代替實際部署驗收。
 
-以上依截至 2026 年 11 月 17 日可查核的官方資訊整理。產品資格、外掛、功能涵蓋與價格仍可能調整，實際使用前應重新查閱官方文件及機構協議。
+以上依截至 2026 年 11 月 18 日可查核的官方資訊整理。產品資格、外掛、功能涵蓋與價格仍可能調整，實際使用前應重新查閱官方文件及機構協議。
