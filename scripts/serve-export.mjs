@@ -29,7 +29,6 @@ const types = {
   '.ico': 'image/x-icon',
   '.woff2': 'font/woff2',
   '.mp3': 'audio/mpeg',
-  '.mp4': 'video/mp4',
   '.glb': 'model/gltf-binary',
 }
 

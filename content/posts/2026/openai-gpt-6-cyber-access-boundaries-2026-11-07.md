@@ -12,10 +12,6 @@ presentation:
   audio:
     src: /audio/2026/openai-gpt-6-cyber-access-boundaries-2026-11-07-notebooklm.mp3
     duration: 1164.689705
-  video:
-    src: /videos/2026/openai-gpt-6-cyber-access-boundaries-2026-11-07-notebooklm.mp4
-    poster: /videos/2026/openai-gpt-6-cyber-access-boundaries-2026-11-07-notebooklm.jpg
-    title: 'GPT-6 Cyber：解碼發布公告'
 ---
 
 OpenAI 在 2026 年 11 月 5 日發布 GPT-6 Cyber。對開發者而言，值得關注的不只是模型能找出多少漏洞，而是這項能力會在哪裡提供、誰能使用，以及團隊拿到結果後仍要負責哪些驗證。

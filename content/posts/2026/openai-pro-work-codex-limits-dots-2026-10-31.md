@@ -11,10 +11,6 @@ presentation:
   audio:
     src: /audio/2026/openai-pro-work-codex-limits-dots-2026-10-31-notebooklm.mp3
     duration: 784.370068
-  video:
-    src: /videos/2026/openai-pro-work-codex-limits-dots-2026-10-31-notebooklm.mp4
-    poster: /videos/2026/openai-pro-work-codex-limits-dots-2026-10-31-notebooklm.jpg
-    title: '揭開 OpenAI Pro 額度更新神秘面紗'
 ---
 
 OpenAI 調高部分 Pro 方案的工作額度，也取消先前對 Pro 200 的降額安排。不過，「額度翻倍」需要看原本的方案與額度；Chat 的訊息限制，以及 dots 啟動任務後的用量，也各有規則。

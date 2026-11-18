@@ -63,22 +63,13 @@ presentation:
   type: feature
   audio:
     src: /audio/2026/example.mp3
-    duration: 1092
-  video:
-    src: /videos/2026/example.mp4
-    poster: /videos/2026/example.jpg
-    title: 影片摘要`
+    duration: 1092`
     )
     writeFileSync(join(tempDir, '2026', 'test-post.md'), feature)
     const [post] = await loadAllPosts({ dir: tempDir })
     expect(post.presentation).toEqual({
       type: 'feature',
       audio: { src: '/audio/2026/example.mp3', duration: 1092 },
-      video: {
-        src: '/videos/2026/example.mp4',
-        poster: '/videos/2026/example.jpg',
-        title: '影片摘要',
-      },
     })
     expect(post.outline).toEqual([{ id: 'section-two', text: 'Section Two' }])
   })

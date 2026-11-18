@@ -12,10 +12,6 @@ presentation:
   audio:
     src: /audio/2026/openai-business-hub-agent-boundaries-2026-11-12-notebooklm.mp3
     duration: 1084.371882
-  video:
-    src: /videos/2026/openai-business-hub-agent-boundaries-2026-11-12-notebooklm.mp4
-    poster: /videos/2026/openai-business-hub-agent-boundaries-2026-11-12-notebooklm.jpg
-    title: 'ChatGPT Business Hub 與商家代理'
 ---
 
 當顧客開始向 AI 詢問商品與服務，商家也需要一個維護資訊的入口。OpenAI 在 2026 年 11 月 10 日推出測試版 Businesses in ChatGPT：透過 Business Hub 認領商家、提供資料與查看彙整洞察，符合資格的商家還能發布 Business Agent。[官方公告](https://openai.com/index/introducing-businesses-chatgpt/)

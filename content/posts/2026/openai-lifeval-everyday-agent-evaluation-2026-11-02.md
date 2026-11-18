@@ -11,10 +11,6 @@ presentation:
   audio:
     src: /audio/2026/openai-lifeval-everyday-agent-evaluation-2026-11-02-notebooklm.mp3
     duration: 782.767891
-  video:
-    src: /videos/2026/openai-lifeval-everyday-agent-evaluation-2026-11-02-notebooklm.mp4
-    poster: /videos/2026/openai-lifeval-everyday-agent-evaluation-2026-11-02-notebooklm.jpg
-    title: 'LifeVal: 日常 AI 任務中高分之外的意義'
 ---
 
 請 AI 整理一份週末採買清單，和讓它替一家人完成採買，是兩種驗收。清單可以看內容是否合理；後者還得確認品項、預算、配送時段，以及最後究竟有沒有下單。當助手開始操作工具，「回答看起來不錯」就不足以描述結果。
