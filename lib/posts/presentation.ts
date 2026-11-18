@@ -14,6 +14,20 @@ function mediaPath(value: unknown, field: string, pattern: RegExp): string {
   return value
 }
 
+const publishedVideoAsset = {
+  src: /^https:\/\/terry-blog-prod-public-media\.nbg1\.your-objectstorage\.com\/videos\/\d{4}\/[a-f0-9]{64}\.mp4$/,
+  poster:
+    /^https:\/\/terry-blog-prod-public-media\.nbg1\.your-objectstorage\.com\/posters\/\d{4}\/[a-f0-9]{64}\.(?:jpg|webp|png)$/,
+}
+
+export function readPublishedVideoAsset(
+  value: unknown,
+  kind: keyof typeof publishedVideoAsset,
+  field: string
+): string {
+  return mediaPath(value, field, publishedVideoAsset[kind])
+}
+
 export function readPresentation(value: unknown): FeaturePresentation | undefined {
   if (value === undefined) return undefined
   const input = record(value, 'presentation')
@@ -48,16 +62,8 @@ export function readPresentation(value: unknown): FeaturePresentation | undefine
       throw new Error('Invalid presentation.video.title')
     }
     presentation.video = {
-      src: mediaPath(
-        video.src,
-        'presentation.video.src',
-        /^https:\/\/terry-blog-prod-public-media\.nbg1\.your-objectstorage\.com\/videos\/\d{4}\/[a-f0-9]{64}\.mp4$/
-      ),
-      poster: mediaPath(
-        video.poster,
-        'presentation.video.poster',
-        /^https:\/\/terry-blog-prod-public-media\.nbg1\.your-objectstorage\.com\/posters\/\d{4}\/[a-f0-9]{64}\.(?:jpg|webp|png)$/
-      ),
+      src: readPublishedVideoAsset(video.src, 'src', 'presentation.video.src'),
+      poster: readPublishedVideoAsset(video.poster, 'poster', 'presentation.video.poster'),
       title: video.title,
     }
   }
