@@ -12,8 +12,8 @@ presentation:
     src: /audio/2026/openai-gpt-6-rosalind-research-access-2026-11-01-notebooklm.mp3
     duration: 879.734422
   video:
-    src: /videos/2026/openai-gpt-6-rosalind-research-access-2026-11-01-notebooklm.mp4
-    poster: /videos/2026/openai-gpt-6-rosalind-research-access-2026-11-01-notebooklm.jpg
+    src: https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/4362ddb1503c8b73f59fa98d64253d6de1b349568e1abc6d550d40cb4e53bdfd.mp4
+    poster: https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/878f8834b5301c654a8dce6293e26109011cbc48aa634bb23a7c20bedda3328a.jpg
     title: 'GPT-6 Rosalind 完全指南'
 ---
 

@@ -65,8 +65,8 @@ presentation:
     src: /audio/2026/example.mp3
     duration: 1092
   video:
-    src: /videos/2026/example.mp4
-    poster: /videos/2026/example.jpg
+    src: https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.mp4
+    poster: https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.jpg
     title: 影片摘要`
     )
     writeFileSync(join(tempDir, '2026', 'test-post.md'), feature)
@@ -75,8 +75,9 @@ presentation:
       type: 'feature',
       audio: { src: '/audio/2026/example.mp3', duration: 1092 },
       video: {
-        src: '/videos/2026/example.mp4',
-        poster: '/videos/2026/example.jpg',
+        src: 'https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.mp4',
+        poster:
+          'https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.jpg',
         title: '影片摘要',
       },
     })

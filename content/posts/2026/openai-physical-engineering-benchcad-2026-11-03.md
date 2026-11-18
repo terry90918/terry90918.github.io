@@ -12,8 +12,8 @@ presentation:
     src: /audio/2026/openai-physical-engineering-benchcad-2026-11-03-notebooklm.mp3
     duration: 621.528526
   video:
-    src: /videos/2026/openai-physical-engineering-benchcad-2026-11-03-notebooklm.mp4
-    poster: /videos/2026/openai-physical-engineering-benchcad-2026-11-03-notebooklm.jpg
+    src: https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/07ca488af660b82905843a53caa82d2977619ddaece0124d135e26dfb6beb0f9.mp4
+    poster: https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/ec86c3121f36ece9e6b11e96b594a52a9ab8aa9a50401697a231fa03789e736e.jpg
     title: '從 CAD 圖到能製造的零件：解析 OpenAI 工程進展'
 ---
 

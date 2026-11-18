@@ -10,8 +10,8 @@ presentation:
     src: /audio/2026/pstack-plugin-analysis-notebooklm.mp3
     duration: 1156.237642
   video:
-    src: /videos/2026/pstack-plugin-analysis-notebooklm.mp4
-    poster: /videos/2026/pstack-plugin-analysis-notebooklm.jpg
+    src: https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/f36317d84be0fde820ca3a325298519a5ca00338f525292546eaba003ca755e1.mp4
+    poster: https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/c91fe0686854c6783876943088a06479e50a5704166740cf5d17513da129a775.jpg
     title: '解密 pstack：工程 Agent 外掛'
 excerpt: '從 pstack 0.15.26 的 171 個檔案看懂外掛如何分發技能、路由任務、委派工作，以及哪些限制仍由 Cursor 和專案工具負責。'
 tags:

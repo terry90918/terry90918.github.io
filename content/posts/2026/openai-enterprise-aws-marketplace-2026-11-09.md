@@ -13,8 +13,8 @@ presentation:
     src: /audio/2026/openai-enterprise-aws-marketplace-2026-11-09-notebooklm.mp3
     duration: 1122.359728
   video:
-    src: /videos/2026/openai-enterprise-aws-marketplace-2026-11-09-notebooklm.mp4
-    poster: /videos/2026/openai-enterprise-aws-marketplace-2026-11-09-notebooklm.jpg
+    src: https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/f1c013592a8fbb6d1c913c7b452389626a96947598cb0970433c76cfdc6eb372.mp4
+    poster: https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/39dd022ab76e4b4d3b24983f61be1de8a86048d71f2fa643b7bc55798e704a1c.jpg
     title: 'ChatGPT Enterprise：AWS 採購與資料邊界'
 ---
 
