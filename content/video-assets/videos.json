@@ -1074,6 +1074,88 @@
         "range206Verified": true,
         "corsVerified": true
       }
+    },
+    "ai-daily-2026-11-17-notebooklm.mp4": {
+      "sourceSHA256": "26c8b6384b0b465f7c60f07ffa03ff8e5c3402b17daaa0cd1b21d30c795bfa54",
+      "sourceBytes": 46848092,
+      "sourceNotebook": "https://notebook.google.com/notebook/0b1f0a7f-9288-4e60-b260-445459c22487",
+      "duration": 537.47229,
+      "audioPacketHash": "SHA256=df2dda3c1abf5ebfa97b81e0beb936a0884c1fb54ed1a7d56216784ecb0ca18d",
+      "parameters": [
+        "-vf",
+        "scale=1280:720,fps=24",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "fast",
+        "-crf",
+        "23",
+        "-pix_fmt",
+        "yuv420p",
+        "-c:a",
+        "copy",
+        "-movflags",
+        "+faststart"
+      ],
+      "video": {
+        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/1a91dd85b7e02108384f8454ae1890260247b8e8e1128a8bf46f524b6fdb8736.mp4",
+        "sha256": "1a91dd85b7e02108384f8454ae1890260247b8e8e1128a8bf46f524b6fdb8736",
+        "bytes": 14222762,
+        "contentType": "video/mp4",
+        "publicHashVerified": true,
+        "range206Verified": true,
+        "corsVerified": true
+      },
+      "poster": {
+        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/4f9cda6b7703751139aec1968142be23755431020cacf3e929fca6e0e56410a4.jpg",
+        "sha256": "4f9cda6b7703751139aec1968142be23755431020cacf3e929fca6e0e56410a4",
+        "bytes": 127699,
+        "contentType": "image/jpeg",
+        "publicHashVerified": true,
+        "range206Verified": true,
+        "corsVerified": true
+      }
+    },
+    "ai-daily-2026-11-12-notebooklm.mp4": {
+      "sourceSHA256": "998108246f04a62cd3d0a3c1a31e65b75b423000348cb3bbe244e7cf3ede69e8",
+      "sourceBytes": 42221123,
+      "sourceNotebook": "https://notebook.google.com/notebook/2d752131-43d7-4df1-ba4e-fe2368074e6c",
+      "duration": 476.17161,
+      "audioPacketHash": "SHA256=cfebdc12ba0734591f65bcbdc204d2312cf6f77f95d2ee9fee6c6806e2cb45bd",
+      "parameters": [
+        "-vf",
+        "scale=1280:720,fps=24",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "fast",
+        "-crf",
+        "23",
+        "-pix_fmt",
+        "yuv420p",
+        "-c:a",
+        "copy",
+        "-movflags",
+        "+faststart"
+      ],
+      "video": {
+        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/103c07a3d8d31ab9ee3df1ef714093b471f4f3bffe1e23edb210b9ee1a027a69.mp4",
+        "sha256": "103c07a3d8d31ab9ee3df1ef714093b471f4f3bffe1e23edb210b9ee1a027a69",
+        "bytes": 12657213,
+        "contentType": "video/mp4",
+        "publicHashVerified": true,
+        "range206Verified": true,
+        "corsVerified": true
+      },
+      "poster": {
+        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/49c73c4b0a291c9647885920bea370cd875929886b29aadca3b99a9c78cee507.jpg",
+        "sha256": "49c73c4b0a291c9647885920bea370cd875929886b29aadca3b99a9c78cee507",
+        "bytes": 106771,
+        "contentType": "image/jpeg",
+        "publicHashVerified": true,
+        "range206Verified": true,
+        "corsVerified": true
+      }
     }
   }
 }
