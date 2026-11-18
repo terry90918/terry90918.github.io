@@ -8,10 +8,6 @@ presentation:
   audio:
     src: /audio/2026/pstack-01526-01530-notebooklm.mp3
     duration: 1092
-  video:
-    src: /videos/2026/pstack-01526-01530-notebooklm.mp4
-    poster: /videos/2026/pstack-01526-01530-notebooklm.jpg
-    title: 深入解析 pstack 0.15.26–0.15.30
 slug: 'cursor-pstack-01526-01530-updates'
 excerpt: '逐版讀 pstack 0.15.26～0.15.30 的官方差異：sharpen 如何改變工作邊界、形式驗證如何跟上程式，以及 statechart 如何把模型反例帶回產品討論。'
 tags:

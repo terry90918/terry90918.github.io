@@ -9,10 +9,6 @@ presentation:
   audio:
     src: /audio/2026/harness2-recursive-agent-harnessing-02-notebooklm.mp3
     duration: 1651.844354
-  video:
-    src: /videos/2026/harness2-recursive-agent-harnessing-02-notebooklm.mp4
-    poster: /videos/2026/harness2-recursive-agent-harnessing-02-notebooklm.jpg
-    title: 'Harness² 原始碼深度導讀'
 excerpt: '從 BenchSpec、BenchmarkAdapter 和 Substrate 讀懂 Harness² 的模組邊界，再追蹤 evidence context、候選驗證、選擇與經驗庫如何接成一條流程。'
 tags: ['Harness', 'AI Agent', 'AI 工程', 'Python']
 metaDescription: '深入拆解 harness2 原始碼：benchmark 與 substrate 邊界、任務排程、候選生成、證據過濾、Harness 驗證、selection 和 experience library。'

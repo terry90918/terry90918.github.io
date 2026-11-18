@@ -11,10 +11,6 @@ presentation:
   audio:
     src: /audio/2026/openai-healthcare-2026-11-17-notebooklm.mp3
     duration: 1394.34
-  video:
-    src: /videos/2026/openai-healthcare-2026-11-17-notebooklm.mp4
-    poster: /videos/2026/openai-healthcare-2026-11-17-notebooklm.jpg
-    title: ChatGPT醫療更新：代理與限制
 ---
 
 作者：Terry Chen。本文為官方資料整理與作者觀察，未使用真實病歷，也未實測醫療系統或臨床流程。

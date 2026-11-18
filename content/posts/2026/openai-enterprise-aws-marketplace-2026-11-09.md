@@ -12,10 +12,6 @@ presentation:
   audio:
     src: /audio/2026/openai-enterprise-aws-marketplace-2026-11-09-notebooklm.mp3
     duration: 1122.359728
-  video:
-    src: /videos/2026/openai-enterprise-aws-marketplace-2026-11-09-notebooklm.mp4
-    poster: /videos/2026/openai-enterprise-aws-marketplace-2026-11-09-notebooklm.jpg
-    title: 'ChatGPT Enterprise：AWS 採購與資料邊界'
 ---
 
 企業導入 AI，有時卡住的不是模型能力，而是預算該從哪裡出、採購如何走、資料能送到哪裡。OpenAI 在 2026 年 11 月 9 日宣布 ChatGPT Enterprise 上架 AWS Marketplace，讓既有 AWS 客戶多了一條企業採購入口。這則消息值得看的，是商務流程與技術承諾之間的分界。
