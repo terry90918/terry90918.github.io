@@ -13,6 +13,7 @@ export interface FeaturePresentation {
   type: 'feature'
   category?: string
   audio?: { src: string; duration: number }
+  video?: { src: string; poster: string; title: string }
 }
 
 interface PostFields {

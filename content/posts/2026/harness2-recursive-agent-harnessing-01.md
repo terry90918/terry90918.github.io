@@ -9,6 +9,10 @@ presentation:
   audio:
     src: /audio/2026/harness2-recursive-agent-harnessing-01-notebooklm.mp3
     duration: 1158.118458
+  video:
+    src: /videos/2026/harness2-recursive-agent-harnessing-01-notebooklm.mp4
+    poster: /videos/2026/harness2-recursive-agent-harnessing-01-notebooklm.jpg
+    title: 'Harness² 深度導讀'
 excerpt: '先從研究問題讀懂 Harness²：模型權重固定，系統透過執行證據改進任務用的 Harness，也改進未來改進 Harness 的方式。'
 tags: ['Harness', 'AI Agent', 'AI 工程', 'GitHub']
 metaDescription: '用白話拆解 Google Research harness2 的研究問題、Propose–Probe–Compose、平行與循序遞迴，以及跨任務經驗庫。'

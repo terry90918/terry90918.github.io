@@ -9,6 +9,10 @@ presentation:
   audio:
     src: /audio/2026/harness2-recursive-agent-harnessing-03-notebooklm.mp3
     duration: 1533.120726
+  video:
+    src: /videos/2026/harness2-recursive-agent-harnessing-03-notebooklm.mp4
+    poster: /videos/2026/harness2-recursive-agent-harnessing-03-notebooklm.jpg
+    title: 'Harness² 安全探索指南'
 excerpt: '從免模型 demo 開始試跑 harness2，再用小型 benchmark 任務確認設定；最後拆解論文結果、額外成本、評分方式和網路隔離要求。'
 tags: ['Harness', 'AI Agent', 'AI 工程', 'Benchmark']
 metaDescription: '說明 Harness² 的安裝和小型實驗方式，整理三個 benchmark 的論文結果、recursion 成本、模型評估和網路資料外洩限制。'

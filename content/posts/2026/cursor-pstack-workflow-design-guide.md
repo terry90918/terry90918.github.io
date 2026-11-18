@@ -9,6 +9,10 @@ presentation:
   audio:
     src: /audio/2026/pstack-workflow-design-guide-notebooklm.mp3
     duration: 1454.497959
+  video:
+    src: /videos/2026/pstack-workflow-design-guide-notebooklm.mp4
+    poster: /videos/2026/pstack-workflow-design-guide-notebooklm.jpg
+    title: 'pstack 工作流程指南'
 excerpt: '用一個 bug 和一個功能示範 pstack 如何選流程；再逐項整理 23 份 playbook 的用途，以及 24 個原則如何改變工程決策。'
 tags:
   - cursor

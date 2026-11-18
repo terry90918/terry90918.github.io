@@ -16,7 +16,7 @@ beforeAll(async () => {
   await writeFile(path.join(directory, '404.html'), '<h1>Missing</h1>')
   await writeFile(path.join(directory, 'index.html'), '<h1>Home</h1>')
   await writeFile(`${directory}.html`, 'outside export')
-  await writeFile(path.join(directory, 'clip.mp3'), '0123456789')
+  await writeFile(path.join(directory, 'clip.mp4'), '0123456789')
   await writeFile(path.join(directory, 'rss.xml'), '<rss><channel /></rss>')
   server = spawn(process.execPath, ['scripts/serve-export.mjs', '--root', directory, '--port', '0'])
   origin = await new Promise<string>((resolve, reject) => {
@@ -74,13 +74,13 @@ it('serves RSS with the XML content type', async () => {
 })
 
 it('serves partial media content and correct HEAD responses', async () => {
-  const response = await fetch(`${origin}/clip.mp3`, { headers: { Range: 'bytes=3-6' } })
+  const response = await fetch(`${origin}/clip.mp4`, { headers: { Range: 'bytes=3-6' } })
   expect(response.status).toBe(206)
   expect(response.headers.get('content-range')).toBe('bytes 3-6/10')
-  expect(response.headers.get('content-type')).toBe('audio/mpeg')
+  expect(response.headers.get('content-type')).toBe('video/mp4')
   expect(await response.text()).toBe('3456')
-  const head = await fetch(`${origin}/clip.mp3`, { method: 'HEAD' })
+  const head = await fetch(`${origin}/clip.mp4`, { method: 'HEAD' })
   expect(head.headers.get('content-length')).toBe('10')
   expect(await head.text()).toBe('')
-  expect((await fetch(`${origin}/clip.mp3`, { headers: { Range: 'bytes=20-' } })).status).toBe(416)
+  expect((await fetch(`${origin}/clip.mp4`, { headers: { Range: 'bytes=20-' } })).status).toBe(416)
 })

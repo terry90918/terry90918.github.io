@@ -36,6 +36,27 @@ export function FeatureArticle({
           <ArticleOutline headings={headings} />
         </aside>
         <div className="feature-reading-stream">
+          {presentation.video && (
+            <figure className="feature-video">
+              <div className="feature-video-stage">
+                <video
+                  controls
+                  controlsList="nodownload"
+                  playsInline
+                  preload="none"
+                  poster={presentation.video.poster}
+                  aria-label={presentation.video.title}
+                >
+                  <source src={presentation.video.src} type="video/mp4" />
+                  您的瀏覽器不支援影片播放。
+                </video>
+              </div>
+              <figcaption>
+                {presentation.video.title}
+                <span>NotebookLM 影片摘要</span>
+              </figcaption>
+            </figure>
+          )}
           <ArticleOutline headings={headings} mobile />
           <div
             className="feature-body typeset typeset-docs mx-auto max-w-[37em]"

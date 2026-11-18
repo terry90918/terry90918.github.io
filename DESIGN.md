@@ -27,7 +27,7 @@ The Anthropic homepage https://www.anthropic.com was inspected in the browser on
 
 Dark mapping and the link shades are application choices. The darker light-mode link shade preserves small-text contrast (5.61:1 on ivory); clay buttons use dark text (5.90:1) instead of white. Accent is a surface role; text consumers use accent-ink. The standard radius is 0.625rem. Satoshi and the existing CJK fallbacks stay unchanged.
 
-Theme switching retains next-themes and html[data-theme]. components.json uses new-york and components/ui. Button, Card, Badge, Collapsible, Accordion and Slider are installed from the official registry, then themed with the site's semantic variables. Card supports asChild for article, section and link semantics. Shared cn lives in lib/utils.ts; the former CV-only Card and cn are removed. Content links remain semantic anchors; HTML audio and React Three retain their specialized implementations.
+Theme switching retains next-themes and html[data-theme]. components.json uses new-york and components/ui. Button, Card, Badge, Collapsible, Accordion and Slider are installed from the official registry, then themed with the site's semantic variables. Card supports asChild for article, section and link semantics. Shared cn lives in lib/utils.ts; the former CV-only Card and cn are removed. Content links remain semantic anchors; HTML audio/video and React Three retain their specialized implementations.
 
 ## Layout and shape
 
@@ -53,9 +53,9 @@ Writing navigation shows AI 日報, OpenAI, pstack and Harness² topic entries. 
 
 ## Feature article preview
 
-The pstack 0.15.26–0.15.30 article opts into a feature presentation through its frontmatter. This preview follows the layout of https://openai.com/index/decisions-api/ observed on 2026-10-23: centered title, compact audio/share row, sticky desktop outline, narrow reading column. Keep existing brand colors and font roles; do not force the reference's dark background.
+The pstack 0.15.26–0.15.30 article opts into a feature presentation through its frontmatter. This preview follows the layout of https://openai.com/index/decisions-api/ observed on 2026-10-23: centered title, compact audio/share row, sticky desktop outline, wide video and narrow reading column. Keep existing brand colors and font roles; do not force the reference's dark background.
 
-Runtime geometry is scoped in `styles/article-feature.css`: `--feature-body-width` is 44rem and `--feature-media-width` is 60rem. The display title is at most 3.375rem with a 1.3 line height; body text now follows the shared Typeset docs preset. At 1150px and below the outline becomes a borderless expandable block immediately before the article body. Audio has no download link or menu. Existing article presentation stays the default.
+Runtime geometry is scoped in `styles/article-feature.css`: `--feature-body-width` is 44rem and `--feature-media-width` is 60rem. The display title is at most 3.375rem with a 1.3 line height; body text now follows the shared Typeset docs preset. At 1150px and below the outline becomes a borderless expandable block below the video and caption, immediately before the article body; the replacement video keeps its 16:9 ratio at every width. Native video uses contain, never crop. Audio has no download link or menu, and video retains controlsList=nodownload. Existing article presentation stays the default.
 
 Audio status feedback appears only when there is a message. Do not render an empty status paragraph or reserve its height while idle.
 
@@ -67,7 +67,7 @@ All blog article bodies (including the pstack feature) and bilingual CV case-stu
 
 Wide tables use Typeset scroll wrappers with a named, keyboard-focusable region. The wrapper owns overflow while each child remains a semantic table. CV labels follow locale. The upstream stylesheet remains byte-identical and is excluded from automatic formatting.
 
-The reference was rechecked against the user's mobile screenshot on 2026-10-23. Use only one thin rule above the audio utility. Do not add borders above/below the mobile outline. Space, sequence and typography group the hero, audio and body; the desktop outline and data-table separators keep their roles.
+The reference was rechecked against the user's mobile screenshot on 2026-10-23. Use only one thin rule above the audio utility. Do not add borders above/below the mobile outline or around the video stage. Space, sequence and typography group the hero, audio, video and body; the desktop outline and data-table separators keep their roles.
 
 ## OpenAI usage illustration
 

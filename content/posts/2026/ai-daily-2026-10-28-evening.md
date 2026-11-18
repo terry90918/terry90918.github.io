@@ -11,6 +11,10 @@ presentation:
   audio:
     src: /audio/2026/ai-daily-2026-10-28-evening-notebooklm.mp3
     duration: 952.018141
+  video:
+    src: /videos/2026/ai-daily-2026-10-28-evening-notebooklm.mp4
+    poster: /videos/2026/ai-daily-2026-10-28-evening-notebooklm.jpg
+    title: '承諾與現實的界線：解析 AI 的最新聲明'
 ---
 
 > Google 展示兩分鐘的互動世界，馬斯克承諾史詩長片，卻先交出七分鐘作品。[原作者](https://aisecret.us/)打趣：未來還是有時間限制。Oracle 的 TPU 計畫與 GPT-4o 新訴訟，也讓產品承諾及責任受到檢視。

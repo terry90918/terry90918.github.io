@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { FeatureArticle } from '../../components/article/FeatureArticle'
 import type { Post } from '../../lib/posts/types'
 
-it('presents the mobile outline before the article body', () => {
+it('presents the video before the mobile outline and article body', () => {
   const post: Post = {
     status: 'published',
     title: '測試文章',
@@ -23,14 +23,17 @@ it('presents the mobile outline before the article body', () => {
         post={post}
         presentation={{
           type: 'feature',
+          video: { src: '/video.mp4', poster: '/poster.jpg', title: '影片摘要' },
         }}
         url="https://example.com/article"
       />
     ),
     'text/html'
   )
+  const video = doc.querySelector('.feature-video')!
   const outline = doc.querySelector('.feature-mobile-outline')!
   const body = doc.querySelector('.feature-body')!
+  expect(video.compareDocumentPosition(outline) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
   expect(outline.compareDocumentPosition(body) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
 })
 
