@@ -10,8 +10,8 @@ presentation:
     src: /audio/2026/harness2-recursive-agent-harnessing-03-notebooklm.mp3
     duration: 1533.120726
   video:
-    src: https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/a4236a09fd957ca1429837aab2ec5f0827d98ee693b1e564f7c5091c86809d61.mp4
-    poster: https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/65737df15ba89e05b86642605f02c26bf51eb4cb7c0f17075441e7c3b32f9009.jpg
+    src: https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/a4236a09fd957ca1429837aab2ec5f0827d98ee693b1e564f7c5091c86809d61.mp4
+    poster: https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/65737df15ba89e05b86642605f02c26bf51eb4cb7c0f17075441e7c3b32f9009.jpg
     title: 'Harness² 安全探索指南'
 excerpt: '從免模型 demo 開始試跑 harness2，再用小型 benchmark 任務確認設定；最後拆解論文結果、額外成本、評分方式和網路隔離要求。'
 tags: ['Harness', 'AI Agent', 'AI 工程', 'Benchmark']

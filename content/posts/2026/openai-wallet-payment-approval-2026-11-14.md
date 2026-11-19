@@ -12,8 +12,8 @@ presentation:
     src: /audio/2026/openai-wallet-payment-approval-2026-11-14-notebooklm.mp3
     duration: 1408.85
   video:
-    src: https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/30ac1fd255d9137f4756d7b090a713d78e0eff16a92b8a5808efcf338b041163.mp4
-    poster: https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/5cbc4da934fd3d07d52da39845de544b0a6bf94870c2d11128f412c86c0d8617.jpg
+    src: https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/30ac1fd255d9137f4756d7b090a713d78e0eff16a92b8a5808efcf338b041163.mp4
+    poster: https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/5cbc4da934fd3d07d52da39845de544b0a6bf94870c2d11128f412c86c0d8617.jpg
     title: ChatGPT Wallet 期待與現實
 ---
 

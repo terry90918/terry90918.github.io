@@ -12,8 +12,8 @@ presentation:
     src: /audio/2026/openai-gpt62-2026-11-19-notebooklm.mp3
     duration: 1566.998639
   video:
-    src: https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/885f4c62b220573550da72f7541e2ba14cc01cb0155362a7cb88ca9f2703f8a4.mp4
-    poster: https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/19006a14514bbf3dfa85d6924221d717dfbf73e0e54af29ebe66174a774dcef1.jpg
+    src: https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/885f4c62b220573550da72f7541e2ba14cc01cb0155362a7cb88ca9f2703f8a4.mp4
+    poster: https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/19006a14514bbf3dfa85d6924221d717dfbf73e0e54af29ebe66174a774dcef1.jpg
     title: GPT-6.2 Astra 與 Sol 指南
 ---
 
