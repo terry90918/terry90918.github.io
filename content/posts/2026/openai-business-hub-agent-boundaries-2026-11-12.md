@@ -13,8 +13,8 @@ presentation:
     src: /audio/2026/openai-business-hub-agent-boundaries-2026-11-12-notebooklm.mp3
     duration: 1084.371882
   video:
-    src: https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/65d1f88b8f71f858131b05210bbd8b7c0e4691345250ebe1df4ecf009f501040.mp4
-    poster: https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/edf2f83855745e0967a3dc01d10b70b68f0470c7a83573470f1721144cd853e9.jpg
+    src: https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/65d1f88b8f71f858131b05210bbd8b7c0e4691345250ebe1df4ecf009f501040.mp4
+    poster: https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/edf2f83855745e0967a3dc01d10b70b68f0470c7a83573470f1721144cd853e9.jpg
     title: 'ChatGPT Business Hub 與商家代理'
 ---
 

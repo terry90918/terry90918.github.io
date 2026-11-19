@@ -11,6 +11,7 @@ import rehypeStringify from 'rehype-stringify'
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import type { Root, Element } from 'hast'
+import { readPublishedVideoAsset } from './presentation'
 import type { ArticleHeading } from './types'
 
 const sanitizeSchema = {
@@ -35,6 +36,39 @@ const sanitizeSchema = {
     ...defaultSchema.protocols,
     poster: ['http', 'https'],
   },
+}
+
+function checkBucketVideoAssets() {
+  function check(value: unknown, kind: 'src' | 'poster') {
+    if (typeof value !== 'string') return
+    let hostname: string
+    try {
+      hostname = new URL(value, 'https://example.invalid').hostname.replace(/\.$/, '')
+    } catch {
+      return
+    }
+    if (hostname === 'your-objectstorage.com' || hostname.endsWith('.your-objectstorage.com')) {
+      readPublishedVideoAsset(value, kind, `article video ${kind}`)
+    }
+  }
+
+  return (tree: Root) => {
+    const scan = (node: Root | Element, inVideo = false) => {
+      if (node.type === 'element') {
+        if (node.tagName === 'video') {
+          check(node.properties.src, 'src')
+          check(node.properties.poster, 'poster')
+          inVideo = true
+        } else if (node.tagName === 'source' && inVideo) {
+          check(node.properties.src, 'src')
+        }
+      }
+      for (const child of node.children) {
+        if (child.type === 'element') scan(child, inVideo)
+      }
+    }
+    scan(tree)
+  }
 }
 
 function imagePerformance() {
@@ -116,6 +150,7 @@ export async function renderMarkdownWithOutline(content: string): Promise<{
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeSanitize, sanitizeSchema)
+    .use(checkBucketVideoAssets)
     .use(imagePerformance)
     .use(rehypeSlug)
     .use(() => (tree: Root) => {

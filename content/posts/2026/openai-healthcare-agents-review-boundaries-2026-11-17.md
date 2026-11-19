@@ -12,8 +12,8 @@ presentation:
     src: /audio/2026/openai-healthcare-2026-11-17-notebooklm.mp3
     duration: 1394.34
   video:
-    src: https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/152d7b3283f01b91838f45c0286abaa478e3c1930cb3e229ad53255eae2f87d4.mp4
-    poster: https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/a0660dcef851ca63890ca90317808449cf65155b5caeba9b32120cb4d03a46a6.jpg
+    src: https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/152d7b3283f01b91838f45c0286abaa478e3c1930cb3e229ad53255eae2f87d4.mp4
+    poster: https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/a0660dcef851ca63890ca90317808449cf65155b5caeba9b32120cb4d03a46a6.jpg
     title: ChatGPT醫療更新：代理與限制
 ---
 

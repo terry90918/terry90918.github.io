@@ -12,8 +12,8 @@ presentation:
     src: /audio/2026/ai-daily-2026-10-28-evening-notebooklm.mp3
     duration: 952.018141
   video:
-    src: https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/ba70eadc4dfea41b9f7176985ad0de8af8f93e979c150897d0b6eec5d163704a.mp4
-    poster: https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/03fd153b6200f1951421121c045993d0128c615f894b7bb6e78aa24246798a9e.jpg
+    src: https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/ba70eadc4dfea41b9f7176985ad0de8af8f93e979c150897d0b6eec5d163704a.mp4
+    poster: https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/03fd153b6200f1951421121c045993d0128c615f894b7bb6e78aa24246798a9e.jpg
     title: '承諾與現實的界線：解析 AI 的最新聲明'
 ---
 
