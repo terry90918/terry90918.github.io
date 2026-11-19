@@ -1,13 +1,20 @@
 ---
 title: 'GPT-6.2 Astra 與 Sol 上線：Work、Codex 的選擇，以及速度背後的用量'
 publishedAt: '2026-11-19T05:00:00+08:00'
-status: draft
+status: published
 excerpt: 'OpenAI 推出 GPT-6.2 Astra 與 Sol。整理 Work、Codex 的使用入口、Pro 200 的 Ultrafast 新資格、額度消耗與限時點數費率，以及 API 價格和評測限制。'
 tags:
   - OpenAI
 presentation:
   type: feature
   category: OpenAI
+  audio:
+    src: /audio/2026/openai-gpt62-2026-11-19-notebooklm.mp3
+    duration: 1566.998639
+  video:
+    src: https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/885f4c62b220573550da72f7541e2ba14cc01cb0155362a7cb88ca9f2703f8a4.mp4
+    poster: https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/19006a14514bbf3dfa85d6924221d717dfbf73e0e54af29ebe66174a774dcef1.jpg
+    title: GPT-6.2 Astra 與 Sol 指南
 ---
 
 作者：Terry Chen。本文依 2026 年 11 月 19 日查核的官方公告與文件整理，包含作者對工作流程的觀察；未進行模型效能或帳務實測。

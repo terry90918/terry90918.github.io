@@ -1279,6 +1279,49 @@
         "range206Verified": true,
         "corsVerified": true
       }
+    },
+    "openai-gpt62-2026-11-19-notebooklm.mp4": {
+      "sourceSHA256": "4da6ab76ab190ae16e884a928a614054a8d4293a96092bf354a7e2c0073a6ece",
+      "sourceBytes": 33916712,
+      "sourceNotebook": "https://notebook.google.com/notebook/7cff3e4f-26b0-4c08-9e48-ed8cb65de77d",
+      "duration": 441.179138,
+      "audioPacketHash": "SHA256=9b0d0e893466c9c4919cff301c2ed4c750ed7f6b114ab435f932f412328d1a6b",
+      "parameters": [
+        "-c:v",
+        "libx264",
+        "-crf",
+        "24",
+        "-preset",
+        "medium",
+        "-threads",
+        "2",
+        "-r",
+        "24",
+        "-pix_fmt",
+        "yuv420p",
+        "-c:a",
+        "copy",
+        "-movflags",
+        "+faststart"
+      ],
+      "video": {
+        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/videos/2026/885f4c62b220573550da72f7541e2ba14cc01cb0155362a7cb88ca9f2703f8a4.mp4",
+        "sha256": "885f4c62b220573550da72f7541e2ba14cc01cb0155362a7cb88ca9f2703f8a4",
+        "bytes": 10960449,
+        "contentType": "video/mp4",
+        "publicHashVerified": true,
+        "range206Verified": true,
+        "corsVerified": true
+      },
+      "poster": {
+        "url": "https://terry90918-public-media.nbg1.your-objectstorage.com/posters/2026/19006a14514bbf3dfa85d6924221d717dfbf73e0e54af29ebe66174a774dcef1.jpg",
+        "sha256": "19006a14514bbf3dfa85d6924221d717dfbf73e0e54af29ebe66174a774dcef1",
+        "bytes": 112610,
+        "contentType": "image/jpeg",
+        "publicHashVerified": true,
+        "range206Verified": true,
+        "corsVerified": true
+      }
     }
   }
 }
