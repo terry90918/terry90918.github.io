@@ -1,13 +1,20 @@
 ---
 title: 'ChatGPT Health 擴展到 Android 與 dots：連接健康資料前，先看懂使用範圍'
 publishedAt: '2026-11-20T05:00:00+08:00'
-status: draft
+status: published
 excerpt: 'Health 開始擴展到 Android、桌面、dots 與 sites。整理美國方案資格、Health Connect、主動提醒，以及同步資料、對話與記憶各自的隱私規則。'
 tags:
   - OpenAI
 presentation:
   type: feature
   category: OpenAI
+  audio:
+    src: /audio/2026/openai-health-android-dots-privacy-2026-11-20-corrected.mp3
+    duration: 1127.157551
+  video:
+    src: https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/68c7f7cbe86e988939e54871942165bf9e3c6b809f991862e3f2233779304fe2.mp4
+    poster: https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/a6f649c6f09473f924f8b2df47977cc71e070488d19918c4d0b4d28a03eb564c.jpg
+    title: 'ChatGPT Health 擴展：謹慎連接（繁體中文校訂版）'
 ---
 
 作者：Terry Chen。本文依 2026 年 11 月 20 日查核的 OpenAI 官方公告與說明整理，包含作者對資料管理的觀察；未連接或測試個人醫療資料。
@@ -22,7 +29,7 @@ presentation:
 
 使用時先更新 ChatGPT，再從側邊欄找 Health；行動或桌面程式找不到時，可查看 Explore。網頁版則可從更多選單尋找。連結家長監護的帳號，還可能受到 Health 家長控制設定影響。[官方開始使用與疑難排解步驟](https://help.openai.com/en/articles/20001036-health-in-chatgpt)
 
-在 dot 使用 Health，必須同時有 Health 與 dots 的資格。此次 release notes 對個人使用者列出 Pro 的 dots；不能把 Health 的 Free 到 Pro 清單，解讀成所有這些方案都新增了 dot。[此次開放說明](https://help.openai.com/en/articles/6825453-chatgpt-release-notes)、[dots 資格](https://help.openai.com/en/articles/20001530-getting-started-with-your-dot)
+在 dot 使用 Health，必須同時有 Health 與 dots 的資格。11 月 19 日的 Health 公告對個人使用者列出 Pro 的 dots；截至 11 月 22 日，一般 dots 說明也列出部分 Plus 使用者，但仍受地區和推出進度限制。不能把 Health 的 Free 到 Pro 清單，解讀成所有這些方案都能使用 dot。[此次開放說明](https://help.openai.com/en/articles/6825453-chatgpt-release-notes)、[dots 資格](https://help.openai.com/en/articles/20001530-getting-started-with-your-dot)
 
 ## Health Connect 串接資料，來源仍有邊界
 
@@ -67,6 +74,16 @@ Health 的定位是協助理解健康資訊，官方說明不作為診斷或治�
 
 這次更新對日常使用的意義，是把散落的健康資料帶進更多入口，並讓後續提醒延續資料脈絡。我會先從少量、明確的資料類別開始，核對來源、權限和保存設定，再決定是否擴大使用；這是作者的使用取向，並非醫療建議或產品實測結論。
 
+## 影音重點文字版
+
+本篇提供由 NotebookLM 生成、依官方來源校訂的繁體中文播客與解說影片。影片中的無旁白校訂卡可直接閱讀；不播放影音，也可以從下列文字取得相同重點：
+
+- Health 開始逐步擴展至 Android、桌面、dots 與 sites。Health 與 dot 的資格分開，須兩者皆符合；這不是台灣全面開放公告。
+- 同步的健康資料不用於基礎模型訓練或投放廣告。引用這些資料的對話或衍生內容能否用於改善模型，取決於帳號設定。
+- 記憶開啟時，對話可能建立記憶；原始資料不會直接建立記憶。若不希望對話建立記憶，可用暫時聊天或關閉記憶。
+- 解綁後，該來源同步資料會於 30 天內刪除；既有聊天須另行處理。連接前，先確認分享類別和模型改善設定。
+- 個人版 Health 不提供 BAA，不作為診斷或治療，也不取代專業照護。
+
 ## 來源與查核範圍
 
-本文查核時間為 2026 年 11 月 20 日，主要依據 [ChatGPT release notes 的 11 月 19 日公告](https://help.openai.com/en/articles/6825453-chatgpt-release-notes)、[Health in ChatGPT](https://help.openai.com/en/articles/20001036-health-in-chatgpt) 與 [Getting started with your dot](https://help.openai.com/en/articles/20001530-getting-started-with-your-dot)。Help Center 是持續更新的文件；本文未將頁面的相對更新時間視為功能首發日期，也未以示例推定台灣可用或臨床成效。
+本文初次查核日期為 2026 年 11 月 20 日，11 月 22 日複核資格、隱私與影音，主要依據 [ChatGPT release notes 的 11 月 19 日公告](https://help.openai.com/en/articles/6825453-chatgpt-release-notes)、[Health in ChatGPT](https://help.openai.com/en/articles/20001036-health-in-chatgpt) 與 [Getting started with your dot](https://help.openai.com/en/articles/20001530-getting-started-with-your-dot)。Help Center 是持續更新的文件；本文未將頁面的相對更新時間視為功能首發日期，也未以示例推定台灣可用或臨床成效。
