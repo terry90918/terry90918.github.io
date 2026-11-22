@@ -64,7 +64,7 @@ Health 沿用帳號全域的 plugins 權限設定；若未調整，官方列出�
 
 ## 解除連接不會一併刪掉既有對話
 
-使用者可在 Health 的 Accounts 管理來源。解除連接後，該來源同步的資料會在 30 天內從 OpenAI 系統刪除；已經寫進 ChatGPT 對話歷史的資訊，則保留到使用者刪除那些對話為止。要清理資料，必須分別檢查來源連接與對話歷史。[解除連接與刪除範圍](https://help.openai.com/en/articles/20001036-health-in-chatgpt)
+使用者可在 Health 的 Accounts 管理來源。解除連接後，該來源同步的資料會在 30 天內從 OpenAI 系統刪除；已經寫進 ChatGPT 對話歷史的資訊，則保留到使用者刪除那些對話為止。[解除連接與刪除範圍](https://help.openai.com/en/articles/20001036-health-in-chatgpt) 已儲存的記憶與聊天分開保存。如果健康對話建立了記憶，除了刪除相關聊天，也要到記憶設定另外刪除該筆記憶。[管理與刪除記憶](https://help.openai.com/en/articles/8590148-memory-in-chatgpt)
 
 資料寫回也有界線。ChatGPT 不能改動醫療提供者持有的病歷，也不能寫回 Apple Health、Health Connect 或其他連接帳號。即使請它更新目前用藥、病況或家族病史，變更的也只是 ChatGPT 裡的 Health profile。[唯讀與 profile 更新限制](https://help.openai.com/en/articles/20001036-health-in-chatgpt)
 
@@ -81,7 +81,7 @@ Health 的定位是協助理解健康資訊，官方說明不作為診斷或治�
 - Health 開始逐步擴展至 Android、桌面、dots 與 sites。Health 與 dot 的資格分開，須兩者皆符合；這不是台灣全面開放公告。
 - 同步的健康資料不用於基礎模型訓練或投放廣告。引用這些資料的對話或衍生內容能否用於改善模型，取決於帳號設定。
 - 記憶開啟時，對話可能建立記憶；原始資料不會直接建立記憶。若不希望對話建立記憶，可用暫時聊天或關閉記憶。
-- 解綁後，該來源同步資料會於 30 天內刪除；既有聊天須另行處理。連接前，先確認分享類別和模型改善設定。
+- 解綁後，該來源同步資料會於 30 天內刪除；既有聊天與已儲存的記憶須分別刪除。連接前，先確認分享類別和模型改善設定。[管理與刪除記憶](https://help.openai.com/en/articles/8590148-memory-in-chatgpt)
 - 個人版 Health 不提供 BAA，不作為診斷或治療，也不取代專業照護。
 
 ## 來源與查核範圍
