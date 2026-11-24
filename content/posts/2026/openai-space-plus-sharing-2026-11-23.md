@@ -1,13 +1,20 @@
 ---
 title: 'ChatGPT Space 向 Plus 開放：把對話整理成頁面，分享前先看清楚權限'
 publishedAt: '2026-11-23T05:00:00+08:00'
-status: draft
+status: published
 excerpt: 'Space 開始向全球成年 Plus 使用者逐步推出。整理頁面、簡報與 Projects 的分工，以及協作資格、權限繼承、來源檔案和資料設定。'
 tags:
   - OpenAI
 presentation:
   type: feature
   category: OpenAI
+  audio:
+    src: /audio/2026/openai-space-plus-sharing-2026-11-23.mp3
+    duration: 1117.646077
+  video:
+    src: https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/39cb7e1dffb158ca7780d54c1dc2cdc7df6b642629038a24b13114f5ec9bc744.mp4
+    poster: https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/b59616587d740435932aa9341226cae44a1981d333ad43cc5970ce5630ca1516.jpg
+    title: 'ChatGPT Space 整理協作與隱私'
 ---
 
 作者：Terry Chen。本文依 2026 年 11 月 23 日查核的 OpenAI 官方文件整理，包含作者對協作流程的觀察；未將官方示例視為產品實測結果。
