@@ -23,6 +23,18 @@ presentation:
 
 對使用者來說，先確認三件事就能減少誤解：在哪個入口選模型、哪種速度會消耗多少額度，以及官方評測到底測了什麼。
 
+## 11 月 23 日更新：GPT-6.2 也開始進入 Chat 分頁
+
+OpenAI 在 11 月 23 日宣布，為日常對話調整的 GPT-6.2 開始向全球 Plus、Pro、Business 與 Enterprise 逐步推出。Chat 使用的是 GPT-6.2 Sol 的一個版本；Enterprise 是否能用，仍取決於工作區管理員設定。公告沒有列出 Free、Go 或 Edu，不宜自行擴大適用方案。[ChatGPT release notes，11 月 23 日](https://help.openai.com/en/articles/6825453-chatgpt-release-notes)
+
+這是 Chat 入口的後續更新，沒有更換 Work 和 Codex 背後的模型。下文「普通 Chat 維持原有模型選項」描述的是 11 月 17 日推出 Astra／Sol 時的狀態，不能再當成 11 月 23 日以後 Chat 的完整說明。這則公告也沒有宣布訂閱額度翻倍或調整價格。[本次適用範圍](https://help.openai.com/en/articles/6825453-chatgpt-release-notes)
+
+官方將改善重點放在圖片理解、遵循複雜指令與網路查找，並刊出內部評測結果。這些數據有特定題目與推理設定，不能直接當成個人任務的成功率，本文也沒有做模型比較實測。[官方評測摘要](https://help.openai.com/en/articles/6825453-chatgpt-release-notes)
+
+同日 system card 的開頭只提 Plus、Pro，release notes 則明列四種方案；本文以 release notes 的 Availability 段落說明推出資格，system card 用來閱讀模型風險與防護評估，不把兩者寫成完全一致。[GPT-6.2 in ChatGPT system card](https://deploymentsafety.openai.com/gpt-6-2-chatgpt/gpt-6-2-chatgpt.pdf)
+
+本頁播客與解說影片沿用 11 月 19 日原稿，內容範圍是當時的 Work、Codex、用量與價格，未涵蓋這段 11 月 23 日補充。
+
 ## Astra 處理複雜專案，Sol 面向日常多步驟工作
 
 官方將 Astra 定位於較困難的專業工作，例如在既有程式庫中完成修改與測試，或依指定模板製作簡報；Sol 則面向日常寫作、程式開發與多步驟任務。這是產品定位，實際選擇仍需看資料規模、工具與交付要求。[模型定位與工作示例](https://openai.com/index/introducing-gpt-6-2-astra-sol/)
@@ -33,7 +45,7 @@ presentation:
 
 ## 到 Work 或 Codex 選模型，工作區還有權限條件
 
-ChatGPT 的入口要分清楚。官方 release notes 說明，Plus、Pro 使用者可在 Work 的模型選單，或 Codex 的模型選擇器中選取新模型；普通 Chat 維持原有模型選項。管理式工作區則取決於席次與管理員設定。[ChatGPT release notes，11 月 17 日](https://help.openai.com/en/articles/6825453-chatgpt-release-notes)
+ChatGPT 的入口要分清楚。官方 release notes 說明，Plus、Pro 使用者可在 Work 的模型選單，或 Codex 的模型選擇器中選取新模型；當時普通 Chat 維持原有模型選項；11 月 23 日 Chat 的後續變動見上方補充。管理式工作區則取決於席次與管理員設定。[ChatGPT release notes，11 月 17 日](https://help.openai.com/en/articles/6825453-chatgpt-release-notes)
 
 Enterprise、Edu 的預覽預設關閉，工作區擁有者可對整個工作區或指定角色啟用。官方列出美國與歐盟的標準推論支援，要求 UAE 推論的工作區不能使用這次預覽。Business 也有自己的模型開放說明，因此不能因發布公告的一段方案清單未列 Business，就斷定它被排除。[Enterprise 與 Edu 開放條件](https://help.openai.com/en/articles/10128477-chatgpt-enterprise-and-edu-release-notes)、[Business release notes](https://help.openai.com/en/articles/11391654-chatgpt-business-release-notes)
 
