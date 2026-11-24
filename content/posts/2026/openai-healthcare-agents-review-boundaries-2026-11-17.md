@@ -73,7 +73,7 @@ OpenAI 在 2026 年 11 月 24 日的 Model Release Notes 宣布，Healthcare mod
 
 開發者在 Responses API 指定支援的醫療模型 ID，例如 `gpt-6.2-astra-healthcare`；要使用專用醫療搜尋索引，必須啟用 web search。模型設定本身的存取與搜尋工具的啟用，是兩個需要確認的項目。官方列出的用途包括臨床問題、研究比較與附引用的證據摘要，仍要求使用者檢查回答及引文，不能取代專業醫療判斷。[模型設定及搜尋條件](https://help.openai.com/en/articles/20001656-healthcare-model-configurations-in-the-openai-api)
 
-目前官方 Standard 費率如下，單位為每百萬 token 的美元價格。短上下文指輸入不超過 272K token，長上下文指超過 272K；這張表只列模型的輸入、快取輸入與輸出，不代表整個應用的總成本。[Healthcare model configuration 費率](https://developers.openai.com/api/docs/pricing#healthcare-model-configurations)
+目前官方全球 Standard 費率如下，單位為每百萬 token 的美元價格。短上下文指輸入不超過 272K token，長上下文指超過 272K；這張表只列模型的輸入、快取輸入與輸出，不代表整個應用的總成本。資料駐留的區域處理端點，對 2026 年 3 月 5 日起發布的模型加收 10%；FedRAMP 端點也加收 10%。[Healthcare model configuration 費率](https://developers.openai.com/api/docs/pricing#healthcare-model-configurations)
 
 | 模型與上下文                       | 輸入 | 快取輸入 | 輸出 |
 | ---------------------------------- | ---- | -------- | ---- |
