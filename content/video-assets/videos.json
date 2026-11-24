@@ -1407,6 +1407,10 @@
         "publicHashVerified": true,
         "range206Verified": true,
         "corsVerified": true
+      },
+      "sourceStorage": {
+        "bucket": "terry-blog-prod-public-media",
+        "key": "private/originals/2026/3a1697e55865ee11e8926cd93ff13c62a2720f90f1ed94d47c016aaa2a957e50.mp4"
       }
     }
   }
