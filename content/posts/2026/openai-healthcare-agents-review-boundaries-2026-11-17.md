@@ -2,7 +2,7 @@
 title: 'ChatGPT 醫療更新：代理開始跨系統辦事，人工審查與資料邊界仍要逐步確認'
 publishedAt: '2026-11-17T05:00:00+08:00'
 status: published
-excerpt: 'OpenAI 更新醫療電腦操作代理、臨床搜尋與二十多個外掛。整理使用資格、評測範圍，以及從病歷草稿到實際送出之間的審查與資料限制。'
+excerpt: 'OpenAI 更新醫療代理、臨床搜尋與外掛，11 月 24 日另開放 Healthcare API 模型設定。整理工作區與 API 的資格、費率，以及人工審查與 PHI 資料條件。'
 tags:
   - OpenAI
 presentation:
@@ -18,6 +18,8 @@ presentation:
 ---
 
 作者：Terry Chen。本文為官方資料整理與作者觀察，未使用真實病歷，也未實測醫療系統或臨床流程。
+
+2026 年 11 月 25 日補充：新增下方「11 月 24 日更新：醫療模型設定開放給 API 組織」一節。上方播客與解說影片保留原版內容，涵蓋 11 月 16 日公告，未包含這次 API 補充。
 
 醫師決定安排檢查之後，工作往往還沒結束。病歷、保險事前核准、轉診與排程可能分散在不同系統，仍需要有人查資料、填欄位、追蹤下一步。OpenAI 在 2026 年 11 月 16 日公布 ChatGPT for Healthcare 更新，將電腦操作代理、改進的臨床搜尋，以及二十多個新醫療外掛放到同一套工作流程中。[官方更新公告](https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare/)
 
@@ -65,10 +67,33 @@ ChatGPT for Clinicians 免費提供給符合資格、完成驗證的美國臨床
 
 官方清單目前將 Work 雲端瀏覽器使用、Work 雲端網路存取、事件觸發排程及 improved memory 等功能列為不受 BAA 涵蓋；可用功能也不自動代表特定用途或第三方服務受涵蓋。因此，新聞中的「能跨系統操作」不能直接等同於「任何雲端瀏覽與網路流程都能放入 PHI」。組織需要依實際環境、功能及協議逐項確認。[BAA 排除項目與適用條件](https://help.openai.com/en/articles/20001069-hipaa-eligible-products-and-functionality)
 
+## 11 月 24 日更新：醫療模型設定開放給 API 組織
+
+OpenAI 在 2026 年 11 月 24 日的 Model Release Notes 宣布，Healthcare model configurations 已在 API 提供。這類設定將醫療專用指示與臨床搜尋結合，協助應用程式尋找、比較及摘要醫學證據。API 組織可以使用，不需要先購買 ChatGPT for Healthcare 或 ChatGPT Enterprise 工作區。[官方發布紀錄](https://help.openai.com/en/articles/9624314-model-release-notes)、[API 使用資格與功能](https://help.openai.com/en/articles/20001656-healthcare-model-configurations-in-the-openai-api)
+
+開發者在 Responses API 指定支援的醫療模型 ID，例如 `gpt-6.2-astra-healthcare`；要使用專用醫療搜尋索引，必須啟用 web search。模型設定本身的存取與搜尋工具的啟用，是兩個需要確認的項目。官方列出的用途包括臨床問題、研究比較與附引用的證據摘要，仍要求使用者檢查回答及引文，不能取代專業醫療判斷。[模型設定及搜尋條件](https://help.openai.com/en/articles/20001656-healthcare-model-configurations-in-the-openai-api)
+
+目前官方 Standard 費率如下，單位為每百萬 token 的美元價格。短上下文指輸入不超過 272K token，長上下文指超過 272K；這張表只列模型的輸入、快取輸入與輸出，不代表整個應用的總成本。[Healthcare model configuration 費率](https://developers.openai.com/api/docs/pricing#healthcare-model-configurations)
+
+| 模型與上下文                       | 輸入 | 快取輸入 | 輸出 |
+| ---------------------------------- | ---- | -------- | ---- |
+| GPT-6.2 Astra Healthcare，短上下文 | $8   | $0.40    | $40  |
+| GPT-6.2 Astra Healthcare，長上下文 | $16  | $0.80    | $60  |
+| GPT-6.2 Sol Healthcare，短上下文   | $2   | $0.10    | $10  |
+| GPT-6.2 Sol Healthcare，長上下文   | $4   | $0.20    | $15  |
+
+官方價格頁另列工具費用，web search 的呼叫及搜尋內容 token 需要依適用規則計費。因此，估算一次文獻搜尋的成本，還要計入工具用量；不能只拿上表的輸出價格當成每次搜尋費，也不能把 ChatGPT 訂閱視為這些 API 費用已包含在內。[模型與工具計費](https://developers.openai.com/api/docs/pricing)
+
+處理受保護健康資訊（PHI）的資格，需要另外確認。官方明示，取得 Healthcare 模型設定的存取權，並不自動授權組織使用 PHI；組織必須先有適用的 BAA，並符合帳戶及工具設定要求。HIPAA 適用文件另要求 API 組織啟用 Modified Retention，除非 OpenAI 另有指定；`/v1/responses` 列在適用端點中，仍需符合前述條件。[PHI 條件](https://help.openai.com/en/articles/20001656-healthcare-model-configurations-in-the-openai-api)、[API 的 BAA 與保留設定](https://help.openai.com/en/articles/20001069-hipaa-eligible-products-and-functionality)
+
+API 的 BAA 不要求企業合約，但自助申請需要已有 API 使用紀錄，並由具備權限與簽約授權的組織管理員操作。簽妥 BAA、啟用 HIPAA compliance support，也不會自動讓應用程式符合 HIPAA；組織仍要評估實際使用方式與適用義務。[BAA 申請資格與責任](https://help.openai.com/en/articles/8660679-getting-a-business-associate-agreement-for-the-openai-api)
+
+這項補充改變的是開發者的接入方式與選項。原文的電腦操作代理、Epic 唯讀外掛、個人 Clinicians 資格及工作區 BAA 限制，仍應分別查核；API 醫療模型設定的推出，不能直接證明這些功能也一起新增或放寬。本文沒有用真實病歷測試 API，也沒有據此判定任何應用已可投入臨床使用。
+
 ## 從草稿到送出，需要各自的證據
 
 這次更新讓醫療 AI 的範圍更具體：搜尋提供證據，外掛連接資料，電腦操作代理補上系統介面之間的步驟。它們可以合作，權限與驗收方式仍各不相同。
 
 我會把實際導入的重點放在每個交接點：引用能否追到原文、讀到的是不是正確病歷、草稿是否經過授權人員確認、提交後系統是否真的接受，以及能否留下稽核紀錄。這是本文對官方資料的觀察，未以公告或示範代替實際部署驗收。
 
-以上依截至 2026 年 11 月 18 日可查核的官方資訊整理。產品資格、外掛、功能涵蓋與價格仍可能調整，實際使用前應重新查閱官方文件及機構協議。
+原文依截至 2026 年 11 月 18 日的官方資訊整理；API 補充依截至 2026 年 11 月 25 日可查核的官方資訊整理。產品資格、外掛、功能涵蓋與價格仍可能調整，實際使用前應重新查閱官方文件及機構協議。
