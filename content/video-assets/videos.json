@@ -1366,6 +1366,88 @@
         "corsVerified": true
       }
     },
+    "ai-daily-2026-11-19-notebooklm.mp4": {
+      "sourceSHA256": "795f11c384f63c15d405995acde86e61ed7e02d562ee67ae66958e768e30f279",
+      "sourceBytes": 43551318,
+      "sourceNotebook": "https://notebook.google.com/notebook/186fbaa6-d228-4b93-b01a-dac7f1b07a52",
+      "duration": 547.340771,
+      "audioPacketHash": "SHA256=3acc78753fd1f580178bb619feaeb81b09035738c239f4042a358df170e2effc",
+      "parameters": [
+        "-vf",
+        "scale=1280:720,fps=24",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "medium",
+        "-crf",
+        "24",
+        "-pix_fmt",
+        "yuv420p",
+        "-c:a",
+        "copy",
+        "-movflags",
+        "+faststart"
+      ],
+      "video": {
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/ea988c33e0f929a9576cf582f6f74b0573592c6f7a4b55b913e931d6f4b102a3.mp4",
+        "sha256": "ea988c33e0f929a9576cf582f6f74b0573592c6f7a4b55b913e931d6f4b102a3",
+        "bytes": 13924415,
+        "contentType": "video/mp4",
+        "publicHashVerified": true,
+        "range206Verified": true,
+        "corsVerified": true
+      },
+      "poster": {
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/31295db547683051540826a8b7f54ba3c1ad717a29274470e5cd838b589989b1.jpg",
+        "sha256": "31295db547683051540826a8b7f54ba3c1ad717a29274470e5cd838b589989b1",
+        "bytes": 92974,
+        "contentType": "image/jpeg",
+        "publicHashVerified": true,
+        "range206Verified": true,
+        "corsVerified": true
+      }
+    },
+    "ai-daily-2026-11-20-notebooklm.mp4": {
+      "sourceSHA256": "d70d9ca53e3e42349d4062ef3e6e643cd3162bb8c2e1331fa2b86ff1b9c4e455",
+      "sourceBytes": 34152708,
+      "sourceNotebook": "https://notebook.google.com/notebook/16664ad8-a712-470d-b4f0-1767ac29a056",
+      "duration": 413.918912,
+      "audioPacketHash": "SHA256=c0c30fac1f04903f66bb167f956c745783a9108981476ccf4475d91286dc4596",
+      "parameters": [
+        "-vf",
+        "scale=1280:720,fps=24",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "medium",
+        "-crf",
+        "24",
+        "-pix_fmt",
+        "yuv420p",
+        "-c:a",
+        "copy",
+        "-movflags",
+        "+faststart"
+      ],
+      "video": {
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/f71a1ebf93240b603a855f0a5382ee689d6328c0e9d035f77dc9e6e1be370b15.mp4",
+        "sha256": "f71a1ebf93240b603a855f0a5382ee689d6328c0e9d035f77dc9e6e1be370b15",
+        "bytes": 11116196,
+        "contentType": "video/mp4",
+        "publicHashVerified": true,
+        "range206Verified": true,
+        "corsVerified": true
+      },
+      "poster": {
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/8d5e899408dda3c93195fb5422e0bb72c0e0ff6e1b8763ea7833c577c1a1a7c4.jpg",
+        "sha256": "8d5e899408dda3c93195fb5422e0bb72c0e0ff6e1b8763ea7833c577c1a1a7c4",
+        "bytes": 125701,
+        "contentType": "image/jpeg",
+        "publicHashVerified": true,
+        "range206Verified": true,
+        "corsVerified": true
+      }
+    },
     "openai-space-plus-sharing-2026-11-23-notebooklm.mp4": {
       "sourceSHA256": "3a1697e55865ee11e8926cd93ff13c62a2720f90f1ed94d47c016aaa2a957e50",
       "sourceBytes": 29077535,
