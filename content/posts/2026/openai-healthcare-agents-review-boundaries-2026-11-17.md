@@ -78,9 +78,9 @@ OpenAI 在 2026 年 11 月 24 日的 Model Release Notes 宣布，Healthcare mod
 | 模型與上下文                       | 輸入 | 快取輸入 | 輸出 |
 | ---------------------------------- | ---- | -------- | ---- |
 | GPT-6.2 Astra Healthcare，短上下文 | $8   | $0.40    | $40  |
-| GPT-6.2 Astra Healthcare，長上下文 | $16  | $0.80    | $60  |
+| GPT-6.2 Astra Healthcare，長上下文 | $16  | $0.80    | $80  |
 | GPT-6.2 Sol Healthcare，短上下文   | $2   | $0.10    | $10  |
-| GPT-6.2 Sol Healthcare，長上下文   | $4   | $0.20    | $15  |
+| GPT-6.2 Sol Healthcare，長上下文   | $4   | $0.20    | $20  |
 
 官方價格頁另列工具費用，web search 的呼叫及搜尋內容 token 需要依適用規則計費。因此，估算一次文獻搜尋的成本，還要計入工具用量；不能只拿上表的輸出價格當成每次搜尋費，也不能把 ChatGPT 訂閱視為這些 API 費用已包含在內。[模型與工具計費](https://developers.openai.com/api/docs/pricing)
 
