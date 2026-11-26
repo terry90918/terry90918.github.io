@@ -1542,6 +1542,54 @@
         "bucket": "terry-blog-prod-public-media",
         "key": "private/originals/2026/9aead7d63b79a46afa0be8493561190aa77a28115c7812af373b034cd56a7017.mp4"
       }
+    },
+    "ai-daily-2026-11-25-notebooklm.mp4": {
+      "sourceSHA256": "5a69d0cefab2d6da5ca63b1f88c54bb0ff63349048c840751fb2797da28846b1",
+      "sourceBytes": 29590447,
+      "duration": 381.016236,
+      "audioPacketHash": "SHA256=0c331f9ba3fc47abaac40ae431b80d32dd393362f49894f931ea2c607dde66f6",
+      "parameters": [
+        "-vf",
+        "scale=1280:720:force_original_aspect_ratio=decrease:force_divisible_by=2,pad=1280:720:(ow-iw)/2:(oh-ih)/2",
+        "-c:v",
+        "libx264",
+        "-crf",
+        "24",
+        "-preset",
+        "medium",
+        "-threads",
+        "2",
+        "-r",
+        "24",
+        "-pix_fmt",
+        "yuv420p",
+        "-c:a",
+        "copy",
+        "-movflags",
+        "+faststart"
+      ],
+      "video": {
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/12a53aa3a22d573eda649b546ef95812308c43834eb0e3f6ce3bbf902573a09d.mp4",
+        "sha256": "12a53aa3a22d573eda649b546ef95812308c43834eb0e3f6ce3bbf902573a09d",
+        "bytes": 9886277,
+        "contentType": "video/mp4",
+        "publicHashVerified": true,
+        "range206Verified": true,
+        "corsVerified": true
+      },
+      "poster": {
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/2bfab85ba182e3929ce8a6beb9c7152b466284c86bde88e8865b049cf80d7462.jpg",
+        "sha256": "2bfab85ba182e3929ce8a6beb9c7152b466284c86bde88e8865b049cf80d7462",
+        "bytes": 130077,
+        "contentType": "image/jpeg",
+        "publicHashVerified": true,
+        "range206Verified": true,
+        "corsVerified": true
+      },
+      "sourceStorage": {
+        "bucket": "terry-blog-prod-public-media",
+        "key": "private/originals/2026/5a69d0cefab2d6da5ca63b1f88c54bb0ff63349048c840751fb2797da28846b1.mp4"
+      }
     }
   }
 }
