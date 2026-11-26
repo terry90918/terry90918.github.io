@@ -1,6 +1,6 @@
 {
   "origin": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com",
-  "verificationDate": "2026-11-26",
+  "verificationDate": "2026-11-27",
   "assets": {
     "openai-healthcare-2026-11-17-notebooklm.mp4": {
       "sourceSHA256": "f82c4895e6119007a8f7188529c6273eaff58321ccdbcb8f31501a87cb462156",
@@ -1589,6 +1589,52 @@
       "sourceStorage": {
         "bucket": "terry-blog-prod-public-media",
         "key": "private/originals/2026/5a69d0cefab2d6da5ca63b1f88c54bb0ff63349048c840751fb2797da28846b1.mp4"
+      }
+    },
+    "ai-daily-2026-11-27-notebooklm.mp4": {
+      "sourceSHA256": "0af0219e570803d905d32f18b993424dc68d4890bc2ad8586b80e44db220ba82",
+      "sourceBytes": 27813611,
+      "sourceStorage": {
+        "bucket": "terry-blog-prod-public-media",
+        "key": "private/originals/2026/0af0219e570803d905d32f18b993424dc68d4890bc2ad8586b80e44db220ba82.mp4"
+      },
+      "duration": 426.597007,
+      "audioPacketHash": "SHA256=9d05d54e93ba3892ee5929db4b4c778eee45125bb2dfd5e3b8c6f29d1fe92644",
+      "parameters": [
+        "-c:v",
+        "libx264",
+        "-crf",
+        "24",
+        "-preset",
+        "medium",
+        "-threads",
+        "2",
+        "-r",
+        "24",
+        "-pix_fmt",
+        "yuv420p",
+        "-c:a",
+        "copy",
+        "-movflags",
+        "+faststart"
+      ],
+      "video": {
+        "sha256": "a89dc8f309cfa926f16fee74e28cb80fa1ad4d706ca0bac09fafb20aef172e12",
+        "bytes": 10030871,
+        "contentType": "video/mp4",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/a89dc8f309cfa926f16fee74e28cb80fa1ad4d706ca0bac09fafb20aef172e12.mp4",
+        "publicHashVerified": true,
+        "range206Verified": true,
+        "corsVerified": true
+      },
+      "poster": {
+        "sha256": "b085634ff282d215b80b80516027c755596032c45fdfb456b5083c8a77759024",
+        "bytes": 131105,
+        "contentType": "image/jpeg",
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/b085634ff282d215b80b80516027c755596032c45fdfb456b5083c8a77759024.jpg",
+        "publicHashVerified": true,
+        "range206Verified": true,
+        "corsVerified": true
       }
     }
   }
