@@ -1,6 +1,6 @@
 {
   "origin": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com",
-  "verificationDate": "2026-11-24",
+  "verificationDate": "2026-11-26",
   "assets": {
     "openai-healthcare-2026-11-17-notebooklm.mp4": {
       "sourceSHA256": "f82c4895e6119007a8f7188529c6273eaff58321ccdbcb8f31501a87cb462156",
@@ -1493,6 +1493,54 @@
       "sourceStorage": {
         "bucket": "terry-blog-prod-public-media",
         "key": "private/originals/2026/3a1697e55865ee11e8926cd93ff13c62a2720f90f1ed94d47c016aaa2a957e50.mp4"
+      }
+    },
+    "ai-daily-2026-11-26-notebooklm.mp4": {
+      "sourceSHA256": "9aead7d63b79a46afa0be8493561190aa77a28115c7812af373b034cd56a7017",
+      "sourceBytes": 31833064,
+      "duration": 373.260771,
+      "audioPacketHash": "SHA256=9e68f1907bec6c0e351712d9d2a4d172f54fd2a8638d0df351a0f48b8ee45f3f",
+      "parameters": [
+        "-vf",
+        "scale=1280:720:force_original_aspect_ratio=decrease:force_divisible_by=2,pad=1280:720:(ow-iw)/2:(oh-ih)/2",
+        "-c:v",
+        "libx264",
+        "-crf",
+        "24",
+        "-preset",
+        "medium",
+        "-threads",
+        "2",
+        "-r",
+        "24",
+        "-pix_fmt",
+        "yuv420p",
+        "-c:a",
+        "copy",
+        "-movflags",
+        "+faststart"
+      ],
+      "video": {
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/videos/2026/3d0a91a7337f477ae8dbf94311974663df8791aabbc15d1fd027f08500bdb5a4.mp4",
+        "sha256": "3d0a91a7337f477ae8dbf94311974663df8791aabbc15d1fd027f08500bdb5a4",
+        "bytes": 9861388,
+        "contentType": "video/mp4",
+        "publicHashVerified": true,
+        "range206Verified": true,
+        "corsVerified": true
+      },
+      "poster": {
+        "url": "https://terry-blog-prod-public-media.nbg1.your-objectstorage.com/posters/2026/1cd9e96e31f11ece569afaac8568ae6889e840a0fed32bfe78e40b73d19be87e.jpg",
+        "sha256": "1cd9e96e31f11ece569afaac8568ae6889e840a0fed32bfe78e40b73d19be87e",
+        "bytes": 123678,
+        "contentType": "image/jpeg",
+        "publicHashVerified": true,
+        "range206Verified": true,
+        "corsVerified": true
+      },
+      "sourceStorage": {
+        "bucket": "terry-blog-prod-public-media",
+        "key": "private/originals/2026/9aead7d63b79a46afa0be8493561190aa77a28115c7812af373b034cd56a7017.mp4"
       }
     }
   }
